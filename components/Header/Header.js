@@ -3,7 +3,6 @@ import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import Navigation from '../Navigation/Navigation';
 import Container from '../../Layouts/Container/Container';
-import Hero from '../Hero/Hero';
 
 const Header = () => {
   return (

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 
 export default ({ children, headTitle }) => (
   <>
@@ -9,5 +10,6 @@ export default ({ children, headTitle }) => (
     <Header />
 
     <main>{children}</main>
+    <Footer />
   </>
 );

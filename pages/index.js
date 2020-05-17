@@ -5,9 +5,10 @@ import Main from '../Layouts/Main/Main';
 import FollowUs from '../components/FollowUs/FollowUs';
 import BlogCarousel from '../components/BlogCarousel/BlogCarousel';
 import Subscribe from '../components/Subscribe/Subscribe';
+import Mission from '../components/Mission/Mission';
 
-const Home = ({ ourWorks, postsData,API_URL }) => {
-  console.log(API_URL)
+const Home = ({ ourWorks, postsData, API_URL }) => {
+  console.log(API_URL);
   return (
     <Main headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'>
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
@@ -16,7 +17,8 @@ const Home = ({ ourWorks, postsData,API_URL }) => {
       <OurWorks ourWorks={ourWorks} />
       <FollowUs />
       <BlogCarousel postsData={postsData} />
-      <Subscribe API_URL={API_URL}/>
+      <Subscribe API_URL={API_URL} />
+      <Mission />
     </Main>
   );
 };
