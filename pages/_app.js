@@ -1,4 +1,3 @@
-import Header from '../components/Header/Header';
 import { ThemeProvider } from 'emotion-theming';
 import theme from '../theme/theme';
 import 'slick-carousel/slick/slick.css';
@@ -10,7 +9,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Header />
         <Component {...pageProps} />
       </ThemeProvider>
     </>

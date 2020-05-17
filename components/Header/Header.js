@@ -2,7 +2,8 @@ import styled from '@emotion/styled';
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import Navigation from '../Navigation/Navigation';
-import Container from '../../UI/Container/Container';
+import Container from '../../Layouts/Container/Container';
+import Hero from '../Hero/Hero';
 
 const Header = () => {
   return (
@@ -26,12 +27,13 @@ const Header = () => {
 
 const HeaderStyled = styled.header`
   background: ${(props) => props.theme.colors.pinkGradient};
-  height: ${(45 / 375) * 100 + 'vw'};
+  height: 100%; 
 
-  .container {
+  .Container {
     display: flex;
     align-items: center;
     height: 100%;
+    height: ${(45 / 375) * 100 + 'vw'};
   }
 
   .logoBox {

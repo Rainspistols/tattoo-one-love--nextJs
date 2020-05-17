@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Container from '../../UI/Container/Container';
+import Container from '../../Layouts/Container/Container';
 import { bgMobile, logo } from './images';
 
 const Hero = () => {
@@ -30,9 +30,9 @@ const StyledHero = styled.div`
     margin-right: auto;
   }
 
-  .container {
-    padding-bottom: 57px;
-    padding-top: 35px;
+  .Container {
+    padding-bottom: ${(props) => props.theme.pixelToVieWidth(57)};
+    padding-top: ${(props) => props.theme.pixelToVieWidth(35)};
   }
 
   .text1 {
