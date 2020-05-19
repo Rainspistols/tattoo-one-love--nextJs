@@ -48,8 +48,8 @@ const Footer = () => {
           <FooterTitle text='Information ' />
           <ul>
             {informationListData.map(({ title, href }, index) => (
-              <li>
-                <Link href={href} key={index}>
+              <li key={index}>
+                <Link href={href} >
                   <a>{title}</a>
                 </Link>
               </li>
@@ -61,7 +61,7 @@ const Footer = () => {
           <FooterTitle text='Subscription ' />
           <ul>
             {subscriptionListData.map(({ title, href }, index) => (
-              <li index={index}>
+              <li key={index}>
                 <a href={href} target='_blank' rel='nofollow noopener'>
                   {title}
                 </a>
@@ -74,8 +74,8 @@ const Footer = () => {
           <FooterTitle text='Rules ' />
           <ul>
             {rulesListData.map(({ title, href }, index) => (
-              <li>
-                <Link href={href} key={index}>
+              <li key={index}>
+                <Link href={href} >
                   <a>{title}</a>
                 </Link>
               </li>
@@ -87,7 +87,7 @@ const Footer = () => {
           <FooterTitle text='Contacts ' />
           <ul>
             {contactsListData.map(({ title, href, icon }, index) => (
-              <li index={index}>
+              <li key={index}>
                 <a href={href}>
                   <img src={icon} alt='' />
                   {title}

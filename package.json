@@ -14,12 +14,15 @@
     "emotion-normalize": "^10.1.0",
     "emotion-theming": "^10.0.27",
     "next": "9.4.0",
+    "next-cookies": "^2.0.3",
     "next-images": "^1.4.0",
     "polished": "^3.6.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-showdown": "^2.0.3",
     "react-slick": "^0.26.1",
     "reflexbox": "^4.0.6",
+    "showdown": "^1.9.1",
     "slick-carousel": "^1.8.1"
   }
 }

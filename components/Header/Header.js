@@ -3,10 +3,17 @@ import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import Navigation from '../Navigation/Navigation';
 import Container from '../../Layouts/Container/Container';
+import ImportantMessage from '../ImportantMessage/ImportantMessage';
 
-const Header = () => {
+const Header = ({ importantMessageData }) => {
   return (
     <HeaderStyled>
+      {importantMessageData && (
+        <ImportantMessage
+          text={importantMessageData.text}
+          link={importantMessageData.link}
+        />
+      )}
       <Container>
         <div className='logoBox'>
           <Logo />
@@ -26,7 +33,7 @@ const Header = () => {
 
 const HeaderStyled = styled.header`
   background: ${(props) => props.theme.colors.pinkGradient};
-  height: 100%; 
+  height: 100%;
 
   .Container {
     display: flex;
