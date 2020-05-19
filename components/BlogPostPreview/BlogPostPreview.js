@@ -3,31 +3,52 @@ import CategoryBtn from '../../UI/CategoryBtn';
 import Container from '../../Layouts/Container/Container';
 import Link from 'next/link';
 
-const BlogPostPreview = ({ post: { src, title, category, slug } }) => {
+const BlogPostPreview = ({
+  post: { postTitle, postSlug, categories, postImgHref },
+}) => {
   return (
-    <BlogPostPreviewStyled>
-      <Link href={slug}>
+    <BlogPostPreviewStyled className='BlogPostPreview'>
+      <Link href={'/blog/' + postSlug}>
         <a>
           <div className='imgWrap'>
-            <img src={src} alt='' />
+            <img src={postImgHref} alt='' />
           </div>
-
-          <Container>
-            <CategoryBtn text={category} />
-            <h3>{title}</h3>
-          </Container>
         </a>
       </Link>
+
+      <Container>
+        <div className='categories'>
+          {categories.map((item, index) => (
+            <Link href={'/blog/' + item.slug} key={index}>
+              <a>
+                <CategoryBtn text={item.category} />
+              </a>
+            </Link>
+          ))}
+        </div>
+
+        <h3>
+          <Link href={'/blog/' + postSlug}>
+            <a>{postTitle}</a>
+          </Link>
+        </h3>
+      </Container>
     </BlogPostPreviewStyled>
   );
 };
 
 const BlogPostPreviewStyled = styled.div`
   .imgWrap {
-    width: ${(props) => props.theme.pixelToVieWidth(300)};
-    height: ${(props) => props.theme.pixelToVieWidth(210)};
     overflow: hidden;
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+    position: relative;
+  }
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    a {
+      margin-right: ${(props) => props.theme.pixelToVieWidth(10)};
+    }
   }
 
   .CategoryBtn {
@@ -37,8 +58,9 @@ const BlogPostPreviewStyled = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
   }
 
   h3 {
@@ -46,7 +68,8 @@ const BlogPostPreviewStyled = styled.div`
     line-height: ${(props) => props.theme.pixelToVieWidth(48)};
     margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
     font-weight: 600;
-    color: ${props=>props.theme.colors.darkBlue}
+    color: ${(props) => props.theme.colors.darkBlue};
+    display: inline-block;
   }
 `;
 

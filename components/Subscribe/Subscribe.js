@@ -20,7 +20,6 @@ const Subscribe = ({ API_URL }) => {
       body: JSON.stringify({ title: newEmail }),
     });
     const content = await rawResponse.json();
-    console.log(content);
 
     setEmailEntered(true);
   };
@@ -69,7 +68,8 @@ const Subscribe = ({ API_URL }) => {
 
 const SubscribeStyled = styled.div`
   background: ${(props) => props.theme.colors.grey1};
-  padding: ${(props) => props.theme.pixelToVieWidth(20)} ${(props) => props.theme.pixelToVieWidth(28)};
+  padding: ${(props) => props.theme.pixelToVieWidth(20)}
+    ${(props) => props.theme.pixelToVieWidth(28)};
   display: block;
   margin-bottom: ${(props) => props.theme.pixelToVieWidth(30)};
 

@@ -49,11 +49,11 @@ export const getServerSideProps = async (ctx) => {
       })),
 
       postsData: postsData.map(({ id, title, img, post_categories, slug }) => ({
-        id,
-        title,
-        slug,
-        category: post_categories[0].category,
-        src: API_URL + img.url,
+        postId: id,
+        postTitle: title,
+        postSlug: slug,
+        categories: post_categories,
+        postImgHref: API_URL + img.url,
       })),
 
       API_URL: API_URL,

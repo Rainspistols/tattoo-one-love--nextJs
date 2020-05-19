@@ -21,9 +21,11 @@ const BlogCarousel = ({ postsData }) => {
         variableWidth={true}
         infinite={true}
       >
-        {postsData.map((post) => (
-          <BlogPostPreview key={post.id} post={post} />
-        ))}
+        {postsData.map((post, index) => {
+          if (index < 5) {
+            return <BlogPostPreview key={post.postId} post={post} />;
+          }
+        })}
       </Slider>
 
       <Container>
@@ -37,10 +39,15 @@ const BlogCarousel = ({ postsData }) => {
 const BlogCarouselStyled = styled.section`
   margin-bottom: ${(props) => props.theme.pixelToVieWidth(30)};
 
+  .imgWrap {
+    width: ${(props) => props.theme.pixelToVieWidth(300)};
+    height: ${(props) => props.theme.pixelToVieWidth(210)};
+    margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+  }
+
   .slick-slide {
     margin-left: ${(props) => props.theme.pixelToVieWidth(30)};
   }
-
 `;
 
 export default BlogCarousel;

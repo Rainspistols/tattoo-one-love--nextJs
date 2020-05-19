@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const Line = () => {
-  return <LineStyled />;
+  return <LineStyled className='Line' />;
 };
 
 const LineStyled = styled.div`
