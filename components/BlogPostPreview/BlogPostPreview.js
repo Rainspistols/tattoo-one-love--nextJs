@@ -3,33 +3,31 @@ import CategoryBtn from '../../UI/CategoryBtn';
 import Container from '../../Layouts/Container/Container';
 import Link from 'next/link';
 
-const BlogPostPreview = ({
-  post: { postTitle, postSlug, categories, postImgHref },
-}) => {
+const BlogPostPreview = ({ post }) => {
   return (
     <BlogPostPreviewStyled className='BlogPostPreview'>
-      <Link href={'/blog/' + postSlug}>
+      <Link href={post.slug}>
         <a>
           <div className='imgWrap'>
-            <img src={postImgHref} alt='' />
+            <img src={post.href} alt='' />
           </div>
         </a>
       </Link>
 
       <Container>
         <div className='categories'>
-          {categories.map((item, index) => (
-            <Link href={'/blog/' + item.slug} key={index}>
-              <a>
-                <CategoryBtn text={item.category} />
-              </a>
-            </Link>
+          {post.categories.map((category) => (
+            <CategoryBtn
+              text={category.category}
+              slug={category.slug}
+              key={category.id}
+            />
           ))}
         </div>
 
         <h3>
-          <Link href={'/blog/' + postSlug}>
-            <a>{postTitle}</a>
+          <Link href={post.slug}>
+            <a>{post.title}</a>
           </Link>
         </h3>
       </Container>
@@ -46,7 +44,7 @@ const BlogPostPreviewStyled = styled.div`
   .categories {
     display: flex;
     flex-wrap: wrap;
-    a {
+    .CategoryBtn {
       margin-right: ${(props) => props.theme.pixelToVieWidth(10)};
     }
   }

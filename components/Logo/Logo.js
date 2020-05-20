@@ -16,15 +16,16 @@ const Logo = () => {
 
 const StyledLogo = styled.div`
   background: ${(props) => props.theme.colors.white};
-  width: ${(98 / 375) * 100 + 'vw'};
+  width: ${(props) => props.theme.pixelToVieWidth(98)};
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+  height: ${(props) => props.theme.pixelToVieWidth(45)};
 
   img {
-    width: ${(45 / 375) * 100 + 'vw'};
+    width: ${(props) => props.theme.pixelToVieWidth(45)};
   }
 `;
 

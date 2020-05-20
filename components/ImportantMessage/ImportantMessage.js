@@ -23,6 +23,7 @@ const ImportantMessage = ({ text, link }) => {
     <>
       {!isClosedState && (
         <ImportantMessageStyled>
+          <h2 className='visually-hidden'>important message</h2>
           <Container>
             <Link href={link}>
               <a>
@@ -39,10 +40,10 @@ const ImportantMessage = ({ text, link }) => {
   );
 };
 
-const ImportantMessageStyled = styled.div`
+const ImportantMessageStyled = styled.section`
   background: ${(props) => props.theme.colors.darkBlue};
   color: ${(props) => props.theme.colors.white};
-  padding: ${(props) => props.theme.pixelToVieWidth(6)} 0;
+  padding: ${(props) => props.theme.pixelToVieWidth(10)} 0;
 
   .Container {
     width: 100%;
@@ -67,10 +68,6 @@ const ImportantMessageStyled = styled.div`
       width: ${(props) => props.theme.pixelToVieWidth(20)};
       height: ${(props) => props.theme.pixelToVieWidth(20)};
     }
-  }
-
-  .hidden {
-    display: block;
   }
 `;
 

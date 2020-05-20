@@ -1,22 +1,21 @@
 import styled from '@emotion/styled';
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
-import Navigation from '../Navigation/Navigation';
 import Container from '../../Layouts/Container/Container';
 import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import CookieBanner from 'react-cookie-banner';
+import navigationIcon from './images/navigationIcon.svg';
+import NavMenu from '../NavMenu/NavMenu';
 
-const Header = ({ importantMessageData }) => {
+const Header = ({ importantMessageData, categories }) => {
   return (
     <HeaderStyled>
-      <div>
-        <CookieBanner
-          className='cookieBanner'
-          message="Yes, we use cookies. If you don't like it change website, we won't miss you!"
-          cookie='user-has-accepted-cookies'
-          disableStyle={true}
-        />
-      </div>
+      <CookieBanner
+        className='cookieBanner'
+        message="Yes, we use cookies. If you don't like it change website, we won't miss you!"
+        cookie='user-has-accepted-cookies'
+        disableStyle={true}
+      />
 
       {importantMessageData && (
         <ImportantMessage
@@ -25,19 +24,22 @@ const Header = ({ importantMessageData }) => {
         />
       )}
 
-      <Container>
-        <div className='logoBox'>
-          <Logo />
-        </div>
+      <nav className='Navigation'>
+        <Container>
+          <div className='logoBox'>
+            <Logo />
+          </div>
 
-        <div className='searchBox'>
-          <Search />
-        </div>
+          <div className='searchBox'>
+            <Search />
+          </div>
 
-        <div className='navigationBox'>
-          <Navigation />
-        </div>
-      </Container>
+          <div className='navigationBox'>
+            <img className='menuIcon' src={navigationIcon} alt='menu' />
+            <NavMenu categories={categories} />
+          </div>
+        </Container>
+      </nav>
     </HeaderStyled>
   );
 };
@@ -46,11 +48,12 @@ const HeaderStyled = styled.header`
   background: ${(props) => props.theme.colors.pinkGradient};
   height: 100%;
 
-  .Container {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    height: ${(props) => props.theme.pixelToVieWidth(45)};
+  .Navigation {
+    .Container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
   }
 
   .cookieBanner.react-cookie-banner {
@@ -97,6 +100,10 @@ const HeaderStyled = styled.header`
   .navigationBox {
     margin-right: 0;
     margin-left: ${(props) => props.theme.pixelToVieWidth(25)};
+
+    .menuIcon {
+      width: ${(props) => props.theme.pixelToVieWidth(40)};
+    }
   }
   .searchBox {
     margin-right: 0;

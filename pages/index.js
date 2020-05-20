@@ -48,12 +48,12 @@ export const getServerSideProps = async (ctx) => {
         url: API_URL + url,
       })),
 
-      postsData: postsData.map(({ id, title, img, post_categories, slug }) => ({
-        postId: id,
-        postTitle: title,
-        postSlug: slug,
+      postsData: postsData.map(({ id, title, img, slug, post_categories }) => ({
+        id,
+        title,
+        slug,
         categories: post_categories,
-        postImgHref: API_URL + img.url,
+        href: API_URL + img.url,
       })),
 
       API_URL: API_URL,

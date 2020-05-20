@@ -3,11 +3,12 @@ import BlogPostsList from '../components/BlogPostsList/BlogPostsList';
 import Subscribe from '../components/Subscribe/Subscribe';
 import cookies from 'next-cookies';
 
-const Blog = ({ postsData, API_URL, importantMessageData }) => {
+const Blog = ({ postsData, API_URL, importantMessageData, categories }) => {
   return (
     <Main
       headTitle='Tattoo one love blog'
       importantMessageData={importantMessageData}
+      categories={categories}
     >
       <h1 className='visually-hidden'>Tattoo one love blog</h1>
       <BlogPostsList postsData={postsData} />
@@ -17,6 +18,7 @@ const Blog = ({ postsData, API_URL, importantMessageData }) => {
 };
 
 export const getServerSideProps = async (ctx) => {
+
   const { API_URL } = process.env;
 
   const res = await fetch(`${API_URL}/posts`);
@@ -28,14 +30,17 @@ export const getServerSideProps = async (ctx) => {
     ? null
     : importantMessage;
 
+  const resCategories = await fetch(`${API_URL}/post-categories`);
+  const categories = await resCategories.json();
+
   return {
     props: {
       postsData: postsData.map(({ id, title, img, slug, post_categories }) => ({
-        postId: id,
-        postTitle: title,
-        postSlug: slug,
+        id,
+        title,
+        slug,
         categories: post_categories,
-        postImgHref: API_URL + img.url,
+        href: API_URL + img.url,
       })),
 
       API_URL: API_URL,
@@ -43,6 +48,12 @@ export const getServerSideProps = async (ctx) => {
       importantMessageData: cookies(ctx)['im-stop-download']
         ? null
         : importantMessageStatusChecked,
+
+      categories: categories.map(({ slug, category, id }) => ({
+        slug,
+        category,
+        id,
+      })),
     },
   };
 };

@@ -21,9 +21,9 @@ const BlogCarousel = ({ postsData }) => {
         variableWidth={true}
         infinite={true}
       >
-        {postsData.map((post, index) => {
-          if (index < 5) {
-            return <BlogPostPreview key={post.postId} post={post} />;
+        {postsData.map((post) => {
+          if (post.id <= 5) {
+            return <BlogPostPreview key={post.id} post={post} />;
           }
         })}
       </Slider>
