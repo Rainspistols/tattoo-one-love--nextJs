@@ -17,12 +17,17 @@ const CategoryBtnStyled = styled.div`
     ${(props) => props.theme.colors.grey2};
   font-size: ${(props) => props.theme.pixelToVieWidth(10)};
   height: ${(props) => props.theme.pixelToVieWidth(20)};
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-transform: uppercase;
   font-weight: 400;
   border-radius: ${(props) => props.theme.pixelToVieWidth(4)};
+
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export default CategoryBtn;

@@ -8,11 +8,12 @@ import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';
 import cookies from 'next-cookies';
 
-const Home = ({ ourWorks, postsData, API_URL, importantMessageData }) => {
+const Home = ({ ourWorks, postsData, API_URL, importantMessageData,categories }) => {
   return (
     <Main
       headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'
       importantMessageData={importantMessageData}
+      categories={categories}
     >
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
       <Hero />
@@ -41,6 +42,9 @@ export const getServerSideProps = async (ctx) => {
     ? null
     : importantMessage;
 
+  const resCategories = await fetch(`${API_URL}/post-categories`);
+  const categories = await resCategories.json();
+
   return {
     props: {
       ourWorks: ourWorksData.works.map(({ id, url }) => ({
@@ -61,6 +65,12 @@ export const getServerSideProps = async (ctx) => {
       importantMessageData: cookies(ctx)['im-stop-download']
         ? null
         : importantMessageStatusChecked,
+
+      categories: categories.map(({ slug, category, id }) => ({
+        slug,
+        category,
+        id,
+      })),
     },
   };
 };

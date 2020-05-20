@@ -49,7 +49,7 @@ const Footer = () => {
           <ul>
             {informationListData.map(({ title, href }, index) => (
               <li key={index}>
-                <Link href={href} >
+                <Link href={href}>
                   <a>{title}</a>
                 </Link>
               </li>
@@ -75,7 +75,7 @@ const Footer = () => {
           <ul>
             {rulesListData.map(({ title, href }, index) => (
               <li key={index}>
-                <Link href={href} >
+                <Link href={href}>
                   <a>{title}</a>
                 </Link>
               </li>
