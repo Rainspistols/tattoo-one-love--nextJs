@@ -1,6 +1,6 @@
-import Main from '../Layouts/Main/Main';
-import BlogPostsList from '../components/BlogPostsList/BlogPostsList';
-import Subscribe from '../components/Subscribe/Subscribe';
+import Main from '../../Layouts/Main/Main';
+import BlogPostsList from '../../components/BlogPostsList/BlogPostsList';
+import Subscribe from '../../components/Subscribe/Subscribe';
 import cookies from 'next-cookies';
 
 const Blog = ({ postsData, API_URL, importantMessageData, categories }) => {

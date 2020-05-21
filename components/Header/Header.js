@@ -10,6 +10,7 @@ import { useState, useRef } from 'react';
 import searchIcon from './images/searchIcon.svg';
 
 const Header = ({ importantMessageData, categories }) => {
+  console.log(importantMessageData)
   const [isMenuActive, setMenuActive] = useState(false);
   const [isSearchActive, setSearchActive] = useState(false);
 
@@ -25,14 +26,9 @@ const Header = ({ importantMessageData, categories }) => {
 
   const onCloseSearch = () => {
     setSearchActive(false);
-    navigationBox.current.className = navigationBox.current.className.replace(
-      ' activeSearch',
-      ''
-    );
   };
 
   const onSearch = () => {
-    navigationBox.current.className += ' activeSearch';
     setSearchActive(true);
   };
 
@@ -77,7 +73,12 @@ const Header = ({ importantMessageData, categories }) => {
                 </div>
               </>
             )}
-            <div className='navigationBox' ref={navigationBox}>
+            <div
+              className={
+                isSearchActive ? 'navigationBox activeSearch' : 'navigationBox'
+              }
+              ref={navigationBox}
+            >
               <button className='menuButton'>
                 <img
                   className='menuIcon'

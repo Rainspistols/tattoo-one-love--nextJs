@@ -4,7 +4,7 @@ import Link from 'next/link';
 const CategoryBtn = ({ text, slug }) => {
   return (
     <CategoryBtnStyled className='CategoryBtn'>
-      <Link href={slug}>
+      <Link href={'/blog/' + slug}>
         <a>{text}</a>
       </Link>
     </CategoryBtnStyled>

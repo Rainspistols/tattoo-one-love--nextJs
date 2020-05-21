@@ -16,8 +16,8 @@ import {
 const NavMenu = ({ categories, onCloseMenu }) => {
   const menuLinksData = [
     { title: 'home', href: '/' },
-    { title: 'About us', href: '/about-us' },
     { title: 'Blog', href: '/blog' },
+    { title: 'About us', href: '/about-us' },
     { title: 'Works', href: '/works' },
   ];
   const contactsListData = [

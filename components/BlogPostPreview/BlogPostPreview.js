@@ -6,7 +6,7 @@ import Link from 'next/link';
 const BlogPostPreview = ({ post }) => {
   return (
     <BlogPostPreviewStyled className='BlogPostPreview'>
-      <Link href={post.slug}>
+      <Link href={'/blog/' + post.categories[0].slug + '/' + post.slug}>
         <a>
           <div className='imgWrap'>
             <img src={post.href} alt='' />
