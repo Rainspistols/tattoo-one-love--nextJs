@@ -6,17 +6,34 @@ import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import CookieConsent from 'react-cookie-consent';
 import navigationIcon from './images/navigationIcon.svg';
 import NavMenu from '../NavMenu/NavMenu';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import searchIcon from './images/searchIcon.svg';
 
 const Header = ({ importantMessageData, categories }) => {
   const [isMenuActive, setMenuActive] = useState(false);
+  const [isSearchActive, setSearchActive] = useState(false);
+
+  const navigationBox = useRef(null);
 
   const onMenu = () => {
     setMenuActive(true);
   };
 
-  const onClose = () => {
+  const onCloseMenu = () => {
     setMenuActive(false);
+  };
+
+  const onCloseSearch = () => {
+    setSearchActive(false);
+    navigationBox.current.className = navigationBox.current.className.replace(
+      ' activeSearch',
+      ''
+    );
+  };
+
+  const onSearch = () => {
+    navigationBox.current.className += ' activeSearch';
+    setSearchActive(true);
   };
 
   return (
@@ -42,19 +59,26 @@ const Header = ({ importantMessageData, categories }) => {
         />
       )}
 
-      <nav className='Navigation'>
+      <nav className='navigation'>
         <Container>
           <div className='wrap'>
-            <div className='logoBox'>
-              <Logo />
-            </div>
+            {isSearchActive ? null : (
+              <>
+                <div className='logoBox'>
+                  <Logo />
+                </div>
 
-            <div className='searchBox'>
-              <Search />
-            </div>
-
-            <div className='navigationBox'>
-              <button>
+                <div className='searchBox'>
+                  <img
+                    src={searchIcon}
+                    alt='search'
+                    onClick={() => onSearch()}
+                  />
+                </div>
+              </>
+            )}
+            <div className='navigationBox' ref={navigationBox}>
+              <button className='menuButton'>
                 <img
                   className='menuIcon'
                   src={navigationIcon}
@@ -64,9 +88,11 @@ const Header = ({ importantMessageData, categories }) => {
               </button>
 
               {isMenuActive ? (
-                <NavMenu onClose={onClose} categories={categories} />
+                <NavMenu onCloseMenu={onCloseMenu} categories={categories} />
               ) : null}
             </div>
+
+            {isSearchActive ? <Search onCloseSearch={onCloseSearch} /> : null}
           </div>
         </Container>
       </nav>
@@ -78,11 +104,11 @@ const HeaderStyled = styled.header`
   background: ${(props) => props.theme.colors.pinkGradient};
   height: 100%;
 
-  .Navigation {
+  .navigation {
     .wrap {
       display: flex;
       align-items: center;
-      height: 100%;
+      height: ${(props) => props.theme.pixelToVieWidth(45)};
     }
   }
 
@@ -135,20 +161,32 @@ const HeaderStyled = styled.header`
   .navigationBox {
     margin-right: 0;
     margin-left: ${(props) => props.theme.pixelToVieWidth(25)};
+    display: flex;
 
-    button {
+    .menuButton {
       border: none;
       background: transparent;
       cursor: pointer;
+      width: ${(props) => props.theme.pixelToVieWidth(40)};
     }
 
     .menuIcon {
       width: ${(props) => props.theme.pixelToVieWidth(40)};
     }
   }
+
+  .navigationBox.activeSearch {
+    margin-left: 0;
+    margin-right: ${(props) => props.theme.pixelToVieWidth(8)};
+  }
+
   .searchBox {
     margin-right: 0;
     margin-left: auto;
+
+    img {
+      width: ${(props) => props.theme.pixelToVieWidth(24)};
+    }
   }
 `;
 

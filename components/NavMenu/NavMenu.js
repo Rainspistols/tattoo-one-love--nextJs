@@ -13,7 +13,7 @@ import {
   instagramIcon,
 } from './images/';
 
-const NavMenu = ({ categories, onClose }) => {
+const NavMenu = ({ categories, onCloseMenu }) => {
   const menuLinksData = [
     { title: 'home', href: '/' },
     { title: 'About us', href: '/about-us' },
@@ -58,7 +58,7 @@ const NavMenu = ({ categories, onClose }) => {
               className='closeIcon'
               src={closeIcon}
               alt='close menu'
-              onClick={() => onClose()}
+              onClick={() => onCloseMenu()}
             />
           </button>
         </div>

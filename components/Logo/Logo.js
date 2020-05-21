@@ -17,7 +17,6 @@ const Logo = () => {
 const StyledLogo = styled.div`
   background: ${(props) => props.theme.colors.white};
   width: ${(props) => props.theme.pixelToVieWidth(98)};
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
