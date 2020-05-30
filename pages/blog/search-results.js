@@ -1,13 +1,16 @@
 import Main from '../../Layouts/Main/Main';
 import BlogPostsList from '../../components/BlogPostsList/BlogPostsList';
-import Subscribe from '../../components/Subscribe/Subscribe';
+import { useState } from 'react';
 
-const Blog = ({ postsData, API_URL }) => {
+const Home = ({ postsData, API_URL, inputSearchValue }) => {
   return (
-    <Main headTitle='Tattoo one love blog'>
-      <h1 className='visually-hidden'>Tattoo one love blog</h1>
-      <BlogPostsList postsData={postsData} API_URL={API_URL} />
-      <Subscribe API_URL={API_URL} />
+    <Main headTitle='search results'>
+      <h1 className='visually-hidden'>Tattoo one love official page</h1>
+      <BlogPostsList
+        postsData={postsData}
+        API_URL={API_URL}
+        inputSearchValue={inputSearchValue}
+      />
     </Main>
   );
 };
@@ -26,4 +29,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default Blog;
+export default Home;

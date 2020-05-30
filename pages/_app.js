@@ -5,9 +5,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import GlobalStyles from '../components/GlobalStyles/GlobalStyles';
 import Header from '../components/Header/Header';
 import cookies from 'next-cookies';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps, importantMessageData, categories }) {
-  console.log(importantMessageData, categories);
+  const [inputSearchValue, setInputSearchValue] = useState(null);
+
+  const onSearchToGo = (ref) => {
+    setInputSearchValue(ref.current.value);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -15,13 +20,14 @@ function MyApp({ Component, pageProps, importantMessageData, categories }) {
       <Header
         importantMessageData={importantMessageData}
         categories={categories}
+        onSearchToGo={onSearchToGo}
       />
-      <Component {...pageProps} />
+      <Component {...pageProps} inputSearchValue={inputSearchValue} />
     </ThemeProvider>
   );
 }
 
-MyApp.getInitialProps = async (ctx) => {
+MyApp.getInitialProps = async (context) => {
   const { API_URL } = process.env;
 
   const resImportantMessage = await fetch(`${API_URL}/important-message`);
@@ -34,15 +40,11 @@ MyApp.getInitialProps = async (ctx) => {
   const categories = await resCategories.json();
 
   return {
-    importantMessageData: cookies(ctx)['im-stop-download']
+    importantMessageData: cookies(context)['im-stop-download']
       ? null
       : importantMessageStatusChecked,
 
-    categories: categories.map(({ slug, category, id }) => ({
-      slug,
-      category,
-      id,
-    })),
+    categories,
   };
 };
 

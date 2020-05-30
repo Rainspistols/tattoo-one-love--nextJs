@@ -1,18 +1,45 @@
 import styled from '@emotion/styled';
 import search from './images/search.svg';
 import close from './images/close.svg';
+import { useRef } from 'react';
+import Link from 'next/link';
+import Router from 'next/router';
 
-const Search = ({ onCloseSearch }) => {
+const Search = ({ onCloseSearch, onSearchToGo }) => {
+  const inputRef = useRef(null);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onSearchToGo(inputRef);
+    Router.push('/blog/search-results');
+  };
+
   return (
     <SearchStyled className='Search'>
-      <input type='text' placeholder='Tattoo healing' />
-      <button className='btn-search btn'>
-        <img src={search} alt='search' />
-      </button>
+      <form onSubmit={(e) => onSubmit(e)}>
+        <input
+          type='text'
+          placeholder='Enter the search key-word'
+          id='searchInput'
+          ref={inputRef}
+        />
+        <button type='submit' className='visually-hidden' />
 
-      <button className='btn-close btn' onClick={() => onCloseSearch()}>
-        <img src={close} alt='close' />
-      </button>
+        <Link href='/blog/search-results'>
+          <a
+            className='btn-search btn'
+            onClick={() => {
+              onSearchToGo(inputRef);
+            }}
+          >
+            <img src={search} alt='search' />
+          </a>
+        </Link>
+
+        <button className='btn-close btn' onClick={() => onCloseSearch()}>
+          <img src={close} alt='close' />
+        </button>
+      </form>
     </SearchStyled>
   );
 };
@@ -21,6 +48,10 @@ const SearchStyled = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
+
+  form {
+    height: 100%;
+  }
 
   input {
     display: block;
@@ -53,6 +84,7 @@ const SearchStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   .btn-close {

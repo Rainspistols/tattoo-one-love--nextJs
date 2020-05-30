@@ -8,19 +8,15 @@ import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';
 import cookies from 'next-cookies';
 
-const Home = ({ ourWorks, postsData, API_URL, importantMessageData,categories }) => {
+const Home = ({ ourWorks, postsData, API_URL }) => {
   return (
-    <Main
-      headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'
-      importantMessageData={importantMessageData}
-      categories={categories}
-    >
+    <Main headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'>
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
       <Hero />
       <AboutUsSection />
       <OurWorks ourWorks={ourWorks} />
       <FollowUs />
-      <BlogCarousel postsData={postsData} />
+      <BlogCarousel postsData={postsData} API_URL={API_URL} />
       <Subscribe API_URL={API_URL} />
       <Mission />
     </Main>
@@ -36,15 +32,6 @@ export const getServerSideProps = async (ctx) => {
   const res2 = await fetch(`${API_URL}/posts`);
   const postsData = await res2.json();
 
-  const res3 = await fetch(`${API_URL}/important-message`);
-  const importantMessage = await res3.json();
-  const importantMessageStatusChecked = importantMessage.statusCode
-    ? null
-    : importantMessage;
-
-  const resCategories = await fetch(`${API_URL}/post-categories`);
-  const categories = await resCategories.json();
-
   return {
     props: {
       ourWorks: ourWorksData.works.map(({ id, url }) => ({
@@ -52,25 +39,9 @@ export const getServerSideProps = async (ctx) => {
         url: API_URL + url,
       })),
 
-      postsData: postsData.map(({ id, title, img, slug, post_categories }) => ({
-        id,
-        title,
-        slug,
-        categories: post_categories,
-        href: API_URL + img.url,
-      })),
+      postsData,
 
       API_URL: API_URL,
-
-      importantMessageData: cookies(ctx)['im-stop-download']
-        ? null
-        : importantMessageStatusChecked,
-
-      categories: categories.map(({ slug, category, id }) => ({
-        slug,
-        category,
-        id,
-      })),
     },
   };
 };

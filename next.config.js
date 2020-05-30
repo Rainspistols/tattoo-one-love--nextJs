@@ -9,6 +9,13 @@ module.exports = {
   },
 };
 
+module.exports = {
+  webpack(config) {
+    config.resolve.modules.push(__dirname);
+    return config;
+  },
+};
+
 // for correct SVG imports
 const withImages = require('next-images');
 module.exports = withImages();

@@ -3,22 +3,25 @@ import CategoryBtn from '../../UI/CategoryBtn';
 import Container from '../../Layouts/Container/Container';
 import Link from 'next/link';
 
-const BlogPostPreview = ({ post }) => {
+const BlogPostPreview = ({ post, API_URL }) => {
   return (
     <BlogPostPreviewStyled className='BlogPostPreview'>
-      <Link href={'/blog/' + post.categories[0].slug + '/' + post.slug}>
+      <Link
+        href='/blog/[category]/[slug]'
+        as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
+      >
         <a>
           <div className='imgWrap'>
-            <img src={post.href} alt='' />
+            <img src={API_URL + post.img.url} alt='' />
           </div>
         </a>
       </Link>
 
       <Container>
         <div className='categories'>
-          {post.categories.map((category) => (
+          {post.post_categories.map((category) => (
             <CategoryBtn
-              text={category.category}
+              text={category.name}
               slug={category.slug}
               key={category.id}
             />
@@ -26,7 +29,10 @@ const BlogPostPreview = ({ post }) => {
         </div>
 
         <h3>
-          <Link href={post.slug}>
+          <Link
+            href='/blog/[category]/[slug]'
+            as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
+          >
             <a>{post.title}</a>
           </Link>
         </h3>
@@ -38,27 +44,20 @@ const BlogPostPreview = ({ post }) => {
 const BlogPostPreviewStyled = styled.div`
   .imgWrap {
     overflow: hidden;
-    position: relative;
+    display: flex;
+    align-items: center;
+    height: ${(props) => props.theme.pixelToVieWidth(210)};
   }
 
   .categories {
     display: flex;
     flex-wrap: wrap;
-    .CategoryBtn {
-      margin-right: ${(props) => props.theme.pixelToVieWidth(10)};
-    }
-  }
-
-  .CategoryBtn {
-    width: ${(props) => props.theme.pixelToVieWidth(96)};
-    height: ${(props) => props.theme.pixelToVieWidth(20)};
   }
 
   img {
     width: 100%;
     object-fit: cover;
-    position: absolute;
-    top: 0;
+    height: ${(props) => props.theme.pixelToVieWidth(210)};
   }
 
   h3 {

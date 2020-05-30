@@ -1,8 +1,9 @@
-import Main from '../../Layouts/Main/Main';
-import BlogPostsList from '../../components/BlogPostsList/BlogPostsList';
-import Subscribe from '../../components/Subscribe/Subscribe';
+import Main from '../../../Layouts/Main/Main';
+import BlogPostsList from '../../../components/BlogPostsList/BlogPostsList';
+import Subscribe from '../../../components/Subscribe/Subscribe';
 
 const Blog = ({ postsData, API_URL }) => {
+  console.log(postsData);
   return (
     <Main headTitle='Tattoo one love blog'>
       <h1 className='visually-hidden'>Tattoo one love blog</h1>
@@ -12,10 +13,12 @@ const Blog = ({ postsData, API_URL }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
   const { API_URL } = process.env;
 
-  const res = await fetch(`${API_URL}/posts?`);
+  const res = await fetch(
+    `${API_URL}/posts?post_categories.slug=${context.query.category}`
+  );
   const postsData = await res.json();
 
   return {

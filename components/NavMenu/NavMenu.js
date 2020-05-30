@@ -13,12 +13,13 @@ import {
   instagramIcon,
 } from './images/';
 
-const NavMenu = ({ categories, onCloseMenu }) => {
+const NavMenu = ({ categories, onCloseMenu, onMenuItem }) => {
+  // console.log(categories)
   const menuLinksData = [
     { title: 'home', href: '/' },
     { title: 'Blog', href: '/blog' },
-    { title: 'About us', href: '/about-us' },
-    { title: 'Works', href: '/works' },
+    { title: 'About us', href: '/#about-us' },
+    { title: 'Works', href: '/#works' },
   ];
   const contactsListData = [
     {
@@ -27,7 +28,7 @@ const NavMenu = ({ categories, onCloseMenu }) => {
         'https://www.google.com/maps/place/Gosty%C5%84ska+41,+01-151+Warszawa/@52.243836,20.9636062,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecb77869776ab:0x9adb88cc791e3c4a!8m2!3d52.243836!4d20.9657949',
       icon: mapIcon,
     },
-    { title: '+ 48 79 590 38 21 ', href: '"tel:+48795903821', icon: phoneIcon },
+    { title: '+ 48 79 590 38 21 ', href: 'tel:+48795903821', icon: phoneIcon },
     {
       title: 'tattooonelove@gmail.com',
       href: 'mailto:tattooonelove@gmail.com',
@@ -68,10 +69,11 @@ const NavMenu = ({ categories, onCloseMenu }) => {
         <ul className='menuLinks'>
           {menuLinksData.map(({ title, href, className }, index) => (
             <li
+              onClick={() => onMenuItem()}
               key={index}
               className={className}
               style={{
-                backgroundImage: ` url('./images/NavMenu/${index + 1}.jpg') `,
+                backgroundImage: ` url('/images/NavMenu/${index + 1}.jpg') `,
               }}
             >
               <Link href={href}>
@@ -88,7 +90,7 @@ const NavMenu = ({ categories, onCloseMenu }) => {
           <ul className='categories'>
             {categories.map((category) => (
               <li key={category.id}>
-                <CategoryBtn text={category.category} slug={category.slug} />
+                <CategoryBtn text={category.name} slug={category.slug} />
               </li>
             ))}
           </ul>
@@ -190,10 +192,13 @@ const NavMenuStyled = styled.section`
         .CategoryBtn {
           font-size: ${(props) => props.theme.pixelToVieWidth(18)};
           line-height: ${(props) => props.theme.pixelToVieWidth(27)};
-          padding: ${(props) => props.theme.pixelToVieWidth(10)};
           border: ${(props) => props.theme.pixelToVieWidth(1)} solid
             ${(props) => props.theme.colors.grey3};
           color: ${(props) => props.theme.colors.grey3};
+
+          a {
+            padding: ${(props) => props.theme.pixelToVieWidth(10)};
+          }
         }
       }
     }

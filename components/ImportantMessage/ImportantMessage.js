@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import MarkdownView from 'react-showdown';
 import Container from '../../Layouts/Container/Container';
 import closeIcon from './images/closeIcon.svg';
 import { useState } from 'react';
+import MarkdownView from 'react-showdown';
 
 const ImportantMessage = ({ text, link }) => {
   const [isClosedState, setClosedState] = useState(false);
@@ -12,7 +12,6 @@ const ImportantMessage = ({ text, link }) => {
     setClosedState(true);
 
     document.cookie = `im-stop-download=true; expires=${countDateExpire()}; path=/`;
-    console.log(document.cookie);
   };
 
   const countDateExpire = () => {

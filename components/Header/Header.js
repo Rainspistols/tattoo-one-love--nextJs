@@ -9,27 +9,20 @@ import NavMenu from '../NavMenu/NavMenu';
 import { useState, useRef } from 'react';
 import searchIcon from './images/searchIcon.svg';
 
-const Header = ({ importantMessageData, categories }) => {
-  console.log(importantMessageData)
+const Header = ({ importantMessageData, categories, onSearchToGo }) => {
   const [isMenuActive, setMenuActive] = useState(false);
   const [isSearchActive, setSearchActive] = useState(false);
 
   const navigationBox = useRef(null);
 
-  const onMenu = () => {
-    setMenuActive(true);
+  const onMenuItem = () => {
+    setMenuActive(false);
   };
-
   const onCloseMenu = () => {
     setMenuActive(false);
   };
-
   const onCloseSearch = () => {
     setSearchActive(false);
-  };
-
-  const onSearch = () => {
-    setSearchActive(true);
   };
 
   return (
@@ -68,7 +61,7 @@ const Header = ({ importantMessageData, categories }) => {
                   <img
                     src={searchIcon}
                     alt='search'
-                    onClick={() => onSearch()}
+                    onClick={() => setSearchActive(true)}
                   />
                 </div>
               </>
@@ -84,16 +77,25 @@ const Header = ({ importantMessageData, categories }) => {
                   className='menuIcon'
                   src={navigationIcon}
                   alt='menu'
-                  onClick={() => onMenu()}
+                  onClick={() => setMenuActive(true)}
                 />
               </button>
 
               {isMenuActive ? (
-                <NavMenu onCloseMenu={onCloseMenu} categories={categories} />
+                <NavMenu
+                  onCloseMenu={onCloseMenu}
+                  categories={categories}
+                  onMenuItem={onMenuItem}
+                />
               ) : null}
             </div>
 
-            {isSearchActive ? <Search onCloseSearch={onCloseSearch} /> : null}
+            {isSearchActive ? (
+              <Search
+                onSearchToGo={onSearchToGo}
+                onCloseSearch={onCloseSearch}
+              />
+            ) : null}
           </div>
         </Container>
       </nav>
@@ -187,6 +189,7 @@ const HeaderStyled = styled.header`
 
     img {
       width: ${(props) => props.theme.pixelToVieWidth(24)};
+      cursor: pointer;
     }
   }
 `;
