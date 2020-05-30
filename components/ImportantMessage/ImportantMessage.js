@@ -11,7 +11,7 @@ const ImportantMessage = ({ text, link }) => {
   const onClose = () => {
     setClosedState(true);
 
-    document.cookie = `im-stop-download=true; expires=${countDateExpire()}; path=/`;
+    document.cookie = `isImportantMessageDisabled=true; expires=${countDateExpire()}`;
   };
 
   const countDateExpire = () => {
