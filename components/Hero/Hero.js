@@ -53,34 +53,35 @@ const StyledHero = styled.div`
     padding-right: ${(props) => props.theme.pixelToVieWidth(50)};
   }
   /* MEDIA */
-  @media (min-width: 768px) {
-    background-image: url(${bgTablet});
-  }
-
   ${(props) => props.theme.mediaDesktop} {
-    background-image: url(${bgDesktop});
-    padding: ${(props) => props.theme.pixelToVieWidth1920(150)} 0
-      ${(props) => props.theme.pixelToVieWidth1920(150)};
+    background-image: url(${bgTablet});
+    margin-bottom:  ${(props) => props.theme.pixelToVieWidth1920(134)};
 
-    .logo {
-      width: ${(props) => props.theme.pixelToVieWidth1920(350)};
-      height: ${(props) => props.theme.pixelToVieWidth1920(350)};
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(50)};
-    }
+    ${(props) => props.theme.mediaDesktop} {
+      background-image: url(${bgDesktop});
+      padding: ${(props) => props.theme.pixelToVieWidth1920(150)} 0
+        ${(props) => props.theme.pixelToVieWidth1920(150)};
 
-    .Container {
-      padding: 0;
-    }
+      .logo {
+        width: ${(props) => props.theme.pixelToVieWidth1920(350)};
+        height: ${(props) => props.theme.pixelToVieWidth1920(350)};
+        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(50)};
+      }
 
-    .text1 {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(40)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(50)};
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(20)};
-    }
+      .Container {
+        padding: 0;
+      }
 
-    .text2 {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(24)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(34)};
+      .text1 {
+        font-size: ${(props) => props.theme.pixelToVieWidth1920(40)};
+        line-height: ${(props) => props.theme.pixelToVieWidth1920(50)};
+        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(20)};
+      }
+
+      .text2 {
+        font-size: ${(props) => props.theme.pixelToVieWidth1920(24)};
+        line-height: ${(props) => props.theme.pixelToVieWidth1920(34)};
+      }
     }
   }
 `;

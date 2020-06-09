@@ -7,18 +7,21 @@ import BlogCarousel from '../components/BlogCarousel/BlogCarousel';
 import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';
 import StrapiService from '../components/StrapiService/StrapiService';
+import styled from '@emotion/styled';
 
 const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
   return (
     <Main headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'>
-      <h1 className='visually-hidden'>Tattoo one love official page</h1>
-      <Hero />
-      <AboutUsSection />
-      <OurWorks ourWorks={ourWorks} />
-      <FollowUs />
-      <BlogCarousel postsData={fiveLastPosts} API_URL={API_URL} />
-      <Subscribe API_URL={API_URL} />
-      <Mission />
+      <HomeStyled>
+        <h1 className='visually-hidden'>Tattoo one love official page</h1>
+        <Hero />
+        <AboutUsSection />
+        <OurWorks ourWorks={ourWorks} />
+        <FollowUs />
+        <BlogCarousel postsData={fiveLastPosts} API_URL={API_URL} />
+        <Subscribe API_URL={API_URL} />
+        <Mission />
+      </HomeStyled>
     </Main>
   );
 };
@@ -37,5 +40,13 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+const HomeStyled = styled.div`
+  ${(props) => props.theme.mediaDesktop} {
+    .FollowUs {
+      display: none;
+    }
+  }
+`;
 
 export default Home;

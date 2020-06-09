@@ -17,7 +17,18 @@ const OurWorks = ({ ourWorks }) => {
         slidesToScroll={1}
         slidesToShow={1}
         variableWidth={true}
+        centerPadding={50}
         infinite={true}
+        centerMode={true}
+        responsive={[
+          {
+            breakpoint: 1280,
+            settings: {
+              centerMode: false,
+              centerPadding: 100,
+            },
+          },
+        ]}
       >
         {ourWorks.map((img) => (
           <div key={img.id} className='imgWrap'>
@@ -43,6 +54,36 @@ const OurWorksStyled = styled.div`
       object-fit: cover;
       width: ${(props) => props.theme.pixelToVieWidth(250)};
       height: ${(props) => props.theme.pixelToVieWidth(250)};
+    }
+  }
+
+  ${(props) => props.theme.mediaDesktop} {
+    margin-bottom: 100px;
+
+    .SectionTitle {
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+    }
+
+    .slick-slider {
+      background: ${(props) => props.theme.colors.black};
+      padding: 25px 0;
+      .slick-slide {
+        margin-left: 0;
+      }
+    }
+
+    .imgWrap {
+      margin: 0;
+      height: auto;
+
+      img {
+        width: ${(props) => props.theme.pixelToVieWidth1920(900)};
+        height: ${(props) => props.theme.pixelToVieWidth1920(900)};
+        border-left: ${(props) => props.theme.pixelToVieWidth1920(36)} solid
+          ${(props) => props.theme.colors.black};
+        border-right: ${(props) => props.theme.pixelToVieWidth1920(36)} solid
+          ${(props) => props.theme.colors.black};
+      }
     }
   }
 `;

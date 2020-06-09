@@ -19,7 +19,7 @@ const FollowUs = () => {
   ];
 
   return (
-    <FollowUsStyled>
+    <FollowUsStyled className='FollowUs'>
       <Container>
         <Line />
         <section>

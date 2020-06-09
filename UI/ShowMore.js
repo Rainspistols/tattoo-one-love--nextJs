@@ -22,6 +22,22 @@ const ShowMoreStyled = styled.a`
   margin-top: ${(props) => props.theme.pixelToVieWidth(30)};
   cursor: pointer;
   text-transform: uppercase;
+
+  ${(props) => props.theme.mediaDesktop} {
+    margin: 0 auto;
+    width: 31%;
+    height: ${(props) => props.theme.pixelToVieWidth1920(50)};
+    border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
+    font-weight: 500;
+    font-size: ${(props) => props.theme.pixelToVieWidth1920(12)};
+    line-height: ${(props) => props.theme.pixelToVieWidth1920(18)};
+    transition: all 0.3s ease-out;
+
+    :hover,
+    :focus {
+      opacity: 0.8;
+    }
+  }
 `;
 
 export default ShowMore;

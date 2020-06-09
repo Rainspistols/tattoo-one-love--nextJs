@@ -5,8 +5,10 @@ import BlogPostPreview from '../BlogPostPreview/BlogPostPreview';
 import Line from '../../UI/Line';
 import Container from '../../Layouts/Container/Container';
 import ShowMore from '../../UI/ShowMore';
+import BlogDesktop from './BlogDesktop';
 
 const BlogCarousel = ({ postsData, API_URL }) => {
+
   return (
     <BlogCarouselStyled>
       <Container>
@@ -26,6 +28,7 @@ const BlogCarousel = ({ postsData, API_URL }) => {
         ))}
       </Slider>
 
+      <BlogDesktop postsData={postsData} API_URL={API_URL } />
       <Container>
         <Line />
         <ShowMore />
@@ -45,6 +48,13 @@ const BlogCarouselStyled = styled.section`
 
   .slick-slide {
     margin-left: ${(props) => props.theme.pixelToVieWidth(30)};
+  }
+
+  ${(props) => props.theme.mediaDesktop} {
+    .slick-slider,
+    .Line {
+      display: none;
+    }
   }
 `;
 

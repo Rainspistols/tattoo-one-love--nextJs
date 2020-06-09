@@ -1,5 +1,3 @@
-const mediaDesktop = `@media (min-width: ${1280}px)`;
-
 export default {
   colors: {
     pink: '#F11E9C',
@@ -11,6 +9,7 @@ export default {
     white: '#ffffff',
     pinkGradient: 'linear-gradient(280deg,#FF0099, #561616)',
     whiteGradient: 'linear-gradient(280deg,#D9A7C7, #FFFCDC)',
+    black: '#000000',
   },
 
   pixelToVieWidth: (px) => {
@@ -20,5 +19,17 @@ export default {
     return (px / 1920) * 100 + 'vw';
   },
 
-  mediaDesktop,
+  flexCenter: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  flexBetween: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
+  mediaDesktop: '@media (min-width: 1280px)',
 };

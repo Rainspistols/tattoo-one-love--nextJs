@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
-import Container from '../Container/Container';
 
 const SectionTitle = ({ text }) => {
-  return <SectionTitleStyled>{text}</SectionTitleStyled>;
+  return <SectionTitleStyled className='SectionTitle'>{text}</SectionTitleStyled>;
 };
 
 const SectionTitleStyled = styled.h2`
@@ -16,7 +15,8 @@ const SectionTitleStyled = styled.h2`
   /* MEDIA */
   ${(props) => props.theme.mediaDesktop} {
     font-size:  ${(props) => props.theme.pixelToVieWidth1920(30)};
-    line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+    line-height: ${(props) => props.theme.pixelToVieWidth1920(36)};
+    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
 `;
 
 export default SectionTitle;
