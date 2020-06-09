@@ -1,13 +1,13 @@
 import Main from '../../Layouts/Main/Main';
 import BlogPostsList from '../../components/BlogPostsList/BlogPostsList';
-import { useState } from 'react';
+import StrapiService from '../../components/StrapiService/StrapiService';
 
-const Home = ({ postsData, API_URL, inputSearchValue }) => {
+const Home = ({ allPosts, API_URL, inputSearchValue }) => {
   return (
     <Main headTitle='search results'>
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
       <BlogPostsList
-        postsData={postsData}
+        postsData={allPosts}
         API_URL={API_URL}
         inputSearchValue={inputSearchValue}
       />
@@ -15,16 +15,16 @@ const Home = ({ postsData, API_URL, inputSearchValue }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const { API_URL } = process.env;
+export const getStaticProps = async () => {
+  const strapiService = new StrapiService();
+  const allPosts = await strapiService.getAllPosts();
 
-  const res = await fetch(`${API_URL}/posts?`);
-  const postsData = await res.json();
+  const { API_URL } = process.env;
 
   return {
     props: {
-      postsData,
-      API_URL: API_URL,
+      allPosts,
+      API_URL,
     },
   };
 };

@@ -1,6 +1,4 @@
-const breakpoints = ['360px', '768px', '1024px', '1280px', '1600px'];
-
-const mq = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
+const mediaDesktop = `@media (min-width: ${1280}px)`;
 
 export default {
   colors: {
@@ -12,11 +10,15 @@ export default {
     grey4: '#6C737E',
     white: '#ffffff',
     pinkGradient: 'linear-gradient(280deg,#FF0099, #561616)',
+    whiteGradient: 'linear-gradient(280deg,#D9A7C7, #FFFCDC)',
   },
 
   pixelToVieWidth: (px) => {
     return (px / 375) * 100 + 'vw';
   },
+  pixelToVieWidth1920: (px) => {
+    return (px / 1920) * 100 + 'vw';
+  },
 
-  breakpoints,
+  mediaDesktop,
 };

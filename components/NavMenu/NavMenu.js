@@ -13,8 +13,7 @@ import {
   instagramIcon,
 } from './images/';
 
-const NavMenu = ({ categories, onCloseMenu, onMenuItem }) => {
-  // console.log(categories)
+const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
   const menuLinksData = [
     { title: 'home', href: '/' },
     { title: 'Blog', href: '/blog' },
@@ -89,7 +88,7 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem }) => {
           <h3 className='menu-title'>Blog categories</h3>
           <ul className='categories'>
             {categories.map((category) => (
-              <li key={category.id}>
+              <li key={category.id} onClick={() => onCategory()}>
                 <CategoryBtn text={category.name} slug={category.slug} />
               </li>
             ))}

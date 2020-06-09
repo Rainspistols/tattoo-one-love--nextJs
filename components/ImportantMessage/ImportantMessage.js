@@ -68,6 +68,23 @@ const ImportantMessageStyled = styled.section`
       height: ${(props) => props.theme.pixelToVieWidth(20)};
     }
   }
+
+  ${(props) => props.theme.mediaDesktop} {
+    padding: ${(props) => props.theme.pixelToVieWidth1920(7)} 0;
+
+    a {
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(26)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+      text-align: center;
+    }
+
+    button {
+      img {
+        width: ${(props) => props.theme.pixelToVieWidth1920(25)};
+        height: ${(props) => props.theme.pixelToVieWidth1920(25)};
+      }
+    }
+  }
 `;
 
 export default ImportantMessage;

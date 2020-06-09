@@ -3,11 +3,12 @@ import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import Container from '../../Layouts/Container/Container';
 import ImportantMessage from '../ImportantMessage/ImportantMessage';
-import CookieConsent from 'react-cookie-consent';
 import navigationIcon from './images/navigationIcon.svg';
 import NavMenu from '../NavMenu/NavMenu';
 import { useState, useRef } from 'react';
 import searchIcon from './images/searchIcon.svg';
+import NavigationDesktop from '../NavigationDesktop/NavigationDesktop';
+import CookieAgreement from '../CookieAgreement/CookieAgreement';
 
 const Header = ({ importantMessageData, categories, onSearchToGo }) => {
   const [isMenuActive, setMenuActive] = useState(false);
@@ -15,31 +16,9 @@ const Header = ({ importantMessageData, categories, onSearchToGo }) => {
 
   const navigationBox = useRef(null);
 
-  const onMenuItem = () => {
-    setMenuActive(false);
-  };
-  const onCloseMenu = () => {
-    setMenuActive(false);
-  };
-  const onCloseSearch = () => {
-    setSearchActive(false);
-  };
-
   return (
     <HeaderStyled>
-      <CookieConsent
-        cookie='user-has-accepted-cookies'
-        disableStyles={true}
-        location='top'
-        acceptOnScroll={true}
-        buttonWrapperClasses='button-close__wrapper'
-        buttonClasses='button-close'
-        contentClasses='cookie-message'
-        buttonText='click or scroll down to agree'
-      >
-        Yes, we use cookies. If you don't like it change website, we won't miss
-        you!
-      </CookieConsent>
+      <CookieAgreement />
 
       {importantMessageData && (
         <ImportantMessage
@@ -57,6 +36,8 @@ const Header = ({ importantMessageData, categories, onSearchToGo }) => {
                   <Logo />
                 </div>
 
+                <NavigationDesktop />
+
                 <div className='searchBox'>
                   <img
                     src={searchIcon}
@@ -66,6 +47,7 @@ const Header = ({ importantMessageData, categories, onSearchToGo }) => {
                 </div>
               </>
             )}
+
             <div
               className={
                 isSearchActive ? 'navigationBox activeSearch' : 'navigationBox'
@@ -83,9 +65,10 @@ const Header = ({ importantMessageData, categories, onSearchToGo }) => {
 
               {isMenuActive ? (
                 <NavMenu
-                  onCloseMenu={onCloseMenu}
+                  onCloseMenu={() => setMenuActive(false)}
+                  onMenuItem={() => setMenuActive(false)}
+                  onCategory={() => setMenuActive(false)}
                   categories={categories}
-                  onMenuItem={onMenuItem}
                 />
               ) : null}
             </div>
@@ -93,7 +76,8 @@ const Header = ({ importantMessageData, categories, onSearchToGo }) => {
             {isSearchActive ? (
               <Search
                 onSearchToGo={onSearchToGo}
-                onCloseSearch={onCloseSearch}
+                onCloseSearch={() => setSearchActive(false)}
+                onSubmitSearch={() => setSearchActive(false)}
               />
             ) : null}
           </div>
@@ -112,48 +96,6 @@ const HeaderStyled = styled.header`
       display: flex;
       align-items: center;
       height: ${(props) => props.theme.pixelToVieWidth(45)};
-    }
-  }
-
-  .CookieConsent {
-    position: absolute;
-    text-align: center;
-    color: ${(props) => props.theme.colors.grey4};
-    background: ${(props) => props.theme.colors.white};
-    border: ${(props) => props.theme.pixelToVieWidth(2)} solid
-      ${(props) => props.theme.colors.pink};
-    display: flex;
-    flex-wrap: wrap;
-    z-index: 10000;
-
-    .cookie-message {
-      font-size: ${(props) => props.theme.pixelToVieWidth(14)};
-      line-height: ${(props) => props.theme.pixelToVieWidth(16)};
-      font-weight: 400;
-      padding: ${(props) => props.theme.pixelToVieWidth(10)}
-        ${(props) => props.theme.pixelToVieWidth(20)};
-      background: transparent;
-    }
-
-    .button-close {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 16px;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: ${(props) => props.theme.colors.grey4};
-      width: 100%;
-      padding: ${(props) => props.theme.pixelToVieWidth(10)} 0;
-      margin: 0;
-      border-radius: 0;
-      border: none;
-      border-top: ${(props) => props.theme.pixelToVieWidth(2)} solid
-        ${(props) => props.theme.colors.pink};
-      background-color: ${(props) => props.theme.colors.white};
-      cursor: pointer;
-    }
-    .button-close__wrapper {
-      width: 100%;
     }
   }
 
@@ -190,6 +132,32 @@ const HeaderStyled = styled.header`
     img {
       width: ${(props) => props.theme.pixelToVieWidth(24)};
       cursor: pointer;
+    }
+  }
+
+  ${(props) => props.theme.mediaDesktop} {
+    .navigation {
+      .wrap {
+        display: flex;
+        align-items: center;
+        height: ${(props) => props.theme.pixelToVieWidth1920(94)};
+      }
+    }
+
+    .navigationBox {
+      display: none;
+      .menuButton {
+      }
+    }
+
+    .searchBox {
+      img {
+        width: ${(props) => props.theme.pixelToVieWidth1920(20)};
+      }
+    }
+
+    .logoBox {
+      margin-right: ${(props) => props.theme.pixelToVieWidth1920(106)};
     }
   }
 `;

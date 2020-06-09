@@ -5,12 +5,13 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 
-const Search = ({ onCloseSearch, onSearchToGo }) => {
+const Search = ({ onCloseSearch, onSearchToGo, onSubmitSearch }) => {
   const inputRef = useRef(null);
 
   const onSubmit = (e) => {
     e.preventDefault();
     onSearchToGo(inputRef);
+    onSubmitSearch();
     Router.push('/blog/search-results');
   };
 
@@ -95,6 +96,36 @@ const SearchStyled = styled.div`
   .btn-search {
     background: ${(props) => props.theme.colors.grey2};
     right: ${(props) => props.theme.pixelToVieWidth(36)};
+  }
+
+  /* MEDIA */
+  ${(props) => props.theme.mediaDesktop} {
+    input {
+      padding: 0;
+      border-bottom: ${(props) => props.theme.pixelToVieWidth1920(2)} solid
+        ${(props) => props.theme.colors.pink};
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(25)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+      padding: ${(props) => props.theme.pixelToVieWidth1920(35)}
+        ${(props) => props.theme.pixelToVieWidth1920(30)};
+      width: 100%;
+      ::placeholder {
+        font-size: ${(props) => props.theme.pixelToVieWidth1920(25)};
+        line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+      }
+    }
+    .btn {
+      width: ${(props) => props.theme.pixelToVieWidth1920(70)};
+      height: ${(props) => props.theme.pixelToVieWidth1920(70)};
+    }
+
+    .btn-close {
+      right: ${(props) => props.theme.pixelToVieWidth1920(10)};
+    }
+
+    .btn-search {
+      right: ${(props) => props.theme.pixelToVieWidth1920(90)};
+    }
   }
 `;
 

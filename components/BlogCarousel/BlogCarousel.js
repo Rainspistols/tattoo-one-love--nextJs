@@ -6,7 +6,7 @@ import Line from '../../UI/Line';
 import Container from '../../Layouts/Container/Container';
 import ShowMore from '../../UI/ShowMore';
 
-const BlogCarousel = ({ postsData,API_URL }) => {
+const BlogCarousel = ({ postsData, API_URL }) => {
   return (
     <BlogCarouselStyled>
       <Container>
@@ -21,11 +21,9 @@ const BlogCarousel = ({ postsData,API_URL }) => {
         variableWidth={true}
         infinite={true}
       >
-        {postsData.map((post) => {
-          if (post.id <= 5) {
-            return <BlogPostPreview key={post.id} post={post} API_URL={API_URL} />;
-          }
-        })}
+        {postsData.map((post) => (
+          <BlogPostPreview key={post.id} post={post} API_URL={API_URL} />
+        ))}
       </Slider>
 
       <Container>

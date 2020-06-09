@@ -2,10 +2,9 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 
 const CategoryBtn = ({ text, slug }) => {
-  // console.log(text)
   return (
     <CategoryBtnStyled className='CategoryBtn'>
-      <Link href={'/blog/' + slug}>
+      <Link href={'/blog/[category]'} as={`/blog/${slug}`}>
         <a>{text}</a>
       </Link>
     </CategoryBtnStyled>

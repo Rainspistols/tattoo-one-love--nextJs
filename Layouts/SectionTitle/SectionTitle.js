@@ -13,6 +13,10 @@ const SectionTitleStyled = styled.h2`
   font-size: ${(props) => props.theme.pixelToVieWidth(18)};
   line-height: ${(props) => props.theme.pixelToVieWidth(20)};
   margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+  /* MEDIA */
+  ${(props) => props.theme.mediaDesktop} {
+    font-size:  ${(props) => props.theme.pixelToVieWidth1920(30)};
+    line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
 `;
 
 export default SectionTitle;

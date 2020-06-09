@@ -26,6 +26,15 @@ const StyledLogo = styled.div`
   img {
     width: ${(props) => props.theme.pixelToVieWidth(45)};
   }
+
+  ${(props) => props.theme.mediaDesktop} {
+    width: ${(props) => props.theme.pixelToVieWidth1920(174)};
+    height: 100%;
+
+    img {
+      width: ${(props) => props.theme.pixelToVieWidth1920(105)};
+    }
+  }
 `;
 
 export default Logo;

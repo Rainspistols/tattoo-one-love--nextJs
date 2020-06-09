@@ -8,11 +8,8 @@ import ShowMorePosts from '../../UI/ShowMorePosts';
 
 const BlogPostsList = ({ postsData, API_URL, inputSearchValue }) => {
   const [postsAmount, setPostsAmount] = useState(10);
-  const [posts, setPosts] = useState(
-    [...postsData].sort(
-      (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
-    )
-  );
+
+  const [posts, setPosts] = useState(null);
 
   useEffect(() => {
     const dataWithSearchValue = () =>
@@ -21,23 +18,19 @@ const BlogPostsList = ({ postsData, API_URL, inputSearchValue }) => {
         (item) =>
           item.title.toLowerCase().search(inputSearchValue.toLowerCase()) != -1
       );
+
     const data = inputSearchValue ? dataWithSearchValue() : postsData;
 
     setPosts(
-      [...data].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+      data &&
+        data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
     );
-  }, [inputSearchValue]);
+  }, [inputSearchValue, postsData]);
 
   const onLastFilter = () => {
     setPosts(
-      [...postsData].sort(
-        (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
-      )
+      data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
     );
-  };
-
-  const onShowMore = () => {
-    setPostsAmount(postsAmount + 10);
   };
 
   return (
@@ -55,8 +48,8 @@ const BlogPostsList = ({ postsData, API_URL, inputSearchValue }) => {
               );
             }
           })}
-        <div className='showMoreBtn__wrap' onClick={() => onShowMore()}>
-          <ShowMorePosts onClick={onShowMore} />
+        <div className='showMoreBtn__wrap'>
+          <ShowMorePosts onClick={() => setPostsAmount(postsAmount + 10)} />
         </div>
       </Container>
     </BlogPostsListStyled>

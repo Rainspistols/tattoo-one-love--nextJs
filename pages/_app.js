@@ -6,21 +6,19 @@ import GlobalStyles from '../components/GlobalStyles/GlobalStyles';
 import Header from '../components/Header/Header';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import StrapiService from '../components/StrapiService/StrapiService';
 
-function MyApp({ Component, pageProps, importantMessageData, categories }) {
+function MyApp({ Component, pageProps, importantMessage, postsCategories }) {
   const [inputSearchValue, setInputSearchValue] = useState(null);
-  const [isImportantMessage, setImportantMessage] = useState(
-    importantMessageData
-  );
+  const [isImportantMessage, setImportantMessage] = useState(null);
 
   useEffect(() => {
-    if (Cookies.get('isImportantMessageDisabled')) {
-      setImportantMessage(null);
-    }
-    if (isImportantMessage.text.length === 0) {
-      setImportantMessage(null);
-    }
-  }, []);
+    Cookies.get('isImportantMessageDisabled') ||
+    importantMessage.text.length === 0
+      ? setImportantMessage(null)
+      : setImportantMessage(importantMessage);
+      
+  }, [importantMessage]);
 
   const onSearchToGo = (ref) => {
     setInputSearchValue(ref.current.value);
@@ -31,7 +29,7 @@ function MyApp({ Component, pageProps, importantMessageData, categories }) {
       <GlobalStyles />
       <Header
         importantMessageData={isImportantMessage}
-        categories={categories}
+        categories={postsCategories}
         onSearchToGo={onSearchToGo}
       />
       <Component {...pageProps} inputSearchValue={inputSearchValue} />
@@ -40,17 +38,13 @@ function MyApp({ Component, pageProps, importantMessageData, categories }) {
 }
 
 MyApp.getInitialProps = async () => {
-  const { API_URL } = process.env;
-
-  const resImportantMessage = await fetch(`${API_URL}/important-message`);
-  const importantMessage = await resImportantMessage.json();
-
-  const resCategories = await fetch(`${API_URL}/post-categories`);
-  const categories = await resCategories.json();
+  const strapiService = new StrapiService();
+  const importantMessage = await strapiService.getImportantMessage();
+  const postsCategories = await strapiService.getPostsCategories();
 
   return {
-    importantMessageData: importantMessage,
-    categories,
+    importantMessage,
+    postsCategories,
   };
 };
 

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Container from '../../Layouts/Container/Container';
-import { bgMobile, logo } from './images';
+import { bgMobile, bgTablet, logo, bgDesktop } from './images';
 
 const Hero = () => {
   return (
@@ -51,6 +51,37 @@ const StyledHero = styled.div`
     text-transform: uppercase;
     padding-left: ${(props) => props.theme.pixelToVieWidth(50)};
     padding-right: ${(props) => props.theme.pixelToVieWidth(50)};
+  }
+  /* MEDIA */
+  @media (min-width: 768px) {
+    background-image: url(${bgTablet});
+  }
+
+  ${(props) => props.theme.mediaDesktop} {
+    background-image: url(${bgDesktop});
+    padding: ${(props) => props.theme.pixelToVieWidth1920(150)} 0
+      ${(props) => props.theme.pixelToVieWidth1920(150)};
+
+    .logo {
+      width: ${(props) => props.theme.pixelToVieWidth1920(350)};
+      height: ${(props) => props.theme.pixelToVieWidth1920(350)};
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(50)};
+    }
+
+    .Container {
+      padding: 0;
+    }
+
+    .text1 {
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(40)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(50)};
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(20)};
+    }
+
+    .text2 {
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(24)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(34)};
+    }
   }
 `;
 

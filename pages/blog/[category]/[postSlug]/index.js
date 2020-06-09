@@ -1,17 +1,34 @@
 import styled from '@emotion/styled';
-import Main from '../../../Layouts/Main/Main';
-import CategoryBtn from '../../../UI/CategoryBtn';
-import Container from '../../../Layouts/Container/Container';
+import Main from '../../../../Layouts/Main/Main';
+import CategoryBtn from '../../../../UI/CategoryBtn';
+import Container from '../../../../Layouts/Container/Container';
 import Moment from 'react-moment';
-import ShareBtn from '../../../components/ShareBtn/ShareBtn';
+import ShareBtn from '../../../../components/ShareBtn/ShareBtn';
 import MarkdownView from 'react-showdown';
-import RecommendedPosts from '../../../components/RecommendedPosts/RecommendedPosts';
+import RecommendedPosts from '../../../../components/RecommendedPosts/RecommendedPosts';
+import StrapiService from '../../../../components/StrapiService/StrapiService';
+import { useState, useEffect } from 'react';
 
-const BlogPost = ({ post, relevantPosts, API_URL }) => {
-  const { content, title, updated_at, href, post_categories, postHref } = post;
+const BlogPost = ({ postBySlug, relevantPostsData, API_URL }) => {
+  // const [post, setPost] = useState(null);
+  const [relevantPosts, setRelevantPosts] = useState(null);
+
+  // useEffect(() => {
+  //   postBySlug && setPost(postBySlug[0]);
+  // }, [postBySlug,relevantPosts ]);
+
+  const {
+    post_categories,
+    updated_at,
+    title,
+    href,
+    linkToThisPost,
+    content,
+  } = postBySlug[0];
 
   return (
     <BlogPostStyled>
+      {/* {post && ( */}
       <Main headTitle={title}>
         <Container>
           <div className='categoryAndDate'>
@@ -35,50 +52,53 @@ const BlogPost = ({ post, relevantPosts, API_URL }) => {
         </div>
 
         <div className='social-likes'>
-          <ShareBtn postHref={postHref} />
+          <ShareBtn postHref={linkToThisPost} />
         </div>
 
         <Container>
           <MarkdownView className='postText' markdown={content} />
 
-          <RecommendedPosts posts={relevantPosts} API_URL={API_URL} />
+          <RecommendedPosts posts={relevantPostsData} API_URL={API_URL} />
         </Container>
       </Main>
+      {/* )} */}
     </BlogPostStyled>
   );
 };
 
-export const getServerSideProps = async (context) => {
-  const { category, slug } = context.query;
+export const getStaticPaths = async () => {
+  const strapiService = new StrapiService();
+  const allPosts = await strapiService.getAllPosts();
+
+  const paths = allPosts.map((item) => ({
+    params: {
+      postSlug: item.slug,
+      category: item.post_categories[0].slug,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const { category, postSlug } = context.params;
   const { API_URL } = process.env;
 
-  const postHref = 'https://tattoo-one-love.com/blog/' + category + '/' + slug;
-
-  const res = await fetch(`${API_URL}/posts?slug=${slug}`);
-  const postJson = await res.json();
-
-  const relevantCategories = postJson[0].post_categories.map(
-    (item) => item.slug
+  const strapiService = new StrapiService();
+  const postBySlug = await strapiService.getPostBySlug(postSlug, category);
+  const relevantPosts = await strapiService.getRelevantPosts(
+    postBySlug,
+    postSlug
   );
-
-  const resReleventPosts = await fetch(
-    `${API_URL}/posts?post_categories.slug=${relevantCategories[0]}&post_categories.slug=${relevantCategories[1]}&_limit=3&slug_ncontains=${slug}`
-  );
-  const jsonRelevantPosts = await resReleventPosts.json();
 
   return {
     props: {
-      post: {
-        title: postJson[0].title,
-        content: postJson[0].content,
-        updated_at: postJson[0].updated_at,
-        href: API_URL + postJson[0].img.url,
-        post_categories: postJson[0].post_categories,
-        postHref,
-      },
-      lastPosts: {},
-      relevantPosts: jsonRelevantPosts,
-      API_URL: API_URL,
+      postBySlug,
+      relevantPostsData: relevantPosts,
+      API_URL,
     },
   };
 };
