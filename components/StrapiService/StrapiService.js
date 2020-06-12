@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-unfetch';
+
 export default class SwapiService {
   _API_URL = process.env.API_URL;
 

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Slider from 'react-slick';
-import BlogPostPreview from '../BlogPostPreview/BlogPostPreview';
+import BlogPostPreview from '../BlogPostCard';
 import Line from '../../UI/Line';
 import Container from '../../Layouts/Container/Container';
 import ShowMore from '../../UI/ShowMore';

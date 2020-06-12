@@ -60,16 +60,12 @@ const OurWorksStyled = styled.div`
   ${(props) => props.theme.mediaDesktop} {
     margin-bottom: 100px;
 
-    .SectionTitle {
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
-    }
-
     .slick-slider {
       background: ${(props) => props.theme.colors.black};
       padding: 25px 0;
-      .slick-slide {
-        margin-left: 0;
-      }
+    }
+    .slick-slide {
+      margin-left: 0;
     }
 
     .imgWrap {

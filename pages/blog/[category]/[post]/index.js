@@ -10,58 +10,48 @@ import StrapiService from '../../../../components/StrapiService/StrapiService';
 import { useState, useEffect } from 'react';
 
 const BlogPost = ({ postBySlug, relevantPostsData, API_URL }) => {
-  // const [post, setPost] = useState(null);
-  const [relevantPosts, setRelevantPosts] = useState(null);
+  const [statePost, setStatePost] = useState(null);
 
-  // useEffect(() => {
-  //   postBySlug && setPost(postBySlug[0]);
-  // }, [postBySlug,relevantPosts ]);
-
-  const {
-    post_categories,
-    updated_at,
-    title,
-    href,
-    linkToThisPost,
-    content,
-  } = postBySlug[0];
+  useEffect(() => {
+    setStatePost(postBySlug[0]);
+  }, [postBySlug]);
 
   return (
     <BlogPostStyled>
-      {/* {post && ( */}
-      <Main headTitle={title}>
-        <Container>
-          <div className='categoryAndDate'>
-            <ul>
-              {post_categories.map(({ name, slug, id }) => (
-                <li key={id}>
-                  <CategoryBtn text={name} slug={slug} />
-                </li>
-              ))}
-            </ul>
+      {statePost && (
+        <Main headTitle={statePost.title}>
+          <Container>
+            <div className='categoryAndDate'>
+              <ul>
+                {statePost.post_categories.map(({ name, slug, id }) => (
+                  <li key={id}>
+                    <CategoryBtn text={name} slug={slug} />
+                  </li>
+                ))}
+              </ul>
 
-            <Moment className='date' format='MMMM DD, YYYY'>
-              {updated_at}
-            </Moment>
+              <Moment className='date' format='MMMM DD, YYYY'>
+                {statePost.updated_at}
+              </Moment>
+            </div>
+
+            <h1 className='post-title'>{statePost.title}</h1>
+          </Container>
+          <div className='post-img'>
+            <img src={statePost.href} alt='' />
           </div>
 
-          <h1 className='post-title'>{title}</h1>
-        </Container>
-        <div className='post-img'>
-          <img src={href} alt='' />
-        </div>
+          <div className='social-likes'>
+            <ShareBtn postHref={statePost.linkToThisPost} />
+          </div>
 
-        <div className='social-likes'>
-          <ShareBtn postHref={linkToThisPost} />
-        </div>
+          <Container>
+            <MarkdownView className='postText' markdown={statePost.content} />
 
-        <Container>
-          <MarkdownView className='postText' markdown={content} />
-
-          <RecommendedPosts posts={relevantPostsData} API_URL={API_URL} />
-        </Container>
-      </Main>
-      {/* )} */}
+            <RecommendedPosts posts={relevantPostsData} API_URL={API_URL} />
+          </Container>
+        </Main>
+      )}
     </BlogPostStyled>
   );
 };
@@ -72,7 +62,7 @@ export const getStaticPaths = async () => {
 
   const paths = allPosts.map((item) => ({
     params: {
-      postSlug: item.slug,
+      post: item.slug,
       category: item.post_categories[0].slug,
     },
   }));
@@ -84,15 +74,12 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const { category, postSlug } = context.params;
+  const { category, post } = context.params;
   const { API_URL } = process.env;
 
   const strapiService = new StrapiService();
-  const postBySlug = await strapiService.getPostBySlug(postSlug, category);
-  const relevantPosts = await strapiService.getRelevantPosts(
-    postBySlug,
-    postSlug
-  );
+  const postBySlug = await strapiService.getPostBySlug(post, category);
+  const relevantPosts = await strapiService.getRelevantPosts(postBySlug, post);
 
   return {
     props: {

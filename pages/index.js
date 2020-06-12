@@ -1,4 +1,4 @@
-import OurWorks from '../components/OurWorks/OurWorks';
+import OurWorks from '../components/OurWorks/';
 import Hero from '../components/Hero/Hero';
 import AboutUsSection from '../components/AboutUsSection/AboutUsSection';
 import Main from '../Layouts/Main/Main';

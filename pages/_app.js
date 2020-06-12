@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import StrapiService from '../components/StrapiService/StrapiService';
 
+
 function MyApp({ Component, pageProps, importantMessage, postsCategories }) {
   const [inputSearchValue, setInputSearchValue] = useState(null);
   const [isImportantMessage, setImportantMessage] = useState(null);
@@ -17,7 +18,6 @@ function MyApp({ Component, pageProps, importantMessage, postsCategories }) {
     importantMessage.text.length === 0
       ? setImportantMessage(null)
       : setImportantMessage(importantMessage);
-      
   }, [importantMessage]);
 
   const onSearchToGo = (ref) => {

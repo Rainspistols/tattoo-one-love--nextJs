@@ -1,13 +1,16 @@
 import Main from '../../../Layouts/Main/Main';
-import BlogPostsList from '../../../components/BlogPostsList/BlogPostsList';
+import BlogPostsList from '../../../components/BlogPostsList';
 import Subscribe from '../../../components/Subscribe/Subscribe';
 import StrapiService from '../../../components/StrapiService/StrapiService';
 
-const Blog = ({ categoryBySlug, API_URL }) => {
+const Category = ({ categoryBySlug, API_URL, category }) => {
   return (
     <Main headTitle='Tattoo one love blog'>
-      <h1 className='visually-hidden'>Tattoo one love blog</h1>
-      <BlogPostsList postsData={categoryBySlug} API_URL={API_URL} />
+      <BlogPostsList
+        category={category}
+        postsData={categoryBySlug}
+        API_URL={API_URL}
+      />
       <Subscribe API_URL={API_URL} />
     </Main>
   );
@@ -16,10 +19,9 @@ const Blog = ({ categoryBySlug, API_URL }) => {
 export const getStaticPaths = async () => {
   const strapiService = new StrapiService();
   const postsCategories = await strapiService.getPostsCategories();
-  console.log(postsCategories.map((item) => item));
 
   const paths = postsCategories.map((item) => ({
-    params: { category: `/blog/${item.slug}` },
+    params: { category: item.slug },
   }));
 
   return {
@@ -39,8 +41,9 @@ export const getStaticProps = async (context) => {
     props: {
       categoryBySlug,
       API_URL,
+      category: context.params.category.toUpperCase(),
     },
   };
 };
 
-export default Blog;
+export default Category;

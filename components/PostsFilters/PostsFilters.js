@@ -15,12 +15,13 @@ const PostsFiltersStyled = styled.div`
   flex-wrap: wrap;
 
   button {
-    font-size: 14px;
-    line-height: 21px;
-    padding: 10px;
+    font-size: ${(props) => props.theme.pixelToVieWidth(14)};
+    line-height: ${(props) => props.theme.pixelToVieWidth(21)};
+    padding: ${(props) => props.theme.pixelToVieWidth(10)};
     text-transform: uppercase;
     background: transparent;
-    border: 1px solid ${(props) => props.theme.colors.grey1};
+    border: ${(props) => props.theme.pixelToVieWidth(1)} solid
+      ${(props) => props.theme.colors.grey1};
     color: ${(props) => props.theme.colors.grey3};
     &:not(:first-of-type) {
       border-left: none;

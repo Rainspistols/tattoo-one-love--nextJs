@@ -1,5 +1,5 @@
 import Main from '../../Layouts/Main/Main';
-import BlogPostsList from '../../components/BlogPostsList/BlogPostsList';
+import BlogPostsList from '../../components/BlogPostsList';
 import Subscribe from '../../components/Subscribe/Subscribe';
 import StrapiService from '../../components/StrapiService/StrapiService';
 

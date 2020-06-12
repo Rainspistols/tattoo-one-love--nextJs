@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Line from '../../UI/Line';
-import BlogPostPreview from '../BlogPostPreview/BlogPostPreview';
+import BlogPostCard from '../BlogPostCard';
 
 const RecommendedPosts = ({ posts, API_URL }) => {
   return (
@@ -10,10 +10,10 @@ const RecommendedPosts = ({ posts, API_URL }) => {
       </div>
       <ul>
         {posts.map((post) => (
-          <React.Fragment key={post.id}>
-            <BlogPostPreview post={post} key={post.id} API_URL={API_URL} />
+          <li key={post.id}>
+            <BlogPostCard post={post} key={post.id} API_URL={API_URL} />
             <Line />
-          </React.Fragment>
+          </li>
         ))}
       </ul>
     </RecommendedPostsStyled>
