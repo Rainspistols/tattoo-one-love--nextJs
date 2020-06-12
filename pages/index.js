@@ -3,25 +3,40 @@ import Hero from '../components/Hero/Hero';
 import AboutUsSection from '../components/AboutUsSection/AboutUsSection';
 import Main from '../Layouts/Main/Main';
 import FollowUs from '../components/FollowUs/FollowUs';
-import BlogCarousel from '../components/BlogCarousel/BlogCarousel';
 import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';
 import StrapiService from '../components/StrapiService/StrapiService';
-import styled from '@emotion/styled';
+import useWindowDimensions from '../hooks/useWindowDimension';
+import ContactInformation from '../components/ContactInformation/ContactInformation';
+import BlogPreview from '../components/BlogPreview/';
+
+import { useState, useEffect } from 'react';
 
 const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
+  const { width } = useWindowDimensions();
+  const [stateWidth, setStateWidth] = useState(null);
+
+  useEffect(() => {
+    setStateWidth(width);
+  }, [width]);
+
+  const isFollowUs = stateWidth < 1280 ? <FollowUs /> : null;
+  const isSubscribe =
+    stateWidth < 1280 ? <Subscribe API_URL={API_URL} /> : null;
+  const isContactInformationDesktop =
+    stateWidth >= 1280 ? <ContactInformation /> : null;
+
   return (
     <Main headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'>
-      <HomeStyled>
-        <h1 className='visually-hidden'>Tattoo one love official page</h1>
-        <Hero />
-        <AboutUsSection />
-        <OurWorks ourWorks={ourWorks} />
-        <FollowUs />
-        <BlogCarousel postsData={fiveLastPosts} API_URL={API_URL} />
-        <Subscribe API_URL={API_URL} />
-        <Mission />
-      </HomeStyled>
+      <h1 className='visually-hidden'>Tattoo one love official page</h1>
+      <Hero />
+      <AboutUsSection />
+      <OurWorks ourWorks={ourWorks} />
+      {isFollowUs}
+      <BlogPreview postsData={fiveLastPosts} API_URL={API_URL} />
+      {isSubscribe}
+      {isContactInformationDesktop}
+      <Mission />
     </Main>
   );
 };
@@ -40,13 +55,5 @@ export const getStaticProps = async () => {
     },
   };
 };
-
-const HomeStyled = styled.div`
-  ${(props) => props.theme.mediaDesktop} {
-    .FollowUs {
-      display: none;
-    }
-  }
-`;
 
 export default Home;

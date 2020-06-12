@@ -1,20 +1,13 @@
 import styled from '@emotion/styled';
 import Slider from 'react-slick';
-import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
 import BlogPostPreview from '../BlogPostPreview/BlogPostPreview';
 import Line from '../../UI/Line';
 import Container from '../../Layouts/Container/Container';
 import ShowMore from '../../UI/ShowMore';
-import BlogDesktop from './BlogDesktop';
 
-const BlogCarousel = ({ postsData, API_URL }) => {
-
+const Mobile = ({ postsData, API_URL }) => {
   return (
-    <BlogCarouselStyled>
-      <Container>
-        <SectionTitle text='blog' />
-      </Container>
-
+    <MobileStyled>
       <Slider
         slidesToScroll={1}
         slidesToShow={1}
@@ -28,16 +21,15 @@ const BlogCarousel = ({ postsData, API_URL }) => {
         ))}
       </Slider>
 
-      <BlogDesktop postsData={postsData} API_URL={API_URL } />
       <Container>
         <Line />
         <ShowMore />
       </Container>
-    </BlogCarouselStyled>
+    </MobileStyled>
   );
 };
 
-const BlogCarouselStyled = styled.section`
+const MobileStyled = styled.section`
   margin-bottom: ${(props) => props.theme.pixelToVieWidth(30)};
 
   .imgWrap {
@@ -49,13 +41,6 @@ const BlogCarouselStyled = styled.section`
   .slick-slide {
     margin-left: ${(props) => props.theme.pixelToVieWidth(30)};
   }
-
-  ${(props) => props.theme.mediaDesktop} {
-    .slick-slider,
-    .Line {
-      display: none;
-    }
-  }
 `;
 
-export default BlogCarousel;
+export default Mobile;

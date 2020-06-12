@@ -1,14 +1,16 @@
 import styled from '@emotion/styled';
+
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import Container from '../../Layouts/Container/Container';
 import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import navigationIcon from './images/navigationIcon.svg';
 import NavMenu from '../NavMenu/NavMenu';
-import { useState, useRef } from 'react';
 import searchIcon from './images/searchIcon.svg';
 import NavigationDesktop from '../NavigationDesktop/NavigationDesktop';
 import CookieAgreement from '../CookieAgreement/CookieAgreement';
+
+import { useState, useRef } from 'react';
 
 const Header = ({ importantMessageData, categories, onSearchToGo }) => {
   const [isMenuActive, setMenuActive] = useState(false);

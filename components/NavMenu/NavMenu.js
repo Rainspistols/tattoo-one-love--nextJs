@@ -12,6 +12,7 @@ import {
   facebookIcon,
   instagramIcon,
 } from './images/';
+import Contacts from '../../UI/Contacts';
 
 const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
   const menuLinksData = [
@@ -221,9 +222,12 @@ const NavMenuStyled = styled.section`
     a {
       display: flex;
       color: ${(props) => props.theme.colors.grey3};
+      align-items: center;
 
       img {
         margin-right: ${(props) => props.theme.pixelToVieWidth(10)};
+        height: ${(props) => props.theme.pixelToVieWidth(10)};
+        width: auto;
       }
     }
   }

@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import Container from '../../Layouts/Container/Container';
 
-const BlogDesktop = ({ postsData, API_URL }) => {
+const Desktop = ({ postsData, API_URL }) => {
   return (
-    <BlogDesktopStyled>
+    <DesktopStyled>
       <Container>
         <ul>
           {postsData.map(({ img, post_categories, title, slug }, index) => {
@@ -27,13 +27,11 @@ const BlogDesktop = ({ postsData, API_URL }) => {
           })}
         </ul>
       </Container>
-    </BlogDesktopStyled>
+    </DesktopStyled>
   );
 };
 
-const BlogDesktopStyled = styled.section`
-  display: none;
-
+const DesktopStyled = styled.div`
   ${(props) => props.theme.mediaDesktop} {
     display: block;
     margin-bottom: 30px;
@@ -92,4 +90,4 @@ const BlogDesktopStyled = styled.section`
   }
 `;
 
-export default BlogDesktop;
+export default Desktop;
