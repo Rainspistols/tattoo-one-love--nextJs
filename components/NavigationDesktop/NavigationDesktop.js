@@ -1,10 +1,18 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { mapIcon, phoneIcon } from './images/';
 import { useRouter } from 'next/router';
+import Contact from '../ContactsBlock/Contact';
+import useWindowDimensions from '../../hooks/useWindowDimension';
+import { useState, useEffect } from 'react';
 
 const NavigationDesktop = () => {
   const router = useRouter();
+  const { width } = useWindowDimensions();
+  const [stateWidth, setStateWidth] = useState(null);
+
+  useEffect(() => {
+    setStateWidth(width);
+  }, []);
 
   const menuLinksData = [
     { title: 'Home', href: '/' },
@@ -14,55 +22,35 @@ const NavigationDesktop = () => {
     { title: 'Works', href: '/#works' },
   ];
 
-  const contactsListData = [
-    {
-      title: 'Gostyńska 41, 01-151, Warszawa (Wola)',
-      href:
-        'https://www.google.com/maps/place/Gosty%C5%84ska+41,+01-151+Warszawa/@52.243836,20.9636062,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecb77869776ab:0x9adb88cc791e3c4a!8m2!3d52.243836!4d20.9657949',
-      icon: mapIcon,
-    },
-    { title: '+ 48 79 590 38 21 ', href: 'tel:+48795903821', icon: phoneIcon },
-  ];
-  
   return (
-    <NavigationDesktopStyled>
-      <ul className='navigationList'>
-        {menuLinksData.map(({ title, href }, index) => (
-          <li
-            className={router.pathname === href ? 'selected' : null}
-            key={index}
-          >
-            <Link href={href}>
-              <a>{title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    stateWidth >= 1280 && (
+      <NavigationDesktopStyled>
+        <ul className='navigationList'>
+          {menuLinksData.map(({ title, href }, index) => (
+            <li
+              className={router.pathname === href ? 'selected' : null}
+              key={index}
+            >
+              <Link href={href}>
+                <a>{title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      <ul className='contactsList'>
-        {contactsListData.map(({ title, href, icon }, index) => (
-          <li key={index}>
-            <a href={href}>
-              <img src={icon} alt='' />
-              {title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </NavigationDesktopStyled>
+        <Contact iconsColor='white' textColor='white' />
+      </NavigationDesktopStyled>
+    )
   );
 };
 
 const NavigationDesktopStyled = styled.nav`
-  display: none;
-  height: 100%;
-
   ${(props) => props.theme.mediaDesktop} {
-    display: flex;
+    ${(props) => props.theme.flexBetween}
+    height: 100%;
 
     .navigationList {
-      display: flex;
-      align-items: center;
+      ${(props) => props.theme.flexCenter}
       color: ${(props) => props.theme.colors.white};
       font-size: ${(props) => props.theme.pixelToVieWidth1920(20)};
       line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
@@ -99,28 +87,26 @@ const NavigationDesktopStyled = styled.nav`
       }
     }
 
-    .contactsList {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(15)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(23)};
-      margin: auto;
-      color: ${(props) => props.theme.colors.white};
+    .Contact {
+      margin-bottom: 0;
 
       li {
-        width: 100%;
-        letter-spacing: ${(props) => props.theme.pixelToVieWidth1920(1)};
-        :not(:last-child) {
+        :first-of-type {
           margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(7)};
+        }
+        :last-child {
+          display: none;
         }
       }
 
       a {
-        display: flex;
-        align-items: center;
-        img {
-          margin-right: ${(props) => props.theme.pixelToVieWidth1920(5)};
+        font-size: ${(props) => props.theme.pixelToVieWidth1920(15)};
+        line-height: ${(props) => props.theme.pixelToVieWidth1920(23)};
+
+        svg {
+          height: ${(props) => props.theme.pixelToVieWidth1920(15)};
+          width: auto;
+          margin-right: ${(props) => props.theme.pixelToVieWidth1920(10)};
         }
       }
     }

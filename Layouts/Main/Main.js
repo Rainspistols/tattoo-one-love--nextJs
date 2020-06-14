@@ -8,7 +8,7 @@ export default ({ children, headTitle }) => (
     </Head>
 
     <main>{children}</main>
-    
+
     <Footer />
   </>
 );

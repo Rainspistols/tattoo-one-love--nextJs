@@ -2,10 +2,12 @@ import styled from '@emotion/styled';
 import { useRef, useState } from 'react';
 import Container from '../../Layouts/Container/Container';
 import likeImg from './images/social-media.svg';
+import useWindowDimensions from '../../hooks/useWindowDimension';
 
 const Subscribe = ({ API_URL }) => {
   const [isEmailEntered, setEmailEntered] = useState(false);
   const inputMail = useRef(null);
+  const { width } = useWindowDimensions();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,6 @@ const Subscribe = ({ API_URL }) => {
       },
       body: JSON.stringify({ title: newEmail }),
     });
-    const content = await rawResponse.json();
 
     setEmailEntered(true);
   };
@@ -54,6 +55,7 @@ const Subscribe = ({ API_URL }) => {
   );
 
   const renderFormElements = isEmailEntered ? imgEmailEntered : formElements;
+
 
   return (
     <Container>
@@ -125,6 +127,39 @@ const SubscribeStyled = styled.div`
   .like {
     height: ${(props) => props.theme.pixelToVieWidth(111)};
     margin: 0 auto;
+  }
+
+  ${(props) => props.theme.mediaDesktop} {
+    padding: 0;
+    margin: 0;
+
+    .title {
+      color: ${(props) => props.theme.colors.pink};
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(30)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      font-weight: 500;
+    }
+
+    .email {
+      width: ${(props) => props.theme.pixelToVieWidth1920(300)};
+      height: ${(props) => props.theme.pixelToVieWidth1920(50)};
+      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
+      border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
+        ${(props) => props.theme.colors.grey2};
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      padding: ${(props) => props.theme.pixelToVieWidth1920(20)} ${(props) => props.theme.pixelToVieWidth1920(14)};
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(14)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(21)};
+    }
+
+    .submit {
+      width: ${(props) => props.theme.pixelToVieWidth1920(116)};
+      height: ${(props) => props.theme.pixelToVieWidth1920(36)};
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(14)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(21)};
+      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
+    }
   }
 `;
 

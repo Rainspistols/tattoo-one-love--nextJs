@@ -7,8 +7,8 @@ import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';
 import StrapiService from '../components/StrapiService/StrapiService';
 import useWindowDimensions from '../hooks/useWindowDimension';
-import ContactInformation from '../components/ContactInformation/ContactInformation';
 import BlogPreview from '../components/BlogPreview/';
+import ContactsBlock from '../components/ContactsBlock/ContactsBlock';
 
 import { useState, useEffect } from 'react';
 
@@ -23,8 +23,6 @@ const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
   const isFollowUs = stateWidth < 1280 ? <FollowUs /> : null;
   const isSubscribe =
     stateWidth < 1280 ? <Subscribe API_URL={API_URL} /> : null;
-  const isContactInformationDesktop =
-    stateWidth >= 1280 ? <ContactInformation /> : null;
 
   return (
     <Main headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'>
@@ -34,8 +32,8 @@ const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
       <OurWorks ourWorks={ourWorks} />
       {isFollowUs}
       <BlogPreview postsData={fiveLastPosts} API_URL={API_URL} />
+      <ContactsBlock />
       {isSubscribe}
-      {isContactInformationDesktop}
       <Mission />
     </Main>
   );

@@ -5,14 +5,11 @@ import closeIcon from './images/closeIcon.svg';
 import Link from 'next/link';
 import CategoryBtn from '../../UI/CategoryBtn';
 import {
-  mailIcon,
-  mapIcon,
-  phoneIcon,
   vkIcon,
   facebookIcon,
   instagramIcon,
 } from './images/';
-import Contacts from '../../UI/Contacts';
+import Contact from '../ContactsBlock/Contact';
 
 const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
   const menuLinksData = [
@@ -21,20 +18,7 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
     { title: 'About us', href: '/#about-us' },
     { title: 'Works', href: '/#works' },
   ];
-  const contactsListData = [
-    {
-      title: 'Gostyńska 41, 01-151, Warszawa (Wola)',
-      href:
-        'https://www.google.com/maps/place/Gosty%C5%84ska+41,+01-151+Warszawa/@52.243836,20.9636062,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecb77869776ab:0x9adb88cc791e3c4a!8m2!3d52.243836!4d20.9657949',
-      icon: mapIcon,
-    },
-    { title: '+ 48 79 590 38 21 ', href: 'tel:+48795903821', icon: phoneIcon },
-    {
-      title: 'tattooonelove@gmail.com',
-      href: 'mailto:tattooonelove@gmail.com',
-      icon: mailIcon,
-    },
-  ];
+
   const socialsListData = [
     {
       title: 'Facebook',
@@ -96,19 +80,7 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
           </ul>
         </section>
 
-        <section className='contactList'>
-          <h3 className='menu-title'>contacts</h3>
-          <ul>
-            {contactsListData.map(({ title, href, icon }, index) => (
-              <li key={index}>
-                <a href={href}>
-                  <img src={icon} alt='' />
-                  {title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <Contact iconsColor='#7393A7' textColor='#7393A7' />
 
         <section className='socialsList'>
           <h3 className='menu-title'>socials</h3>
@@ -213,22 +185,11 @@ const NavMenuStyled = styled.section`
     color: ${(props) => props.theme.colors.grey4};
   }
 
-  .contactList {
-    font-size: ${(props) => props.theme.pixelToVieWidth(13)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
-    color: ${(props) => props.theme.colors.grey3};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
-
+  .Contact {
+    margin-bottom: 20px !important;
     a {
-      display: flex;
-      color: ${(props) => props.theme.colors.grey3};
-      align-items: center;
-
-      img {
-        margin-right: ${(props) => props.theme.pixelToVieWidth(10)};
-        height: ${(props) => props.theme.pixelToVieWidth(10)};
-        width: auto;
-      }
+      font-size: 10px;
+      line-height: 10px;
     }
   }
 

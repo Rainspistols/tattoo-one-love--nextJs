@@ -2,34 +2,49 @@ import styled from '@emotion/styled';
 import Slider from 'react-slick';
 import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
 import Container from '../../Layouts/Container/Container';
+import useWindowDimensions from '../../hooks/useWindowDimension';
+import { useState, useEffect } from 'react';
 
 const OurWorks = ({ ourWorks }) => {
+  const { width } = useWindowDimensions();
+  const [stateWidth, setStateWidth] = useState();
+
+  useEffect(() => {
+    setStateWidth(width);
+  }, []);
+
+  const sliderSetting =
+    stateWidth < 1280
+      ? {
+          dots: false,
+          arrows: false,
+          infinite: true,
+          slidesToScroll: 1,
+          slidesToShow: 1,
+          variableWidth: true,
+          infinite: true,
+          centerMode: false,
+          centerPadding: 100,
+        }
+      : {
+          dots: false,
+          arrows: false,
+          infinite: true,
+          slidesToScroll: 1,
+          slidesToShow: 1,
+          variableWidth: true,
+          centerPadding: 50,
+          infinite: true,
+          centerMode: true,
+        };
+
   return (
     <OurWorksStyled id='works'>
       <Container>
         <SectionTitle text='our works' />
       </Container>
 
-      <Slider
-        dots={false}
-        arrows={false}
-        infinite={false}
-        slidesToScroll={1}
-        slidesToShow={1}
-        variableWidth={true}
-        centerPadding={50}
-        infinite={true}
-        centerMode={true}
-        responsive={[
-          {
-            breakpoint: 1280,
-            settings: {
-              centerMode: false,
-              centerPadding: 100,
-            },
-          },
-        ]}
-      >
+      <Slider {...sliderSetting}>
         {ourWorks.map((img) => (
           <div key={img.id} className='imgWrap'>
             <img src={img.url} alt='' />
@@ -58,11 +73,11 @@ const OurWorksStyled = styled.div`
   }
 
   ${(props) => props.theme.mediaDesktop} {
-    margin-bottom: 100px;
+    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(100)};
 
     .slick-slider {
       background: ${(props) => props.theme.colors.black};
-      padding: 25px 0;
+      padding: ${(props) => props.theme.pixelToVieWidth1920(25)} 0;
     }
     .slick-slide {
       margin-left: 0;

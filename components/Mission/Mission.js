@@ -43,6 +43,14 @@ const MissionStyled = styled.section`
     font-weight: 400;
     color: ${(props) => props.theme.colors.darkBlue};
   }
+
+  ${(props) => props.theme.mediaDesktop} {
+    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(100)};
+    p {
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(17)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(28)};
+    }
+  }
 `;
 
 export default Mission;

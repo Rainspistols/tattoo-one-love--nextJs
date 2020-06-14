@@ -1,103 +1,35 @@
 import styled from '@emotion/styled';
 import Container from '../../Layouts/Container/Container';
-import FooterTitle from './FooterTitle';
-import Link from 'next/link';
-import { mailIcon, mapIcon, phoneIcon } from './images/';
 import Line from '../../UI/Line';
 import FooterCopyRight from './FooterCopyRight';
+import Contact from '../ContactsBlock/Contact';
+import FooterInformation from './FooterInformation';
+import FooterSubscripion from './FooterSubscripion';
+import FooterRules from './FooterRules';
+import FooterTitle from './FooterTitle';
+import useDimensionWidth from '../../hooks/useWindowDimension';
+import { useState, useEffect } from 'react';
 
 const Footer = () => {
-  const informationListData = [
-    { title: 'Home', href: '/' },
-    { title: 'Blog', href: '/blog' },
-    { title: 'Contact', href: '/contact' },
-    { title: 'Sitemap', href: '/sitemap' },
-  ];
-
-  const subscriptionListData = [
-    { title: 'Facebook', href: 'https://www.facebook.com/' },
-    { title: 'Vkontakte', href: 'https://www.vk.com/' },
-    { title: 'Instagram', href: 'https://www.instagram.com/' },
-  ];
-
-  const rulesListData = [
-    { title: 'Politics', href: '/politics' },
-    { title: 'Politics', href: '/politics' },
-    { title: 'User agreement', href: '/user-agreement' },
-  ];
-
-  const contactsListData = [
-    {
-      title: 'Gostyńska 41, 01-151, Warszawa (Wola)',
-      href:
-        'https://www.google.com/maps/place/Gosty%C5%84ska+41,+01-151+Warszawa/@52.243836,20.9636062,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecb77869776ab:0x9adb88cc791e3c4a!8m2!3d52.243836!4d20.9657949',
-      icon: mapIcon,
-    },
-    { title: '+ 48 79 590 38 21 ', href: '"tel:+48795903821', icon: phoneIcon },
-    {
-      title: 'tattooonelove@gmail.com',
-      href: 'mailto:tattooonelove@gmail.com',
-      icon: mailIcon,
-    },
-  ];
+  const { width } = useDimensionWidth;
+  const [stateWidth, setStateWidth] = useState(null);
+  useEffect(() => {
+    setStateWidth(width);
+  }, []);
 
   return (
     <FooterStyled>
       <Container>
-        <section>
-          <FooterTitle text='Information ' />
-          <ul>
-            {informationListData.map(({ title, href }, index) => (
-              <li key={index}>
-                <Link href={href}>
-                  <a>{title}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <FooterInformation />
+        <FooterSubscripion />
+        <FooterRules />
 
-        <section>
-          <FooterTitle text='Subscription ' />
-          <ul>
-            {subscriptionListData.map(({ title, href }, index) => (
-              <li key={index}>
-                <a href={href} target='_blank' rel='nofollow noopener'>
-                  {title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <div className='contact_wrap'>
+          <FooterTitle text='contact' />
+          <Contact iconsColor='white' textColor='#E8ECF1' />
+        </div>
 
-        <section>
-          <FooterTitle text='Rules ' />
-          <ul>
-            {rulesListData.map(({ title, href }, index) => (
-              <li key={index}>
-                <Link href={href}>
-                  <a>{title}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <FooterTitle text='Contacts ' />
-          <ul>
-            {contactsListData.map(({ title, href, icon }, index) => (
-              <li key={index}>
-                <a href={href}>
-                  <img src={icon} alt='' />
-                  {title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <Line />
+        {stateWidth < 1280 && <Line />}
 
         <FooterCopyRight />
       </Container>
@@ -109,31 +41,31 @@ const FooterStyled = styled.footer`
   background: ${(props) => props.theme.colors.grey4};
   padding: ${(props) => props.theme.pixelToVieWidth(20)} 0;
 
-  section {
-    &:not(:last-child) {
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+  .contact_wrap {
+    margin-bottom: ${(props) => props.theme.pixelToVieWidth(40)};
+  }
+
+  ${(props) => props.theme.mediaDesktop} {
+    padding: ${(props) => props.theme.pixelToVieWidth1920(50)} 0;
+
+    > .Container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
-    &:last-child {
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
+
+    .contact_wrap {
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(40)};
+
+      .Contact a {
+        font-size: ${(props) => props.theme.pixelToVieWidth1920(15)};
+        line-height: ${(props) => props.theme.pixelToVieWidth1920(23)};
+      }
     }
-  }
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  a {
-    font-size: ${(props) => props.theme.pixelToVieWidth(13)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
-    margin-right: ${(props) => props.theme.pixelToVieWidth(30)};
-    display: flex;
-    color: ${(props) => props.theme.colors.grey1};
-    font-weight: 400;
-  }
-
-  img {
-    padding-right: ${(props) => props.theme.pixelToVieWidth(10)};
+    .FooterSubscripion {
+      order: 5;
+    }
   }
 `;
 

@@ -7,7 +7,7 @@ const CookieAgreement = () => {
       <CookieConsent
         cookie='user-has-accepted-cookies'
         disableStyles={true}
-        location='top'
+        location='bottom'
         acceptOnScroll={true}
         buttonWrapperClasses='button-close__wrapper'
         buttonClasses='button-close'
