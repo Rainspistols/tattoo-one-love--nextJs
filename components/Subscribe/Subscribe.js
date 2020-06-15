@@ -2,12 +2,10 @@ import styled from '@emotion/styled';
 import { useRef, useState } from 'react';
 import Container from '../../Layouts/Container/Container';
 import likeImg from './images/social-media.svg';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 
 const Subscribe = ({ API_URL }) => {
   const [isEmailEntered, setEmailEntered] = useState(false);
   const inputMail = useRef(null);
-  const { width } = useWindowDimensions();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +53,6 @@ const Subscribe = ({ API_URL }) => {
   );
 
   const renderFormElements = isEmailEntered ? imgEmailEntered : formElements;
-
 
   return (
     <Container>
@@ -106,6 +103,8 @@ const SubscribeStyled = styled.div`
     &::placeholder {
       color: ${(props) => props.theme.colors.grey2};
     }
+    font-size: ${(props) => props.theme.pixelToVieWidth(14)};
+    line-height: ${(props) => props.theme.pixelToVieWidth(21)};
   }
 
   .submit {
@@ -148,7 +147,8 @@ const SubscribeStyled = styled.div`
       border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
         ${(props) => props.theme.colors.grey2};
       margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
-      padding: ${(props) => props.theme.pixelToVieWidth1920(20)} ${(props) => props.theme.pixelToVieWidth1920(14)};
+      padding: ${(props) => props.theme.pixelToVieWidth1920(20)}
+        ${(props) => props.theme.pixelToVieWidth1920(14)};
       font-size: ${(props) => props.theme.pixelToVieWidth1920(14)};
       line-height: ${(props) => props.theme.pixelToVieWidth1920(21)};
     }

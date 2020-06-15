@@ -84,6 +84,8 @@ const FooterSubscripion = () => {
   );
 };
 const FooterSubscripionStyled = styled.section`
+  margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+  
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -107,6 +109,7 @@ const FooterSubscripionStyled = styled.section`
     display: flex;
     align-items: center;
     width: 100%;
+    margin: 0;
 
     .FooterTitle {
       margin: 0 ${(props) => props.theme.pixelToVieWidth1920(26)} 0 0;

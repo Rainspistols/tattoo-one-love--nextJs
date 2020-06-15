@@ -26,9 +26,17 @@ const FooterRules = () => {
 };
 
 const FooterRulesStyled = styled.section`
+  margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+
   ul {
     display: flex;
     flex-wrap: wrap;
+
+    li {
+      :not(:last-child) {
+        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      }
+    }
   }
 
   a {
@@ -43,9 +51,8 @@ const FooterRulesStyled = styled.section`
   img {
     padding-right: ${(props) => props.theme.pixelToVieWidth(10)};
   }
-/* MEDIA */
+  /* MEDIA */
   ${(props) => props.theme.mediaDesktop} {
-
     ul {
       flex-direction: column;
     }

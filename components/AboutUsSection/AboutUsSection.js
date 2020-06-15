@@ -5,7 +5,7 @@ import Container from '../../Layouts/Container/Container';
 
 const AboutUsSection = () => {
   return (
-    <AboutUsSectionStyled>
+    <AboutUsSectionStyled id='about-us'>
       <Container>
         <SectionTitle text='About Us' />
         <h3 className='title'>Tattoo one love the best salon in the Warsaw</h3>

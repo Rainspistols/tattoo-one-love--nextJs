@@ -11,14 +11,14 @@ import useDimensionWidth from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
 
 const Footer = () => {
-  const { width } = useDimensionWidth;
+  const { width } = useDimensionWidth();
   const [stateWidth, setStateWidth] = useState(null);
   useEffect(() => {
     setStateWidth(width);
   }, []);
 
   return (
-    <FooterStyled>
+    <FooterStyled id='contact'>
       <Container>
         <FooterInformation />
         <FooterSubscripion />
@@ -42,7 +42,7 @@ const FooterStyled = styled.footer`
   padding: ${(props) => props.theme.pixelToVieWidth(20)} 0;
 
   .contact_wrap {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(40)};
+    margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
   }
 
   ${(props) => props.theme.mediaDesktop} {
@@ -56,6 +56,14 @@ const FooterStyled = styled.footer`
 
     .contact_wrap {
       margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(40)};
+
+      .Contact {
+        li {
+          :not(:last-child) {
+            margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+          }
+        }
+      }
 
       .Contact a {
         font-size: ${(props) => props.theme.pixelToVieWidth1920(15)};

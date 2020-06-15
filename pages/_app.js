@@ -3,7 +3,7 @@ import theme from '../theme/theme';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import GlobalStyles from '../components/GlobalStyles/GlobalStyles';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import StrapiService from '../components/StrapiService/StrapiService';

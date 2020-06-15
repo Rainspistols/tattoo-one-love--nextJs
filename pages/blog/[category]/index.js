@@ -1,17 +1,26 @@
 import Main from '../../../Layouts/Main/Main';
-import BlogPostsList from '../../../components/BlogPostsList';
+import BlogPostsList from '../../../components/BlogPostsList/BlogPostsList';
 import Subscribe from '../../../components/Subscribe/Subscribe';
 import StrapiService from '../../../components/StrapiService/StrapiService';
+import useWindowDimensions from '../../../hooks/useWindowDimension';
+import { useState, useEffect } from 'react';
 
-const Category = ({ categoryBySlug, API_URL, category }) => {
+const Category = ({ categoryBySlug, API_URL, category, allCategories }) => {
+  const { width } = useWindowDimensions();
+  const [stateWidth, setStateWidth] = useState(null);
+
+  useEffect(() => {
+    setStateWidth(width);
+  }, [width]);
   return (
     <Main headTitle='Tattoo one love blog'>
       <BlogPostsList
         category={category}
         postsData={categoryBySlug}
         API_URL={API_URL}
+        allCategories={allCategories}
       />
-      <Subscribe API_URL={API_URL} />
+      {stateWidth < 1280 && <Subscribe API_URL={API_URL} />}
     </Main>
   );
 };
@@ -35,12 +44,14 @@ export const getStaticProps = async (context) => {
   const categoryBySlug = await strapiService.getCategoriesBySlug(
     context.params.category
   );
+  const allCategories = await strapiService.getPostsCategories();
   const { API_URL } = process.env;
 
   return {
     props: {
       categoryBySlug,
       API_URL,
+      allCategories,
       category: context.params.category.toUpperCase(),
     },
   };

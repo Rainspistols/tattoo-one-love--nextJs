@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Line from '../../UI/Line';
-import BlogPostCard from '../BlogPostCard';
+import BlogPostCard from '../BlogPostCard/BlogPostCard';
 
 const RecommendedPosts = ({ posts, API_URL }) => {
   return (

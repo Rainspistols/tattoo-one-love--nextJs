@@ -27,7 +27,7 @@ const FooterInformation = () => {
 };
 
 const FooterInformationStyled = styled.section`
-
+  margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
 
   ul {
     display: flex;
@@ -50,6 +50,12 @@ const FooterInformationStyled = styled.section`
   ${(props) => props.theme.mediaDesktop} {
     ul {
       flex-direction: column;
+
+      li {
+        :not(:last-child) {
+          margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+        }
+      }
     }
 
     a {

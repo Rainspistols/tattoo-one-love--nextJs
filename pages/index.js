@@ -1,4 +1,4 @@
-import OurWorks from '../components/OurWorks/';
+import OurWorks from '../components/OurWorks/OurWorks';
 import Hero from '../components/Hero/Hero';
 import AboutUsSection from '../components/AboutUsSection/AboutUsSection';
 import Main from '../Layouts/Main/Main';
@@ -7,8 +7,8 @@ import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';
 import StrapiService from '../components/StrapiService/StrapiService';
 import useWindowDimensions from '../hooks/useWindowDimension';
-import BlogPreview from '../components/BlogPreview/';
 import ContactsBlock from '../components/ContactsBlock/ContactsBlock';
+import BlogPreview from '../components/BlogPreview';
 
 import { useState, useEffect } from 'react';
 

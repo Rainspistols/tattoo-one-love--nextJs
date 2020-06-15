@@ -19,12 +19,12 @@ const ShowMoreStyled = styled.a`
   color: ${(props) => props.theme.colors.white};
   font-weight: 400;
   font-size: ${(props) => props.theme.pixelToVieWidth(12)};
-  margin-top: ${(props) => props.theme.pixelToVieWidth(30)};
+  margin: ${(props) => props.theme.pixelToVieWidth(30)} 0;
   cursor: pointer;
   text-transform: uppercase;
 
   ${(props) => props.theme.mediaDesktop} {
-    margin: 0 auto;
+    margin: 0 auto ${(props) => props.theme.pixelToVieWidth1920(50)};
     width: 31%;
     height: ${(props) => props.theme.pixelToVieWidth1920(50)};
     border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};

@@ -1,7 +1,15 @@
 import styled from '@emotion/styled';
+import useWindowDimensions from '../hooks/useWindowDimension';
+import { useState, useEffect } from 'react';
 
 const Line = () => {
-  return <LineStyled className='Line' />;
+  const { width } = useWindowDimensions();
+  const [stateWidth, setStateWidth] = useState(null);
+
+  useEffect(() => {
+    setStateWidth(width);
+  }, [width]);
+  return stateWidth < 1280 && <LineStyled className='Line' />;
 };
 
 const LineStyled = styled.div`

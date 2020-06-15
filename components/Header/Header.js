@@ -148,8 +148,6 @@ const HeaderStyled = styled.header`
 
     .navigationBox {
       display: none;
-      .menuButton {
-      }
     }
 
     .searchBox {

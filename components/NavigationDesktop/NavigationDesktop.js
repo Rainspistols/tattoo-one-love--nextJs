@@ -12,13 +12,13 @@ const NavigationDesktop = () => {
 
   useEffect(() => {
     setStateWidth(width);
-  }, []);
+  }, [width]);
 
   const menuLinksData = [
     { title: 'Home', href: '/' },
     { title: 'Blog', href: '/blog' },
     { title: 'About us', href: '/#about-us' },
-    { title: 'Contact', href: '/contact' },
+    { title: 'Contact', href: '/#contact' },
     { title: 'Works', href: '/#works' },
   ];
 

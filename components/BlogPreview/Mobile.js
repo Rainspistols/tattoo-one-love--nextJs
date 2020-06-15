@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import Slider from 'react-slick';
-import BlogPostPreview from '../BlogPostCard';
+import BlogPostCard from '../BlogPostCard/BlogPostCard';
 import Line from '../../UI/Line';
 import Container from '../../Layouts/Container/Container';
-import ShowMore from '../../UI/ShowMore';
 
 const Mobile = ({ postsData, API_URL }) => {
   return (
@@ -17,13 +16,12 @@ const Mobile = ({ postsData, API_URL }) => {
         infinite={true}
       >
         {postsData.map((post) => (
-          <BlogPostPreview key={post.id} post={post} API_URL={API_URL} />
+          <BlogPostCard key={post.id} post={post} API_URL={API_URL} />
         ))}
       </Slider>
 
       <Container>
         <Line />
-        <ShowMore />
       </Container>
     </MobileStyled>
   );

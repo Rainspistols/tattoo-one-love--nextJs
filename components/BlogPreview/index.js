@@ -5,6 +5,7 @@ import Desktop from './Desktop';
 import Container from '../../Layouts/Container/Container';
 import styled from '@emotion/styled';
 import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
+import ShowMore from '../../UI/ShowMore';
 
 const BlogPreview = ({ postsData, API_URL }) => {
   const { width } = useWindowDimensions();
@@ -24,6 +25,10 @@ const BlogPreview = ({ postsData, API_URL }) => {
       ) : (
         <Desktop postsData={postsData} API_URL={API_URL} />
       )}
+
+      <Container>
+        <ShowMore />
+      </Container>
     </BlogPreviewStyled>
   );
 };

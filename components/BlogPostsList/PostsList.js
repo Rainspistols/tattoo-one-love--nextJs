@@ -1,18 +1,19 @@
 import styled from '@emotion/styled';
 
-const PostsFilters = ({ onLastFilter }) => {
+const PostsList = ({ onLastFilter }) => {
   return (
-    <PostsFiltersStyled>
+    <PostsListStyled>
       <button onClick={() => onLastFilter()}>Last</button>
       <button>Popular</button>
-    </PostsFiltersStyled>
+    </PostsListStyled>
   );
 };
 
-const PostsFiltersStyled = styled.div`
+const PostsListStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
+  margin: 0 0 0 auto;
 
   button {
     font-size: ${(props) => props.theme.pixelToVieWidth(14)};
@@ -27,6 +28,17 @@ const PostsFiltersStyled = styled.div`
       border-left: none;
     }
   }
+
+  ${(props) => props.theme.mediaDesktop} {
+    button {
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(18)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(27)};
+      padding: ${(props) => props.theme.pixelToVieWidth1920(25)}
+        ${(props) => props.theme.pixelToVieWidth1920(20)};
+      border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
+        ${(props) => props.theme.colors.grey2};
+    }
+  }
 `;
 
-export default PostsFilters;
+export default PostsList;
