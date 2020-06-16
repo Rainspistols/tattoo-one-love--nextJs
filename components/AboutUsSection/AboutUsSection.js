@@ -54,6 +54,7 @@ const AboutUsSectionStyled = styled.section`
     font-weight: 400;
     color: ${(props) => props.theme.colors.darkBlue};
   }
+
   /* MEDIA */
   ${(props) => props.theme.mediaDesktop} {
     font-size: ${(props) => props.theme.pixelToVieWidth1920(26)};

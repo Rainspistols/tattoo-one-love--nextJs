@@ -2,11 +2,10 @@ import styled from '@emotion/styled';
 import BlogPostCard from '../BlogPostCard/BlogPostCard';
 import Container from '../../Layouts/Container/Container';
 import Line from '../../UI/Line';
-import PostsFilters from './PostsList';
 import { useState, useEffect } from 'react';
 import ShowMorePosts from '../../UI/ShowMorePosts';
-import CategoriesButtonsList from './CategoriesButtonsList';
 import useWindowDimensions from '../../hooks/useWindowDimension';
+import CategoriesAndFilters from '../CategoriesAndFilters/CategoriesAndFilters';
 
 const BlogPostsList = ({
   postsData,
@@ -19,26 +18,33 @@ const BlogPostsList = ({
   const [posts, setPosts] = useState(null);
   const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
+  const [isShowMoreVisible, setShowMoreVisible] = useState(false);
 
   useEffect(() => {
     setStateWidth(width);
-  }, [width]);
+    const sortPosts = () => {
+      const dataWithSearchValue = () =>
+        inputSearchValue &&
+        postsData.filter(
+          (item) =>
+            item.title.toLowerCase().search(inputSearchValue.toLowerCase()) !=
+            -1
+        );
 
-  useEffect(() => {
-    const dataWithSearchValue = () =>
-      inputSearchValue &&
-      postsData.filter(
-        (item) =>
-          item.title.toLowerCase().search(inputSearchValue.toLowerCase()) != -1
+      const data = inputSearchValue ? dataWithSearchValue() : postsData;
+
+      setPosts(
+        data &&
+          data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
       );
+    };
+    const controlShowMoreVisibility = () => {
+      setShowMoreVisible(posts && posts.length > postsAmount ? true : false);
+    };
 
-    const data = inputSearchValue ? dataWithSearchValue() : postsData;
-
-    setPosts(
-      data &&
-        data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-    );
-  }, [inputSearchValue, postsData]);
+    sortPosts();
+    controlShowMoreVisibility();
+  }, [inputSearchValue, postsData, width, postsAmount, posts]);
 
   const onLastFilter = () => {
     setPosts(
@@ -49,11 +55,11 @@ const BlogPostsList = ({
   return (
     <BlogPostsListStyled>
       <Container>
-        <div className='categoryAndFilters__wrap'>
-          {stateWidth < 1280 && category && <h2>{category}</h2>}
-          <CategoriesButtonsList allCategories={allCategories} />
-          <PostsFilters onLastFilter={onLastFilter} />
-        </div>
+        <CategoriesAndFilters
+          allCategories={allCategories}
+          category={category}
+          onLastFilter={onLastFilter}
+        />
 
         {posts && (
           <ul className='blogAllPostsList'>
@@ -70,53 +76,44 @@ const BlogPostsList = ({
           </ul>
         )}
 
-        <div className='showMoreBtn__wrap'>
+        {isShowMoreVisible && (
           <ShowMorePosts onClick={() => setPostsAmount(postsAmount + 10)} />
-        </div>
+        )}
       </Container>
     </BlogPostsListStyled>
   );
 };
 
 const BlogPostsListStyled = styled.section`
-  .categoryAndFilters__wrap {
-    font-weight: 600;
-    ${(props) => props.theme.flexBetween};
-    font-size: ${(props) => props.theme.pixelToVieWidth(8)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(12)};
-    color: ${(props) => props.theme.colors.grey3};
-  }
-
-  .BlogPostPreview {
-    .imgWrap {
-      height: ${(props) => props.theme.pixelToVieWidth(210)};
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
-    }
-
-    .Container {
-      padding: 0;
-    }
-  }
-
   .Line {
     margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
   }
 
-  .showMoreBtn__wrap {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(30)};
+  .BlogPostCard {
+    .imgWrap {
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+    }
+    > .Container {
+      padding: 0;
+    }
   }
 
+  /* MEDIA */
   ${(props) => props.theme.mediaDesktop} {
     .blogAllPostsList {
       display: flex;
       flex-wrap: wrap;
 
-      li {
+      .BlogPostCard {
         margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(40)};
+        .imgWrap {
+          margin: 0;
+        }
 
-        :not(:nth-of-type(3n+1)) {
+        :not(:nth-of-type(3n + 1)) {
           margin-right: 2.75%;
         }
+
         :first-of-type {
           width: 100%;
           display: flex;
@@ -125,36 +122,35 @@ const BlogPostsListStyled = styled.section`
             order: 2;
             width: 80%;
             height: ${(props) => props.theme.pixelToVieWidth1920(500)};
+
+            ~ .Container {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              margin: 0;
+              width: 20%;
+            }
           }
           .categories {
+            padding: 0;
+            margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(25)};
             .CategoryBtn {
-              margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(25)};
               a {
                 margin: 0;
               }
             }
           }
-
-          .imgLink ~ .Container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-
-          .imgWrap {
-            margin: 0;
-            height: 100%;
-          }
-
           h3 {
             order: 1;
+            padding: 0;
+          }
+          .imgWrap {
+            height: 100%;
           }
         }
       }
     }
-    .showMoreBtn__wrap {
-      margin-bottom: 43px;
-    }
+
   }
 `;
 

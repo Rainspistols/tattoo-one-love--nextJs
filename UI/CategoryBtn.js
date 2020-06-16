@@ -18,7 +18,6 @@ const CategoryBtnStyled = styled.div`
   text-transform: uppercase;
   font-weight: 400;
   border-radius: ${(props) => props.theme.pixelToVieWidth(4)};
-  margin-right: ${(props) => props.theme.pixelToVieWidth(10)};
 
   a {
     width: 100%;
@@ -31,6 +30,10 @@ const CategoryBtnStyled = styled.div`
     box-sizing: border-box;
     font-size: ${(props) => props.theme.pixelToVieWidth(10)};
     line-height: ${(props) => props.theme.pixelToVieWidth(12)};
+  }
+
+  /* MEDIA */
+  ${(props) => props.theme.mediaDesktop} {
   }
 `;
 

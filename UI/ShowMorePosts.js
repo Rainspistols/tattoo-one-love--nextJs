@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const ShowMorePosts = ({ onClick }) => {
   return (
-    <ShowMorePostsStyled onClick={() => onClick()}>
+    <ShowMorePostsStyled onClick={() => onClick()} className='ShowMorePosts'>
       Show more
     </ShowMorePostsStyled>
   );
@@ -24,9 +24,9 @@ const ShowMorePostsStyled = styled.button`
   width: 100%;
   margin: ${(props) => props.theme.pixelToVieWidth(30)} 0
     ${(props) => props.theme.pixelToVieWidth(30)};
-
+  /* MEDIA */
   ${(props) => props.theme.mediaDesktop} {
-    margin: 0 auto};
+    margin: 0 auto ${(props) => props.theme.pixelToVieWidth1920(43)} auto ;
     width: 31%;
     height: ${(props) => props.theme.pixelToVieWidth1920(50)};
     border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};

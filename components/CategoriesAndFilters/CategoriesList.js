@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const CategoriesButtonsList = ({ allCategories }) => {
+const CategoriesList = ({ allCategories }) => {
   const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
   useEffect(() => {
@@ -15,7 +15,7 @@ const CategoriesButtonsList = ({ allCategories }) => {
 
   return (
     stateWidth >= 1280 && (
-      <CategoriesButtonsListStyled>
+      <CategoriesListStyled>
         {allCategories.map((item, index) => (
           <li
             key={index}
@@ -28,12 +28,12 @@ const CategoriesButtonsList = ({ allCategories }) => {
             </Link>
           </li>
         ))}
-      </CategoriesButtonsListStyled>
+      </CategoriesListStyled>
     )
   );
 };
 
-const CategoriesButtonsListStyled = styled.ul`
+const CategoriesListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
   font-size: ${(props) => props.theme.pixelToVieWidth1920(18)};
@@ -43,19 +43,22 @@ const CategoriesButtonsListStyled = styled.ul`
   max-width: 70%;
 
   li {
-    padding: ${(props) => props.theme.pixelToVieWidth1920(10)};
-    border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
-    border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
-      ${(props) => props.theme.colors.grey2};
     margin-right: ${(props) => props.theme.pixelToVieWidth1920(13)};
-    transition: all 0.3s ease-out;
 
-    :hover,
-    :focus {
-      background: ${(props) => props.theme.colors.pink};
-      color: ${(props) => props.theme.colors.white};
+    a {
+      padding: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
       border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
-        ${(props) => props.theme.colors.pink};
+        ${(props) => props.theme.colors.grey2};
+      transition: all 0.3s ease-out;
+
+      :hover,
+      :focus {
+        background: ${(props) => props.theme.colors.pink};
+        color: ${(props) => props.theme.colors.white};
+        border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
+          ${(props) => props.theme.colors.pink};
+      }
     }
   }
 
@@ -74,4 +77,4 @@ const CategoriesButtonsListStyled = styled.ul`
   }
 `;
 
-export default CategoriesButtonsList;
+export default CategoriesList;

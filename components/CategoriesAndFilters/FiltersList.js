@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 
-const PostsList = ({ onLastFilter }) => {
+const FiltersList = ({ onLastFilter }) => {
   return (
-    <PostsListStyled>
+    <FiltersListStyled>
       <button onClick={() => onLastFilter()}>Last</button>
       <button>Popular</button>
-    </PostsListStyled>
+    </FiltersListStyled>
   );
 };
 
-const PostsListStyled = styled.div`
+const FiltersListStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -41,4 +41,4 @@ const PostsListStyled = styled.div`
   }
 `;
 
-export default PostsList;
+export default FiltersList;

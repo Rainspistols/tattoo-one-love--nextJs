@@ -4,11 +4,7 @@ import Logo from '../Logo/Logo';
 import closeIcon from './images/closeIcon.svg';
 import Link from 'next/link';
 import CategoryBtn from '../../UI/CategoryBtn';
-import {
-  vkIcon,
-  facebookIcon,
-  instagramIcon,
-} from './images/';
+import { vkIcon, facebookIcon, instagramIcon } from './images/';
 import Contact from '../ContactsBlock/Contact';
 
 const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
@@ -183,14 +179,6 @@ const NavMenuStyled = styled.section`
     text-transform: uppercase;
     margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
     color: ${(props) => props.theme.colors.grey4};
-  }
-
-  .Contact {
-    margin-bottom: 20px !important;
-    a {
-      font-size: 10px;
-      line-height: 10px;
-    }
   }
 
   .socialsList {

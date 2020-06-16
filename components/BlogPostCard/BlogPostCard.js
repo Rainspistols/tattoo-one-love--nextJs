@@ -18,24 +18,26 @@ const BlogPostCard = ({ post, API_URL }) => {
       </Link>
 
       <Container>
-        <div className='categories'>
-          {post.post_categories.map((category) => (
-            <CategoryBtn
-              text={category.name}
-              slug={category.slug}
-              key={category.id}
-            />
-          ))}
-        </div>
+        <div className='categoriesTitleWrap'>
+          <div className='categories'>
+            {post.post_categories.map((category) => (
+              <CategoryBtn
+                text={category.name}
+                slug={category.slug}
+                key={category.id}
+              />
+            ))}
+          </div>
 
-        <h3>
-          <Link
-            href='/blog/[category]/[slug]'
-            as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
-          >
-            <a>{post.title}</a>
-          </Link>
-        </h3>
+          <h3>
+            <Link
+              href='/blog/[category]/[slug]'
+              as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
+            >
+              <a>{post.title}</a>
+            </Link>
+          </h3>
+        </div>
       </Container>
     </BlogPostCardStyled>
   );
@@ -70,11 +72,15 @@ const BlogPostCardStyled = styled.li`
     color: ${(props) => props.theme.colors.darkBlue};
     display: inline-block;
   }
-
+  /* MEDIA */
   ${(props) => props.theme.mediaDesktop} {
     background: ${(props) => props.theme.colors.grey1};
     width: 31.5%;
     transition: box-shadow 0.3s ease-out;
+
+    .categoriesTitleWrap {
+      padding: ${(props) => props.theme.pixelToVieWidth1920(30)} 0;
+    }
 
     :hover,
     :focus {
@@ -107,12 +113,16 @@ const BlogPostCardStyled = styled.li`
     }
     .categories {
       ${(props) => props.theme.flexCenter};
-      padding-top: ${(props) => props.theme.pixelToVieWidth1920(25)};
+      padding: 0;
+      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(7)};
     }
 
     .CategoryBtn {
       border: none;
-      margin: 0 ${(props) => props.theme.pixelToVieWidth1920(20)} 0;
+
+      :not(:last-of-type) {
+        margin: 0 ${(props) => props.theme.pixelToVieWidth1920(20)} 0 0;
+      }
 
       a {
         text-align: center;
@@ -120,7 +130,6 @@ const BlogPostCardStyled = styled.li`
         text-transform: uppercase;
         font-size: ${(props) => props.theme.pixelToVieWidth1920(12)};
         line-height: ${(props) => props.theme.pixelToVieWidth1920(12)};
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(7)};
         padding: 0;
       }
     }
@@ -134,8 +143,11 @@ const BlogPostCardStyled = styled.li`
       text-align: center;
       color: ${(props) => props.theme.colors.darkBlue};
       margin: 0;
-      padding: 0 ${(props) => props.theme.pixelToVieWidth1920(45)}
-        ${(props) => props.theme.pixelToVieWidth1920(20)};
+      ${(props) => props.theme.pixelToVieWidth1920(20)};
+      a {
+        width: 100%;
+        display: block;
+      }
     }
   }
 `;

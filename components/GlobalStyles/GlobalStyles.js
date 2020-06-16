@@ -8,7 +8,6 @@ const GlobalStyles = () => (
       html,
       body {
         padding: 0;
-        margin: 0;
         background: white;
         min-height: 100%;
         font-family: 'Poppins', sans-serif;

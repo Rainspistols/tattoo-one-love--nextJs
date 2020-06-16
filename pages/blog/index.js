@@ -12,6 +12,10 @@ const Blog = ({ allPosts, API_URL, allCategories }) => {
   useEffect(() => {
     setStateWidth(width);
   }, [width]);
+
+  const isSubscribe =
+    stateWidth < 1280 ? <Subscribe API_URL={API_URL} /> : null;
+
   return (
     <Main headTitle='Tattoo one love blog'>
       <h1 className='visually-hidden'>Tattoo one love blog</h1>
