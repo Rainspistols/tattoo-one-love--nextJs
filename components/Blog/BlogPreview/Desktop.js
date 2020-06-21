@@ -1,14 +1,14 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import Container from '../../Layouts/Container/Container';
-import BlogPostCard from '../BlogPostCard/BlogPostCard';
+import Container from '../../../Layouts/Container/Container';
+import BlogPostCard from '../BlogPostCard';
 
-const Desktop = ({ postsData, API_URL }) => {
+const Desktop = ({ fiveLastPosts, API_URL }) => {
   return (
     <DesktopStyled>
       <Container>
-        <ul>
-          {postsData.map((item, index) => {
+        <ul className='posts__list'>
+          {fiveLastPosts.map((item, index) => {
             if (index < 3) {
               return (
                 <React.Fragment key={index}>
@@ -24,15 +24,12 @@ const Desktop = ({ postsData, API_URL }) => {
 };
 
 const DesktopStyled = styled.div`
-  ${(props) => props.theme.mediaDesktop} {
-    display: block;
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 
-    ul {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
+  .posts__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 `;
 

@@ -8,7 +8,7 @@ import Mission from '../components/Mission/Mission';
 import StrapiService from '../components/StrapiService/StrapiService';
 import useWindowDimensions from '../hooks/useWindowDimension';
 import ContactsBlock from '../components/ContactsBlock/ContactsBlock';
-import BlogPreview from '../components/BlogPreview';
+import BlogPreview from '../components/Blog/BlogPreview';
 
 import { useState, useEffect } from 'react';
 
@@ -31,7 +31,7 @@ const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
       <AboutUsSection />
       <OurWorks ourWorks={ourWorks} />
       {isFollowUs}
-      <BlogPreview postsData={fiveLastPosts} API_URL={API_URL} />
+      <BlogPreview fiveLastPosts={fiveLastPosts} API_URL={API_URL} />
       <ContactsBlock />
       {isSubscribe}
       <Mission />

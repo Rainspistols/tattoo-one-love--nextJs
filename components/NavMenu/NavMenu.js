@@ -154,8 +154,8 @@ const NavMenuStyled = styled.section`
       flex-wrap: wrap;
 
       li {
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth(8)};
-        margin-right: ${(props) => props.theme.pixelToVieWidth(5)};
+        margin: 0 ${({ theme }) => theme.pixelToVieWidth(5)}
+          ${({ theme }) => theme.pixelToVieWidth(8)} 0;
 
         .CategoryBtn {
           font-size: ${(props) => props.theme.pixelToVieWidth(18)};
@@ -163,10 +163,7 @@ const NavMenuStyled = styled.section`
           border: ${(props) => props.theme.pixelToVieWidth(1)} solid
             ${(props) => props.theme.colors.grey3};
           color: ${(props) => props.theme.colors.grey3};
-
-          a {
-            padding: ${(props) => props.theme.pixelToVieWidth(10)};
-          }
+          padding: ${(props) => props.theme.pixelToVieWidth(10)};
         }
       }
     }

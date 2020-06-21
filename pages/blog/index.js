@@ -1,20 +1,19 @@
 import Main from '../../Layouts/Main/Main';
 import Subscribe from '../../components/Subscribe/Subscribe';
 import StrapiService from '../../components/StrapiService/StrapiService';
-import BlogPostsList from '../../components/BlogPostsList/BlogPostsList';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
+import useWindowDimensions from '../../hooks/useWindowDimension';
+import BlogPostsList from '../../components/Blog/BlogPostsList/BlogPostsList';
 
 const Blog = ({ allPosts, API_URL, allCategories }) => {
   const { width } = useWindowDimensions();
-  const [stateWidth, setStateWidth] = useState(null);
+  const [isSubscribeVisible, setSubscribeVisible] = useState(false);
 
   useEffect(() => {
-    setStateWidth(width);
+    if (width < 1280) {
+      setSubscribeVisible(true);
+    }
   }, [width]);
-
-  const isSubscribe =
-    stateWidth < 1280 ? <Subscribe API_URL={API_URL} /> : null;
 
   return (
     <Main headTitle='Tattoo one love blog'>
@@ -24,7 +23,7 @@ const Blog = ({ allPosts, API_URL, allCategories }) => {
         API_URL={API_URL}
         allCategories={allCategories}
       />
-      {stateWidth < 1280 && <Subscribe API_URL={API_URL} />}
+      {isSubscribeVisible ? <Subscribe API_URL={API_URL} /> : null}
     </Main>
   );
 };

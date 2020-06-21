@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Line from '../../UI/Line';
-import BlogPostCard from '../BlogPostCard/BlogPostCard';
+import BlogPostCard from '../Blog/BlogPostCard';
 
 const RecommendedPosts = ({ posts, API_URL }) => {
   return (
@@ -23,6 +23,15 @@ const RecommendedPosts = ({ posts, API_URL }) => {
 const RecommendedPostsStyled = styled.section`
   li {
     margin-bottom: ${(props) => props.theme.pixelToVieWidth(16)};
+
+    .BlogPostCard {
+      .imgWrap {
+        margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)}
+      }
+      >.Container {
+        padding: 0;
+      }
+    }
   }
 
   .recommended-arcticles__wrap {
@@ -48,7 +57,7 @@ const RecommendedPostsStyled = styled.section`
       font-weight: 300;
       text-transform: uppercase;
       text-align: center;
-      z-index: 10;
+      z-index: 2;
       width: 60%;
       margin: auto;
       position: relative;

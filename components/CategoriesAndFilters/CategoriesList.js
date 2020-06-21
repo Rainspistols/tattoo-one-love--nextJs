@@ -36,21 +36,22 @@ const CategoriesList = ({ allCategories }) => {
 const CategoriesListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  font-size: ${(props) => props.theme.pixelToVieWidth1920(18)};
-  line-height: ${(props) => props.theme.pixelToVieWidth1920(27)};
-  font-weight: 400;
-  text-transform: uppercase;
   max-width: 70%;
 
   li {
-    margin-right: ${(props) => props.theme.pixelToVieWidth1920(13)};
+    margin: auto ${(props) => props.theme.pixelToVieWidth1920(13)} auto 0;
 
     a {
       padding: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      transition: all 0.3s ease-out;
+      font-size: ${(props) => props.theme.pixelToVieWidth1920(18)};
+      line-height: ${(props) => props.theme.pixelToVieWidth1920(27)};
+      font-weight: 400;
+      text-transform: uppercase;
       border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
       border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
         ${(props) => props.theme.colors.grey2};
-      transition: all 0.3s ease-out;
+      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
 
       :hover,
       :focus {
@@ -64,14 +65,11 @@ const CategoriesListStyled = styled.ul`
 
   .activeCategory {
     background: ${(props) => props.theme.colors.whiteGradient};
-    border: none;
+    border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
+
     a {
       mix-blend-mode: difference;
-    }
-
-    :hover,
-    :focus {
-      background: ${(props) => props.theme.colors.whiteGradient};
+      pointer-events: none;
       border: none;
     }
   }

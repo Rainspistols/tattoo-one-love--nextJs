@@ -21,7 +21,9 @@ const FiltersListStyled = styled.div`
     padding: ${(props) => props.theme.pixelToVieWidth(10)};
     text-transform: uppercase;
     background: transparent;
-    border: ${(props) => props.theme.pixelToVieWidth(1)} solid
+    border-right: ${(props) => props.theme.pixelToVieWidth(1)} solid
+      ${(props) => props.theme.colors.grey1};
+    border-left: ${(props) => props.theme.pixelToVieWidth(1)} solid
       ${(props) => props.theme.colors.grey1};
     color: ${(props) => props.theme.colors.grey3};
     &:not(:first-of-type) {
@@ -35,7 +37,11 @@ const FiltersListStyled = styled.div`
       line-height: ${(props) => props.theme.pixelToVieWidth1920(27)};
       padding: ${(props) => props.theme.pixelToVieWidth1920(25)}
         ${(props) => props.theme.pixelToVieWidth1920(20)};
-      border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
+      border-bottom: 0;
+      border-top: 0;
+      border-right: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
+        ${(props) => props.theme.colors.grey2};
+      border-left: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
         ${(props) => props.theme.colors.grey2};
     }
   }

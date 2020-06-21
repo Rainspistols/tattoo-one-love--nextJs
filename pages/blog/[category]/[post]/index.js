@@ -1,16 +1,23 @@
 import styled from '@emotion/styled';
 import Main from '../../../../Layouts/Main/Main';
-import CategoryBtn from '../../../../UI/CategoryBtn';
-import Container from '../../../../Layouts/Container/Container';
-import Moment from 'react-moment';
 import ShareBtn from '../../../../components/ShareBtn/ShareBtn';
 import MarkdownView from 'react-showdown';
 import RecommendedPosts from '../../../../components/RecommendedPosts/RecommendedPosts';
 import StrapiService from '../../../../components/StrapiService/StrapiService';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useDebugValue } from 'react';
+import CategoriesAndFilters from '../../../../components/CategoriesAndFilters/CategoriesAndFilters';
+import PostCategoryAndDateRow from '../../../../components/PostCategoryAndDateRow/PostCategoryAndDateRow';
+import useWindowDimensions from '../../../../hooks/useWindowDimension';
+import Container from '../../../../Layouts/Container/Container';
 
-const BlogPost = ({ postBySlug, relevantPostsData, API_URL }) => {
+const BlogPost = ({
+  postBySlug,
+  relevantPostsData,
+  API_URL,
+  allCategories,
+}) => {
   const [statePost, setStatePost] = useState(null);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     setStatePost(postBySlug[0]);
@@ -19,24 +26,16 @@ const BlogPost = ({ postBySlug, relevantPostsData, API_URL }) => {
   return (
     <BlogPostStyled>
       {statePost && (
-        <Main headTitle={statePost.title}>
+        <Main headTitle={'Tattoo one love | ' + statePost.title}>
           <Container>
-            <div className='categoryAndDate'>
-              <ul>
-                {statePost.post_categories.map(({ name, slug, id }) => (
-                  <li key={id}>
-                    <CategoryBtn text={name} slug={slug} />
-                  </li>
-                ))}
-              </ul>
-
-              <Moment className='date' format='MMMM DD, YYYY'>
-                {statePost.updated_at}
-              </Moment>
-            </div>
+            {width >= 1280 ? (
+              <CategoriesAndFilters allCategories={allCategories} />
+            ) : null}
+            <PostCategoryAndDateRow posts={statePost} />
 
             <h1 className='post-title'>{statePost.title}</h1>
           </Container>
+
           <div className='post-img'>
             <img src={statePost.href} alt='' />
           </div>
@@ -81,10 +80,14 @@ export const getStaticProps = async (context) => {
   const postBySlug = await strapiService.getPostBySlug(post, category);
   const relevantPosts = await strapiService.getRelevantPosts(postBySlug, post);
 
+  const allCategories = await strapiService.getPostsCategories();
+
   return {
     props: {
       postBySlug,
       relevantPostsData: relevantPosts,
+      allCategories,
+
       API_URL,
     },
   };
@@ -93,27 +96,8 @@ export const getStaticProps = async (context) => {
 const BlogPostStyled = styled.section`
   padding-top: ${(props) => props.theme.pixelToVieWidth(20)};
 
-  .categoryAndDate {
-    display: flex;
-    justify-content: space-between;
-
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-
-      .CategoryBtn {
-        font-size: ${(props) => props.theme.pixelToVieWidth(10)};
-        line-height: ${(props) => props.theme.pixelToVieWidth(12)};
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth(12)};
-      }
-    }
-
-    .date {
-      font-size: ${(props) => props.theme.pixelToVieWidth(10)};
-      line-height: ${(props) => props.theme.pixelToVieWidth(12)};
-      font-weight: 400;
-      color: ${(props) => props.theme.colors.grey2};
-    }
+  .CategoriesAndFilters {
+    display: none;
   }
 
   .post-title {
@@ -121,6 +105,7 @@ const BlogPostStyled = styled.section`
     line-height: ${(props) => props.theme.pixelToVieWidth(48)};
     color: ${(props) => props.theme.colors.darkBlue};
     font-weight: 600;
+    margin: 0;
   }
 
   .post-img {
@@ -243,6 +228,32 @@ const BlogPostStyled = styled.section`
       font-weight: 300;
       font-size: ${(props) => props.theme.pixelToVieWidth(17)};
       line-height: ${(props) => props.theme.pixelToVieWidth(26)};
+    }
+  }
+
+  ${({ theme }) => theme.mediaDesktop} {
+    padding: 0;
+
+    .CategoriesAndFilters {
+      display: flex;
+      border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+        ${({ theme }) => theme.colors.grey2};
+    }
+
+    .post-img {
+      width: 50%;
+    }
+
+    .PostCategoryAndDateRow {
+      time {
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(22)};
+        line-height: ${({ theme }) => theme.pixelToVieWidth1920(12)};
+      }
+    }
+
+    .post-title {
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(48)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(72)};
     }
   }
 `;

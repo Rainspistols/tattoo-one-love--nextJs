@@ -4,7 +4,11 @@ import FiltersList from './FiltersList';
 import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
 
-const CategoriesAndFilters = ({ category, allCategories, onLastFilter }) => {
+const CategoriesAndFilters = ({
+  activeCategory = null,
+  allCategories,
+  onLastFilter,
+}) => {
   const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
   useEffect(() => {
@@ -12,9 +16,9 @@ const CategoriesAndFilters = ({ category, allCategories, onLastFilter }) => {
   }, [width]);
 
   return (
-    <CategoriesAndFiltersStyled>
-      {stateWidth < 1280 && category && (
-        <h2 className='activeCategory'>{category}</h2>
+    <CategoriesAndFiltersStyled className='CategoriesAndFilters'>
+      {stateWidth < 1280 && activeCategory && (
+        <h2 className='activeCategory'>{activeCategory}</h2>
       )}
       <CategoriesList allCategories={allCategories} />
       <FiltersList onLastFilter={onLastFilter} />
@@ -25,7 +29,7 @@ const CategoriesAndFilters = ({ category, allCategories, onLastFilter }) => {
 const CategoriesAndFiltersStyled = styled.div`
   display: flex;
   align-items: center;
-  
+
   .activeCategory {
     font-weight: 600;
     ${(props) => props.theme.flexBetween};

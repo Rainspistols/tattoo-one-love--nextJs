@@ -8,6 +8,7 @@ const CookieAgreement = () => {
         cookie='user-has-accepted-cookies'
         disableStyles={true}
         location='bottom'
+        acceptOnScrollPercentage={5}
         acceptOnScroll={true}
         buttonWrapperClasses='button-close__wrapper'
         buttonClasses='button-close'

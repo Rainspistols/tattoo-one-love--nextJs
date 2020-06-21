@@ -13,27 +13,31 @@ import { useState, useEffect } from 'react';
 const Footer = () => {
   const { width } = useDimensionWidth();
   const [stateWidth, setStateWidth] = useState(null);
+  const [isRendered, setRendered] = useState(false);
   useEffect(() => {
     setStateWidth(width);
-  }, []);
+    setRendered(true);
+  }, [width]);
 
   return (
-    <FooterStyled id='contact'>
-      <Container>
-        <FooterInformation />
-        <FooterSubscripion />
-        <FooterRules />
+    isRendered && (
+      <FooterStyled id='contact'>
+        <Container>
+          <FooterInformation />
+          <FooterSubscripion />
+          <FooterRules />
 
-        <div className='contact_wrap'>
-          <FooterTitle text='contact' />
-          <Contact iconsColor='white' textColor='#E8ECF1' />
-        </div>
+          <div className='contact_wrap'>
+            <FooterTitle text='contact' />
+            <Contact iconsColor='white' textColor='#E8ECF1' />
+          </div>
 
-        {stateWidth < 1280 && <Line />}
+          {stateWidth < 1280 && <Line />}
 
-        <FooterCopyRight />
-      </Container>
-    </FooterStyled>
+          <FooterCopyRight />
+        </Container>
+      </FooterStyled>
+    )
   );
 };
 

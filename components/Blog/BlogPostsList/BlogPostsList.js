@@ -1,27 +1,25 @@
 import styled from '@emotion/styled';
-import BlogPostCard from '../BlogPostCard/BlogPostCard';
-import Container from '../../Layouts/Container/Container';
-import Line from '../../UI/Line';
+import BlogPostCard from '../BlogPostCard';
+import Container from '../../../Layouts/Container/Container';
+import Line from '../../../UI/Line';
 import { useState, useEffect } from 'react';
-import ShowMorePosts from '../../UI/ShowMorePosts';
-import useWindowDimensions from '../../hooks/useWindowDimension';
-import CategoriesAndFilters from '../CategoriesAndFilters/CategoriesAndFilters';
+import ShowMorePosts from '../../../UI/ShowMorePosts';
+import useWindowDimensions from '../../../hooks/useWindowDimension';
+import CategoriesAndFilters from '../../CategoriesAndFilters/CategoriesAndFilters';
 
 const BlogPostsList = ({
   postsData,
   API_URL,
   inputSearchValue,
-  category,
+  activeCategory,
   allCategories,
 }) => {
   const [postsAmount, setPostsAmount] = useState(10);
   const [posts, setPosts] = useState(null);
   const { width } = useWindowDimensions();
-  const [stateWidth, setStateWidth] = useState(null);
   const [isShowMoreVisible, setShowMoreVisible] = useState(false);
 
   useEffect(() => {
-    setStateWidth(width);
     const sortPosts = () => {
       const dataWithSearchValue = () =>
         inputSearchValue &&
@@ -57,7 +55,7 @@ const BlogPostsList = ({
       <Container>
         <CategoriesAndFilters
           allCategories={allCategories}
-          category={category}
+          activeCategory={activeCategory}
           onLastFilter={onLastFilter}
         />
 
@@ -150,7 +148,6 @@ const BlogPostsListStyled = styled.section`
         }
       }
     }
-
   }
 `;
 

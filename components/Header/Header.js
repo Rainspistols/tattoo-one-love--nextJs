@@ -12,7 +12,7 @@ import CookieAgreement from '../CookieAgreement/CookieAgreement';
 
 import { useState, useRef } from 'react';
 
-const Header = ({ importantMessageData, categories, onSearchToGo }) => {
+const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
   const [isMenuActive, setMenuActive] = useState(false);
   const [isSearchActive, setSearchActive] = useState(false);
 
@@ -21,13 +21,7 @@ const Header = ({ importantMessageData, categories, onSearchToGo }) => {
   return (
     <HeaderStyled>
       <CookieAgreement />
-
-      {importantMessageData && (
-        <ImportantMessage
-          text={importantMessageData.text}
-          link={importantMessageData.link}
-        />
-      )}
+      <ImportantMessage importantMessageJson={importantMessageJson} />
 
       <nav className='navigation'>
         <Container>

@@ -8,12 +8,11 @@ import { useState, useEffect } from 'react';
 
 const ContactsBlock = () => {
   const { width } = useWidthDimesion();
-  // Added state because without it we have an error
   const [stateWidth, setStateWidth] = useState(null);
 
   useEffect(() => {
     setStateWidth(width);
-  }, []);
+  }, [width]);
 
   return (
     stateWidth >= 1280 && (

@@ -1,35 +1,25 @@
 import styled from '@emotion/styled';
-import CategoryBtn from '../../UI/CategoryBtn';
 import Link from 'next/link';
-import Container from '../../Layouts/Container/Container';
+import Container from '../../../Layouts/Container/Container';
+import CategoriesList from './CategoriesList';
 
 const BlogPostCard = ({ post, API_URL }) => {
   return (
-    <BlogPostCardStyled className='BlogPostCard'>
+    <BlogPostCardStyled>
       <Link
         href='/blog/[category]/[slug]'
         as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
       >
         <a className='imgLink'>
-          <div className='imgWrap'>
-            <img src={API_URL + post.img.url} alt='' />
-          </div>
+          <img src={API_URL + post.img.url} alt='' />
         </a>
       </Link>
 
       <Container>
         <div className='categoriesTitleWrap'>
-          <div className='categories'>
-            {post.post_categories.map((category) => (
-              <CategoryBtn
-                text={category.name}
-                slug={category.slug}
-                key={category.id}
-              />
-            ))}
-          </div>
+          <CategoriesList post={post} />
 
-          <h3>
+          <h3 className='post__title'>
             <Link
               href='/blog/[category]/[slug]'
               as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
@@ -44,43 +34,31 @@ const BlogPostCard = ({ post, API_URL }) => {
 };
 
 const BlogPostCardStyled = styled.li`
-  .imgWrap {
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    height: ${(props) => props.theme.pixelToVieWidth(210)};
+  .imgLink {
+    display: block;
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+      height: ${(props) => props.theme.pixelToVieWidth(210)};
+    }
   }
 
-  .categories {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  img {
-    width: 100%;
-    object-fit: cover;
-    object-position: top;
-    height: ${(props) => props.theme.pixelToVieWidth(210)};
-    top: 0;
-  }
-
-  h3 {
+  .post__title {
     font-size: ${(props) => props.theme.pixelToVieWidth(32)};
     line-height: ${(props) => props.theme.pixelToVieWidth(48)};
     margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
     font-weight: 600;
     color: ${(props) => props.theme.colors.darkBlue};
-    display: inline-block;
+    box-sizing: border-box;
   }
-  /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
+
+  ${({ theme }) => theme.mediaDesktop} {
     background: ${(props) => props.theme.colors.grey1};
     width: 31.5%;
     transition: box-shadow 0.3s ease-out;
-
-    .categoriesTitleWrap {
-      padding: ${(props) => props.theme.pixelToVieWidth1920(30)} 0;
-    }
 
     :hover,
     :focus {
@@ -100,54 +78,27 @@ const BlogPostCardStyled = styled.li`
           rgba(0, 0, 0, 0.086);
     }
 
-    .imgWrap {
-      width: 100%;
+    .categoriesTitleWrap {
+      padding: ${(props) => props.theme.pixelToVieWidth1920(30)} 0;
+    }
+
+    .imgLink {
       height: ${(props) => props.theme.pixelToVieWidth1920(300)};
       margin: 0;
 
       img {
-        width: 100%;
         height: 100%;
-        object-fit: cover;
-      }
-    }
-    .categories {
-      ${(props) => props.theme.flexCenter};
-      padding: 0;
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(7)};
-    }
-
-    .CategoryBtn {
-      border: none;
-
-      :not(:last-of-type) {
-        margin: 0 ${(props) => props.theme.pixelToVieWidth1920(20)} 0 0;
-      }
-
-      a {
-        text-align: center;
-        color: ${(props) => props.theme.colors.grey4};
-        text-transform: uppercase;
-        font-size: ${(props) => props.theme.pixelToVieWidth1920(12)};
-        line-height: ${(props) => props.theme.pixelToVieWidth1920(12)};
-        padding: 0;
       }
     }
 
-    h3 {
+    .post__title {
       font-size: ${(props) => props.theme.pixelToVieWidth1920(17)};
       line-height: ${(props) => props.theme.pixelToVieWidth1920(31)};
       width: 100%;
-      box-sizing: border-box;
       font-weight: 500;
       text-align: center;
-      color: ${(props) => props.theme.colors.darkBlue};
       margin: 0;
       ${(props) => props.theme.pixelToVieWidth1920(20)};
-      a {
-        width: 100%;
-        display: block;
-      }
     }
   }
 `;

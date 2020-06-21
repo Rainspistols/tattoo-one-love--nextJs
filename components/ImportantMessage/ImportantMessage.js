@@ -1,16 +1,23 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import Container from '../../Layouts/Container/Container';
-import closeIcon from './images/closeIcon.svg';
-import { useState } from 'react';
+import { IoIosClose } from 'react-icons/io';
+import { useState, useEffect } from 'react';
 import MarkdownView from 'react-showdown';
+import Cookies from 'js-cookie';
 
-const ImportantMessage = ({ text, link }) => {
-  const [isClosedState, setClosedState] = useState(false);
+const ImportantMessage = ({ importantMessageJson }) => {
+  const [imIsVisible, setImIsVisible] = useState(true);
+
+  useEffect(() => {
+    Cookies.get('isImportantMessageDisabled') ||
+    importantMessageJson.text.length === 0
+      ? setImIsVisible(false)
+      : setImIsVisible(true);
+  }, [importantMessageJson]);
 
   const onClose = () => {
     setClosedState(true);
-
     document.cookie = `isImportantMessageDisabled=true; expires=${countDateExpire()}`;
   };
 
@@ -19,23 +26,21 @@ const ImportantMessage = ({ text, link }) => {
   };
 
   return (
-    <>
-      {!isClosedState && (
-        <ImportantMessageStyled>
-          <h2 className='visually-hidden'>important message</h2>
-          <Container>
-            <Link href={link}>
-              <a>
-                <MarkdownView markdown={text} />
-              </a>
-            </Link>
-            <button onClick={() => onClose()}>
-              <img src={closeIcon} alt='close message' />
-            </button>
-          </Container>
-        </ImportantMessageStyled>
-      )}
-    </>
+    imIsVisible && (
+      <ImportantMessageStyled>
+        <h2 className='visually-hidden'>important message</h2>
+        <Container>
+          <Link href={importantMessageJson.link}>
+            <a>
+              <MarkdownView markdown={importantMessageJson.text} />
+            </a>
+          </Link>
+          <button onClick={() => onClose()}>
+            <IoIosClose />
+          </button>
+        </Container>
+      </ImportantMessageStyled>
+    )
   );
 };
 
@@ -63,9 +68,10 @@ const ImportantMessageStyled = styled.section`
     cursor: pointer;
     border: none;
     background: transparent;
-    img {
-      width: ${(props) => props.theme.pixelToVieWidth(20)};
-      height: ${(props) => props.theme.pixelToVieWidth(20)};
+    svg {
+      width: ${(props) => props.theme.pixelToVieWidth(30)};
+      height: auto;
+      color: ${({ theme }) => theme.colors.white};
     }
   }
 
@@ -79,9 +85,9 @@ const ImportantMessageStyled = styled.section`
     }
 
     button {
-      img {
-        width: ${(props) => props.theme.pixelToVieWidth1920(25)};
-        height: ${(props) => props.theme.pixelToVieWidth1920(25)};
+      svg {
+        width: ${(props) => props.theme.pixelToVieWidth1920(40)};
+        height: auto;
       }
     }
   }

@@ -1,26 +1,28 @@
 import Main from '../../../Layouts/Main/Main';
-import BlogPostsList from '../../../components/BlogPostsList/BlogPostsList';
 import Subscribe from '../../../components/Subscribe/Subscribe';
 import StrapiService from '../../../components/StrapiService/StrapiService';
 import useWindowDimensions from '../../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
+import BlogPostsList from '../../../components/Blog/BlogPostsList/BlogPostsList';
 
-const Category = ({ categoryBySlug, API_URL, category, allCategories }) => {
+const Category = ({ categoryBySlug, API_URL, activeCategory, allCategories }) => {
   const { width } = useWindowDimensions();
-  const [stateWidth, setStateWidth] = useState(null);
+  const [isSubscribeVisible, setSubscribeVisible] = useState(false);
 
   useEffect(() => {
-    setStateWidth(width);
+    if (width < 1280) {
+      setSubscribeVisible(true);
+    }
   }, [width]);
   return (
     <Main headTitle='Tattoo one love blog'>
       <BlogPostsList
-        category={category}
+        activeCategory={activeCategory}
         postsData={categoryBySlug}
         API_URL={API_URL}
         allCategories={allCategories}
       />
-      {stateWidth < 1280 && <Subscribe API_URL={API_URL} />}
+      {isSubscribeVisible ? <Subscribe API_URL={API_URL} /> : null}
     </Main>
   );
 };
@@ -52,7 +54,7 @@ export const getStaticProps = async (context) => {
       categoryBySlug,
       API_URL,
       allCategories,
-      category: context.params.category.toUpperCase(),
+      activeCategory: context.params.category.toUpperCase(),
     },
   };
 };

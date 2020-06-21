@@ -1,6 +1,6 @@
 import Main from '../../Layouts/Main/Main';
-import BlogPostsList from '../../components/BlogPostsList/BlogPostsList';
 import StrapiService from '../../components/StrapiService/StrapiService';
+import BlogPostsList from '../../components/Blog/BlogPostsList/BlogPostsList';
 
 const Home = ({ allPosts, API_URL, inputSearchValue }) => {
   return (

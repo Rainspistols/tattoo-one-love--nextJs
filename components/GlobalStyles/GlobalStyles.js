@@ -22,6 +22,15 @@ const GlobalStyles = () => (
         font-size: 14px;
         line-height: 1.4em;
       }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        padding: 0;
+      }
 
       a {
         text-decoration: none;
@@ -37,14 +46,6 @@ const GlobalStyles = () => (
         list-style-type: none;
       }
 
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        margin: 0;
-      }
       dl,
       dd {
         margin-bottom: 0;
