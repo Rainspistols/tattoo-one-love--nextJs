@@ -34,6 +34,7 @@ const Post = ({ postBySlug, relevantPostsData, allCategories, API_URL }) => {
 
 const PostStyled = styled.div`
   ${({ theme }) => theme.mediaDesktop} {
+    padding-bottom: ${({ theme }) => theme.pixelToVieWidth1920(40)};
     .ShareBtnAndContent__wrap {
       display: flex;
       justify-content: space-between;

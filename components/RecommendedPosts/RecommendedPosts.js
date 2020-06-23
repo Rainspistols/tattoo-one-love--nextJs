@@ -1,17 +1,30 @@
 import styled from '@emotion/styled';
 import Line from '../../UI/Line';
 import BlogPostCard from '../Blog/BlogPostCard';
+import useWindowDimensions from '../../hooks/useWindowDimension';
+import { useState, useEffect } from 'react';
 
 const RecommendedPosts = ({ posts, API_URL }) => {
+  const { width } = useWindowDimensions();
+  const [stateWidth, setStateWidth] = useState(null);
+
+  useEffect(() => {
+    setStateWidth(width);
+  }, [width]);
+
   return (
     <RecommendedPostsStyled>
       <div className='recommended-arcticles__wrap'>
-        <h2>recommended articles</h2>
+        {stateWidth < 1280 ? <h2>recommended articles</h2> : <h2>read also</h2>}
       </div>
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <BlogPostCard post={post} key={post.id} API_URL={API_URL} />
+            {stateWidth < 1280 ? (
+              <BlogPostCard post={post} key={post.id} API_URL={API_URL} />
+            ) : (
+              post.title
+            )}
             <Line />
           </li>
         ))}
@@ -26,9 +39,9 @@ const RecommendedPostsStyled = styled.section`
 
     .BlogPostCard {
       .imgWrap {
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)}
+        margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
       }
-      >.Container {
+      > .Container {
         padding: 0;
       }
     }
@@ -36,37 +49,46 @@ const RecommendedPostsStyled = styled.section`
 
   .recommended-arcticles__wrap {
     position: relative;
+
     &::before {
-      content: '';
       position: absolute;
-      height: ${(props) => props.theme.pixelToVieWidth(1)};
-      width: 100%;
-      background: ${(props) => props.theme.colors.grey2};
+      z-index: 1;
       left: 0;
       top: 50%;
-      z-index: 1;
+
+      height: ${(props) => props.theme.pixelToVieWidth(1)};
+      width: 100%;
+
+      background: ${(props) => props.theme.colors.grey2};
+      content: '';
     }
+
     h2 {
-      font-size: ${(props) => props.theme.pixelToVieWidth(14)};
-      line-height: ${(props) => props.theme.pixelToVieWidth(21)};
-      letter-spacing: ${(props) => props.theme.pixelToVieWidth(2)};
-      color: ${(props) => props.theme.colors.grey4};
-      background: ${(props) => props.theme.colors.white};
-      padding: ${(props) => props.theme.pixelToVieWidth(16)}
-        ${(props) => props.theme.pixelToVieWidth(24)};
+      position: relative;
+      z-index: 2;
+
+      padding: ${({ theme }) => theme.pixelToVieWidth(16)}
+        ${({ theme }) => theme.pixelToVieWidth(24)};
+      width: 60%;
+      margin: auto;
+
+      font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth(21)};
+      letter-spacing: ${({ theme }) => theme.pixelToVieWidth(2)};
+      color: ${({ theme }) => theme.colors.grey4};
       font-weight: 300;
       text-transform: uppercase;
       text-align: center;
-      z-index: 2;
-      width: 60%;
-      margin: auto;
-      position: relative;
+
+      background: ${({ theme }) => theme.colors.white};
+
       box-sizing: border-box;
     }
   }
 
   .imgWrap {
-    height: ${(props) => props.theme.pixelToVieWidth(210)};
+    height: ${({ theme }) => theme.pixelToVieWidth(210)};
+
     overflow: hidden;
 
     img {
@@ -75,16 +97,17 @@ const RecommendedPostsStyled = styled.section`
   }
 
   h3 {
-    font-size: ${(props) => props.theme.pixelToVieWidth(32)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(48)};
-    color: ${(props) => props.theme.colors.darkBlue};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(16)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(16)};
+
+    font-size: ${({ theme }) => theme.pixelToVieWidth(32)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(48)};
+    color: ${({ theme }) => theme.colors.darkBlue};
     font-weight: 600;
   }
 
   .BlogPostPreview {
     .imgWrap {
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
     }
 
     .Container {
@@ -93,7 +116,70 @@ const RecommendedPostsStyled = styled.section`
   }
 
   .Line {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(16)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(16)};
+  }
+
+  ${({ theme }) => theme.mediaDesktop} {
+    border-top: ${({ theme }) => theme.pixelToVieWidth1920(5)} solid
+      ${({ theme }) => theme.colors.pink};
+      border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+      ${({ theme }) => theme.colors.grey2};
+    padding: ${({ theme }) => theme.pixelToVieWidth1920(25)} 0;
+
+    ul {
+      display: inline-flex;
+      flex-direction: column;
+      padding-left: ${({ theme }) => theme.pixelToVieWidth1920(100)};
+    }
+
+    li {
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+      border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+        ${({ theme }) => theme.colors.pink};
+      width: auto;
+    }
+
+    .recommended-arcticles__wrap {
+      &::before {
+        display: none;
+      }
+
+      h2 {
+        width: 100%;
+
+        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(25)};
+        padding: 0 ${({ theme }) => theme.pixelToVieWidth1920(50)};
+
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+        line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+        letter-spacing: 0;
+        font-weight: 700;
+        text-align: left;
+
+        background: ${({ theme }) => theme.colors.white};
+
+        box-sizing: border-box;
+      }
+    }
+
+    .imgWrap {
+      height: ${({ theme }) => theme.pixelToVieWidth(210)};
+
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    h3 {
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth(16)};
+
+      font-size: ${({ theme }) => theme.pixelToVieWidth(32)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth(48)};
+      color: ${({ theme }) => theme.colors.darkBlue};
+      font-weight: 600;
+    }
   }
 `;
 
