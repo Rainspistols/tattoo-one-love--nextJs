@@ -7,6 +7,7 @@ import Header from './Header';
 import Content from './Content';
 import RecommendedPosts from '../RecommendedPosts/RecommendedPosts';
 import ShareBtn from '../ShareBtn/ShareBtn';
+import CategoriesAndFilters from '../CategoriesAndFilters';
 
 const Post = ({ postBySlug, relevantPostsData, allCategories, API_URL }) => {
   const { width } = useWindowDimensions();
@@ -18,6 +19,7 @@ const Post = ({ postBySlug, relevantPostsData, allCategories, API_URL }) => {
 
   return (
     <PostStyled>
+      <CategoriesAndFilters allCategories={allCategories} />
       <Header postBySlug={postBySlug} />
 
       <Container>

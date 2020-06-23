@@ -45,8 +45,12 @@ const CategoriesAndFiltersStyled = styled.div`
     color: ${(props) => props.theme.colors.grey3};
   }
 
+  ${({ theme }) => theme.mediaDesktop} {
 
-
+    border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid 
+      ${({ theme }) => theme.colors.grey2}
+    }
+  }
 `;
 
 export default CategoriesAndFilters;

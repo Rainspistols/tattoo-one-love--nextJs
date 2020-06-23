@@ -52,12 +52,11 @@ const BlogPostsList = ({
 
   return (
     <BlogPostsListStyled>
+      <CategoriesAndFilters
+        allCategories={allCategories}
+        activeCategory={activeCategory}
+      />
       <Container>
-        <CategoriesAndFilters
-          allCategories={allCategories}
-          activeCategory={activeCategory}
-        />
-
         {posts && (
           <ul className='blogAllPostsList'>
             {posts.map((post, index) => {
