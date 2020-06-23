@@ -16,7 +16,7 @@ const Blog = ({ allPosts, API_URL, allCategories }) => {
   }, [width]);
 
   return (
-    <Main headTitle='Tattoo one love blog'>
+    <Main headTitle='Tattoo one love | blog'>
       <h1 className='visually-hidden'>Tattoo one love blog</h1>
       <BlogPostsList
         postsData={allPosts}

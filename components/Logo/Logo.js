@@ -21,7 +21,7 @@ const StyledLogo = styled.div`
   align-items: center;
   justify-content: center;
   clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
-  height: ${(props) => props.theme.pixelToVieWidth(45)};
+  height: ${(props) => props.theme.pixelToVieWidth(46)};
 
   img {
     width: ${(props) => props.theme.pixelToVieWidth(45)};

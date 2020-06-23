@@ -47,7 +47,7 @@ const ImportantMessage = ({ importantMessageJson }) => {
 const ImportantMessageStyled = styled.section`
   background: ${(props) => props.theme.colors.darkBlue};
   color: ${(props) => props.theme.colors.white};
-  padding: ${(props) => props.theme.pixelToVieWidth(10)} 0;
+  padding: ${(props) => props.theme.pixelToVieWidth(5)} 0;
 
   .Container {
     width: 100%;
@@ -68,10 +68,13 @@ const ImportantMessageStyled = styled.section`
     cursor: pointer;
     border: none;
     background: transparent;
+    width: ${(props) => props.theme.pixelToVieWidth(30)};
+
     svg {
-      width: ${(props) => props.theme.pixelToVieWidth(30)};
+      width: 100%;
       height: auto;
       color: ${({ theme }) => theme.colors.white};
+      display: block;
     }
   }
 

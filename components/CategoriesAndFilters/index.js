@@ -1,34 +1,41 @@
 import styled from '@emotion/styled';
-import CategoriesList from './CategoriesList';
-import FiltersList from './FiltersList';
+import Categories from './Categories';
+import Filters from './Filters';
 import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
+import Container from '../../Layouts/Container/Container';
 
-const CategoriesAndFilters = ({
-  activeCategory = null,
-  allCategories,
-  onLastFilter,
-}) => {
+const CategoriesAndFilters = ({ activeCategory, allCategories }) => {
   const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
+  const [isActiveCategoryVisible, setActiveCategoryVisible] = useState(false);
+
   useEffect(() => {
     setStateWidth(width);
-  }, [width]);
+
+    if (width < 1280 && activeCategory) {
+      setActiveCategoryVisible(true);
+    }
+  }, [width, activeCategory]);
 
   return (
     <CategoriesAndFiltersStyled className='CategoriesAndFilters'>
-      {stateWidth < 1280 && activeCategory && (
-        <h2 className='activeCategory'>{activeCategory}</h2>
-      )}
-      <CategoriesList allCategories={allCategories} />
-      <FiltersList onLastFilter={onLastFilter} />
+      <Container>
+        {isActiveCategoryVisible && (
+          <h2 className='activeCategory'>{activeCategory}</h2>
+        )}
+        {stateWidth >= 1280 && <Categories allCategories={allCategories} />}
+        <Filters />
+      </Container>
     </CategoriesAndFiltersStyled>
   );
 };
 
 const CategoriesAndFiltersStyled = styled.div`
-  display: flex;
-  align-items: center;
+  > .Container {
+    display: flex;
+    align-items: center;
+  }
 
   .activeCategory {
     font-weight: 600;
@@ -37,6 +44,9 @@ const CategoriesAndFiltersStyled = styled.div`
     line-height: ${(props) => props.theme.pixelToVieWidth(12)};
     color: ${(props) => props.theme.colors.grey3};
   }
+
+
+
 `;
 
 export default CategoriesAndFilters;

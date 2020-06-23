@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 const ShareBtn = ({ postHref }) => {
   const [isShareActive, setShareActive] = useState(false);
+
   const shareNotActive = (
     <div className='shareNotActive'>
       <img src={shareIcon} alt='share' />
@@ -17,7 +18,7 @@ const ShareBtn = ({ postHref }) => {
   );
 
   const shareActive = (
-    <ul className='socials-list'>
+    <ul className='socialsList'>
       <li>
         <FacebookShareButton url={postHref}>
           <img src={facebookIcon} alt='facebook' />
@@ -41,38 +42,51 @@ const ShareBtn = ({ postHref }) => {
   };
 
   return (
-    <ShareBtnStyled onClick={() => onShareBtn()}>
+    <ShareBtnStyled onClick={() => onShareBtn()} className='ShareBtn'>
       {isShareActive ? shareActive : shareNotActive}
     </ShareBtnStyled>
   );
 };
 
 const ShareBtnStyled = styled.div`
-  cursor: pointer;
-  border-radius: 5px;
-  color: ${(props) => props.theme.colors.pink};
-  text-transform: uppercase;
-  font-size: 20px;
-  line-height: 40px;
-  align-items: center;
-  background: transparent;
-  border: 1px solid ${(props) => props.theme.colors.grey2};
-  letter-spacing: 8px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
   display: inline-block;
+  height: ${({ theme }) => theme.pixelToVieWidth(28)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(20)};
+  padding: 0 ${({ theme }) => theme.pixelToVieWidth(12)};
+
+  border-radius: ${({ theme }) => theme.pixelToVieWidth(5)};
+  background: transparent;
+  border: ${({ theme }) => theme.pixelToVieWidth(1)} solid
+    ${({ theme }) => theme.colors.grey2};
+
   .shareNotActive {
-    padding: 0 12px;
-    display: flex;
+    ${(props) => props.theme.flexCenter};
+    height: 100%;
+
+    img {
+      width: ${({ theme }) => theme.pixelToVieWidth(15)};
+      height: auto;
+      margin-right: ${({ theme }) => theme.pixelToVieWidth(10)};
+    }
+
+    p {
+      text-transform: uppercase;
+      font-size: ${({ theme }) => theme.pixelToVieWidth(20)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth(40)};
+      color: ${({ theme }) => theme.colors.pink};
+      letter-spacing: ${({ theme }) => theme.pixelToVieWidth(8)};
+    }
   }
 
-  img {
-    margin-right: 10px;
-  }
+  .socialsList {
+    ${({ theme }) => theme.flexCenter};
+    height: 100%;
 
-  .socials-list {
-    display: flex;
-    padding: 8px 23px;
-    display: flex;
-    align-items: center;
+    padding: 0;
 
     button {
       display: flex;
@@ -81,19 +95,53 @@ const ShareBtnStyled = styled.div`
 
     li {
       :not(:last-child) {
-        margin-right: 25px;
+        margin-right: ${({ theme }) => theme.pixelToVieWidth(25)};
       }
-      svg {
-        path {
-          fill: ${(props) => props.theme.colors.grey2};
-          transform: scale(1.3);
-        }
-        rect {
-          display: none;
-        }
+      img {
+        width: ${({ theme }) => theme.pixelToVieWidth(24)};
+        height: auto;
       }
     }
-    li:active {
+  }
+
+  ${({ theme }) => theme.mediaDesktop} {
+    transform: translateX(0);
+    left: 0;
+
+    width: ${({ theme }) => theme.pixelToVieWidth1920(200)};
+    height: ${({ theme }) => theme.pixelToVieWidth1920(50)};
+    padding: 0;
+    margin: 0;
+
+    border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
+    border: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+      ${({ theme }) => theme.colors.grey2};
+
+    cursor: pointer;
+
+    .shareNotActive {
+      p {
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+        line-height: ${({ theme }) => theme.pixelToVieWidth1920(40)};
+        letter-spacing: ${({ theme }) => theme.pixelToVieWidth1920(8)};
+        font-weight: 400;
+      }
+
+      img {
+        width: ${({ theme }) => theme.pixelToVieWidth1920(21)};
+        margin-right: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+      }
+    }
+
+    .socialsList {
+      li {
+        :not(:last-child) {
+          margin-right: ${({ theme }) => theme.pixelToVieWidth1920(25)};
+        }
+        img {
+          width: ${({ theme }) => theme.pixelToVieWidth1920(35)};
+        }
+      }
     }
   }
 `;

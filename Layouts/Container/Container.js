@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 
-const Container = ({ children }) => {
-  return <ContainerStyled className='Container'>{children}</ContainerStyled>;
+const Container = ({ children, disable }) => {
+  return disable ? (
+    <>{children}</>
+  ) : (
+    <ContainerStyled className='Container'>{children}</ContainerStyled>
+  );
 };
 
 const ContainerStyled = styled.div`

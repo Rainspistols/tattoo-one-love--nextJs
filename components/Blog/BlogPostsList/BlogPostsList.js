@@ -5,7 +5,7 @@ import Line from '../../../UI/Line';
 import { useState, useEffect } from 'react';
 import ShowMorePosts from '../../../UI/ShowMorePosts';
 import useWindowDimensions from '../../../hooks/useWindowDimension';
-import CategoriesAndFilters from '../../CategoriesAndFilters/CategoriesAndFilters';
+import CategoriesAndFilters from '../../CategoriesAndFilters';
 
 const BlogPostsList = ({
   postsData,
@@ -44,11 +44,11 @@ const BlogPostsList = ({
     controlShowMoreVisibility();
   }, [inputSearchValue, postsData, width, postsAmount, posts]);
 
-  const onLastFilter = () => {
-    setPosts(
-      data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-    );
-  };
+  // const onLastFilter = () => {
+  //   setPosts(
+  //     data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+  //   );
+  // };
 
   return (
     <BlogPostsListStyled>
@@ -56,7 +56,6 @@ const BlogPostsList = ({
         <CategoriesAndFilters
           allCategories={allCategories}
           activeCategory={activeCategory}
-          onLastFilter={onLastFilter}
         />
 
         {posts && (

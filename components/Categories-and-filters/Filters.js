@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const FiltersList = ({ onLastFilter }) => {
   return (
     <FiltersListStyled>
-      <button onClick={() => onLastFilter()}>Last</button>
+      <button>Last</button>
       <button>Popular</button>
     </FiltersListStyled>
   );
@@ -26,6 +26,8 @@ const FiltersListStyled = styled.div`
     border-left: ${(props) => props.theme.pixelToVieWidth(1)} solid
       ${(props) => props.theme.colors.grey1};
     color: ${(props) => props.theme.colors.grey3};
+    border-bottom: 0;
+    border-top: 0;
     &:not(:first-of-type) {
       border-left: none;
     }
@@ -37,8 +39,7 @@ const FiltersListStyled = styled.div`
       line-height: ${(props) => props.theme.pixelToVieWidth1920(27)};
       padding: ${(props) => props.theme.pixelToVieWidth1920(25)}
         ${(props) => props.theme.pixelToVieWidth1920(20)};
-      border-bottom: 0;
-      border-top: 0;
+
       border-right: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
         ${(props) => props.theme.colors.grey2};
       border-left: ${(props) => props.theme.pixelToVieWidth1920(1)} solid

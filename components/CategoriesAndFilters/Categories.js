@@ -1,39 +1,29 @@
 import styled from '@emotion/styled';
-import useWindowDimensions from '../../hooks/useWindowDimension';
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const CategoriesList = ({ allCategories }) => {
-  const { width } = useWindowDimensions();
-  const [stateWidth, setStateWidth] = useState(null);
-  useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
-
+const Categories = ({ allCategories }) => {
   const router = useRouter();
 
   return (
-    stateWidth >= 1280 && (
-      <CategoriesListStyled>
-        {allCategories.map((item, index) => (
-          <li
-            key={index}
-            className={
-              router.query.category == item.slug ? 'activeCategory' : null
-            }
-          >
-            <Link href={'/blog/' + item.slug}>
-              <a>{item.name}</a>
-            </Link>
-          </li>
-        ))}
-      </CategoriesListStyled>
-    )
+    <CategoriesStyled>
+      {allCategories.map((item, index) => (
+        <li
+          key={index}
+          className={
+            router.query.category == item.slug ? 'activeCategory' : null
+          }
+        >
+          <Link href={'/blog/' + item.slug}>
+            <a>{item.name}</a>
+          </Link>
+        </li>
+      ))}
+    </CategoriesStyled>
   );
 };
 
-const CategoriesListStyled = styled.ul`
+const CategoriesStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
   max-width: 70%;
@@ -75,4 +65,4 @@ const CategoriesListStyled = styled.ul`
   }
 `;
 
-export default CategoriesList;
+export default Categories;

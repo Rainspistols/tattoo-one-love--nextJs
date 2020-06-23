@@ -32,4 +32,5 @@ export default {
   },
 
   mediaDesktop: '@media (min-width: 1280px)',
+  MEDIA_BEFORE_DESKTOP: '@media(max-width: 1279px)',
 };

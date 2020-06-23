@@ -4,7 +4,7 @@ import { extractCritical } from 'emotion-server';
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
-    const styles = extractCritical(initialProps.html)
+    const styles = extractCritical(initialProps.html);
     return {
       ...initialProps,
       styles: (
@@ -16,7 +16,7 @@ class MyDocument extends Document {
           />
         </>
       ),
-    }
+    };
   }
 
   render() {
@@ -29,7 +29,7 @@ class MyDocument extends Document {
             content='initial-scale=1.0, width=device-width'
           />
           <link
-            href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'
             rel='stylesheet'
           />
           <link rel='icon' href='/favicon.ico' />

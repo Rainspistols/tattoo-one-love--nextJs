@@ -5,7 +5,7 @@ import CategoriesList from './CategoriesList';
 
 const BlogPostCard = ({ post, API_URL }) => {
   return (
-    <BlogPostCardStyled>
+    <BlogPostCardStyled className='BlogPostCard'>
       <Link
         href='/blog/[category]/[slug]'
         as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
@@ -33,7 +33,7 @@ const BlogPostCard = ({ post, API_URL }) => {
   );
 };
 
-const BlogPostCardStyled = styled.li`
+const BlogPostCardStyled = styled.div`
   .imgLink {
     display: block;
     margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
