@@ -25,7 +25,11 @@ const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
     stateWidth < 1280 ? <Subscribe API_URL={API_URL} /> : null;
 
   return (
-    <Main headTitle='Tattoo one love (Tattoo salon in Warsaw) official page'>
+    <Main
+      headTitle='Wyjątkowe Studio Tatuażu Warszawa Wola | Tattoo One Love'
+      metaDescr='Studio tatuażu (Warszawa), które dziara, edukuje i pomaga w wyrażaniu siebie. Kliknij i dowiedz się, jak i gdzie zrobić sobie tatuaż, który zmieni twoje życie.'
+      metaKeywords='studio tatuażu warszawa'
+    >
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
       <Hero />
       <AboutUsSection />
@@ -43,7 +47,7 @@ export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
   const fiveLastPosts = await strapiService.get5LastPosts();
-  
+
   const { API_URL } = process.env;
 
   return {

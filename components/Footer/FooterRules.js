@@ -4,14 +4,14 @@ import FooterTitle from './FooterTitle';
 
 const FooterRules = () => {
   const rulesListData = [
-    { title: 'Politics', href: '/politics' },
-    { title: 'Politics', href: '/politics' },
-    { title: 'User agreement', href: '/user-agreement' },
+    { title: 'Regulamin', href: '/regulamin' },
+    { title: 'Polityka prywatności', href: '/polityka-prywatnosci' },
+    { title: 'Polityka Cookies', href: '/polityka-cookies' },
   ];
 
   return (
     <FooterRulesStyled>
-      <FooterTitle text='Rules ' />
+      <FooterTitle text='Polityki' />
       <ul>
         {rulesListData.map(({ title, href }, index) => (
           <li key={index}>

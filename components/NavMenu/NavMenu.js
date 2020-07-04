@@ -9,10 +9,10 @@ import Contact from '../ContactsBlock/Contact';
 
 const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
   const menuLinksData = [
-    { title: 'home', href: '/' },
+    { title: 'Główna', href: '/' },
     { title: 'Blog', href: '/blog' },
-    { title: 'About us', href: '/#about-us' },
-    { title: 'Works', href: '/#works' },
+    { title: 'O nac', href: '/#about-us' },
+    { title: 'Prace', href: '/#works' },
   ];
 
   const socialsListData = [

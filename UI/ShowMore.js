@@ -4,7 +4,7 @@ import Link from 'next/link';
 const ShowMore = () => {
   return (
     <Link href='/blog'>
-      <ShowMoreStyled>Show more</ShowMoreStyled>
+      <ShowMoreStyled>Pokaż więcej</ShowMoreStyled>
     </Link>
   );
 };

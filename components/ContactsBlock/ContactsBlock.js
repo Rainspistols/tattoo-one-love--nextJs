@@ -19,7 +19,7 @@ const ContactsBlock = () => {
       <Container>
         <ContactsBlockStyled>
           <div className='Contact__wrap'>
-            <h2>Contact</h2>
+            <h2>Kontakt</h2>
             <Contact iconsColor='#F11E9C' textColor='#6C737E' />
           </div>
 

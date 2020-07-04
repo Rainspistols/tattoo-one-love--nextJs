@@ -6,13 +6,12 @@ const FooterCopyRight = () => {
     <FooterCopyRightStyled>
       <div className='row'>
         <FaCopyright />
-        <p>2020 tattoo one love</p>
+        <p>Tattoo One Love All Rights Reserved</p>
       </div>
 
       <p className='smallText'>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et
+        Kopiowanie jakiejkolwiek informacji, artykułów lub materiałów jest
+        zabronione.
       </p>
     </FooterCopyRightStyled>
   );
@@ -51,7 +50,7 @@ const FooterCopyRightStyled = styled.div`
     .row {
       margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(16)};
       text-align: center;
-      
+
       p {
         font-size: ${(props) => props.theme.pixelToVieWidth1920(20)};
         line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};

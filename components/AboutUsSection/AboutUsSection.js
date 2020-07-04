@@ -7,25 +7,29 @@ const AboutUsSection = () => {
   return (
     <AboutUsSectionStyled id='about-us'>
       <Container>
-        <SectionTitle text='About Us' />
-        <h3 className='title'>Tattoo one love the best salon in the Warsaw</h3>
+        <SectionTitle text='O nas' />
+        <h3 className='title'>Wyjątkowe studio tatuażu na Woli</h3>
         <picture>
           <source media='(min-width: 1280px)' srcSet={imgDesktop} />
           <source media='(min-width: 768px)' srcSet={imgTablet} />
           <img src={img} alt='' />
         </picture>
         <p className='text'>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-          et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-          takimata sanctus est Lorem ipsum dolor sit amet Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          invidunt ut labore et dolore magna aliquyam …
+          Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka
+          kiedykolwiek nas spotkała. Dlatego, kiedy wybierasz nasze studio
+          tatuażu, jesteśmy z tobą od etapu pomysłu do momentu pełnego wygojenia
+          tatuażu. W Tattoo One Love przechodzimy przez cały proces razem, żeby
+          stworzyć idealne warunki dla tatuażu twoich marzeń. Dlatego też
+          korzystamy z{' '}
+          <strong>najlepszego hipoalergicznego tuszu na rynku</strong> (World
+          Famous, Eternal Ink) i <strong>igieł najwyższej jakości</strong>{' '}
+          (Cheyenne, Kwadron). Co więcej,{' '}
+          <strong>
+            indywidualnie dobieramy sposób gojenia tatuażu pod każdego klienta
+          </strong>{' '}
+          (zależnie od typu skóry, warunków w pracy i w domu). Wysokie standardy
+          higieny i sterylności są zawsze na pierwszym miejscu. Przyjdź do
+          naszego studia i się o tym przekonaj.
         </p>
       </Container>
     </AboutUsSectionStyled>
@@ -53,6 +57,7 @@ const AboutUsSectionStyled = styled.section`
     line-height: ${(props) => props.theme.pixelToVieWidth(20)};
     font-weight: 400;
     color: ${(props) => props.theme.colors.darkBlue};
+    text-align: justify;
   }
 
   /* MEDIA */

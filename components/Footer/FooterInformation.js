@@ -4,15 +4,15 @@ import Link from 'next/link';
 
 const FooterInformation = () => {
   const informationListData = [
-    { title: 'Home', href: '/' },
+    { title: 'Głowna', href: '/' },
     { title: 'Blog', href: '/blog' },
-    { title: 'Contact', href: '/contact' },
+    { title: 'Kontakt', href: '/contact' },
     { title: 'Sitemap', href: '/sitemap' },
   ];
 
   return (
     <FooterInformationStyled>
-      <FooterTitle text='Information' />
+      <FooterTitle text='Informacja' />
       <ul>
         {informationListData.map(({ title, href }, index) => (
           <li key={index}>

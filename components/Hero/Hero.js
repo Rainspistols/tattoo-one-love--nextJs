@@ -8,7 +8,7 @@ const Hero = () => {
       <Container>
         <img className='logo' src={logo} alt='one love tattoo logo' />
         <p className='text1'>Bodies are not born. Bodies are made.</p>
-        <p className='text2'>ECO FRIENDLY SALON IN THE HEART OF WARSAW</p>
+        <p className='text2'>Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</p>
       </Container>
     </StyledHero>
   );

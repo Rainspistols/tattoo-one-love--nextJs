@@ -15,11 +15,11 @@ const NavigationDesktop = () => {
   }, [width]);
 
   const menuLinksData = [
-    { title: 'Home', href: '/' },
+    { title: 'Główna', href: '/' },
     { title: 'Blog', href: '/blog' },
-    { title: 'About us', href: '/#about-us' },
-    { title: 'Contact', href: '/#contact' },
-    { title: 'Works', href: '/#works' },
+    { title: 'O nas', href: '/#about-us' },
+    { title: 'Kontakt', href: '/#contact' },
+    { title: 'Prace', href: '/#works' },
   ];
 
   return (

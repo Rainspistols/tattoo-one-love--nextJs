@@ -28,7 +28,7 @@ const Footer = () => {
           <FooterRules />
 
           <div className='contact_wrap'>
-            <FooterTitle text='contact' />
+            <FooterTitle text='Kontakt' />
             <Contact iconsColor='white' textColor='#E8ECF1' />
           </div>
 

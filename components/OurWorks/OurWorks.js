@@ -41,7 +41,7 @@ const OurWorks = ({ ourWorks }) => {
   return (
     <OurWorksStyled id='works'>
       <Container>
-        <SectionTitle text='our works' />
+        <SectionTitle text='Nasze pracy' />
       </Container>
 
       <Slider {...sliderSetting}>

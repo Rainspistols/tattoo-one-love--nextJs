@@ -23,9 +23,7 @@ const FollowUs = () => {
       <Container>
         <Line />
         <section>
-          <h3>
-            Follow us <span className='underline'>@tattoo</span>
-          </h3>
+          <h3>Dołącz do nas</h3>
           <ul>
             {socialsData.map(({ link, className, icon }, index) => (
               <li key={index}>
@@ -58,11 +56,6 @@ const FollowUsStyled = styled.div`
     color: ${(props) => props.theme.colors.grey4};
     margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
     text-align: center;
-
-    .underline {
-      border-bottom: ${(props) => props.theme.pixelToVieWidth(1)} solid
-        ${(props) => props.theme.colors.pink};
-    }
   }
 
   ul {
@@ -95,10 +88,6 @@ const FollowUsStyled = styled.div`
       margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(42)};
       text-transform: uppercase;
       font-weight: 500;
-
-      .underline {
-        border: none;
-      }
     }
 
     ul {

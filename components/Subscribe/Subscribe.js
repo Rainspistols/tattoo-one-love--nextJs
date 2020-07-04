@@ -27,7 +27,7 @@ const Subscribe = ({ API_URL }) => {
     <>
       <fieldset>
         <label className='title' htmlFor='email'>
-          Subscribe
+          Newsletter
         </label>
         <input
           className='email'
@@ -39,7 +39,7 @@ const Subscribe = ({ API_URL }) => {
         />
       </fieldset>
 
-      <input type='submit' value='subscribe' className='submit' />
+      <input type='submit' value='Zapisz się' className='submit' />
     </>
   );
 

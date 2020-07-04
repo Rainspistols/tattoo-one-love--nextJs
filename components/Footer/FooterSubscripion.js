@@ -70,7 +70,7 @@ const FooterSubscripion = () => {
 
   return (
     <FooterSubscripionStyled className='FooterSubscripion'>
-      <FooterTitle text='Subscription ' />
+      <FooterTitle text='Social media' />
       <ul>
         {subscriptionListData.map(({ title, href, icon }, index) => (
           <li key={index}>

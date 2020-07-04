@@ -1,12 +1,20 @@
 import Main from '../../../../Layouts/Main/Main';
 import StrapiService from '../../../../components/StrapiService/StrapiService';
 import Post from '../../../../components/Post';
+import { useState, useEffect } from 'react';
 
 const BlogPost = (props) => {
+  const [postTitle, setPostTitle] = useState(null);
+  useEffect(() => {
+    setPostTitle(props.postBySlug.title);
+  }, [props.postBySlug]);
+
   return (
-    <Main headTitle={'Tattoo one love | ' + props.postBySlug.title}>
-      <Post {...props} />
-    </Main>
+    postTitle && (
+      <Main headTitle={'Tattoo one love | ' + props.postBySlug.title}>
+        <Post {...props} />
+      </Main>
+    )
   );
 };
 
