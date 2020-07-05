@@ -1,10 +1,11 @@
+import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import useWindowDimensions from '../../../hooks/useWindowDimension';
+
 import BlogPostCard from '../BlogPostCard';
 import Container from '../../../Layouts/Container/Container';
 import Line from '../../../UI/Line';
-import { useState, useEffect } from 'react';
 import ShowMorePosts from '../../../UI/ShowMorePosts';
-import useWindowDimensions from '../../../hooks/useWindowDimension';
 import CategoriesAndFilters from '../../CategoriesAndFilters';
 
 const BlogPostsList = ({
@@ -14,10 +15,15 @@ const BlogPostsList = ({
   activeCategory,
   allCategories,
 }) => {
+  const { width } = useWindowDimensions();
+
   const [postsAmount, setPostsAmount] = useState(10);
   const [posts, setPosts] = useState(null);
-  const { width } = useWindowDimensions();
   const [isShowMoreVisible, setShowMoreVisible] = useState(false);
+
+  const addTenPosts = () => {
+    setPostsAmount(postsAmount + 10);
+  };
 
   useEffect(() => {
     const sortPosts = () => {
@@ -72,9 +78,7 @@ const BlogPostsList = ({
           </ul>
         )}
 
-        {isShowMoreVisible && (
-          <ShowMorePosts onClick={() => setPostsAmount(postsAmount + 10)} />
-        )}
+        {isShowMoreVisible && <ShowMorePosts onClick={addTenPosts} />}
       </Container>
     </BlogPostsListStyled>
   );

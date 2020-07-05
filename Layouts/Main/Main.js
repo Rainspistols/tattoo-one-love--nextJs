@@ -5,7 +5,7 @@ export default ({ children, headTitle, metaDescr = '', metaKeywords = '' }) => (
   <>
     <Head>
       <meta charSet='utf-8' />
-      <meta http-equiv='content-language' content='pl-PL' />
+      <meta httpEquiv='content-language' content='pl-PL' />
       <meta name='description' content={metaDescr} />
       <meta name='keywords' content={metaKeywords} />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
-import { img, imgTablet, imgDesktop } from './images/';
 import Container from '../../Layouts/Container/Container';
+import { img, imgTablet, imgDesktop } from './images/';
 
 const AboutUsSection = () => {
   return (

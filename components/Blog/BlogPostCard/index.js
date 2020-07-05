@@ -4,14 +4,17 @@ import Container from '../../../Layouts/Container/Container';
 import CategoriesList from './CategoriesList';
 
 const BlogPostCard = ({ post, API_URL }) => {
+  const categorySlug = post.post_categories[0].slug;
+  const imgUrl = API_URL + post.img.url;
+
   return (
     <BlogPostCardStyled className='BlogPostCard'>
       <Link
         href='/blog/[category]/[slug]'
-        as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
+        as={`/blog/${categorySlug}/${post.slug}`}
       >
         <a className='imgLink'>
-          <img src={API_URL + post.img.url} alt='' />
+          <img src={imgUrl} alt='' />
         </a>
       </Link>
 
@@ -22,7 +25,7 @@ const BlogPostCard = ({ post, API_URL }) => {
           <h3 className='post__title'>
             <Link
               href='/blog/[category]/[slug]'
-              as={`/blog/${post.post_categories[0].slug}/${post.slug}`}
+              as={`/blog/${categorySlug}/${post.slug}`}
             >
               <a>{post.title}</a>
             </Link>
