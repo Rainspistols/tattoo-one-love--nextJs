@@ -4,10 +4,10 @@ import logo from './images/logo--black.svg';
 
 const Logo = () => {
   return (
-    <StyledLogo>
+    <StyledLogo className='Logo'>
       <Link href='/'>
         <a>
-          <img src={logo} alt="Site's logo" />
+          <img src={logo} alt='Tattoo one love logo' />
         </a>
       </Link>
     </StyledLogo>

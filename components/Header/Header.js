@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
-
+import { useState, useRef } from 'react';
+// Components
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import Container from '../../Layouts/Container/Container';
 import ImportantMessage from '../ImportantMessage/ImportantMessage';
-import navigationIcon from './images/navigationIcon.svg';
 import NavMenu from '../NavMenu/NavMenu';
-import searchIcon from './images/searchIcon.svg';
 import NavigationDesktop from '../NavigationDesktop/NavigationDesktop';
 import CookieAgreement from '../CookieAgreement/CookieAgreement';
-
-import { useState, useRef } from 'react';
+import HeaderSearchBtn from './HeaderSearchBtn';
+// Icons
+import navigationIcon from './images/navigationIcon.svg';
 
 const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
   const [isMenuActive, setMenuActive] = useState(false);
@@ -28,19 +28,11 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
           <div className='wrap'>
             {isSearchActive ? null : (
               <>
-                <div className='logoBox'>
-                  <Logo />
-                </div>
+                <Logo />
 
                 <NavigationDesktop />
 
-                <div className='searchBox'>
-                  <img
-                    src={searchIcon}
-                    alt='search'
-                    onClick={setSearchActive.bind(this, true)}
-                  />
-                </div>
+                <HeaderSearchBtn setSearchActive={setSearchActive} />
               </>
             )}
 
@@ -84,74 +76,54 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
 };
 
 const HeaderStyled = styled.header`
-  background: ${(props) => props.theme.colors.pinkGradient};
+  background: ${({ theme }) => theme.colors.pinkGradient};
   height: 100%;
 
   .navigation {
     .wrap {
       display: flex;
       align-items: center;
-      height: ${(props) => props.theme.pixelToVieWidth(45)};
+      height: ${({ theme }) => theme.pixelToVieWidth(45)};
     }
-  }
-
-  .logoBox {
-    height: 100%;
   }
 
   .navigationBox {
     margin-right: 0;
-    margin-left: ${(props) => props.theme.pixelToVieWidth(25)};
+    margin-left: ${({ theme }) => theme.pixelToVieWidth(25)};
     display: flex;
 
     .menuButton {
       border: none;
       background: transparent;
       cursor: pointer;
-      width: ${(props) => props.theme.pixelToVieWidth(40)};
+      width: ${({ theme }) => theme.pixelToVieWidth(40)};
     }
 
     .menuIcon {
-      width: ${(props) => props.theme.pixelToVieWidth(40)};
+      width: ${({ theme }) => theme.pixelToVieWidth(40)};
     }
   }
 
   .navigationBox.activeSearch {
     margin-left: 0;
-    margin-right: ${(props) => props.theme.pixelToVieWidth(8)};
+    margin-right: ${({ theme }) => theme.pixelToVieWidth(8)};
   }
 
-  .searchBox {
-    margin-right: 0;
-    margin-left: auto;
-
-    img {
-      width: ${(props) => props.theme.pixelToVieWidth(24)};
-      cursor: pointer;
-    }
-  }
-
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     .navigation {
       .wrap {
         display: flex;
         align-items: center;
-        height: ${(props) => props.theme.pixelToVieWidth1920(94)};
+        height: ${({ theme }) => theme.pixelToVieWidth1920(94)};
       }
+    }
+
+    .Logo {
+      margin-right: ${({ theme }) => theme.pixelToVieWidth1920(121)};
     }
 
     .navigationBox {
       display: none;
-    }
-
-    .searchBox {
-      img {
-        width: ${(props) => props.theme.pixelToVieWidth1920(20)};
-      }
-    }
-
-    .logoBox {
-      margin-right: ${(props) => props.theme.pixelToVieWidth1920(106)};
     }
   }
 `;

@@ -56,19 +56,19 @@ const SearchStyled = styled.div`
     display: block;
     height: 100%;
     box-sizing: border-box;
-    width: calc(100% + ${(props) => props.theme.pixelToVieWidth(20)});
-    padding: ${(props) => props.theme.pixelToVieWidth(17)}
-      ${(props) => props.theme.pixelToVieWidth(100)}
-      ${(props) => props.theme.pixelToVieWidth(17)}
-      ${(props) => props.theme.pixelToVieWidth(17)};
-    font-size: ${(props) => props.theme.pixelToVieWidth(14)};
+    width: calc(100% + ${({ theme }) => theme.pixelToVieWidth(20)});
+    padding: ${({ theme }) => theme.pixelToVieWidth(17)}
+      ${({ theme }) => theme.pixelToVieWidth(100)}
+      ${({ theme }) => theme.pixelToVieWidth(17)}
+      ${({ theme }) => theme.pixelToVieWidth(17)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
     border: 0;
-    border-bottom: ${(props) => props.theme.pixelToVieWidth(1)} solid
-      ${(props) => props.theme.colors.pink};
-    color: ${(props) => props.theme.colors.grey4};
+    border-bottom: ${({ theme }) => theme.pixelToVieWidth(1)} solid
+      ${({ theme }) => theme.colors.pink};
+    color: ${({ theme }) => theme.colors.grey4};
     ::placeholder {
-      font-size: ${(props) => props.theme.pixelToVieWidth(14)};
-      color: ${(props) => props.theme.colors.grey3};
+      font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+      color: ${({ theme }) => theme.colors.grey3};
     }
   }
 
@@ -76,9 +76,9 @@ const SearchStyled = styled.div`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: ${(props) => props.theme.pixelToVieWidth(30)};
-    height: ${(props) => props.theme.pixelToVieWidth(30)};
-    border-radius: ${(props) => props.theme.pixelToVieWidth(3)};
+    width: ${({ theme }) => theme.pixelToVieWidth(30)};
+    height: ${({ theme }) => theme.pixelToVieWidth(30)};
+    border-radius: ${({ theme }) => theme.pixelToVieWidth(3)};
     border: none;
     display: flex;
     align-items: center;
@@ -87,42 +87,42 @@ const SearchStyled = styled.div`
   }
 
   .btn-close {
-    background: ${(props) => props.theme.colors.pink};
+    background: ${({ theme }) => theme.colors.pink};
     right: 0;
   }
 
   .btn-search {
-    background: ${(props) => props.theme.colors.grey2};
-    right: ${(props) => props.theme.pixelToVieWidth(36)};
+    background: ${({ theme }) => theme.colors.grey2};
+    right: ${({ theme }) => theme.pixelToVieWidth(36)};
   }
 
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     input {
       padding: 0;
-      border-bottom: ${(props) => props.theme.pixelToVieWidth1920(2)} solid
-        ${(props) => props.theme.colors.pink};
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(25)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
-      padding: ${(props) => props.theme.pixelToVieWidth1920(35)}
-        ${(props) => props.theme.pixelToVieWidth1920(30)};
+      border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(2)} solid
+        ${({ theme }) => theme.colors.pink};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(25)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+      padding: ${({ theme }) => theme.pixelToVieWidth1920(35)}
+        ${({ theme }) => theme.pixelToVieWidth1920(30)};
       width: 100%;
       ::placeholder {
-        font-size: ${(props) => props.theme.pixelToVieWidth1920(25)};
-        line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(25)};
+        line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
       }
     }
     .btn {
-      width: ${(props) => props.theme.pixelToVieWidth1920(70)};
-      height: ${(props) => props.theme.pixelToVieWidth1920(70)};
+      width: ${({ theme }) => theme.pixelToVieWidth1920(70)};
+      height: ${({ theme }) => theme.pixelToVieWidth1920(70)};
     }
 
     .btn-close {
-      right: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      right: ${({ theme }) => theme.pixelToVieWidth1920(10)};
     }
 
     .btn-search {
-      right: ${(props) => props.theme.pixelToVieWidth1920(90)};
+      right: ${({ theme }) => theme.pixelToVieWidth1920(90)};
     }
   }
 `;
