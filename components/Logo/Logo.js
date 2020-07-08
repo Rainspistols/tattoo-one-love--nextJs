@@ -15,24 +15,22 @@ const Logo = () => {
 };
 
 const StyledLogo = styled.div`
-  background: ${(props) => props.theme.colors.white};
-  width: ${(props) => props.theme.pixelToVieWidth(98)};
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: ${({ theme }) => theme.colors.white};
+  width: ${({ theme }) => theme.pixelToVieWidth(98)};
+  ${({ theme }) => theme.flexCenter};
   clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
-  height: ${(props) => props.theme.pixelToVieWidth(46)};
+  height: 100%;
 
   img {
-    width: ${(props) => props.theme.pixelToVieWidth(45)};
+    width: ${({ theme }) => theme.pixelToVieWidth(45)};
   }
 
-  ${(props) => props.theme.mediaDesktop} {
-    width: ${(props) => props.theme.pixelToVieWidth1920(174)};
+  ${({ theme }) => theme.mediaDesktop} {
+    width: ${({ theme }) => theme.pixelToVieWidth1920(174)};
     height: 100%;
 
     img {
-      width: ${(props) => props.theme.pixelToVieWidth1920(105)};
+      width: ${({ theme }) => theme.pixelToVieWidth1920(105)};
     }
   }
 `;
