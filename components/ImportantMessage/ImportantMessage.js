@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import Container from '../../Layouts/Container/Container';
-import { IoIosClose } from 'react-icons/io';
 import { useState, useEffect } from 'react';
-import MarkdownView from 'react-showdown';
 import Cookies from 'js-cookie';
+// Components
+import Container from '../../Layouts/Container/Container';
+
+import { IoIosClose } from 'react-icons/io';
 
 const ImportantMessage = ({ importantMessageJson }) => {
   const [imIsVisible, setImIsVisible] = useState(true);
@@ -30,10 +31,8 @@ const ImportantMessage = ({ importantMessageJson }) => {
       <ImportantMessageStyled>
         <h2 className='visually-hidden'>important message</h2>
         <Container>
-          <Link href={importantMessageJson.link}>
-            <a>
-              <MarkdownView markdown={importantMessageJson.text} />
-            </a>
+          <Link href={link}>
+            <a>{text}</a>
           </Link>
           <button onClick={onClose}>
             <IoIosClose />
@@ -45,30 +44,28 @@ const ImportantMessage = ({ importantMessageJson }) => {
 };
 
 const ImportantMessageStyled = styled.section`
-  background: ${(props) => props.theme.colors.darkBlue};
-  color: ${(props) => props.theme.colors.white};
-  padding: ${(props) => props.theme.pixelToVieWidth(5)} 0;
+  background: ${({ theme }) => theme.colors.darkBlue};
+  color: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.pixelToVieWidth(5)} 0;
 
   .Container {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    ${({ theme }) => theme.flexBetween}
     box-sizing: border-box;
   }
 
   a {
     cursor: pointer;
-    padding-right: ${(props) => props.theme.pixelToVieWidth(24)};
-    font-size: ${(props) => props.theme.pixelToVieWidth(10)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(15)};
+    padding-right: ${({ theme }) => theme.pixelToVieWidth(24)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(10)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(15)};
   }
 
   button {
     cursor: pointer;
     border: none;
     background: transparent;
-    width: ${(props) => props.theme.pixelToVieWidth(30)};
+    width: ${({ theme }) => theme.pixelToVieWidth(30)};
 
     svg {
       width: 100%;
@@ -78,18 +75,18 @@ const ImportantMessageStyled = styled.section`
     }
   }
 
-  ${(props) => props.theme.mediaDesktop} {
-    padding: ${(props) => props.theme.pixelToVieWidth1920(7)} 0;
+  ${({ theme }) => theme.mediaDesktop} {
+    padding: ${({ theme }) => theme.pixelToVieWidth1920(7)} 0;
 
     a {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(26)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(26)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
       text-align: center;
     }
 
     button {
       svg {
-        width: ${(props) => props.theme.pixelToVieWidth1920(40)};
+        width: ${({ theme }) => theme.pixelToVieWidth1920(40)};
         height: auto;
       }
     }
