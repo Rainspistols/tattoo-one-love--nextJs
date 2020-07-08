@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const ShowMorePosts = ({ onClick }) => {
   return (
-    <ShowMorePostsStyled onClick={() => onClick()} className='ShowMorePosts'>
+    <ShowMorePostsStyled onClick={onClick.bind(this)} className='ShowMorePosts'>
       Pokaż więcej
     </ShowMorePostsStyled>
   );

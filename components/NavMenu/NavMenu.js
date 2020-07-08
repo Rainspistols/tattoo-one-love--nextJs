@@ -39,7 +39,7 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
               className='closeIcon'
               src={closeIcon}
               alt='close menu'
-              onClick={() => onCloseMenu()}
+              onClick={onCloseMenu.bind(this)}
             />
           </button>
         </div>
@@ -49,7 +49,7 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
         <ul className='menuLinks'>
           {menuLinksData.map(({ title, href, className }, index) => (
             <li
-              onClick={() => onMenuItem()}
+              onClick={onMenuItem.bind(this)}
               key={index}
               className={className}
               style={{
@@ -69,7 +69,7 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
           <h3 className='menu-title'>Blog categories</h3>
           <ul className='categories'>
             {categories.map((category) => (
-              <li key={category.id} onClick={() => onCategory()}>
+              <li key={category.id} onClick={onCategory.bind(this)}>
                 <CategoryBtn text={category.name} slug={category.slug} />
               </li>
             ))}

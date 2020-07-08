@@ -8,16 +8,16 @@ import Cookies from 'js-cookie';
 
 const ImportantMessage = ({ importantMessageJson }) => {
   const [imIsVisible, setImIsVisible] = useState(true);
+  const { text, link } = importantMessageJson;
 
   useEffect(() => {
-    Cookies.get('isImportantMessageDisabled') ||
-    importantMessageJson.text.length === 0
+    Cookies.get('isImportantMessageDisabled') || text.length === 0
       ? setImIsVisible(false)
       : setImIsVisible(true);
   }, [importantMessageJson]);
 
   const onClose = () => {
-    setClosedState(true);
+    setImIsVisible(false);
     document.cookie = `isImportantMessageDisabled=true; expires=${countDateExpire()}`;
   };
 
@@ -35,7 +35,7 @@ const ImportantMessage = ({ importantMessageJson }) => {
               <MarkdownView markdown={importantMessageJson.text} />
             </a>
           </Link>
-          <button onClick={() => onClose()}>
+          <button onClick={onClose}>
             <IoIosClose />
           </button>
         </Container>

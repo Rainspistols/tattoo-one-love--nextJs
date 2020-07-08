@@ -17,7 +17,7 @@ const Search = ({ onCloseSearch, onSearchToGo, onSubmitSearch }) => {
 
   return (
     <SearchStyled className='Search'>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form onSubmit={onSubmit}>
         <input
           type='text'
           placeholder='Enter the search key-word'
@@ -29,9 +29,7 @@ const Search = ({ onCloseSearch, onSearchToGo, onSubmitSearch }) => {
         <Link href='/blog/search-results'>
           <a
             className='btn-search btn'
-            onClick={() => {
-              onSearchToGo(inputRef);
-            }}
+            onClick={onSearchToGo.bind(this, inputRef)}
           >
             <img src={search} alt='search' />
           </a>

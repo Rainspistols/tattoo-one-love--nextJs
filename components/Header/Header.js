@@ -38,7 +38,7 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
                   <img
                     src={searchIcon}
                     alt='search'
-                    onClick={() => setSearchActive(true)}
+                    onClick={setSearchActive.bind(this, true)}
                   />
                 </div>
               </>
@@ -61,9 +61,9 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
 
               {isMenuActive ? (
                 <NavMenu
-                  onCloseMenu={() => setMenuActive(false)}
-                  onMenuItem={() => setMenuActive(false)}
-                  onCategory={() => setMenuActive(false)}
+                  onCloseMenu={setMenuActive.bind(this, false)}
+                  onMenuItem={setMenuActive.bind(this, false)}
+                  onCategory={setMenuActive.bind(this, false)}
                   categories={categories}
                 />
               ) : null}
@@ -72,8 +72,8 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
             {isSearchActive ? (
               <Search
                 onSearchToGo={onSearchToGo}
-                onCloseSearch={() => setSearchActive(false)}
-                onSubmitSearch={() => setSearchActive(false)}
+                onCloseSearch={setSearchActive.bind(this, false)}
+                onSubmitSearch={setSearchActive.bind(this, false)}
               />
             ) : null}
           </div>
