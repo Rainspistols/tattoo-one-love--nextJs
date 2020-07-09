@@ -4,7 +4,7 @@ import Main from '../Layouts/Main/Main';
 // Components
 import OurWorks from '../components/OurWorks/OurWorks';
 import Hero from '../components/Hero/Hero';
-import AboutUsSection from '../components/AboutUsSection/AboutUsSection';
+import AboutUsSection from '../components/AboutUsSection';
 import FollowUs from '../components/FollowUs/FollowUs';
 import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';

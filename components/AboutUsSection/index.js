@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
 import Container from '../../Layouts/Container/Container';
-import { img, imgTablet, imgDesktop } from './images/';
+import { img, imgTablet, imgDesktop } from './images';
 
 const AboutUsSection = () => {
   return (
@@ -37,51 +37,51 @@ const AboutUsSection = () => {
 };
 
 const AboutUsSectionStyled = styled.section`
-  padding: ${(props) => props.theme.pixelToVieWidth(50)} 0;
+  padding: ${({ theme }) => theme.pixelToVieWidth(50)} 0;
 
   .title {
     font-weight: 700;
-    font-size: ${(props) => props.theme.pixelToVieWidth(20)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(20)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
     padding-right: 40%;
-    color: ${(props) => props.theme.colors.darkBlue};
+    color: ${({ theme }) => theme.colors.darkBlue};
   }
 
   img {
     width: 100%;
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(25)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(25)};
   }
 
   .text {
-    font-size: ${(props) => props.theme.pixelToVieWidth(13)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
     font-weight: 400;
-    color: ${(props) => props.theme.colors.darkBlue};
+    color: ${({ theme }) => theme.colors.darkBlue};
     text-align: justify;
   }
 
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
-    font-size: ${(props) => props.theme.pixelToVieWidth1920(26)};
-    line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
-    padding: 0 ${(props) => props.theme.pixelToVieWidth1920(100)};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(100)};
+  ${({ theme }) => theme.mediaDesktop} {
+    font-size: ${({ theme }) => theme.pixelToVieWidth1920(26)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+    padding: 0 ${({ theme }) => theme.pixelToVieWidth1920(100)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(100)};
 
     > .Container {
-      padding-right: ${(props) => props.theme.pixelToVieWidth1920(650)};
+      padding-right: ${({ theme }) => theme.pixelToVieWidth1920(650)};
       box-sizing: border-box;
       position: relative;
     }
 
     .title {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(34)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(40)};
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(20)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(34)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(40)};
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(20)};
       padding-right: 0;
     }
 
     img {
-      width: ${(props) => props.theme.pixelToVieWidth1920(515)};
+      width: ${({ theme }) => theme.pixelToVieWidth1920(515)};
       margin-bottom: 0;
     }
 
@@ -92,10 +92,10 @@ const AboutUsSectionStyled = styled.section`
     }
 
     .text {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(17)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(28)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(17)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(28)};
       order: 1;
-      padding-right: ${(props) => props.theme.pixelToVieWidth1920(50)};
+      padding-right: ${({ theme }) => theme.pixelToVieWidth1920(50)};
       box-sizing: border-box;
     }
   }

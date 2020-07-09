@@ -35,10 +35,12 @@ MyApp.getInitialProps = async () => {
   const strapiService = new StrapiService();
   const importantMessage = await strapiService.getImportantMessage();
   const postsCategories = await strapiService.getPostsCategories();
+  const { API_URL } = process.env;
 
   return {
     importantMessage,
     postsCategories,
+    API_URL,
   };
 };
 
