@@ -7,15 +7,15 @@ const Categories = ({ allCategories }) => {
 
   return (
     <CategoriesStyled>
-      {allCategories.map((item, index) => (
+      {allCategories.map((category) => (
         <li
-          key={index}
+          key={category.id}
           className={
-            router.query.category == item.slug ? 'activeCategory' : null
+            router.query.category == category.slug ? 'activeCategory' : null
           }
         >
-          <Link href={'/blog/' + item.slug}>
-            <a>{item.name}</a>
+          <Link href='/blog/[category]' as={`/blog/${category.slug}`}>
+            <a>{category.name}</a>
           </Link>
         </li>
       ))}
@@ -29,38 +29,35 @@ const CategoriesStyled = styled.ul`
   max-width: 70%;
 
   li {
-    margin: auto ${(props) => props.theme.pixelToVieWidth1920(13)} auto 0;
+    margin: auto ${({ theme }) => theme.pixelToVieWidth1920(13)} auto 0;
 
     a {
-      padding: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      padding: ${({ theme }) => theme.pixelToVieWidth1920(10)};
       transition: all 0.3s ease-out;
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(18)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(27)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(18)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(27)};
       font-weight: 400;
       text-transform: uppercase;
-      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
-      border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
-        ${(props) => props.theme.colors.grey2};
-      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
+      border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
+      border: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+        ${({ theme }) => theme.colors.grey2};
+      border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
 
-      :hover,
-      :focus {
-        background: ${(props) => props.theme.colors.pink};
-        color: ${(props) => props.theme.colors.white};
-        border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
-          ${(props) => props.theme.colors.pink};
+      :hover {
+        background: ${({ theme }) => theme.colors.pink};
+        color: ${({ theme }) => theme.colors.white};
+        border: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+          ${({ theme }) => theme.colors.pink};
       }
     }
   }
 
   .activeCategory {
-    background: ${(props) => props.theme.colors.whiteGradient};
-    border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
+    background: ${({ theme }) => theme.colors.whiteGradient};
+    border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
 
     a {
-      mix-blend-mode: difference;
       pointer-events: none;
-      border: none;
     }
   }
 `;

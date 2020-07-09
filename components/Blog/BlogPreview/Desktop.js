@@ -8,14 +8,12 @@ const Desktop = ({ fiveLastPosts, API_URL }) => {
     <DesktopStyled>
       <Container>
         <ul className='posts__list'>
-          {fiveLastPosts.map((item, index) => {
-            if (index < 3) {
-              return (
-                <React.Fragment key={index}>
-                  <BlogPostCard post={item} API_URL={API_URL} />
-                </React.Fragment>
-              );
-            }
+          {fiveLastPosts.map((item) => {
+            return (
+              <React.Fragment key={item.id}>
+                <BlogPostCard post={item} API_URL={API_URL} />
+              </React.Fragment>
+            );
           })}
         </ul>
       </Container>
@@ -24,7 +22,7 @@ const Desktop = ({ fiveLastPosts, API_URL }) => {
 };
 
 const DesktopStyled = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(30)};
 
   .posts__list {
     display: flex;

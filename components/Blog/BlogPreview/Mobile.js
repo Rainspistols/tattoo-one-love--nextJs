@@ -3,14 +3,8 @@ import Slider from 'react-slick';
 import BlogPostCard from '../BlogPostCard';
 import Line from '../../../UI/Line';
 import Container from '../../../Layouts/Container/Container';
-import { useState, useEffect } from 'react';
 
 const Mobile = ({ fiveLastPosts, API_URL }) => {
-  const [posts, setPosts] = useState(null);
-  useEffect(() => {
-    setPosts(fiveLastPosts);
-  }, [fiveLastPosts]);
-
   return (
     <MobileStyled>
       <Slider
@@ -21,16 +15,9 @@ const Mobile = ({ fiveLastPosts, API_URL }) => {
         variableWidth={true}
         infinite={true}
       >
-        {posts &&
-          posts.map((post) => (
-            <BlogPostCard
-              imgHeight={210}
-              imgWidth={300}
-              key={post.id}
-              post={post}
-              API_URL={API_URL}
-            />
-          ))}
+        {fiveLastPosts?.map((post) => (
+          <BlogPostCard key={post.id} post={post} API_URL={API_URL} />
+        ))}
       </Slider>
 
       <Container>
@@ -41,10 +28,10 @@ const Mobile = ({ fiveLastPosts, API_URL }) => {
 };
 
 const MobileStyled = styled.section`
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(30)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(30)};
 
   .slick-slide {
-    margin-left: ${(props) => props.theme.pixelToVieWidth(30)};
+    margin-left: ${({ theme }) => theme.pixelToVieWidth(30)};
   }
 `;
 

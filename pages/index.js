@@ -47,7 +47,7 @@ const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
 export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
-  const fiveLastPosts = await strapiService.get5LastPosts();
+  const fiveLastPosts = await strapiService.getNLastPosts(5);
 
   const { API_URL } = process.env;
 

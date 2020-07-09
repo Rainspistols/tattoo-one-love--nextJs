@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import useWindowDimensions from '../../../hooks/useWindowDimension';
-
+// Components
 import BlogPostCard from '../BlogPostCard';
 import Container from '../../../Layouts/Container/Container';
 import Line from '../../../UI/Line';

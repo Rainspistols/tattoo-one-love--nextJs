@@ -1,17 +1,19 @@
 import styled from '@emotion/styled';
+// Components
 import Slider from 'react-slick';
 import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
 import Container from '../../Layouts/Container/Container';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
 
 const OurWorks = ({ ourWorks }) => {
-  const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState();
+  console.log(ourWorks);
 
-  useEffect(() => {
-    setStateWidth(width);
-  }, []);
+  if (process.browser) {
+    useEffect(() => {
+      setStateWidth(window.innerWidth);
+    }, [window.innerWidth]);
+  }
 
   const sliderSetting =
     stateWidth < 1280
@@ -57,27 +59,27 @@ const OurWorks = ({ ourWorks }) => {
 
 const OurWorksStyled = styled.div`
   .slick-slide {
-    margin-left: ${(props) => props.theme.pixelToVieWidth(30)};
+    margin-left: ${({ theme }) => theme.pixelToVieWidth(30)};
   }
 
   .imgWrap {
-    width: ${(props) => props.theme.pixelToVieWidth(250)};
-    height: ${(props) => props.theme.pixelToVieWidth(250)};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(30)};
+    width: ${({ theme }) => theme.pixelToVieWidth(250)};
+    height: ${({ theme }) => theme.pixelToVieWidth(250)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(30)};
     display: block !important;
     img {
       object-fit: cover;
-      width: ${(props) => props.theme.pixelToVieWidth(250)};
-      height: ${(props) => props.theme.pixelToVieWidth(250)};
+      width: ${({ theme }) => theme.pixelToVieWidth(250)};
+      height: ${({ theme }) => theme.pixelToVieWidth(250)};
     }
   }
 
-  ${(props) => props.theme.mediaDesktop} {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(100)};
+  ${({ theme }) => theme.mediaDesktop} {
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(100)};
 
     .slick-slider {
-      background: ${(props) => props.theme.colors.black};
-      padding: ${(props) => props.theme.pixelToVieWidth1920(25)} 0;
+      background: ${({ theme }) => theme.colors.black};
+      padding: ${({ theme }) => theme.pixelToVieWidth1920(25)} 0;
     }
     .slick-slide {
       margin-left: 0;
@@ -88,12 +90,12 @@ const OurWorksStyled = styled.div`
       height: auto;
 
       img {
-        width: ${(props) => props.theme.pixelToVieWidth1920(900)};
-        height: ${(props) => props.theme.pixelToVieWidth1920(900)};
-        border-left: ${(props) => props.theme.pixelToVieWidth1920(36)} solid
-          ${(props) => props.theme.colors.black};
-        border-right: ${(props) => props.theme.pixelToVieWidth1920(36)} solid
-          ${(props) => props.theme.colors.black};
+        width: ${({ theme }) => theme.pixelToVieWidth1920(900)};
+        height: ${({ theme }) => theme.pixelToVieWidth1920(900)};
+        border-left: ${({ theme }) => theme.pixelToVieWidth1920(36)} solid
+          ${({ theme }) => theme.colors.black};
+        border-right: ${({ theme }) => theme.pixelToVieWidth1920(36)} solid
+          ${({ theme }) => theme.colors.black};
       }
     }
   }

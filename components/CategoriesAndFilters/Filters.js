@@ -16,16 +16,16 @@ const FiltersStyled = styled.div`
   margin: 0 0 0 auto;
 
   button {
-    font-size: ${(props) => props.theme.pixelToVieWidth(14)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(21)};
-    padding: ${(props) => props.theme.pixelToVieWidth(10)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(21)};
+    padding: ${({ theme }) => theme.pixelToVieWidth(10)};
     text-transform: uppercase;
     background: transparent;
-    border-right: ${(props) => props.theme.pixelToVieWidth(1)} solid
-      ${(props) => props.theme.colors.grey1};
-    border-left: ${(props) => props.theme.pixelToVieWidth(1)} solid
-      ${(props) => props.theme.colors.grey1};
-    color: ${(props) => props.theme.colors.grey3};
+    border-right: ${({ theme }) => theme.pixelToVieWidth(1)} solid
+      ${({ theme }) => theme.colors.grey1};
+    border-left: ${({ theme }) => theme.pixelToVieWidth(1)} solid
+      ${({ theme }) => theme.colors.grey1};
+    color: ${({ theme }) => theme.colors.grey3};
     border-bottom: 0;
     border-top: 0;
     &:not(:first-of-type) {
@@ -33,17 +33,17 @@ const FiltersStyled = styled.div`
     }
   }
 
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     button {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(18)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(27)};
-      padding: ${(props) => props.theme.pixelToVieWidth1920(25)}
-        ${(props) => props.theme.pixelToVieWidth1920(20)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(18)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(27)};
+      padding: ${({ theme }) => theme.pixelToVieWidth1920(25)}
+        ${({ theme }) => theme.pixelToVieWidth1920(20)};
 
-      border-right: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
-        ${(props) => props.theme.colors.grey2};
-      border-left: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
-        ${(props) => props.theme.colors.grey2};
+      border-right: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+        ${({ theme }) => theme.colors.grey2};
+      border-left: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+        ${({ theme }) => theme.colors.grey2};
     }
   }
 `;

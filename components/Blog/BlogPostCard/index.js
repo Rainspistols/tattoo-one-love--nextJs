@@ -7,10 +7,11 @@ import CategoriesList from './CategoriesList';
 const BlogPostCard = ({ post, API_URL }) => {
   const categorySlug = `/blog/${post.post_categories[0].slug}/${post.slug}`;
   const imgUrl = API_URL + post.img.url;
+  const linkToPost = '/blog/[category]/[slug]';
 
   return (
     <BlogPostCardStyled className='BlogPostCard'>
-      <Link href='/blog/[category]/[slug]' as={categorySlug}>
+      <Link href={linkToPost} as={categorySlug}>
         <a className='imgLink'>
           <img src={imgUrl} alt='' />
         </a>
@@ -21,10 +22,7 @@ const BlogPostCard = ({ post, API_URL }) => {
           <CategoriesList post={post} />
 
           <h3 className='post__title'>
-            <Link
-              href='/blog/[category]/[slug]'
-              as={`/blog/${categorySlug}/${post.slug}`}
-            >
+            <Link href={linkToPost} as={categorySlug}>
               <a>{post.title}</a>
             </Link>
           </h3>
@@ -40,7 +38,8 @@ const BlogPostCardStyled = styled.div`
     margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
 
     img {
-      width: 100%;
+      width: ${({ theme }) => theme.pixelToVieWidth(303)};
+      height: ${({ theme }) => theme.pixelToVieWidth(207)};
       object-fit: cover;
       object-position: top;
       height: ${({ theme }) => theme.pixelToVieWidth(210)};

@@ -5,7 +5,12 @@ import useWindowDimensions from '../../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
 import BlogPostsList from '../../../components/Blog/BlogPostsList/BlogPostsList';
 
-const Category = ({ categoryBySlug, API_URL, activeCategory, allCategories }) => {
+const Category = ({
+  categoryBySlug,
+  API_URL,
+  activeCategory,
+  allCategories,
+}) => {
   const { width } = useWindowDimensions();
   const [isSubscribeVisible, setSubscribeVisible] = useState(false);
 

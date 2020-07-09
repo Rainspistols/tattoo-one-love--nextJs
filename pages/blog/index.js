@@ -19,8 +19,8 @@ const Blog = ({ allPosts, API_URL, allCategories }) => {
     <Main headTitle='Tattoo one love | blog'>
       <h1 className='visually-hidden'>Tattoo one love blog</h1>
       <BlogPostsList
-        postsData={allPosts}
         API_URL={API_URL}
+        postsData={allPosts}
         allCategories={allCategories}
       />
       {isSubscribeVisible ? <Subscribe API_URL={API_URL} /> : null}
@@ -28,7 +28,7 @@ const Blog = ({ allPosts, API_URL, allCategories }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const allPosts = await strapiService.getAllPosts();
   const allCategories = await strapiService.getPostsCategories();

@@ -8,7 +8,9 @@ const Hero = () => {
       <Container>
         <img className='logo' src={logo} alt='one love tattoo logo' />
         <p className='text1'>Bodies are not born. Bodies are made.</p>
-        <p className='text2'>Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</p>
+        <p className='text2'>
+          Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.
+        </p>
       </Container>
     </StyledHero>
   );
@@ -18,54 +20,54 @@ const StyledHero = styled.div`
   background-image: url(${bgMobile});
   background-repeat: no-repeat;
   background-size: cover;
-  color: ${(props) => props.theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
   font-weight: 500;
 
   .logo {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(25)};
-    width: ${(props) => props.theme.pixelToVieWidth(100)};
-    height: ${(props) => props.theme.pixelToVieWidth(100)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(25)};
+    width: ${({ theme }) => theme.pixelToVieWidth(100)};
+    height: ${({ theme }) => theme.pixelToVieWidth(100)};
     margin-left: auto;
     margin-right: auto;
   }
 
   .Container {
-    padding-bottom: ${(props) => props.theme.pixelToVieWidth(57)};
-    padding-top: ${(props) => props.theme.pixelToVieWidth(35)};
+    padding-bottom: ${({ theme }) => theme.pixelToVieWidth(57)};
+    padding-top: ${({ theme }) => theme.pixelToVieWidth(35)};
   }
 
   .text1 {
-    font-size: ${(props) => props.theme.pixelToVieWidth(38)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(50)};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(38)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(50)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(20)};
 
     text-transform: uppercase;
-    padding-left: ${(props) => props.theme.pixelToVieWidth(10)};
-    padding-right: ${(props) => props.theme.pixelToVieWidth(10)};
+    padding-left: ${({ theme }) => theme.pixelToVieWidth(10)};
+    padding-right: ${({ theme }) => theme.pixelToVieWidth(10)};
   }
 
   .text2 {
-    font-size: ${(props) => props.theme.pixelToVieWidth(18)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(18)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
     text-transform: uppercase;
-    padding-left: ${(props) => props.theme.pixelToVieWidth(50)};
-    padding-right: ${(props) => props.theme.pixelToVieWidth(50)};
+    padding-left: ${({ theme }) => theme.pixelToVieWidth(50)};
+    padding-right: ${({ theme }) => theme.pixelToVieWidth(50)};
   }
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     background-image: url(${bgTablet});
-    margin-bottom:  ${(props) => props.theme.pixelToVieWidth1920(134)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(134)};
 
-    ${(props) => props.theme.mediaDesktop} {
+    ${({ theme }) => theme.mediaDesktop} {
       background-image: url(${bgDesktop});
-      padding: ${(props) => props.theme.pixelToVieWidth1920(150)} 0
-        ${(props) => props.theme.pixelToVieWidth1920(150)};
+      padding: ${({ theme }) => theme.pixelToVieWidth1920(150)} 0
+        ${({ theme }) => theme.pixelToVieWidth1920(150)};
 
       .logo {
-        width: ${(props) => props.theme.pixelToVieWidth1920(350)};
-        height: ${(props) => props.theme.pixelToVieWidth1920(350)};
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(50)};
+        width: ${({ theme }) => theme.pixelToVieWidth1920(350)};
+        height: ${({ theme }) => theme.pixelToVieWidth1920(350)};
+        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(50)};
       }
 
       .Container {
@@ -73,14 +75,14 @@ const StyledHero = styled.div`
       }
 
       .text1 {
-        font-size: ${(props) => props.theme.pixelToVieWidth1920(40)};
-        line-height: ${(props) => props.theme.pixelToVieWidth1920(50)};
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(20)};
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(40)};
+        line-height: ${({ theme }) => theme.pixelToVieWidth1920(50)};
+        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(20)};
       }
 
       .text2 {
-        font-size: ${(props) => props.theme.pixelToVieWidth1920(24)};
-        line-height: ${(props) => props.theme.pixelToVieWidth1920(34)};
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(24)};
+        line-height: ${({ theme }) => theme.pixelToVieWidth1920(34)};
       }
     }
   }

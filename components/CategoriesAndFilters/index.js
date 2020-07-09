@@ -1,22 +1,23 @@
 import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
+// Components
 import Categories from './Categories';
 import Filters from './Filters';
-import useWindowDimensions from '../../hooks/useWindowDimension';
-import { useState, useEffect } from 'react';
 import Container from '../../Layouts/Container/Container';
 
 const CategoriesAndFilters = ({ activeCategory, allCategories }) => {
-  const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
   const [isActiveCategoryVisible, setActiveCategoryVisible] = useState(false);
 
-  useEffect(() => {
-    setStateWidth(width);
+  if (process.browser) {
+    useEffect(() => {
+      setStateWidth(window.innerWidth);
 
-    if (width < 1280 && activeCategory) {
-      setActiveCategoryVisible(true);
-    }
-  }, [width, activeCategory]);
+      window.innerWidth < 1280 && activeCategory
+        ? setActiveCategoryVisible(true)
+        : setActiveCategoryVisible(false);
+    }, [window.innerWidth, activeCategory]);
+  }
 
   return (
     <CategoriesAndFiltersStyled className='CategoriesAndFilters'>
@@ -24,6 +25,7 @@ const CategoriesAndFilters = ({ activeCategory, allCategories }) => {
         {isActiveCategoryVisible && (
           <h2 className='activeCategory'>{activeCategory}</h2>
         )}
+
         {stateWidth >= 1280 && <Categories allCategories={allCategories} />}
         <Filters />
       </Container>
@@ -39,10 +41,10 @@ const CategoriesAndFiltersStyled = styled.div`
 
   .activeCategory {
     font-weight: 600;
-    ${(props) => props.theme.flexBetween};
-    font-size: ${(props) => props.theme.pixelToVieWidth(8)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(12)};
-    color: ${(props) => props.theme.colors.grey3};
+    ${({ theme }) => theme.flexBetween};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(8)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(12)};
+    color: ${({ theme }) => theme.colors.grey3};
   }
 
   ${({ theme }) => theme.mediaDesktop} {

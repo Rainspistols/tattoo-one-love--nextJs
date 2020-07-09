@@ -17,7 +17,7 @@ export default class SwapiService {
   };
 
   getPostsCategories = async () => {
-    return await this.getResource(`/post-categories`);
+    return await this.getResource(`/post-categories?_sort=updated_at:DESC`);
   };
 
   getOurWorks = async () => {
@@ -25,12 +25,12 @@ export default class SwapiService {
     return this._transformOurWorks(ourWorks);
   };
 
-  get5LastPosts = async () => {
-    return await this.getResource(`/posts?_limit=5`);
+  getNLastPosts = async (N) => {
+    return await this.getResource(`/posts?_sort=updated_at:DESC&_limit=${N}`);
   };
 
   getAllPosts = async () => {
-    return await this.getResource(`/posts`);
+    return await this.getResource(`/posts?_sort=updated_at:DESC`);
   };
 
   getCategoriesBySlug = async (slug) => {
@@ -45,7 +45,7 @@ export default class SwapiService {
   getRelevantPosts = async (post, postSlug) => {
     const relevantCategories = post[0].post_categories.map((item) => item.slug);
     return await this.getResource(
-      `/posts?post_categories.slug=${relevantCategories[0]}&post_categories.slug=${relevantCategories[1]}&_limit=3&slug_ncontains=${postSlug}`
+      `/posts??_sort=updated_at:DESC&_post_categories.slug=${relevantCategories[0]}&post_categories.slug=${relevantCategories[1]}&_limit=3&slug_ncontains=${postSlug}`
     );
   };
 

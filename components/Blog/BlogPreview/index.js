@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
+// Components
 import Mobile from './Mobile';
 import Desktop from './Desktop';
 import ShowMore from '../../../UI/ShowMore';
 import Container from '../../../Layouts/Container/Container';
-import useWindowDimensions from '../../../hooks/useWindowDimension';
 import SectionTitle from '../../../Layouts/SectionTitle/SectionTitle';
 
 const BlogPreview = ({ fiveLastPosts, API_URL }) => {
-  const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
 
-  useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
+  if (process.browser) {
+    useEffect(() => {
+      setStateWidth(window.innerWidth);
+    }, [window.innerWidth]);
+  }
 
   return (
     <section className='BlogPreview'>

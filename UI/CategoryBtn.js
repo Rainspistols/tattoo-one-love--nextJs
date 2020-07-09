@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const CategoryBtn = ({ text, slug, border = true }) => {
   return (
-    <Link href={'/blog/[slug]'} as={`/blog/${slug}`} passHref>
+    <Link href={'/blog/[category]'} as={`/blog/${slug}`} passHref>
       <CategoryBtnStyled>{text}</CategoryBtnStyled>
     </Link>
   );
@@ -11,21 +11,21 @@ const CategoryBtn = ({ text, slug, border = true }) => {
 
 const CategoryBtnStyled = styled.a`
   color: ${({ theme }) => theme.colors.grey2};
-  border: ${(props) => props.theme.pixelToVieWidth(1)} solid
-    ${(props) => props.theme.colors.grey2};
+  border: ${({ theme }) => theme.pixelToVieWidth(1)} solid
+    ${({ theme }) => theme.colors.grey2};
   text-transform: uppercase;
   font-weight: 400;
-  border-radius: ${(props) => props.theme.pixelToVieWidth(4)};
+  border-radius: ${({ theme }) => theme.pixelToVieWidth(4)};
   display: block;
   ${(theme) => theme.flexCenter};
-  padding: ${(props) => props.theme.pixelToVieWidth(2.5)}
-    ${(props) => props.theme.pixelToVieWidth(22)};
+  padding: ${({ theme }) => theme.pixelToVieWidth(2.5)}
+    ${({ theme }) => theme.pixelToVieWidth(22)};
   box-sizing: border-box;
-  font-size: ${(props) => props.theme.pixelToVieWidth(10)};
-  line-height: ${(props) => props.theme.pixelToVieWidth(12)};
+  font-size: ${({ theme }) => theme.pixelToVieWidth(10)};
+  line-height: ${({ theme }) => theme.pixelToVieWidth(12)};
 
   :not(:last-of-type) {
-    margin-right: ${(props) => props.theme.pixelToVieWidth(15)};
+    margin-right: ${({ theme }) => theme.pixelToVieWidth(15)};
   }
 
   /* MEDIA */
@@ -38,7 +38,7 @@ const CategoryBtnStyled = styled.a`
     border: none;
 
     :not(:last-of-type) {
-      margin: 0 ${(props) => props.theme.pixelToVieWidth1920(20)} 0 0;
+      margin: 0 ${({ theme }) => theme.pixelToVieWidth1920(20)} 0 0;
     }
   }
 `;
