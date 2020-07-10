@@ -12,7 +12,7 @@ const AboutUsSection = () => {
         <picture>
           <source media='(min-width: 1280px)' srcSet={imgDesktop} />
           <source media='(min-width: 768px)' srcSet={imgTablet} />
-          <img src={img} alt='' />
+          <img src={img} alt='Tattoo one love interior' />
         </picture>
         <p className='text'>
           Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka

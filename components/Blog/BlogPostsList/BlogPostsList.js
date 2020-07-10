@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import useWindowDimensions from '../../../hooks/useWindowDimension';
 // Components
 import BlogPostCard from '../BlogPostCard';
 import Container from '../../../Layouts/Container/Container';
@@ -14,48 +13,10 @@ const BlogPostsList = ({
   inputSearchValue,
   activeCategory,
   allCategories,
+  onShowMeroButton,
+  allPostsCount,
+  postsAmount,
 }) => {
-  const { width } = useWindowDimensions();
-
-  const [postsAmount, setPostsAmount] = useState(10);
-  const [posts, setPosts] = useState(null);
-  const [isShowMoreVisible, setShowMoreVisible] = useState(false);
-
-  const addTenPosts = () => {
-    setPostsAmount(postsAmount + 10);
-  };
-
-  useEffect(() => {
-    const sortPosts = () => {
-      const dataWithSearchValue = () =>
-        inputSearchValue &&
-        postsData.filter(
-          (item) =>
-            item.title.toLowerCase().search(inputSearchValue.toLowerCase()) !=
-            -1
-        );
-
-      const data = inputSearchValue ? dataWithSearchValue() : postsData;
-
-      setPosts(
-        data &&
-          data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-      );
-    };
-    const controlShowMoreVisibility = () => {
-      setShowMoreVisible(posts && posts.length > postsAmount ? true : false);
-    };
-
-    sortPosts();
-    controlShowMoreVisibility();
-  }, [inputSearchValue, postsData, width, postsAmount, posts]);
-
-  // const onLastFilter = () => {
-  //   setPosts(
-  //     data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-  //   );
-  // };
-
   return (
     <BlogPostsListStyled>
       <CategoriesAndFilters
@@ -63,22 +24,19 @@ const BlogPostsList = ({
         activeCategory={activeCategory}
       />
       <Container>
-        {posts && (
-          <ul className='blogAllPostsList'>
-            {posts.map((post, index) => {
-              if (index < postsAmount) {
-                return (
-                  <React.Fragment key={index}>
-                    <BlogPostCard post={post} API_URL={API_URL} />
-                    <Line />
-                  </React.Fragment>
-                );
-              }
-            })}
-          </ul>
+        <ul className='blogAllPostsList'>
+          {postsData.map((post, index) => {
+            return (
+              <React.Fragment key={index}>
+                <BlogPostCard post={post} API_URL={API_URL} />
+                <Line />
+              </React.Fragment>
+            );
+          })}
+        </ul>
+        {allPostsCount > postsAmount && (
+          <ShowMorePosts onShowMeroButton={onShowMeroButton} />
         )}
-
-        {isShowMoreVisible && <ShowMorePosts onClick={addTenPosts} />}
       </Container>
     </BlogPostsListStyled>
   );
@@ -86,12 +44,12 @@ const BlogPostsList = ({
 
 const BlogPostsListStyled = styled.section`
   .Line {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(20)};
   }
 
   .BlogPostCard {
     .imgWrap {
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
     }
     > .Container {
       padding: 0;
@@ -99,13 +57,13 @@ const BlogPostsListStyled = styled.section`
   }
 
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     .blogAllPostsList {
       display: flex;
       flex-wrap: wrap;
 
       .BlogPostCard {
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(40)};
+        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(40)};
         .imgWrap {
           margin: 0;
         }
@@ -121,7 +79,7 @@ const BlogPostsListStyled = styled.section`
           .imgLink {
             order: 2;
             width: 80%;
-            height: ${(props) => props.theme.pixelToVieWidth1920(500)};
+            height: ${({ theme }) => theme.pixelToVieWidth1920(500)};
 
             ~ .Container {
               display: flex;
@@ -133,7 +91,7 @@ const BlogPostsListStyled = styled.section`
           }
           .categories {
             padding: 0;
-            margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(25)};
+            margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(25)};
             .CategoryBtn {
               a {
                 margin: 0;

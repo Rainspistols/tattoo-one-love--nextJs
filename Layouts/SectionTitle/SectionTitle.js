@@ -9,16 +9,16 @@ const SectionTitle = ({ text }) => {
 const SectionTitleStyled = styled.h2`
   font-weight: 500;
   text-transform: uppercase;
-  color: ${(props) => props.theme.colors.pink};
-  font-size: ${(props) => props.theme.pixelToVieWidth(18)};
-  line-height: ${(props) => props.theme.pixelToVieWidth(20)};
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+  color: ${({ theme }) => theme.colors.pink};
+  font-size: ${({ theme }) => theme.pixelToVieWidth(18)};
+  line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
 
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
-    font-size: ${(props) => props.theme.pixelToVieWidth1920(30)};
-    line-height: ${(props) => props.theme.pixelToVieWidth1920(36)};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+  ${({ theme }) => theme.mediaDesktop} {
+    font-size: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth1920(36)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
   }
 `;
 

@@ -1,45 +1,52 @@
+import { useState, useEffect } from 'react';
+import StrapiService from '../../components/StrapiService/StrapiService';
+import { useRouter } from 'next/router';
+// Components
 import Main from '../../Layouts/Main/Main';
 import Subscribe from '../../components/Subscribe/Subscribe';
-import StrapiService from '../../components/StrapiService/StrapiService';
-import { useState, useEffect } from 'react';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import BlogPostsList from '../../components/Blog/BlogPostsList/BlogPostsList';
 
-const Blog = ({ allPosts, API_URL, allCategories }) => {
-  const { width } = useWindowDimensions();
+const Blog = (props) => {
   const [isSubscribeVisible, setSubscribeVisible] = useState(false);
 
-  useEffect(() => {
-    if (width < 1280) {
-      setSubscribeVisible(true);
-    }
-  }, [width]);
+  if (process.browser) {
+    useEffect(() => {
+      window.innerWidth < 1280
+        ? setSubscribeVisible(true)
+        : setSubscribeVisible(false);
+    }, [window.innerWidth]);
+  }
+
+  const router = useRouter();
+
+  const onShowMeroButton = () => {
+    router.push(`/blog?postsAmount=${props.postsAmount + 10}`);
+  };
 
   return (
     <Main headTitle='Tattoo one love | blog'>
       <h1 className='visually-hidden'>Tattoo one love blog</h1>
-      <BlogPostsList
-        API_URL={API_URL}
-        postsData={allPosts}
-        allCategories={allCategories}
-      />
-      {isSubscribeVisible ? <Subscribe API_URL={API_URL} /> : null}
+      <BlogPostsList {...props} onShowMeroButton={onShowMeroButton} />
+      {isSubscribeVisible ? <Subscribe API_URL={props.API_URL} /> : null}
     </Main>
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async ({ query: { postsAmount = 10 } }) => {
   const strapiService = new StrapiService();
-  const allPosts = await strapiService.getAllPosts();
+  const postsData = await strapiService.getNLastPosts(postsAmount);
   const allCategories = await strapiService.getPostsCategories();
+  const allPostsCount = await strapiService.getAllPostsCount();
 
   const { API_URL } = process.env;
 
   return {
     props: {
-      allPosts,
+      postsData,
       API_URL,
       allCategories,
+      postsAmount: +postsAmount,
+      allPostsCount,
     },
   };
 };

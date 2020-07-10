@@ -15,9 +15,13 @@ export default class SwapiService {
   getImportantMessage = async () => {
     return await this.getResource(`/important-message`);
   };
-
+  // Posts
   getPostsCategories = async () => {
     return await this.getResource(`/post-categories?_sort=updated_at:DESC`);
+  };
+
+  getAllPostsCount = async () => {
+    return await this.getResource(`/posts/count`);
   };
 
   getOurWorks = async () => {

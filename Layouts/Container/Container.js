@@ -11,11 +11,11 @@ const Container = ({ children, disable }) => {
 const ContainerStyled = styled.div`
   margin: 0 auto;
   max-width: 1300px;
-  padding: 0 ${(props) => props.theme.pixelToVieWidth(20)};
+  padding: 0 ${({ theme }) => theme.pixelToVieWidth(20)};
 
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     padding: 0;
-    max-width: ${(props) => props.theme.pixelToVieWidth1920(1280)};
+    max-width: ${({ theme }) => theme.pixelToVieWidth1920(1280)};
   }
 `;
 

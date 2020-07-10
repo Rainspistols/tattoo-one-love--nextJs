@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
 import Container from '../../../Layouts/Container/Container';
 import BlogPostCard from '../BlogPostCard';
 

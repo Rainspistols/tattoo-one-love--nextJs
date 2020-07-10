@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-const ShowMorePosts = ({ onClick }) => {
+const ShowMorePosts = ({ onShowMeroButton }) => {
   return (
-    <ShowMorePostsStyled onClick={onClick.bind(this)} className='ShowMorePosts'>
+    <ShowMorePostsStyled onClick={onShowMeroButton} className='ShowMorePosts'>
       Pokaż więcej
     </ShowMorePostsStyled>
   );
