@@ -4,10 +4,10 @@ import Slider from 'react-slick';
 import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
 import Container from '../../Layouts/Container/Container';
 import { useState, useEffect } from 'react';
+import imageSizeHelper from '../../utils/imageSizeHelper';
 
 const OurWorks = ({ ourWorks }) => {
   const [stateWidth, setStateWidth] = useState();
-  console.log(ourWorks);
 
   if (process.browser) {
     useEffect(() => {
@@ -49,7 +49,17 @@ const OurWorks = ({ ourWorks }) => {
       <Slider {...sliderSetting}>
         {ourWorks.map((img) => (
           <div key={img.id} className='imgWrap'>
-            <img src={img.url} alt='' />
+            <picture>
+              <source
+                media='(min-width: 768px) and (max-width: 1920px)'
+                srcSet={imageSizeHelper(img, 900, 900)}
+              />
+              <source
+                media='(max-width: 767px)'
+                srcSet={imageSizeHelper(img, 600, 600)}
+              />
+              <img src={img.url} alt={img.name} />
+            </picture>
           </div>
         ))}
       </Slider>

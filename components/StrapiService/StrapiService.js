@@ -50,9 +50,31 @@ export default class SwapiService {
   };
 
   _transformOurWorks = (ourWorks) => {
-    return ourWorks.works.map(({ id, url }) => ({
+    return ourWorks.works.map(({ id, url, width, height, formats, name }) => ({
       id,
       url: this._API_URL + url,
+      width,
+      height,
+      name,
+      formats: {
+        ...formats,
+        thumbnail: {
+          ...formats.thumbnail,
+          url: this._API_URL + formats.thumbnail.url,
+        },
+        small: {
+          ...formats.small,
+          url: this._API_URL + formats.small.url,
+        },
+        medium: {
+          ...formats.medium,
+          url: this._API_URL + formats.medium.url,
+        },
+        large: {
+          ...formats.large,
+          url: this._API_URL + formats.large.url,
+        },
+      },
     }));
   };
 
