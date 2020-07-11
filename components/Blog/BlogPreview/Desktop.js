@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 import Container from '../../../Layouts/Container/Container';
 import BlogPostCard from '../BlogPostCard';
 
-const Desktop = ({ fiveLastPosts, API_URL }) => {
+const Desktop = ({ postsData, API_URL }) => {
   return (
     <DesktopStyled>
       <Container>
         <ul className='posts__list'>
-          {fiveLastPosts.map((item) => {
+          {postsData.map((item) => {
             return (
               <React.Fragment key={item.id}>
                 <BlogPostCard post={item} API_URL={API_URL} />

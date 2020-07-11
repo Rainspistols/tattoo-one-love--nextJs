@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Container from '../../Layouts/Container/Container';
 import Line from '../../UI/Line';
+
 import { instagram, vk, facebook } from './images/';
 
 const FollowUs = () => {
@@ -9,13 +10,15 @@ const FollowUs = () => {
       link: 'https://www.facebook.com/Hannah.Evolve/',
       className: 'facebook',
       icon: facebook,
+      id: 1,
     },
     {
       link: 'https://www.instagram.com/hannah.evolution/',
       className: 'instagram',
       icon: instagram,
+      id: 2,
     },
-    { link: 'https://vk.com/hannah.evolve', className: 'vk', icon: vk },
+    { link: 'https://vk.com/hannah.evolve', className: 'vk', icon: vk, id: 3 },
   ];
 
   return (
@@ -25,10 +28,10 @@ const FollowUs = () => {
         <section>
           <h3>Dołącz do nas</h3>
           <ul>
-            {socialsData.map(({ link, className, icon }, index) => (
-              <li key={index}>
+            {socialsData.map(({ link, className, icon, id }) => (
+              <li key={id}>
                 <a href={link} target='_blank' rel='noopener noreferrer'>
-                  <img src={icon} alt='' className={className} />
+                  <img src={icon} alt={className} className={className} />
                 </a>
               </li>
             ))}

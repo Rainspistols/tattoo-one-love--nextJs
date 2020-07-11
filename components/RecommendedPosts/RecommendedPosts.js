@@ -1,16 +1,14 @@
 import styled from '@emotion/styled';
 import Line from '../../UI/Line';
 import BlogPostCard from '../Blog/BlogPostCard';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
 
 const RecommendedPosts = ({ posts, API_URL }) => {
-  const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
 
-  useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
+  // useEffect(() => {
+  //   setStateWidth(width);
+  // }, [width]);
 
   return (
     <RecommendedPostsStyled>

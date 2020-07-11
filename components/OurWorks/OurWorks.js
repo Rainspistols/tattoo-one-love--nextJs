@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 // Components
 import Slider from 'react-slick';
-import SectionTitle from '../../Layouts/SectionTitle/SectionTitle';
+import SectionTitle from '../../UI/SectionTitle';
 import Container from '../../Layouts/Container/Container';
 import { useState, useEffect } from 'react';
 import imageSizeHelper from '../../utils/imageSizeHelper';

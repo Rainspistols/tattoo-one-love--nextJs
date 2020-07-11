@@ -1,16 +1,14 @@
 import styled from '@emotion/styled';
 import Moment from 'react-moment';
 import CategoryBtn from '../../UI/CategoryBtn';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
 
 const CategoryAndDateRow = ({ post }) => {
-  const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
 
-  useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
+  // useEffect(() => {
+  //   setStateWidth(width);
+  // }, [width]);
 
   return (
     <CategoryAndDateRowStyled className='CategoryAndDateRow'>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import useWindowDimensions from '../hooks/useWindowDimension';
 import Main from '../Layouts/Main/Main';
+import useWindowSize from '../hooks/useWindowSize';
 // Components
 import OurWorks from '../components/OurWorks/OurWorks';
 import Hero from '../components/Hero/Hero';
@@ -13,17 +13,13 @@ import BlogPreview from '../components/Blog/BlogPreview';
 // Strapi
 import StrapiService from '../components/StrapiService/StrapiService';
 
-const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
-  const { width } = useWindowDimensions();
+const Home = ({ ourWorks, postsData, API_URL }) => {
   const [stateWidth, setStateWidth] = useState(null);
+  const windowWidth = useWindowSize().width;
 
   useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
-
-  const isFollowUs = stateWidth < 1280 ? <FollowUs /> : null;
-  const isSubscribe =
-    stateWidth < 1280 ? <Subscribe API_URL={API_URL} /> : null;
+    setStateWidth(windowWidth);
+  }, [windowWidth]);
 
   return (
     <Main
@@ -35,10 +31,10 @@ const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
       <Hero />
       <AboutUsSection />
       <OurWorks ourWorks={ourWorks} />
-      {isFollowUs}
-      <BlogPreview fiveLastPosts={fiveLastPosts} API_URL={API_URL} />
+      {stateWidth < 1280 && <FollowUs />}
+      <BlogPreview postsData={postsData} API_URL={API_URL} />
       <ContactsBlock />
-      {isSubscribe}
+      {stateWidth < 1280 && <Subscribe API_URL={API_URL} />}
       <Mission />
     </Main>
   );
@@ -47,14 +43,14 @@ const Home = ({ ourWorks, fiveLastPosts, API_URL }) => {
 export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
-  const fiveLastPosts = await strapiService.getNLastPosts(5);
+  const postsData = await strapiService.getNLastPosts(6);
 
   const { API_URL } = process.env;
 
   return {
     props: {
       ourWorks,
-      fiveLastPosts,
+      postsData,
       API_URL,
     },
   };

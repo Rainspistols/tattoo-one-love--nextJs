@@ -1,49 +1,59 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 // Components
-import Container from '../../../Layouts/Container/Container';
-import CategoriesList from './CategoriesList';
+import CategoryBtn from '../../../UI/CategoryBtn';
 
-const BlogPostCard = ({ post, API_URL }) => {
+const BlogPostCard = ({ post, API_URL, imgWidth }) => {
   const categorySlug = `/blog/${post.post_categories[0].slug}/${post.slug}`;
   const imgUrl = API_URL + post.img.url;
   const linkToPost = '/blog/[category]/[slug]';
 
   return (
-    <BlogPostCardStyled className='BlogPostCard'>
+    <BlogPostCardStyled className='BlogPostCard' imgWidth={imgWidth}>
       <Link href={linkToPost} as={categorySlug}>
-        <a className='imgLink'>
-          <img src={imgUrl} alt='' />
+        <a>
+          <div className='imgWrap'>
+            <img src={imgUrl} alt='' />
+          </div>
+
+          <div className='categoriesTitleWrap'>
+            <ul className='categories'>
+              {post?.post_categories.map((category) => (
+                <CategoryBtn key={category.id} text={category.name} />
+              ))}
+            </ul>
+
+            <h2 className='post__title'>{post.title}</h2>
+          </div>
         </a>
       </Link>
-
-      <Container>
-        <div className='categoriesTitleWrap'>
-          <CategoriesList post={post} />
-
-          <h3 className='post__title'>
-            <Link href={linkToPost} as={categorySlug}>
-              <a>{post.title}</a>
-            </Link>
-          </h3>
-        </div>
-      </Container>
     </BlogPostCardStyled>
   );
 };
 
 const BlogPostCardStyled = styled.div`
-  .imgLink {
-    display: block;
+  .imgWrap {
     margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+    width: ${({ theme, imgWidth }) =>
+      imgWidth ? theme.pixelToVieWidth(imgWidth) : '100%'};
+    height: ${({ theme }) => theme.pixelToVieWidth(207)};
 
     img {
-      width: ${({ theme }) => theme.pixelToVieWidth(303)};
-      height: ${({ theme }) => theme.pixelToVieWidth(207)};
+      display: block;
       object-fit: cover;
       object-position: top;
-      height: ${({ theme }) => theme.pixelToVieWidth(210)};
+      width: 100%;
+      height: 100%;
     }
+  }
+
+  .categoriesTitleWrap {
+    padding: 0 ${({ theme }) => theme.pixelToVieWidth(20)};
+  }
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .post__title {
@@ -54,11 +64,12 @@ const BlogPostCardStyled = styled.div`
     color: ${({ theme }) => theme.colors.darkBlue};
     box-sizing: border-box;
   }
-
+  /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
     background: ${({ theme }) => theme.colors.grey1};
     width: 31.5%;
     transition: box-shadow 0.3s ease-out;
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(20)};
 
     :hover,
     :focus {
@@ -75,10 +86,12 @@ const BlogPostCardStyled = styled.div`
     }
 
     .categoriesTitleWrap {
-      padding: ${({ theme }) => theme.pixelToVieWidth1920(30)} 0;
+      padding: 30px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .imgLink {
+    .imgWrap {
       height: ${({ theme }) => theme.pixelToVieWidth1920(300)};
       margin: 0;
 

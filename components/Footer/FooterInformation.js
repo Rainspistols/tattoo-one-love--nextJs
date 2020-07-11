@@ -1,23 +1,28 @@
 import styled from '@emotion/styled';
 import FooterTitle from './FooterTitle';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const FooterInformation = () => {
   const informationListData = [
-    { title: 'Głowna', href: '/' },
-    { title: 'Blog', href: '/blog' },
-    { title: 'Kontakt', href: '/contact' },
-    { title: 'Sitemap', href: '/sitemap' },
+    { title: 'Głowna', href: '/', id: 1 },
+    { title: 'Blog', href: '/blog', id: 2 },
+    { title: 'Kontakt', href: '/contact', id: 3 },
+    { title: 'Sitemap', href: '/sitemap', id: 4 },
   ];
+
+  const router = useRouter();
 
   return (
     <FooterInformationStyled>
       <FooterTitle text='Informacja' />
       <ul>
-        {informationListData.map(({ title, href }, index) => (
-          <li key={index}>
+        {informationListData.map(({ title, href, id }) => (
+          <li key={id}>
             <Link href={href}>
-              <a>{title}</a>
+              <a className={router.pathname == href ? 'inactive' : ''}>
+                {title}
+              </a>
             </Link>
           </li>
         ))}
@@ -27,7 +32,7 @@ const FooterInformation = () => {
 };
 
 const FooterInformationStyled = styled.section`
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
 
   ul {
     display: flex;
@@ -35,32 +40,32 @@ const FooterInformationStyled = styled.section`
   }
 
   a {
-    font-size: ${(props) => props.theme.pixelToVieWidth(13)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
-    margin-right: ${(props) => props.theme.pixelToVieWidth(30)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
+    margin-right: ${({ theme }) => theme.pixelToVieWidth(30)};
     display: flex;
-    color: ${(props) => props.theme.colors.grey1};
+    color: ${({ theme }) => theme.colors.grey1};
     font-weight: 400;
   }
 
   img {
-    padding-right: ${(props) => props.theme.pixelToVieWidth(10)};
+    padding-right: ${({ theme }) => theme.pixelToVieWidth(10)};
   }
 
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     ul {
       flex-direction: column;
 
       li {
         :not(:last-child) {
-          margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+          margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
         }
       }
     }
 
     a {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(15)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(23)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(15)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(23)};
       margin-right: 0;
     }
   }

@@ -4,7 +4,7 @@ import BlogPostCard from '../BlogPostCard';
 import Line from '../../../UI/Line';
 import Container from '../../../Layouts/Container/Container';
 
-const Mobile = ({ fiveLastPosts, API_URL }) => {
+const Mobile = ({ postsData, API_URL }) => {
   return (
     <MobileStyled>
       <Slider
@@ -15,8 +15,13 @@ const Mobile = ({ fiveLastPosts, API_URL }) => {
         variableWidth={true}
         infinite={true}
       >
-        {fiveLastPosts?.map((post) => (
-          <BlogPostCard key={post.id} post={post} API_URL={API_URL} />
+        {postsData?.map((post) => (
+          <BlogPostCard
+            key={post.id}
+            post={post}
+            API_URL={API_URL}
+            imgWidth='303'
+          />
         ))}
       </Slider>
 

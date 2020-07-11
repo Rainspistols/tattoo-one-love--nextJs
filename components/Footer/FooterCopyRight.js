@@ -18,55 +18,55 @@ const FooterCopyRight = () => {
 };
 
 const FooterCopyRightStyled = styled.div`
-  padding: ${(props) => props.theme.pixelToVieWidth(7)} 0 0;
+  padding: ${({ theme }) => theme.pixelToVieWidth(7)} 0 0;
 
   .row {
     display: flex;
     align-items: center;
-    color: ${(props) => props.theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
     text-transform: uppercase;
-    font-size: ${(props) => props.theme.pixelToVieWidth(16)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(25)};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(8)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(16)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(25)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(8)};
     font-weight: 400;
 
     svg {
-      margin-right: ${(props) => props.theme.pixelToVieWidth(10)};
+      margin-right: ${({ theme }) => theme.pixelToVieWidth(10)};
     }
   }
 
   .smallText {
-    font-size: ${(props) => props.theme.pixelToVieWidth(10)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(10)};
-    color: ${(props) => props.theme.colors.grey2};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(10)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(10)};
+    color: ${({ theme }) => theme.colors.grey2};
     font-weight: 400;
   }
 
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     margin-bottom: 0;
     width: 25%;
     padding: 0;
 
     .row {
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(16)};
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(16)};
       text-align: center;
 
       p {
-        font-size: ${(props) => props.theme.pixelToVieWidth1920(20)};
-        line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+        line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
         font-weight: 700;
       }
 
       svg {
-        width: ${(props) => props.theme.pixelToVieWidth1920(20)};
+        width: ${({ theme }) => theme.pixelToVieWidth1920(20)};
         height: auto;
-        margin-right: ${(props) => props.theme.pixelToVieWidth1920(10)};
+        margin-right: ${({ theme }) => theme.pixelToVieWidth1920(10)};
       }
     }
 
     .smallText {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(10)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(12)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(12)};
     }
   }
 `;

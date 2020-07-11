@@ -4,9 +4,9 @@ import Mobile from './Mobile';
 import Desktop from './Desktop';
 import ShowMore from '../../../UI/ShowMore';
 import Container from '../../../Layouts/Container/Container';
-import SectionTitle from '../../../Layouts/SectionTitle/SectionTitle';
+import SectionTitle from '../../../UI/SectionTitle';
 
-const BlogPreview = ({ fiveLastPosts, API_URL }) => {
+const BlogPreview = ({ postsData, API_URL }) => {
   const [stateWidth, setStateWidth] = useState(null);
 
   if (process.browser) {
@@ -22,9 +22,9 @@ const BlogPreview = ({ fiveLastPosts, API_URL }) => {
       </Container>
 
       {stateWidth < 1280 ? (
-        <Mobile fiveLastPosts={fiveLastPosts} API_URL={API_URL} />
+        <Mobile postsData={postsData} API_URL={API_URL} />
       ) : (
-        <Desktop fiveLastPosts={fiveLastPosts} API_URL={API_URL} />
+        <Desktop postsData={postsData} API_URL={API_URL} />
       )}
 
       <Container>

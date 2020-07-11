@@ -1,18 +1,20 @@
 import styled from '@emotion/styled';
+// Components
+import Contact from '../ContactsBlock/Contact';
 import Container from '../../Layouts/Container/Container';
-import Logo from '../Logo/Logo';
-import closeIcon from './images/closeIcon.svg';
+import Logo from '../../UI/Logo/Logo';
 import Link from 'next/link';
 import CategoryBtn from '../../UI/CategoryBtn';
+// Icons
 import { vkIcon, facebookIcon, instagramIcon } from './images/';
-import Contact from '../ContactsBlock/Contact';
+import closeIcon from './images/closeIcon.svg';
 
 const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
   const menuLinksData = [
-    { title: 'Główna', href: '/' },
-    { title: 'Blog', href: '/blog' },
-    { title: 'O nac', href: '/#about-us' },
-    { title: 'Prace', href: '/#works' },
+    { title: 'Główna', href: '/', id: 1 },
+    { title: 'Blog', href: '/blog', id: 2 },
+    { title: 'O nac', href: '/#about-us', id: 3 },
+    { title: 'Prace', href: '/#works', id: 4 },
   ];
 
   const socialsListData = [
@@ -20,13 +22,15 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
       title: 'Facebook',
       href: 'https://www.facebook.com/',
       icon: facebookIcon,
+      id: 1,
     },
     {
       title: 'Instagram',
       href: 'https://www.instagram.com/',
       icon: instagramIcon,
+      id: 2,
     },
-    { title: 'Vkontakte', href: 'https://www.vk.com/', icon: vkIcon },
+    { title: 'Vkontakte', href: 'https://www.vk.com/', icon: vkIcon, id: 3 },
   ];
 
   return (
@@ -47,13 +51,13 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
 
       <nav>
         <ul className='menuLinks'>
-          {menuLinksData.map(({ title, href, className }, index) => (
+          {menuLinksData.map(({ title, href, className, id }) => (
             <li
               onClick={onMenuItem.bind(this)}
-              key={index}
+              key={id}
               className={className}
               style={{
-                backgroundImage: ` url('/images/NavMenu/${index + 1}.jpg') `,
+                backgroundImage: ` url('/images/NavMenu/${id}.jpg') `,
               }}
             >
               <Link href={href}>
@@ -69,9 +73,13 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
           <h3 className='menu-title'>Blog categories</h3>
           <ul className='categories'>
             {categories.map((category) => (
-              <li key={category.id} onClick={onCategory.bind(this)}>
-                <CategoryBtn text={category.name} slug={category.slug} />
-              </li>
+              <CategoryBtn
+                key={category.id}
+                text={category.name}
+                slug={category.slug}
+                onClick={onCategory.bind(this)}
+                isLink={true}
+              />
             ))}
           </ul>
         </section>
@@ -81,8 +89,8 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
         <section className='socialsList'>
           <h3 className='menu-title'>socials</h3>
           <ul>
-            {socialsListData.map(({ title, href, icon }, index) => (
-              <li key={index}>
+            {socialsListData.map(({ title, href, icon, id }) => (
+              <li key={id}>
                 <a href={href} target='_blank' rel='nofollow noopener'>
                   <img src={icon} alt={title} />
                 </a>
@@ -100,18 +108,16 @@ const NavMenuStyled = styled.section`
   top: 0;
   left: 0;
   width: 100%;
-  background: ${(props) => props.theme.colors.white};
+  background: ${({ theme }) => theme.colors.white};
   background-clip: border-box;
   z-index: 10;
-  border-bottom: ${(props) => props.theme.pixelToVieWidth(10)} solid
-    ${(props) => props.theme.colors.grey3};
+  border-bottom: ${({ theme }) => theme.pixelToVieWidth(10)} solid
+    ${({ theme }) => theme.colors.grey3};
 
   .logoAndBtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    ${({ theme }) => theme.flexBetween};
     width: 100%;
-    padding: ${(props) => props.theme.pixelToVieWidth(5)} 0;
+    padding: ${({ theme }) => theme.pixelToVieWidth(5)} 0;
 
     button {
       border: none;
@@ -120,19 +126,19 @@ const NavMenuStyled = styled.section`
     }
 
     .closeIcon {
-      width: ${(props) => props.theme.pixelToVieWidth(40)};
-      height: ${(props) => props.theme.pixelToVieWidth(40)};
-      color: ${(props) => props.theme.colors.darkBlue};
+      width: ${({ theme }) => theme.pixelToVieWidth(40)};
+      height: ${({ theme }) => theme.pixelToVieWidth(40)};
+      color: ${({ theme }) => theme.colors.darkBlue};
     }
   }
 
   .menuLinks {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(18)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(18)};
     li {
-      background: ${(props) => props.theme.colors.darkBlue};
-      color: ${(props) => props.theme.colors.white};
-      font-size: ${(props) => props.theme.pixelToVieWidth(40)};
-      line-height: ${(props) => props.theme.pixelToVieWidth(48)};
+      background: ${({ theme }) => theme.colors.darkBlue};
+      color: ${({ theme }) => theme.colors.white};
+      font-size: ${({ theme }) => theme.pixelToVieWidth(40)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth(48)};
       cursor: pointer;
       text-align: center;
       font-weight: 700;
@@ -141,14 +147,14 @@ const NavMenuStyled = styled.section`
       background-size: cover;
       background-repeat: no-repeat;
       a {
-        padding: ${(props) => props.theme.pixelToVieWidth(10)} 0;
+        padding: ${({ theme }) => theme.pixelToVieWidth(10)} 0;
         display: block;
       }
     }
   }
 
   .blogCategories {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
     .categories {
       display: flex;
       flex-wrap: wrap;
@@ -158,38 +164,38 @@ const NavMenuStyled = styled.section`
           ${({ theme }) => theme.pixelToVieWidth(8)} 0;
 
         .CategoryBtn {
-          font-size: ${(props) => props.theme.pixelToVieWidth(18)};
-          line-height: ${(props) => props.theme.pixelToVieWidth(27)};
-          border: ${(props) => props.theme.pixelToVieWidth(1)} solid
-            ${(props) => props.theme.colors.grey3};
-          color: ${(props) => props.theme.colors.grey3};
-          padding: ${(props) => props.theme.pixelToVieWidth(10)};
+          font-size: ${({ theme }) => theme.pixelToVieWidth(18)};
+          line-height: ${({ theme }) => theme.pixelToVieWidth(27)};
+          border: ${({ theme }) => theme.pixelToVieWidth(1)} solid
+            ${({ theme }) => theme.colors.grey3};
+          color: ${({ theme }) => theme.colors.grey3};
+          padding: ${({ theme }) => theme.pixelToVieWidth(10)};
         }
       }
     }
   }
 
   .menu-title {
-    font-size: ${(props) => props.theme.pixelToVieWidth(12)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(18)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(12)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(18)};
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
-    color: ${(props) => props.theme.colors.grey4};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+    color: ${({ theme }) => theme.colors.grey4};
   }
 
   .socialsList {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(16)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(16)};
 
     ul {
       display: flex;
       align-items: center;
       li {
         :not(:last-child) {
-          margin-right: ${(props) => props.theme.pixelToVieWidth(25)};
+          margin-right: ${({ theme }) => theme.pixelToVieWidth(25)};
         }
         img {
-          width: ${(props) => props.theme.pixelToVieWidth(35)};
+          width: ${({ theme }) => theme.pixelToVieWidth(35)};
         }
       }
     }

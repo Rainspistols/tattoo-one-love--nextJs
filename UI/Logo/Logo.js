@@ -1,12 +1,14 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import logo from './images/logo--black.svg';
+import { useRouter } from 'next/router';
 
 const Logo = () => {
+  const router = useRouter();
   return (
     <StyledLogo className='Logo'>
       <Link href='/'>
-        <a>
+        <a className={router.pathname == '/' ? 'inactive' : ''}>
           <img src={logo} alt='Tattoo one love logo' />
         </a>
       </Link>

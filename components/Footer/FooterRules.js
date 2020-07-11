@@ -4,17 +4,17 @@ import FooterTitle from './FooterTitle';
 
 const FooterRules = () => {
   const rulesListData = [
-    { title: 'Regulamin', href: '/regulamin' },
-    { title: 'Polityka prywatności', href: '/polityka-prywatnosci' },
-    { title: 'Polityka Cookies', href: '/polityka-cookies' },
+    { title: 'Regulamin', href: '/regulamin', id: 1 },
+    { title: 'Polityka prywatności', href: '/polityka-prywatnosci', id: 2 },
+    { title: 'Polityka Cookies', href: '/polityka-cookies', id: 3 },
   ];
 
   return (
     <FooterRulesStyled>
       <FooterTitle text='Polityki' />
       <ul>
-        {rulesListData.map(({ title, href }, index) => (
-          <li key={index}>
+        {rulesListData.map(({ title, href, id }) => (
+          <li key={id}>
             <Link href={href}>
               <a>{title}</a>
             </Link>
@@ -26,7 +26,7 @@ const FooterRules = () => {
 };
 
 const FooterRulesStyled = styled.section`
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
 
   ul {
     display: flex;
@@ -34,32 +34,32 @@ const FooterRulesStyled = styled.section`
 
     li {
       :not(:last-child) {
-        margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
       }
     }
   }
 
   a {
-    font-size: ${(props) => props.theme.pixelToVieWidth(13)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
-    margin-right: ${(props) => props.theme.pixelToVieWidth(30)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
+    margin-right: ${({ theme }) => theme.pixelToVieWidth(30)};
     display: flex;
-    color: ${(props) => props.theme.colors.grey1};
+    color: ${({ theme }) => theme.colors.grey1};
     font-weight: 400;
   }
 
   img {
-    padding-right: ${(props) => props.theme.pixelToVieWidth(10)};
+    padding-right: ${({ theme }) => theme.pixelToVieWidth(10)};
   }
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     ul {
       flex-direction: column;
     }
 
     a {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(15)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(23)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(15)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(23)};
       margin-right: 0;
     }
   }

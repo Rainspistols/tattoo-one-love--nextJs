@@ -1,15 +1,16 @@
 import styled from '@emotion/styled';
 import Container from '../../Layouts/Container/Container';
 import CategoryAndDateRow from './CategoryAndDateRow';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
 
 const Header = ({ postBySlug }) => {
-  const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
-  useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
+
+  if (process.browser) {
+    useEffect(() => {
+      setStateWidth(window.innerWidth);
+    }, [window.innerWidth]);
+  }
 
   const headerMobile = (
     <>

@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
+// Icons
 import { MdMail } from 'react-icons/md';
 import { RiMapPinLine } from 'react-icons/ri';
 import { FaPhoneSquareAlt } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import Container from '../../Layouts/Container/Container';
 
 const Contact = ({ iconsColor, textColor }) => {
   const data = [
@@ -44,32 +44,32 @@ const Contact = ({ iconsColor, textColor }) => {
 };
 
 const ContactStyled = styled.section`
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(20)};
 
   a {
     display: flex;
     align-items: center;
-    font-size: ${(props) => props.theme.pixelToVieWidth(13)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
     white-space: nowrap;
   }
 
   svg {
-    margin-right: ${(props) => props.theme.pixelToVieWidth(8)};
+    margin-right: ${({ theme }) => theme.pixelToVieWidth(8)};
     width: auto;
-    height: ${(props) => props.theme.pixelToVieWidth(16)};
+    height: ${({ theme }) => theme.pixelToVieWidth(16)};
   }
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     margin-bottom: 0;
     a {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(20)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
     }
 
     svg {
-      height: ${(props) => props.theme.pixelToVieWidth1920(20)};
-      margin-right: ${(props) => props.theme.pixelToVieWidth1920(5)};
+      height: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+      margin-right: ${({ theme }) => theme.pixelToVieWidth1920(5)};
     }
   }
 `;

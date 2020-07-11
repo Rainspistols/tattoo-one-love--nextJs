@@ -1,18 +1,19 @@
 import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
+// Components
 import FollowUs from '../FollowUs/FollowUs';
 import Subscribe from '../Subscribe/Subscribe';
 import Contact from './Contact';
-import useWidthDimesion from '../../hooks/useWindowDimension';
 import Container from '../../Layouts/Container/Container';
-import { useState, useEffect } from 'react';
 
 const ContactsBlock = () => {
-  const { width } = useWidthDimesion();
   const [stateWidth, setStateWidth] = useState(null);
 
-  useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
+  if (process.browser) {
+    useEffect(() => {
+      setStateWidth(window.innerWidth);
+    }, [window.innerWidth]);
+  }
 
   return (
     stateWidth >= 1280 && (
@@ -32,20 +33,20 @@ const ContactsBlock = () => {
 };
 
 const ContactsBlockStyled = styled.section`
-  width: calc(100% + ${(props) => props.theme.pixelToVieWidth1920(40)});
-  transform: translateX(${(props) => props.theme.pixelToVieWidth1920(-40)});
-  padding: ${(props) => props.theme.pixelToVieWidth1920(20)};
-  background: ${(props) => props.theme.colors.grey1};
+  width: calc(100% + ${({ theme }) => theme.pixelToVieWidth1920(40)});
+  transform: translateX(${({ theme }) => theme.pixelToVieWidth1920(-40)});
+  padding: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+  background: ${({ theme }) => theme.colors.grey1};
   display: flex;
   justify-content: space-between;
 
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(100)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(100)};
 
   .Contact__wrap {
     h2 {
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
       font-weight: 500;
-      color: ${(props) => props.theme.colors.pink};
+      color: ${({ theme }) => theme.colors.pink};
       text-transform: uppercase;
     }
   }

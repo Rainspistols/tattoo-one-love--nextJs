@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
-import FooterTitle from './FooterTitle';
-import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useState, useEffect } from 'react';
+import FooterTitle from './FooterTitle';
 
 const FooterSubscripion = () => {
-  const { width } = useWindowDimensions();
   const [stateWidth, setStateWidth] = useState(null);
 
-  useEffect(() => {
-    setStateWidth(width);
-  }, []);
+  if (process.browser) {
+    useEffect(() => {
+      setStateWidth(window.innerWidth);
+    }, [window.innerWidth]);
+  }
 
   const subscriptionListData = [
     {
@@ -29,6 +29,7 @@ const FooterSubscripion = () => {
           />
         </svg>
       ),
+      id: 1,
     },
     {
       title: 'Vkontakte',
@@ -47,6 +48,7 @@ const FooterSubscripion = () => {
           />
         </svg>
       ),
+      id: 2,
     },
     {
       title: 'Instagram',
@@ -65,6 +67,7 @@ const FooterSubscripion = () => {
           />
         </svg>
       ),
+      id: 3,
     },
   ];
 
@@ -72,8 +75,8 @@ const FooterSubscripion = () => {
     <FooterSubscripionStyled className='FooterSubscripion'>
       <FooterTitle text='Social media' />
       <ul>
-        {subscriptionListData.map(({ title, href, icon }, index) => (
-          <li key={index}>
+        {subscriptionListData.map(({ title, href, icon, id }) => (
+          <li key={id}>
             <a href={href} target='_blank' rel='nofollow noopener'>
               {stateWidth < 1280 ? title : icon}
             </a>
@@ -84,42 +87,42 @@ const FooterSubscripion = () => {
   );
 };
 const FooterSubscripionStyled = styled.section`
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(10)};
-  
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+
   ul {
     display: flex;
     flex-wrap: wrap;
   }
 
   a {
-    font-size: ${(props) => props.theme.pixelToVieWidth(13)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(20)};
-    margin-right: ${(props) => props.theme.pixelToVieWidth(30)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
+    margin-right: ${({ theme }) => theme.pixelToVieWidth(30)};
     display: flex;
-    color: ${(props) => props.theme.colors.grey1};
+    color: ${({ theme }) => theme.colors.grey1};
     font-weight: 400;
   }
 
   img {
-    padding-right: ${(props) => props.theme.pixelToVieWidth(10)};
+    padding-right: ${({ theme }) => theme.pixelToVieWidth(10)};
   }
 
   /* MEDIA */
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     display: flex;
     align-items: center;
     width: 100%;
     margin: 0;
 
     .FooterTitle {
-      margin: 0 ${(props) => props.theme.pixelToVieWidth1920(26)} 0 0;
+      margin: 0 ${({ theme }) => theme.pixelToVieWidth1920(26)} 0 0;
     }
 
     a {
-      width: ${(props) => props.theme.pixelToVieWidth1920(35)};
-      height: ${(props) => props.theme.pixelToVieWidth1920(35)};
-      margin-right: ${(props) => props.theme.pixelToVieWidth1920(44)};
-      ${(props) => props.theme.flexCenter}
+      width: ${({ theme }) => theme.pixelToVieWidth1920(35)};
+      height: ${({ theme }) => theme.pixelToVieWidth1920(35)};
+      margin-right: ${({ theme }) => theme.pixelToVieWidth1920(44)};
+      ${({ theme }) => theme.flexCenter}
 
       svg path {
         transition: all 0.3s ease-out;
@@ -128,7 +131,7 @@ const FooterSubscripionStyled = styled.section`
       :hover,
       :focus {
         svg path {
-          fill: ${(props) => props.theme.colors.pink};
+          fill: ${({ theme }) => theme.colors.pink};
         }
       }
     }

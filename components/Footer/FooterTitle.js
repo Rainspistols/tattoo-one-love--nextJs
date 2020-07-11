@@ -5,20 +5,20 @@ const FooterTitle = ({ text }) => {
 };
 
 const FooterTitleStyled = styled.h4`
-  color: ${(props) => props.theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
   text-transform: uppercase;
   text-decoration: underline;
-  font-size: ${(props) => props.theme.pixelToVieWidth(14)};
-  line-height: ${(props) => props.theme.pixelToVieWidth(21)};
+  font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+  line-height: ${({ theme }) => theme.pixelToVieWidth(21)};
   font-weight: 400;
 
-  ${(props) => props.theme.mediaDesktop} {
-    font-size: ${(props) => props.theme.pixelToVieWidth1920(15)};
-    line-height: ${(props) => props.theme.pixelToVieWidth1920(23)};
+  ${({ theme }) => theme.mediaDesktop} {
+    font-size: ${({ theme }) => theme.pixelToVieWidth1920(15)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth1920(23)};
     text-decoration: none;
     font-weight: 700;
-    color: ${(props) => props.theme.colors.grey2};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+    color: ${({ theme }) => theme.colors.grey2};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
   }
 `;
 

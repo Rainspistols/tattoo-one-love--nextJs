@@ -1,22 +1,13 @@
 import styled from '@emotion/styled';
-import useWindowDimensions from '../../hooks/useWindowDimension';
-import { useState, useEffect } from 'react';
 import CategoryAndDateRow from './CategoryAndDateRow';
 import Container from '../../Layouts/Container/Container';
 import Header from './Header';
 import Content from './Content';
 import RecommendedPosts from '../RecommendedPosts/RecommendedPosts';
-import ShareBtn from '../ShareBtn/ShareBtn';
+import ShareBtn from '../../UI/ShareBtn/ShareBtn';
 import CategoriesAndFilters from '../CategoriesAndFilters';
 
 const Post = ({ postBySlug, relevantPostsData, allCategories, API_URL }) => {
-  const { width } = useWindowDimensions();
-  const [stateWidth, setStateWidth] = useState(null);
-
-  useEffect(() => {
-    setStateWidth(width);
-  }, [width]);
-
   return (
     <PostStyled>
       <CategoriesAndFilters allCategories={allCategories} />

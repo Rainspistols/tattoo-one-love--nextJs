@@ -76,6 +76,10 @@ const GlobalStyles = () => (
         height: 1px;
         margin: -1px;
       }
+
+      .inactive {
+        pointer-events: none;
+      }
     `}
   />
 );

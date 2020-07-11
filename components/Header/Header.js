@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import useWindowSize from '../../hooks/useWindowSize';
 // Components
-import Logo from '../Logo/Logo';
+import Logo from '../../UI/Logo/Logo';
 import Search from '../Search/Search';
 import Container from '../../Layouts/Container/Container';
 import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import NavMenu from '../NavMenu/NavMenu';
-import NavigationDesktop from '../NavigationDesktop/NavigationDesktop';
+import NavigationDesktop from './NavigationDesktop/NavigationDesktop';
 import CookieAgreement from '../CookieAgreement/CookieAgreement';
 import HeaderSearchBtn from './HeaderSearchBtn';
 // Icons
@@ -15,6 +16,12 @@ import navigationIcon from './images/navigationIcon.svg';
 const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
   const [isMenuActive, setMenuActive] = useState(false);
   const [isSearchActive, setSearchActive] = useState(false);
+  const [stateWidth, setStateWidth] = useState('');
+  const windowWidth = useWindowSize().width;
+
+  useEffect(() => {
+    setStateWidth(windowWidth);
+  }, [windowWidth]);
 
   const navigationBox = useRef(null);
 
@@ -26,12 +33,10 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
       <nav className='navigation'>
         <Container>
           <div className='wrap'>
-            {isSearchActive ? null : (
+            {!isSearchActive && (
               <>
                 <Logo />
-
-                <NavigationDesktop />
-
+                {stateWidth >= 1280 && <NavigationDesktop />}
                 <HeaderSearchBtn setSearchActive={setSearchActive} />
               </>
             )}
@@ -51,7 +56,7 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
                 />
               </button>
 
-              {isMenuActive ? (
+              {isMenuActive && stateWidth < 1280 ? (
                 <NavMenu
                   onCloseMenu={setMenuActive.bind(this, false)}
                   onMenuItem={setMenuActive.bind(this, false)}
@@ -61,13 +66,13 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
               ) : null}
             </div>
 
-            {isSearchActive ? (
+            {isSearchActive && (
               <Search
                 onSearchToGo={onSearchToGo}
                 onCloseSearch={setSearchActive.bind(this, false)}
                 onSubmitSearch={setSearchActive.bind(this, false)}
               />
-            ) : null}
+            )}
           </div>
         </Container>
       </nav>

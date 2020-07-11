@@ -2,12 +2,12 @@ import { ThemeProvider } from 'emotion-theming';
 import theme from '../theme/theme';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import GlobalStyles from '../components/GlobalStyles/GlobalStyles';
 import Header from '../components/Header/Header';
 import { useState } from 'react';
 import StrapiService from '../components/StrapiService/StrapiService';
 import { CacheProvider } from '@emotion/core';
 import { cache } from 'emotion';
+import GlobalStyles from '../theme/GlobalStyles';
 
 function MyApp({ Component, pageProps, importantMessage, postsCategories }) {
   const [inputSearchValue, setInputSearchValue] = useState(null);

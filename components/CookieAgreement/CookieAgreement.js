@@ -26,20 +26,20 @@ const CookieAgreementStyled = styled.section`
   .CookieConsent {
     position: absolute;
     text-align: center;
-    color: ${(props) => props.theme.colors.grey4};
-    background: ${(props) => props.theme.colors.white};
-    border: ${(props) => props.theme.pixelToVieWidth(2)} solid
-      ${(props) => props.theme.colors.pink};
+    color: ${({ theme }) => theme.colors.grey4};
+    background: ${({ theme }) => theme.colors.white};
+    border: ${({ theme }) => theme.pixelToVieWidth(2)} solid
+      ${({ theme }) => theme.colors.pink};
     display: flex;
     flex-wrap: wrap;
     z-index: 10000;
 
     .cookie-message {
-      font-size: ${(props) => props.theme.pixelToVieWidth(14)};
-      line-height: ${(props) => props.theme.pixelToVieWidth(16)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth(16)};
       font-weight: 400;
-      padding: ${(props) => props.theme.pixelToVieWidth(10)}
-        ${(props) => props.theme.pixelToVieWidth(20)};
+      padding: ${({ theme }) => theme.pixelToVieWidth(10)}
+        ${({ theme }) => theme.pixelToVieWidth(20)};
       background: transparent;
     }
 
@@ -49,15 +49,15 @@ const CookieAgreementStyled = styled.section`
       line-height: 16px;
       text-transform: uppercase;
       font-weight: 600;
-      color: ${(props) => props.theme.colors.grey4};
+      color: ${({ theme }) => theme.colors.grey4};
       width: 100%;
-      padding: ${(props) => props.theme.pixelToVieWidth(10)} 0;
+      padding: ${({ theme }) => theme.pixelToVieWidth(10)} 0;
       margin: 0;
       border-radius: 0;
       border: none;
-      border-top: ${(props) => props.theme.pixelToVieWidth(2)} solid
-        ${(props) => props.theme.colors.pink};
-      background-color: ${(props) => props.theme.colors.white};
+      border-top: ${({ theme }) => theme.pixelToVieWidth(2)} solid
+        ${({ theme }) => theme.colors.pink};
+      background-color: ${({ theme }) => theme.colors.white};
       cursor: pointer;
     }
     .button-close__wrapper {
