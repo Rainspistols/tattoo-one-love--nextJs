@@ -15,44 +15,49 @@ export default class SwapiService {
   getImportantMessage = async () => {
     return await this.getResource(`/important-message`);
   };
-  // Posts
+  // POSTS
   getPostsCategories = async () => {
     return await this.getResource(`/post-categories?_sort=updated_at:DESC`);
   };
-
   getAllPostsCount = async () => {
     return await this.getResource(`/posts/count`);
   };
-
-  getOurWorks = async () => {
-    const ourWorks = await this.getResource(`/our-works`);
-    return this._transformOurWorks(ourWorks);
-  };
-
   getNLastPosts = async (N) => {
     return await this.getResource(`/posts?_sort=updated_at:DESC&_limit=${N}`);
   };
-
-  getAllPosts = async () => {
-    return await this.getResource(`/posts?_sort=updated_at:DESC`);
-  };
-
-  getCategoriesBySlug = async (slug) => {
-    return await this.getResource(`/posts?post_categories.slug=${slug}`);
-  };
-
   getPostBySlug = async (slug, category) => {
     const postBySlug = await this.getResource(`/posts?slug=${slug}`);
     return this.transformPostBySlug(postBySlug, slug, category);
   };
-
+  getAllPosts = async () => {
+    return await this.getResource(`/posts?_sort=updated_at:DESC`);
+  };
   getRelevantPosts = async (post, postSlug) => {
     const relevantCategories = post[0].post_categories.map((item) => item.slug);
     return await this.getResource(
       `/posts??_sort=updated_at:DESC&_post_categories.slug=${relevantCategories[0]}&post_categories.slug=${relevantCategories[1]}&_limit=3&slug_ncontains=${postSlug}`
     );
   };
-
+  // OUR WORKS
+  getOurWorks = async () => {
+    const ourWorks = await this.getResource(`/our-works`);
+    return this._transformOurWorks(ourWorks);
+  };
+  // CATEGORIES
+  getCategoriesBySlug = async (slug) => {
+    return await this.getResource(`/posts?post_categories.slug=${slug}`);
+  };
+  // REGULAMIN
+  getRegulaminData = async () => {
+    return await this.getResource(`/regulamin`);
+  };
+  getPPData = async () => {
+    return await this.getResource(`/polityka-prywatnosci`);
+  };
+  getPCData = async () => {
+    return await this.getResource(`/polityka-cookies`);
+  };
+  // TRANSFORM DATA
   _transformOurWorks = (ourWorks) => {
     return ourWorks.works.map(({ id, url, width, height, formats, name }) => ({
       id,
@@ -81,7 +86,6 @@ export default class SwapiService {
       },
     }));
   };
-
   transformPostBySlug = (post, slug, category) => {
     return post.map((item) => ({
       title: item.title,

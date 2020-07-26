@@ -1,7 +1,12 @@
 import Head from 'next/head';
 import Footer from '../../components/Footer/Footer';
 
-export default ({ children, headTitle, metaDescr = '', metaKeywords = '' }) => (
+export default ({
+  children,
+  headTitle = '',
+  metaDescr = '',
+  metaKeywords = '',
+}) => (
   <>
     <Head>
       <meta charSet='utf-8' />
