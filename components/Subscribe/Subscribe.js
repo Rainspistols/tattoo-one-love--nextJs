@@ -1,26 +1,27 @@
 import styled from '@emotion/styled';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Container from '../../Layouts/Container/Container';
 import likeImg from './images/social-media.svg';
 
 const Subscribe = ({ API_URL }) => {
+  const [inputValue, setInputValue] = useState('');
   const [isEmailEntered, setEmailEntered] = useState(false);
-  const inputMail = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newEmail = inputMail.current.value;
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const rawResponse = await fetch(`${API_URL}/newsletter-emails`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title: newEmail }),
-    });
-
-    setEmailEntered(true);
+    if (re.test(inputValue)) {
+      const rawResponse = await fetch(`${API_URL}/newsletter-emails`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title: inputValue }),
+      });
+      setEmailEntered(true);
+    }
   };
 
   const formElements = (
@@ -30,12 +31,13 @@ const Subscribe = ({ API_URL }) => {
           Newsletter
         </label>
         <input
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           className='email'
           type='email'
           placeholder='Email'
-          required
           id='email'
-          ref={inputMail}
+          required
         />
       </fieldset>
 
@@ -57,20 +59,18 @@ const Subscribe = ({ API_URL }) => {
   return (
     <Container>
       <SubscribeStyled>
-        <form action='' onSubmit={(e) => handleSubmit(e)}>
-          {renderFormElements}
-        </form>
+        <form onSubmit={(e) => handleSubmit(e)}>{renderFormElements}</form>
       </SubscribeStyled>
     </Container>
   );
 };
 
 const SubscribeStyled = styled.div`
-  background: ${(props) => props.theme.colors.grey1};
-  padding: ${(props) => props.theme.pixelToVieWidth(20)}
-    ${(props) => props.theme.pixelToVieWidth(28)};
+  background: ${({ theme }) => theme.colors.grey1};
+  padding: ${({ theme }) =>
+    `${theme.pixelToVieWidth(20)} ${theme.pixelToVieWidth(28)}`};
   display: block;
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(30)};
+  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(30)};
 
   fieldset {
     border: none;
@@ -79,10 +79,10 @@ const SubscribeStyled = styled.div`
   }
 
   .title {
-    font-size: ${(props) => props.theme.pixelToVieWidth(32)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(30)};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(27)};
-    color: ${(props) => props.theme.colors.grey3};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(32)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(30)};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(27)};
+    color: ${({ theme }) => theme.colors.grey3};
     text-transform: uppercase;
     text-align: center;
     display: block;
@@ -90,75 +90,75 @@ const SubscribeStyled = styled.div`
   }
 
   .email {
-    height: ${(props) => props.theme.pixelToVieWidth(48)};
-    border: ${(props) => props.theme.pixelToVieWidth(1)} solid
-      ${(props) => props.theme.colors.grey2};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(27)};
-    border-radius: ${(props) => props.theme.pixelToVieWidth(5)};
-    padding: 0 ${(props) => props.theme.pixelToVieWidth(20)};
+    height: ${({ theme }) => theme.pixelToVieWidth(48)};
+    border: ${({ theme }) =>
+      `${theme.pixelToVieWidth(1)} solid ${theme.colors.grey2}`};
+    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(27)};
+    border-radius: ${({ theme }) => theme.pixelToVieWidth(5)};
+    padding: 0 ${({ theme }) => theme.pixelToVieWidth(20)};
     display: block;
     width: 100%;
     box-sizing: border-box;
-    color: ${(props) => props.theme.colors.grey3};
+    color: ${({ theme }) => theme.colors.grey3};
     &::placeholder {
-      color: ${(props) => props.theme.colors.grey2};
+      color: ${({ theme }) => theme.colors.grey2};
     }
-    font-size: ${(props) => props.theme.pixelToVieWidth(14)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(21)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+    line-height: ${({ theme }) => theme.pixelToVieWidth(21)};
   }
 
   .submit {
-    font-size: ${(props) => props.theme.pixelToVieWidth(14)};
+    font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${(props) => props.theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
     text-transform: uppercase;
-    border-radius: ${(props) => props.theme.pixelToVieWidth(5)};
-    width: ${(props) => props.theme.pixelToVieWidth(116)};
-    height: ${(props) => props.theme.pixelToVieWidth(36)};
+    border-radius: ${({ theme }) => theme.pixelToVieWidth(5)};
+    width: ${({ theme }) => theme.pixelToVieWidth(116)};
+    height: ${({ theme }) => theme.pixelToVieWidth(36)};
     border: none;
-    background: ${(props) => props.theme.colors.pinkGradient};
+    background: ${({ theme }) => theme.colors.pinkGradient};
     margin: 0 auto;
     cursor: pointer;
   }
 
   .like {
-    height: ${(props) => props.theme.pixelToVieWidth(111)};
+    height: ${({ theme }) => theme.pixelToVieWidth(111)};
     margin: 0 auto;
   }
 
-  ${(props) => props.theme.mediaDesktop} {
+  ${({ theme }) => theme.mediaDesktop} {
     padding: 0;
     margin: 0;
 
     .title {
-      color: ${(props) => props.theme.colors.pink};
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(30)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
+      color: ${({ theme }) => theme.colors.pink};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
       font-weight: 500;
     }
 
     .email {
-      width: ${(props) => props.theme.pixelToVieWidth1920(300)};
-      height: ${(props) => props.theme.pixelToVieWidth1920(50)};
-      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
-      border: ${(props) => props.theme.pixelToVieWidth1920(1)} solid
-        ${(props) => props.theme.colors.grey2};
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(10)};
-      padding: ${(props) => props.theme.pixelToVieWidth1920(20)}
-        ${(props) => props.theme.pixelToVieWidth1920(14)};
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(14)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(21)};
+      width: ${({ theme }) => theme.pixelToVieWidth1920(300)};
+      height: ${({ theme }) => theme.pixelToVieWidth1920(50)};
+      border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
+      border: ${({ theme }) =>
+        `${theme.pixelToVieWidth1920(1)} solid ${theme.colors.grey2}`};
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+      padding: ${({ theme }) =>
+        `${theme.pixelToVieWidth1920(20)} ${theme.pixelToVieWidth1920(14)}`};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(14)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(21)};
     }
 
     .submit {
-      width: ${(props) => props.theme.pixelToVieWidth1920(116)};
-      height: ${(props) => props.theme.pixelToVieWidth1920(36)};
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(14)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(21)};
-      border-radius: ${(props) => props.theme.pixelToVieWidth1920(5)};
+      width: ${({ theme }) => theme.pixelToVieWidth1920(116)};
+      height: ${({ theme }) => theme.pixelToVieWidth1920(36)};
+      font-size: ${({ theme }) => theme.pixelToVieWidth1920(14)};
+      line-height: ${({ theme }) => theme.pixelToVieWidth1920(21)};
+      border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
     }
   }
 `;

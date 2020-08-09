@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     isRendered && (
-      <FooterStyled id='contact'>
+      <FooterStyled >
         <Container>
           <FooterInformation />
           <FooterSubscripion />

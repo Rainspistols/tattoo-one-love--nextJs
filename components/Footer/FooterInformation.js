@@ -2,21 +2,24 @@ import styled from '@emotion/styled';
 import FooterTitle from './FooterTitle';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import useWindowSize from '../../hooks/useWindowSize';
 
 const FooterInformation = () => {
   const informationListData = [
     { title: 'Głowna', href: '/', id: 1 },
     { title: 'Blog', href: '/blog', id: 2 },
-    { title: 'Kontakt', href: '/contact', id: 3 },
+    { title: 'Kontakt', href: '#contact', id: 3 },
     { title: 'Sitemap', href: '/sitemap', id: 4 },
   ];
+
+  const windowWidth = useWindowSize().width;
 
   const router = useRouter();
 
   return (
     <FooterInformationStyled>
       <FooterTitle text='Informacja' />
-      <ul>
+      <ul id={windowWidth < 1280 ? 'contact' : ''}>
         {informationListData.map(({ title, href, id }) => (
           <li key={id}>
             <Link href={href}>

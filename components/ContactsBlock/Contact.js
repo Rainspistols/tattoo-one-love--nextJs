@@ -5,6 +5,7 @@ import { RiMapPinLine } from 'react-icons/ri';
 import { FaPhoneSquareAlt } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
+
 const Contact = ({ iconsColor, textColor }) => {
   const data = [
     {
@@ -25,9 +26,10 @@ const Contact = ({ iconsColor, textColor }) => {
     },
   ];
 
+
   return (
     <ContactStyled className='Contact'>
-      <ul style={{ color: textColor }}>
+      <ul style={{ color: textColor }} >
         {data.map(({ title, href, icon }, index) => (
           <li key={index}>
             <a href={href}>

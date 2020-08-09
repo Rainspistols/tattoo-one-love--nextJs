@@ -19,7 +19,7 @@ const ContactsBlock = () => {
     stateWidth >= 1280 && (
       <Container>
         <ContactsBlockStyled>
-          <div className='Contact__wrap'>
+          <div className='Contact__wrap' id={'contact'}>
             <h2>Kontakt</h2>
             <Contact iconsColor='#F11E9C' textColor='#6C737E' />
           </div>

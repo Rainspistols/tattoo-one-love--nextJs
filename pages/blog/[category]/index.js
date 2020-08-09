@@ -1,7 +1,7 @@
 import Main from '../../../Layouts/Main/Main';
 import Subscribe from '../../../components/Subscribe/Subscribe';
 import StrapiService from '../../../components/StrapiService/StrapiService';
-import useWindowDimensions from '../../../hooks/useWindowDimension';
+import useWindowSize from '../../../hooks/useWindowSize';
 import { useState, useEffect } from 'react';
 import BlogPostsList from '../../../components/Blog/BlogPostsList/BlogPostsList';
 
@@ -11,7 +11,7 @@ const Category = ({
   activeCategory,
   allCategories,
 }) => {
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
   const [isSubscribeVisible, setSubscribeVisible] = useState(false);
 
   useEffect(() => {
