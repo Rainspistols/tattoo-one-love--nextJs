@@ -160,6 +160,10 @@ const SubscribeStyled = styled.div`
       line-height: ${({ theme }) => theme.pixelToVieWidth1920(21)};
       border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
     }
+
+    .like {
+      height: ${({ theme }) => theme.pixelToVieWidth1920(100)};
+    }
   }
 `;
 
