@@ -74,9 +74,13 @@ const BlogPostsListStyled = styled.section`
 
         :first-of-type {
           width: 100%;
-          display: flex;
 
-          .imgLink {
+          a {
+            display: flex;
+            flex-direction: row;
+          }
+
+          .imgWrap {
             order: 2;
             width: 80%;
             height: ${({ theme }) => theme.pixelToVieWidth1920(500)};
@@ -88,6 +92,10 @@ const BlogPostsListStyled = styled.section`
               margin: 0;
               width: 20%;
             }
+          }
+
+          .categoriesTitleWrap {
+            width: auto;
           }
           .categories {
             padding: 0;

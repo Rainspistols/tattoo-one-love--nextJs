@@ -109,6 +109,10 @@ const BlogPostCardStyled = styled.div`
       margin: 0;
       ${({ theme }) => theme.pixelToVieWidth1920(20)};
     }
+
+    .categories {
+      justify-content: center;
+    }
   }
 `;
 

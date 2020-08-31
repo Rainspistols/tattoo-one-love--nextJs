@@ -49,7 +49,6 @@ const FooterCopyRightStyled = styled.div`
 
     .row {
       margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(16)};
-      text-align: center;
 
       p {
         font-size: ${({ theme }) => theme.pixelToVieWidth1920(20)};
@@ -58,7 +57,7 @@ const FooterCopyRightStyled = styled.div`
       }
 
       svg {
-        width: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+        width: ${({ theme }) => theme.pixelToVieWidth1920(40)};
         height: auto;
         margin-right: ${({ theme }) => theme.pixelToVieWidth1920(10)};
       }

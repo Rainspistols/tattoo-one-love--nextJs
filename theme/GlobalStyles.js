@@ -57,6 +57,7 @@ const GlobalStyles = () => (
 
       button {
         padding: 0;
+        cursor: pointer;
       }
 
       img {

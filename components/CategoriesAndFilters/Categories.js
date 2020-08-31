@@ -60,6 +60,8 @@ const CategoriesStyled = styled.ul`
       pointer-events: none;
     }
   }
+
+
 `;
 
 export default Categories;

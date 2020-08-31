@@ -35,7 +35,7 @@ export default class SwapiService {
   getRelevantPosts = async (post, postSlug) => {
     const relevantCategories = post[0].post_categories.map((item) => item.slug);
     return await this.getResource(
-      `/posts??_sort=updated_at:DESC&_post_categories.slug=${relevantCategories[0]}&post_categories.slug=${relevantCategories[1]}&_limit=3&slug_ncontains=${postSlug}`
+      `/posts?_sort=updated_at:DESC&post_categories.slug=${relevantCategories[0]}&post_categories.slug=${relevantCategories[1]}&_limit=3&slug_ncontains=${postSlug}`
     );
   };
   // OUR WORKS
