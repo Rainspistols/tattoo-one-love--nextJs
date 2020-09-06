@@ -50,7 +50,7 @@ const HeaderStyled = styled.div`
     margin: 0;
 
     font-size: ${(props) => props.theme.pixelToVieWidth(32)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(48)};
+    line-height: 1.5;
     color: ${(props) => props.theme.colors.darkBlue};
     font-weight: 600;
   }
@@ -82,8 +82,6 @@ const HeaderStyled = styled.div`
 
       .title {
         font-size: ${({ theme }) => theme.pixelToVieWidth1920(48)};
-        line-height: ${({ theme }) => theme.pixelToVieWidth1920(72)};
-        font-weight: 500;
       }
     }
 

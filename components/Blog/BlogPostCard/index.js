@@ -54,6 +54,10 @@ const BlogPostCardStyled = styled.div`
   .categories {
     display: flex;
     flex-wrap: wrap;
+
+    li {
+      margin-bottom: ${({ theme }) => theme.pixelToVieWidth(7)};
+    }
   }
 
   .post__title {
@@ -112,6 +116,10 @@ const BlogPostCardStyled = styled.div`
 
     .categories {
       justify-content: center;
+
+      li {
+        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(7)};
+      }
     }
   }
 `;

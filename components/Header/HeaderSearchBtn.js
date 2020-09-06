@@ -21,12 +21,14 @@ const HeaderSearchBtnStyled = styled.button`
 
   img {
     width: ${({ theme }) => theme.pixelToVieWidth(24)};
+
     cursor: pointer;
   }
   /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
     img {
       width: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+      padding: ${({ theme }) => theme.pixelToVieWidth1920(10)};
     }
   }
 `;

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 // Components
 import BlogPostCard from '../BlogPostCard';
@@ -78,28 +77,25 @@ const BlogPostsListStyled = styled.section`
           a {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
           }
 
           .imgWrap {
             order: 2;
             width: 80%;
             height: ${({ theme }) => theme.pixelToVieWidth1920(500)};
-
-            ~ .Container {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              margin: 0;
-              width: 20%;
-            }
           }
 
           .categoriesTitleWrap {
-            width: auto;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
           }
           .categories {
             padding: 0;
-            margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(25)};
+            margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
             .CategoryBtn {
               a {
                 margin: 0;

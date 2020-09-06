@@ -30,7 +30,6 @@ const CategoryBtnStyled = styled.a`
     isLink ? theme.pixelToVieWidth(18) : theme.pixelToVieWidth(10)};
   line-height: ${({ theme, isLink }) =>
     isLink ? theme.pixelToVieWidth(27) : theme.pixelToVieWidth(12)};
-  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(7)};
 
   :not(:last-of-type) {
     margin-right: ${({ theme }) => theme.pixelToVieWidth(15)};

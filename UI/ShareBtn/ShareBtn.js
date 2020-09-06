@@ -21,17 +21,17 @@ const ShareBtn = ({ postHref }) => {
     <ul className='socialsList'>
       <li>
         <FacebookShareButton url={postHref}>
-          <img src={facebookIcon} alt='facebook' />
+          <img src={facebookIcon} alt='https://www.facebook.com/tattooonelovewwa' />
         </FacebookShareButton>
       </li>
       <li>
         <VKShareButton url={postHref}>
-          <img src={vkIcon} alt='facebook' />
+          <img src={vkIcon} alt='https://vk.com/tattoo.onelove' />
         </VKShareButton>
       </li>
       <li>
         <PocketShareButton url={postHref}>
-          <img src={pocketIcon} alt='facebook' />
+          <img src={pocketIcon} alt='' />
         </PocketShareButton>
       </li>
     </ul>

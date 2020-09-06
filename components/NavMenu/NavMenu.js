@@ -73,13 +73,14 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
           <h3 className='menu-title'>Blog categories</h3>
           <ul className='categories'>
             {categories.map((category) => (
-              <CategoryBtn
-                key={category.id}
-                text={category.name}
-                slug={category.slug}
-                onClick={onCategory.bind(this)}
-                isLink={true}
-              />
+              <li key={category.id}>
+                <CategoryBtn
+                  text={category.name}
+                  slug={category.slug}
+                  onClick={onCategory.bind(this)}
+                  isLink={true}
+                />
+              </li>
             ))}
           </ul>
         </section>

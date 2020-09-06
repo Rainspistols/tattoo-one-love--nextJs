@@ -85,6 +85,8 @@ const ImportantMessageStyled = styled.section`
     }
 
     button {
+      width: 2vw;
+      
       svg {
         width: ${({ theme }) => theme.pixelToVieWidth1920(40)};
         height: auto;

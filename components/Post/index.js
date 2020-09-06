@@ -8,6 +8,7 @@ import ShareBtn from '../../UI/ShareBtn/ShareBtn';
 import CategoriesAndFilters from '../CategoriesAndFilters';
 
 const Post = ({ postBySlug, relevantPostsData, allCategories, API_URL }) => {
+  console.log(postBySlug)
   return (
     <PostStyled>
       <CategoriesAndFilters allCategories={allCategories} />
@@ -15,7 +16,7 @@ const Post = ({ postBySlug, relevantPostsData, allCategories, API_URL }) => {
 
       <Container>
         <div className='ShareBtnAndContent__wrap'>
-          <ShareBtn />
+          <ShareBtn postHref={postBySlug.linkToThisPost}/>
           <Content postBySlug={postBySlug} />
         </div>
 

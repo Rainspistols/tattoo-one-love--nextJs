@@ -2,13 +2,16 @@ import styled from '@emotion/styled';
 import Line from '../../UI/Line';
 import BlogPostCard from '../Blog/BlogPostCard';
 import { useState, useEffect } from 'react';
+import useWindowSize from '../../hooks/useWindowSize';
 
 const RecommendedPosts = ({ posts, API_URL }) => {
   const [stateWidth, setStateWidth] = useState(null);
 
-  // useEffect(() => {
-  //   setStateWidth(width);
-  // }, [width]);
+  const windowWidth = useWindowSize().width;
+
+  useEffect(() => {
+    setStateWidth(windowWidth);
+  }, [windowWidth]);
 
   return (
     <RecommendedPostsStyled>
@@ -21,7 +24,9 @@ const RecommendedPosts = ({ posts, API_URL }) => {
             {stateWidth < 1280 ? (
               <BlogPostCard post={post} key={post.id} API_URL={API_URL} />
             ) : (
-              post.title
+              <a href={`/blog/${post.post_categories[0].slug}/${post.slug}`}>
+                {post.title}
+              </a>
             )}
             <Line />
           </li>
@@ -65,8 +70,8 @@ const RecommendedPostsStyled = styled.section`
       position: relative;
       z-index: 2;
 
-      padding: ${({ theme }) => theme.pixelToVieWidth(16)}
-        ${({ theme }) => theme.pixelToVieWidth(24)};
+      padding: ${({ theme }) =>
+        `${theme.pixelToVieWidth(16)} ${theme.pixelToVieWidth(24)}`};
       width: 60%;
       margin: auto;
 
@@ -120,7 +125,7 @@ const RecommendedPostsStyled = styled.section`
   ${({ theme }) => theme.mediaDesktop} {
     border-top: ${({ theme }) => theme.pixelToVieWidth1920(5)} solid
       ${({ theme }) => theme.colors.pink};
-      border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+    border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
       ${({ theme }) => theme.colors.grey2};
     padding: ${({ theme }) => theme.pixelToVieWidth1920(25)} 0;
 
@@ -128,13 +133,18 @@ const RecommendedPostsStyled = styled.section`
       display: inline-flex;
       flex-direction: column;
       padding-left: ${({ theme }) => theme.pixelToVieWidth1920(100)};
-    }
 
-    li {
-      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
-      border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
-        ${({ theme }) => theme.colors.pink};
-      width: auto;
+      li {
+        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+        border-bottom: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+          ${({ theme }) => theme.colors.pink};
+        width: auto;
+      }
+
+      a {
+        font-size: ${({ theme }) => theme.pixelToVieWidth1920(18)};
+        line-height: 1.4;
+      }
     }
 
     .recommended-arcticles__wrap {
