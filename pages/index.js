@@ -9,11 +9,10 @@ import FollowUs from '../components/FollowUs/FollowUs';
 import Subscribe from '../components/Subscribe/Subscribe';
 import Mission from '../components/Mission/Mission';
 import ContactsBlock from '../components/ContactsBlock/ContactsBlock';
-import BlogPreview from '../components/Blog/BlogPreview';
 // Strapi
 import StrapiService from '../components/StrapiService/StrapiService';
 
-const Home = ({ ourWorks, postsData, API_URL }) => {
+const Home = ({ ourWorks, API_URL }) => {
   const [stateWidth, setStateWidth] = useState(null);
   const windowWidth = useWindowSize().width;
 
@@ -32,7 +31,6 @@ const Home = ({ ourWorks, postsData, API_URL }) => {
       <AboutUsSection />
       <OurWorks ourWorks={ourWorks} />
       {stateWidth < 1280 && <FollowUs />}
-      <BlogPreview postsData={postsData} API_URL={API_URL} />
       <ContactsBlock />
       {stateWidth < 1280 && <Subscribe API_URL={API_URL} />}
       <Mission />
@@ -43,14 +41,12 @@ const Home = ({ ourWorks, postsData, API_URL }) => {
 export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
-  const postsData = await strapiService.getNLastPosts(6);
 
   const { API_URL } = process.env;
 
   return {
     props: {
       ourWorks,
-      postsData,
       API_URL,
     },
   };

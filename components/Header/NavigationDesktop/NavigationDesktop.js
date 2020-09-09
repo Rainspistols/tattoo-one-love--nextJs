@@ -8,10 +8,9 @@ const NavigationDesktop = () => {
 
   const menuLinksData = [
     { title: 'Główna', href: '/', id: 1 },
-    { title: 'Blog', href: '/blog', id: 2 },
-    { title: 'O nas', href: '/#about-us', id: 3 },
-    { title: 'Kontakt', href: '/#contact', id: 4 },
-    { title: 'Prace', href: '/#works', id: 5 },
+    { title: 'O nas', href: '/#about-us', id: 2 },
+    { title: 'Kontakt', href: '/#contact', id: 3 },
+    { title: 'Prace', href: '/#works', id: 4 },
   ];
 
   return (

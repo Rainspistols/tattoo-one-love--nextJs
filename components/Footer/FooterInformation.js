@@ -7,9 +7,8 @@ import useWindowSize from '../../hooks/useWindowSize';
 const FooterInformation = () => {
   const informationListData = [
     { title: 'Głowna', href: '/', id: 1 },
-    { title: 'Blog', href: '/blog', id: 2 },
-    { title: 'Kontakt', href: '#contact', id: 3 },
-    { title: 'Sitemap', href: '/sitemap', id: 4 },
+    { title: 'Kontakt', href: '#contact', id: 2 },
+    { title: 'Sitemap', href: '/sitemap', id: 3 },
   ];
 
   const windowWidth = useWindowSize().width;

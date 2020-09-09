@@ -3,19 +3,16 @@ import { useState, useRef, useEffect } from 'react';
 import useWindowSize from '../../hooks/useWindowSize';
 // Components
 import Logo from '../../UI/Logo/Logo';
-import Search from '../Search/Search';
 import Container from '../../Layouts/Container/Container';
 import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import NavMenu from '../NavMenu/NavMenu';
 import NavigationDesktop from './NavigationDesktop/NavigationDesktop';
 import CookieAgreement from '../CookieAgreement/CookieAgreement';
-import HeaderSearchBtn from './HeaderSearchBtn';
 // Icons
 import navigationIcon from './images/navigationIcon.svg';
 
-const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
+const Header = ({ importantMessageJson, categories }) => {
   const [isMenuActive, setMenuActive] = useState(false);
-  const [isSearchActive, setSearchActive] = useState(false);
   const [stateWidth, setStateWidth] = useState('');
   const windowWidth = useWindowSize().width;
 
@@ -33,20 +30,10 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
       <nav className='navigation'>
         <Container>
           <div className='wrap'>
-            {!isSearchActive && (
-              <>
-                <Logo />
-                {stateWidth >= 1280 && <NavigationDesktop />}
-                <HeaderSearchBtn setSearchActive={setSearchActive} />
-              </>
-            )}
+            <Logo />
+            {stateWidth >= 1280 && <NavigationDesktop />}
 
-            <div
-              className={
-                isSearchActive ? 'navigationBox activeSearch' : 'navigationBox'
-              }
-              ref={navigationBox}
-            >
+            <div className='navigationBox' ref={navigationBox}>
               <button className='menuButton'>
                 <img
                   className='menuIcon'
@@ -65,14 +52,6 @@ const Header = ({ importantMessageJson, categories, onSearchToGo }) => {
                 />
               ) : null}
             </div>
-
-            {isSearchActive && (
-              <Search
-                onSearchToGo={onSearchToGo}
-                onCloseSearch={setSearchActive.bind(this, false)}
-                onSubmitSearch={setSearchActive.bind(this, false)}
-              />
-            )}
           </div>
         </Container>
       </nav>
@@ -107,11 +86,6 @@ const HeaderStyled = styled.header`
     .menuIcon {
       width: ${({ theme }) => theme.pixelToVieWidth(40)};
     }
-  }
-
-  .navigationBox.activeSearch {
-    margin-left: 0;
-    margin-right: ${({ theme }) => theme.pixelToVieWidth(8)};
   }
 
   ${({ theme }) => theme.mediaDesktop} {

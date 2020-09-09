@@ -4,17 +4,15 @@ import Contact from '../ContactsBlock/Contact';
 import Container from '../../Layouts/Container/Container';
 import Logo from '../../UI/Logo/Logo';
 import Link from 'next/link';
-import CategoryBtn from '../../UI/CategoryBtn';
 // Icons
 import { vkIcon, facebookIcon, instagramIcon } from './images/';
 import closeIcon from './images/closeIcon.svg';
 
-const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
+const NavMenu = ({ onCloseMenu, onMenuItem,  }) => {
   const menuLinksData = [
     { title: 'Główna', href: '/', id: 1 },
-    { title: 'Blog', href: '/blog', id: 2 },
-    { title: 'O nac', href: '/#about-us', id: 3 },
-    { title: 'Prace', href: '/#works', id: 4 },
+    { title: 'O nac', href: '/#about-us', id: 2 },
+    { title: 'Prace', href: '/#works', id: 3 },
   ];
 
   const socialsListData = [
@@ -69,22 +67,6 @@ const NavMenu = ({ categories, onCloseMenu, onMenuItem, onCategory }) => {
       </nav>
 
       <Container>
-        <section className='blogCategories'>
-          <h3 className='menu-title'>Blog categories</h3>
-          <ul className='categories'>
-            {categories.map((category) => (
-              <li key={category.id}>
-                <CategoryBtn
-                  text={category.name}
-                  slug={category.slug}
-                  onClick={onCategory.bind(this)}
-                  isLink={true}
-                />
-              </li>
-            ))}
-          </ul>
-        </section>
-
         <Contact iconsColor='#7393A7' textColor='#7393A7' />
 
         <section className='socialsList'>
@@ -150,28 +132,6 @@ const NavMenuStyled = styled.section`
       a {
         padding: ${({ theme }) => theme.pixelToVieWidth(10)} 0;
         display: block;
-      }
-    }
-  }
-
-  .blogCategories {
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-
-      li {
-        margin: 0 ${({ theme }) => theme.pixelToVieWidth(5)}
-          ${({ theme }) => theme.pixelToVieWidth(8)} 0;
-
-        .CategoryBtn {
-          font-size: ${({ theme }) => theme.pixelToVieWidth(18)};
-          line-height: ${({ theme }) => theme.pixelToVieWidth(27)};
-          border: ${({ theme }) => theme.pixelToVieWidth(1)} solid
-            ${({ theme }) => theme.colors.grey3};
-          color: ${({ theme }) => theme.colors.grey3};
-          padding: ${({ theme }) => theme.pixelToVieWidth(10)};
-        }
       }
     }
   }
