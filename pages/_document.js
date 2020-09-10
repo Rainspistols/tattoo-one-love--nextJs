@@ -21,8 +21,8 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
-        <Head/>
+      <Html lang='pl'>
+        <Head />
         <body>
           <Main />
           <NextScript />

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
+
 import SectionTitle from '../../UI/SectionTitle';
 import Container from '../../Layouts/Container/Container';
+
 import { img, imgTablet, imgDesktop } from './images';
 
 const AboutUsSection = () => {

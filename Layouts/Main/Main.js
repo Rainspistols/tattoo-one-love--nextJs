@@ -1,8 +1,11 @@
 import Head from 'next/head';
 import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
 
 export default ({
   children,
+  importantMessage = '',
+
   headTitle = '',
   metaDescr = '',
   metaKeywords = '',
@@ -21,6 +24,8 @@ export default ({
       <link rel='icon' href='/favicon.ico' />
       <title>{headTitle}</title>
     </Head>
+
+    <Header importantMessageJson={importantMessage} />
 
     <main>{children}</main>
 

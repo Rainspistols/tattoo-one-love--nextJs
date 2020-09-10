@@ -12,7 +12,8 @@ import ContactsBlock from '../components/ContactsBlock/ContactsBlock';
 // Strapi
 import StrapiService from '../components/StrapiService/StrapiService';
 
-const Home = ({ ourWorks, API_URL }) => {
+const Home = ({ ourWorks, API_URL, matchPoints, importantMessage }) => {
+  // console.log(matchPoints.mobile);
   const [stateWidth, setStateWidth] = useState(null);
   const windowWidth = useWindowSize().width;
 
@@ -25,6 +26,7 @@ const Home = ({ ourWorks, API_URL }) => {
       headTitle='Wyjątkowe Studio Tatuażu Warszawa Wola | Tattoo One Love'
       metaDescr='Studio tatuażu (Warszawa), które dziara, edukuje i pomaga w wyrażaniu siebie. Kliknij i dowiedz się, jak i gdzie zrobić sobie tatuaż, który zmieni twoje życie.'
       metaKeywords='studio tatuażu warszawa'
+      importantMessage={importantMessage}
     >
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
       <Hero />
@@ -41,6 +43,7 @@ const Home = ({ ourWorks, API_URL }) => {
 export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
+  const importantMessage = await strapiService.getImportantMessage();
 
   const { API_URL } = process.env;
 
@@ -48,6 +51,7 @@ export const getStaticProps = async () => {
     props: {
       ourWorks,
       API_URL,
+      importantMessage,
     },
   };
 };
