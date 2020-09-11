@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 // Components
-import Container from '../../Layouts/Container/Container';
+import Container from '@/Layouts/Container/Container';
 
 import { IoIosClose } from 'react-icons/io';
 
@@ -86,7 +86,7 @@ const ImportantMessageStyled = styled.section`
 
     button {
       width: 2vw;
-      
+
       svg {
         width: ${({ theme }) => theme.pixelToVieWidth1920(40)};
         height: auto;

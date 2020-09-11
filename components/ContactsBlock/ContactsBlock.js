@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import FollowUs from '../FollowUs/FollowUs';
 import Subscribe from '../Subscribe/Subscribe';
 import Contact from './Contact';
-import Container from '../../Layouts/Container/Container';
+import Container from '@/Layouts/Container/Container';
 
 const ContactsBlock = () => {
   const [stateWidth, setStateWidth] = useState(null);

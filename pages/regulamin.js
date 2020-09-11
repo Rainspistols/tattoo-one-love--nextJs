@@ -1,6 +1,6 @@
 import React from 'react';
-import StrapiService from '../components/StrapiService/StrapiService';
-import PoliticsExample from '../components/PoliticsExample/PoliticsExample';
+import StrapiService from '@/components/StrapiService/StrapiService';
+import PoliticsExample from '@/components/PoliticsExample/PoliticsExample';
 // Next seo
 import React from 'react';
 import { NextSeo } from 'next-seo';

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 // Components
 import Contact from '../ContactsBlock/Contact';
-import Container from '../../Layouts/Container/Container';
-import Logo from '../../UI/Logo/Logo';
+import Container from '@/Layouts/Container/Container';
+import Logo from '@/UI/Logo/Logo';
 import Link from 'next/link';
 // Icons
 import { vkIcon, facebookIcon, instagramIcon } from './images/';
@@ -13,6 +13,7 @@ const NavMenu = ({ onCloseMenu, onMenuItem,  }) => {
     { title: 'Główna', href: '/', id: 1 },
     { title: 'O nac', href: '/#about-us', id: 2 },
     { title: 'Prace', href: '/#works', id: 3 },
+
   ];
 
   const socialsListData = [

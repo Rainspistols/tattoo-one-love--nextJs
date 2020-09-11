@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import Container from '../../Layouts/Container/Container';
+import Container from '@/Layouts/Container/Container';
 import likeImg from './images/social-media.svg';
 
 const Subscribe = ({ API_URL }) => {

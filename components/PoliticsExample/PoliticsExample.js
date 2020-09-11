@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import MarkdownView from 'react-showdown';
-import Container from '../../Layouts/Container/Container';
-import Main from '../../Layouts/Main/Main';
+import Container from '@/Layouts/Container/Container';
+import Main from '@/Layouts/Main/Main';
 
 const PoliticsExample = ({ data, headTitle }) => {
   return (

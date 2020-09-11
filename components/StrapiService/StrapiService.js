@@ -1,6 +1,4 @@
-import fetch from 'isomorphic-unfetch';
-
-export default class SwapiService {
+export default class StrapiService {
   _API_URL = process.env.API_URL;
 
   getResource = async (url) => {

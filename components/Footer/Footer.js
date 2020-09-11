@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { useState, useEffect } from 'react';
 // Components
-import Container from '../../Layouts/Container/Container';
-import Line from '../../UI/Line';
+import Container from '@/Layouts/Container/Container';
+import Line from '@/UI/Line';
 import FooterCopyRight from './FooterCopyRight';
 import Contact from '../ContactsBlock/Contact';
 import FooterInformation from './FooterInformation';
@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     isRendered && (
-      <FooterStyled >
+      <FooterStyled>
         <Container>
           <FooterInformation />
           <FooterSubscripion />

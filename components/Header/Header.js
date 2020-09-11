@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { useState, useRef, useEffect } from 'react';
-import useWindowSize from '../../hooks/useWindowSize';
+import useWindowSize from '@/hooks/useWindowSize';
 // Components
-import Logo from '../../UI/Logo/Logo';
-import Container from '../../Layouts/Container/Container';
+import Logo from '@/UI/Logo/Logo';
+import Container from '@/Layouts/Container/Container';
 import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import NavMenu from '../NavMenu/NavMenu';
 import NavigationDesktop from './NavigationDesktop/NavigationDesktop';

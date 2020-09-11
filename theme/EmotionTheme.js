@@ -1,4 +1,6 @@
-export default {
+import { ThemeProvider } from 'emotion-theming';
+
+const theme = {
   colors: {
     pink: '#F11E9C',
     darkBlue: '#1D2B36',
@@ -34,3 +36,9 @@ export default {
   mediaDesktop: '@media (min-width: 1280px)',
   MEDIA_BEFORE_DESKTOP: '@media(max-width: 1279px)',
 };
+
+const EmotionTheme = ({ children }) => (
+  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+);
+
+export default EmotionTheme;

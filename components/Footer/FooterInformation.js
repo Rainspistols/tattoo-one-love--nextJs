@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import FooterTitle from './FooterTitle';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import useWindowSize from '../../hooks/useWindowSize';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const FooterInformation = () => {
   const informationListData = [

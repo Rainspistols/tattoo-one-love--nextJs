@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Container from '../../Layouts/Container/Container';
+import Container from '@/Layouts/Container/Container';
 import { bgMobile, bgTablet, logo, bgDesktop } from './images';
 
 const Hero = () => {

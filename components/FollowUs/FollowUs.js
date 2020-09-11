@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import Container from '../../Layouts/Container/Container';
-import Line from '../../UI/Line';
+import Container from '@/Layouts/Container/Container';
+import Line from '@/UI/Line';
 
 import { instagram, vk, facebook } from './images/';
 

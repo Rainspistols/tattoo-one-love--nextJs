@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import SectionTitle from '../../UI/SectionTitle';
-import Container from '../../Layouts/Container/Container';
+import SectionTitle from '@/UI/SectionTitle';
+import Container from '@/Layouts/Container/Container';
 
 const Mission = () => {
   return (
