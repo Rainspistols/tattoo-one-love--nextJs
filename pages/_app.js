@@ -42,5 +42,4 @@ MyApp.getInitialProps = async (appContext) => {
   };
 };
 
-
 export default MyApp;

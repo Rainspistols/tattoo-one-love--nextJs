@@ -1,5 +1,5 @@
 export default class StrapiService {
-  _API_URL = process.env.API_URL;
+  _API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   getResource = async (url) => {
     const res = await fetch(`${this._API_URL}${url}`);

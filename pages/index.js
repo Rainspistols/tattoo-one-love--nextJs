@@ -12,7 +12,9 @@ import ContactsBlock from '@/components/ContactsBlock/ContactsBlock';
 // Strapi
 import StrapiService from '@/components/StrapiService/StrapiService';
 
-const Home = ({ ourWorks, API_URL, matchPoints }) => {
+const Home = ({ ourWorks, matchPoints }) => {
+  const { NEXT_PUBLIC_API_URL: API_URL } = process.env;
+
   // console.log(matchPoints.mobile);
   const [stateWidth, setStateWidth] = useState(null);
   const windowWidth = useWindowSize().width;
@@ -20,6 +22,8 @@ const Home = ({ ourWorks, API_URL, matchPoints }) => {
   useEffect(() => {
     setStateWidth(windowWidth);
   }, [windowWidth]);
+
+  got rid of variables
 
   return (
     <Main headTitle='Wyjątkowe Studio Tatuażu Warszawa Wola | Tattoo One Love'>
@@ -39,12 +43,9 @@ export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
 
-  const { API_URL } = process.env;
-
   return {
     props: {
       ourWorks,
-      API_URL,
     },
   };
 };

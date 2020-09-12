@@ -13,12 +13,9 @@ export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
 
-  const { API_URL } = process.env;
-
   return {
     props: {
       ourWorks,
-      API_URL,
     },
   };
 };
