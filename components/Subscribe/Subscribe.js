@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import Container from '@/Layouts/Container/Container';
-import likeImg from './images/social-media.svg';
 
 const Subscribe = ({ API_URL }) => {
   const [inputValue, setInputValue] = useState('');
@@ -50,7 +49,11 @@ const Subscribe = ({ API_URL }) => {
       <label className='title' htmlFor='email'>
         Well done !
       </label>
-      <img className='like' src={likeImg} alt='email accepted' />
+      <img
+        className='like'
+        src='/Subscribe/social-media.svg'
+        alt='email accepted'
+      />
     </fieldset>
   );
 
@@ -67,10 +70,9 @@ const Subscribe = ({ API_URL }) => {
 
 const SubscribeStyled = styled.div`
   background: ${({ theme }) => theme.colors.grey1};
-  padding: ${({ theme }) =>
-    `${theme.pixelToVieWidth(20)} ${theme.pixelToVieWidth(28)}`};
+  padding: ${({ theme }) => `${theme.vw(20)} ${theme.vw(28)}`};
   display: block;
-  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(30)};
+  margin-bottom: ${({ theme }) => theme.vw(30)};
 
   fieldset {
     border: none;
@@ -79,9 +81,9 @@ const SubscribeStyled = styled.div`
   }
 
   .title {
-    font-size: ${({ theme }) => theme.pixelToVieWidth(32)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(30)};
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(27)};
+    font-size: ${({ theme }) => theme.vw(32)};
+    line-height: ${({ theme }) => theme.vw(30)};
+    margin-bottom: ${({ theme }) => theme.vw(27)};
     color: ${({ theme }) => theme.colors.grey3};
     text-transform: uppercase;
     text-align: center;
@@ -90,12 +92,11 @@ const SubscribeStyled = styled.div`
   }
 
   .email {
-    height: ${({ theme }) => theme.pixelToVieWidth(48)};
-    border: ${({ theme }) =>
-      `${theme.pixelToVieWidth(1)} solid ${theme.colors.grey2}`};
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(27)};
-    border-radius: ${({ theme }) => theme.pixelToVieWidth(5)};
-    padding: 0 ${({ theme }) => theme.pixelToVieWidth(20)};
+    height: ${({ theme }) => theme.vw(48)};
+    border: ${({ theme }) => `${theme.vw(1)} solid ${theme.colors.grey2}`};
+    margin-bottom: ${({ theme }) => theme.vw(27)};
+    border-radius: ${({ theme }) => theme.vw(5)};
+    padding: 0 ${({ theme }) => theme.vw(20)};
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -103,20 +104,20 @@ const SubscribeStyled = styled.div`
     &::placeholder {
       color: ${({ theme }) => theme.colors.grey2};
     }
-    font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(21)};
+    font-size: ${({ theme }) => theme.vw(14)};
+    line-height: ${({ theme }) => theme.vw(21)};
   }
 
   .submit {
-    font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+    font-size: ${({ theme }) => theme.vw(14)};
     display: flex;
     align-items: center;
     justify-content: center;
     color: ${({ theme }) => theme.colors.white};
     text-transform: uppercase;
-    border-radius: ${({ theme }) => theme.pixelToVieWidth(5)};
-    width: ${({ theme }) => theme.pixelToVieWidth(116)};
-    height: ${({ theme }) => theme.pixelToVieWidth(36)};
+    border-radius: ${({ theme }) => theme.vw(5)};
+    width: ${({ theme }) => theme.vw(116)};
+    height: ${({ theme }) => theme.vw(36)};
     border: none;
     background: ${({ theme }) => theme.colors.pinkGradient};
     margin: 0 auto;
@@ -124,7 +125,7 @@ const SubscribeStyled = styled.div`
   }
 
   .like {
-    height: ${({ theme }) => theme.pixelToVieWidth(111)};
+    height: ${({ theme }) => theme.vw(111)};
     margin: 0 auto;
   }
 
@@ -134,35 +135,34 @@ const SubscribeStyled = styled.div`
 
     .title {
       color: ${({ theme }) => theme.colors.pink};
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(30)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
-      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+      font-size: ${({ theme }) => theme.vw1920(30)};
+      line-height: ${({ theme }) => theme.vw1920(30)};
+      margin-bottom: ${({ theme }) => theme.vw1920(10)};
       font-weight: 500;
     }
 
     .email {
-      width: ${({ theme }) => theme.pixelToVieWidth1920(300)};
-      height: ${({ theme }) => theme.pixelToVieWidth1920(50)};
-      border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
+      width: ${({ theme }) => theme.vw1920(300)};
+      height: ${({ theme }) => theme.vw1920(50)};
+      border-radius: ${({ theme }) => theme.vw1920(5)};
       border: ${({ theme }) =>
-        `${theme.pixelToVieWidth1920(1)} solid ${theme.colors.grey2}`};
-      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
-      padding: ${({ theme }) =>
-        `${theme.pixelToVieWidth1920(20)} ${theme.pixelToVieWidth1920(14)}`};
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(14)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(21)};
+        `${theme.vw1920(1)} solid ${theme.colors.grey2}`};
+      margin-bottom: ${({ theme }) => theme.vw1920(10)};
+      padding: ${({ theme }) => `${theme.vw1920(20)} ${theme.vw1920(14)}`};
+      font-size: ${({ theme }) => theme.vw1920(14)};
+      line-height: ${({ theme }) => theme.vw1920(21)};
     }
 
     .submit {
-      width: ${({ theme }) => theme.pixelToVieWidth1920(116)};
-      height: ${({ theme }) => theme.pixelToVieWidth1920(36)};
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(14)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(21)};
-      border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
+      width: ${({ theme }) => theme.vw1920(116)};
+      height: ${({ theme }) => theme.vw1920(36)};
+      font-size: ${({ theme }) => theme.vw1920(14)};
+      line-height: ${({ theme }) => theme.vw1920(21)};
+      border-radius: ${({ theme }) => theme.vw1920(5)};
     }
 
     .like {
-      height: ${({ theme }) => theme.pixelToVieWidth1920(100)};
+      height: ${({ theme }) => theme.vw1920(100)};
     }
   }
 `;

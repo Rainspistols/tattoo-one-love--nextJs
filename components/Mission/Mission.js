@@ -26,7 +26,7 @@ const Mission = () => {
           (ewentualnie zadzwonić), i jak najszybciej wycenimy twoją dziarę.
           Naszą specjalnością są <strong>tatuaże kolorowe</strong>,{' '}
           <strong>tatuaże damskie</strong>, <strong>tatuaże męskie</strong>,
-          <strong>{' '}małe tatuaże</strong>, <strong>tatuaże dla par</strong> oraz{' '}
+          <strong> małe tatuaże</strong>, <strong>tatuaże dla par</strong> oraz{' '}
           <strong>tatuaż rękaw</strong>. Szukasz inspiracji na temat{' '}
           <strong>tatuaż kwiaty</strong> lub <strong>mały tatuaż</strong>?
           Wystarczy przeglądać nasze pracy, żeby zrozumieć, że na pewno
@@ -49,21 +49,21 @@ const Mission = () => {
 };
 
 const MissionStyled = styled.section`
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(50)};
+  margin-bottom: ${(props) => props.theme.vw(50)};
 
   p {
-    font-size: ${(props) => props.theme.pixelToVieWidth(16)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(27)};
+    font-size: ${(props) => props.theme.vw(16)};
+    line-height: ${(props) => props.theme.vw(27)};
     font-weight: 400;
     color: ${(props) => props.theme.colors.darkBlue};
     text-align: justify;
   }
 
   ${(props) => props.theme.mediaDesktop} {
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(100)};
+    margin-bottom: ${(props) => props.theme.vw1920(100)};
     p {
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(17)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(28)};
+      font-size: ${(props) => props.theme.vw1920(17)};
+      line-height: ${(props) => props.theme.vw1920(28)};
     }
   }
 `;

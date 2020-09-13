@@ -15,7 +15,7 @@ const CookieAgreement = () => {
         contentClasses='cookie-message'
         buttonText='click or scroll down to agree'
       >
-        This website uses cookies to enhance the user experience.{" "}
+        This website uses cookies to enhance the user experience.{' '}
       </CookieConsent>
     </CookieAgreementStyled>
   );
@@ -30,21 +30,19 @@ const CookieAgreementStyled = styled.section`
     width: 100%;
     display: flex;
 
-    font-size: ${({ theme }) => theme.pixelToVieWidth(14)};
+    font-size: ${({ theme }) => theme.vw(14)};
     line-height: 1.2;
     text-align: center;
     font-weight: 400;
     color: ${({ theme }) => theme.colors.grey4};
 
     background: ${({ theme }) => theme.colors.white};
-    border: ${({ theme }) =>
-      `${theme.pixelToVieWidth(2)} solid ${theme.colors.pink}`};
+    border: ${({ theme }) => `${theme.vw(2)} solid ${theme.colors.pink}`};
 
     box-sizing: border-box;
 
     .cookie-message {
-      padding: ${({ theme }) =>
-        `${theme.pixelToVieWidth(10)} ${theme.pixelToVieWidth(20)}`};
+      padding: ${({ theme }) => `${theme.vw(10)} ${theme.vw(20)}`};
       width: 100%;
 
       background: transparent;
@@ -53,7 +51,7 @@ const CookieAgreementStyled = styled.section`
     .button-close {
       width: 100%;
       margin: 0;
-      padding: ${({ theme }) => theme.pixelToVieWidth(10)} 0;
+      padding: ${({ theme }) => theme.vw(10)} 0;
 
       text-transform: uppercase;
       color: inherit;
@@ -61,8 +59,7 @@ const CookieAgreementStyled = styled.section`
 
       border-radius: 0;
       border: none;
-      border-top: ${({ theme }) =>
-        `${theme.pixelToVieWidth(2)} solid ${theme.colors.pink}`};
+      border-top: ${({ theme }) => `${theme.vw(2)} solid ${theme.colors.pink}`};
       background-color: ${({ theme }) => theme.colors.white};
     }
     .button-close__wrapper {
@@ -72,21 +69,19 @@ const CookieAgreementStyled = styled.section`
 
   ${({ theme }) => theme.mediaDesktop} {
     .CookieConsent {
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(14)};
+      font-size: ${({ theme }) => theme.vw1920(14)};
 
-      border: ${({ theme }) =>
-        `${theme.pixelToVieWidth1920(3)} solid ${theme.colors.pink}`};
+      border: ${({ theme }) => `${theme.vw1920(3)} solid ${theme.colors.pink}`};
 
       .cookie-message {
-        padding: ${({ theme }) =>
-          `${theme.pixelToVieWidth1920(10)} ${theme.pixelToVieWidth1920(20)}`};
+        padding: ${({ theme }) => `${theme.vw1920(10)} ${theme.vw1920(20)}`};
       }
 
       .button-close {
-        padding: ${({ theme }) => theme.pixelToVieWidth1920(10)} 0;
+        padding: ${({ theme }) => theme.vw1920(10)} 0;
 
         border-top: ${({ theme }) =>
-          `${theme.pixelToVieWidth1920(2)} solid ${theme.colors.pink}`};
+          `${theme.vw1920(2)} solid ${theme.colors.pink}`};
       }
     }
   }

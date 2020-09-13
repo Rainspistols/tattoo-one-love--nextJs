@@ -26,7 +26,7 @@ const FooterRules = () => {
 };
 
 const FooterRulesStyled = styled.section`
-  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+  margin-bottom: ${({ theme }) => theme.vw(10)};
 
   ul {
     display: flex;
@@ -34,22 +34,22 @@ const FooterRulesStyled = styled.section`
 
     li {
       :not(:last-child) {
-        margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+        margin-bottom: ${({ theme }) => theme.vw1920(10)};
       }
     }
   }
 
   a {
-    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
-    margin-right: ${({ theme }) => theme.pixelToVieWidth(30)};
+    font-size: ${({ theme }) => theme.vw(13)};
+    line-height: ${({ theme }) => theme.vw(20)};
+    margin-right: ${({ theme }) => theme.vw(30)};
     display: flex;
     color: ${({ theme }) => theme.colors.grey1};
     font-weight: 400;
   }
 
   img {
-    padding-right: ${({ theme }) => theme.pixelToVieWidth(10)};
+    padding-right: ${({ theme }) => theme.vw(10)};
   }
   /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
@@ -58,8 +58,8 @@ const FooterRulesStyled = styled.section`
     }
 
     a {
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(15)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(23)};
+      font-size: ${({ theme }) => theme.vw1920(15)};
+      line-height: ${({ theme }) => theme.vw1920(23)};
       margin-right: 0;
     }
   }

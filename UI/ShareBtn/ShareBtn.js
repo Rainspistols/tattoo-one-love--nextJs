@@ -21,7 +21,10 @@ const ShareBtn = ({ postHref }) => {
     <ul className='socialsList'>
       <li>
         <FacebookShareButton url={postHref}>
-          <img src={facebookIcon} alt='https://www.facebook.com/tattooonelovewwa' />
+          <img
+            src={facebookIcon}
+            alt='https://www.facebook.com/tattooonelovewwa'
+          />
         </FacebookShareButton>
       </li>
       <li>
@@ -54,36 +57,36 @@ const ShareBtnStyled = styled.div`
   transform: translateX(-50%);
 
   display: inline-block;
-  height: ${({ theme }) => theme.pixelToVieWidth(28)};
-  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(20)};
-  padding: 0 ${({ theme }) => theme.pixelToVieWidth(12)};
+  height: ${({ theme }) => theme.vw(28)};
+  margin-bottom: ${({ theme }) => theme.vw(20)};
+  padding: 0 ${({ theme }) => theme.vw(12)};
 
-  border-radius: ${({ theme }) => theme.pixelToVieWidth(5)};
+  border-radius: ${({ theme }) => theme.vw(5)};
   background: transparent;
-  border: ${({ theme }) => theme.pixelToVieWidth(1)} solid
+  border: ${({ theme }) => theme.vw(1)} solid
     ${({ theme }) => theme.colors.grey2};
 
   .shareNotActive {
-    ${(props) => props.theme.flexCenter};
+    ${(props) => props.theme.flex.center};
     height: 100%;
 
     img {
-      width: ${({ theme }) => theme.pixelToVieWidth(15)};
+      width: ${({ theme }) => theme.vw(15)};
       height: auto;
-      margin-right: ${({ theme }) => theme.pixelToVieWidth(10)};
+      margin-right: ${({ theme }) => theme.vw(10)};
     }
 
     p {
       text-transform: uppercase;
-      font-size: ${({ theme }) => theme.pixelToVieWidth(20)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth(40)};
+      font-size: ${({ theme }) => theme.vw(20)};
+      line-height: ${({ theme }) => theme.vw(40)};
       color: ${({ theme }) => theme.colors.pink};
-      letter-spacing: ${({ theme }) => theme.pixelToVieWidth(8)};
+      letter-spacing: ${({ theme }) => theme.vw(8)};
     }
   }
 
   .socialsList {
-    ${({ theme }) => theme.flexCenter};
+    ${({ theme }) => theme.flex.center};
     height: 100%;
 
     padding: 0;
@@ -95,10 +98,10 @@ const ShareBtnStyled = styled.div`
 
     li {
       :not(:last-child) {
-        margin-right: ${({ theme }) => theme.pixelToVieWidth(25)};
+        margin-right: ${({ theme }) => theme.vw(25)};
       }
       img {
-        width: ${({ theme }) => theme.pixelToVieWidth(24)};
+        width: ${({ theme }) => theme.vw(24)};
         height: auto;
       }
     }
@@ -108,38 +111,38 @@ const ShareBtnStyled = styled.div`
     transform: translateX(0);
     left: 0;
 
-    width: ${({ theme }) => theme.pixelToVieWidth1920(200)};
-    height: ${({ theme }) => theme.pixelToVieWidth1920(50)};
+    width: ${({ theme }) => theme.vw1920(200)};
+    height: ${({ theme }) => theme.vw1920(50)};
     padding: 0;
     margin: 0;
 
-    border-radius: ${({ theme }) => theme.pixelToVieWidth1920(5)};
-    border: ${({ theme }) => theme.pixelToVieWidth1920(1)} solid
+    border-radius: ${({ theme }) => theme.vw1920(5)};
+    border: ${({ theme }) => theme.vw1920(1)} solid
       ${({ theme }) => theme.colors.grey2};
 
     cursor: pointer;
 
     .shareNotActive {
       p {
-        font-size: ${({ theme }) => theme.pixelToVieWidth1920(30)};
-        line-height: ${({ theme }) => theme.pixelToVieWidth1920(40)};
-        letter-spacing: ${({ theme }) => theme.pixelToVieWidth1920(8)};
+        font-size: ${({ theme }) => theme.vw1920(30)};
+        line-height: ${({ theme }) => theme.vw1920(40)};
+        letter-spacing: ${({ theme }) => theme.vw1920(8)};
         font-weight: 400;
       }
 
       img {
-        width: ${({ theme }) => theme.pixelToVieWidth1920(21)};
-        margin-right: ${({ theme }) => theme.pixelToVieWidth1920(20)};
+        width: ${({ theme }) => theme.vw1920(21)};
+        margin-right: ${({ theme }) => theme.vw1920(20)};
       }
     }
 
     .socialsList {
       li {
         :not(:last-child) {
-          margin-right: ${({ theme }) => theme.pixelToVieWidth1920(25)};
+          margin-right: ${({ theme }) => theme.vw1920(25)};
         }
         img {
-          width: ${({ theme }) => theme.pixelToVieWidth1920(35)};
+          width: ${({ theme }) => theme.vw1920(35)};
         }
       }
     }

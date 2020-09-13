@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Contact from '../../ContactsBlock/Contact';
+
+import Contacts from '../Contacts/Contacts';
 
 const NavigationDesktop = () => {
   const router = useRouter();
@@ -26,32 +27,34 @@ const NavigationDesktop = () => {
         ))}
       </ul>
 
-      <Contact iconsColor='white' textColor='white' />
+      <Contacts iconsColor='white' textColor='white' />
     </NavigationDesktopStyled>
   );
 };
 
 const NavigationDesktopStyled = styled.div`
   ${({ theme }) => theme.mediaDesktop} {
-    ${({ theme }) => theme.flexBetween};
+    ${({ theme }) => theme.flex.between};
     height: 100%;
+    flex-grow: 1;
+    margin-left: ${({ theme }) => theme.vw1920(105)};
 
     .navigationList {
-      ${({ theme }) => theme.flexCenter}
+      ${({ theme }) => theme.flex.center}
       color: ${({ theme }) => theme.colors.white};
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(20)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
-      margin-right: ${({ theme }) => theme.pixelToVieWidth1920(90)};
+      font-size: ${({ theme }) => theme.vw1920(20)};
+      line-height: ${({ theme }) => theme.vw1920(30)};
+      margin-right: ${({ theme }) => theme.vw1920(90)};
       height: 100%;
 
       li {
         height: 100%;
-        letter-spacing: ${({ theme }) => theme.pixelToVieWidth1920(1.5)};
+        letter-spacing: ${({ theme }) => theme.vw1920(1.5)};
         display: flex;
         align-items: center;
         justify-content: center;
         :not(:last-child) {
-          margin-right: ${({ theme }) => theme.pixelToVieWidth1920(27)};
+          margin-right: ${({ theme }) => theme.vw1920(27)};
         }
         a {
           white-space: nowrap;
@@ -66,10 +69,10 @@ const NavigationDesktopStyled = styled.div`
           bottom: 0;
           left: 0;
           width: 100%;
-          height: ${({ theme }) => theme.pixelToVieWidth1920(3)};
+          height: ${({ theme }) => theme.vw1920(3)};
           background: ${({ theme }) => theme.colors.whiteGradient};
-          border-radius: ${({ theme }) => theme.pixelToVieWidth1920(10)}
-            ${({ theme }) => theme.pixelToVieWidth1920(10)} 0 0;
+          border-radius: ${({ theme }) => theme.vw1920(10)}
+            ${({ theme }) => theme.vw1920(10)} 0 0;
         }
       }
     }
@@ -79,7 +82,7 @@ const NavigationDesktopStyled = styled.div`
 
       li {
         :first-of-type {
-          margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(7)};
+          margin-bottom: ${({ theme }) => theme.vw1920(7)};
         }
         :last-child {
           display: none;
@@ -87,13 +90,13 @@ const NavigationDesktopStyled = styled.div`
       }
 
       a {
-        font-size: ${({ theme }) => theme.pixelToVieWidth1920(15)};
-        line-height: ${({ theme }) => theme.pixelToVieWidth1920(23)};
+        font-size: ${({ theme }) => theme.vw1920(15)};
+        line-height: ${({ theme }) => theme.vw1920(23)};
 
         svg {
-          height: ${({ theme }) => theme.pixelToVieWidth1920(15)};
+          height: ${({ theme }) => theme.vw1920(15)};
           width: auto;
-          margin-right: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+          margin-right: ${({ theme }) => theme.vw1920(10)};
         }
       }
     }

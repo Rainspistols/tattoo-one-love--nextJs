@@ -46,26 +46,26 @@ const ImportantMessage = ({ importantMessageJson }) => {
 const ImportantMessageStyled = styled.section`
   background: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => theme.pixelToVieWidth(5)} 0;
+  padding: ${({ theme }) => theme.vw(5)} 0;
 
   .Container {
     width: 100%;
-    ${({ theme }) => theme.flexBetween}
+    ${({ theme }) => theme.flex.between}
     box-sizing: border-box;
   }
 
   a {
     cursor: pointer;
-    padding-right: ${({ theme }) => theme.pixelToVieWidth(24)};
-    font-size: ${({ theme }) => theme.pixelToVieWidth(10)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(15)};
+    padding-right: ${({ theme }) => theme.vw(24)};
+    font-size: ${({ theme }) => theme.vw(10)};
+    line-height: ${({ theme }) => theme.vw(15)};
   }
 
   button {
     cursor: pointer;
     border: none;
     background: transparent;
-    width: ${({ theme }) => theme.pixelToVieWidth(30)};
+    width: ${({ theme }) => theme.vw(30)};
 
     svg {
       width: 100%;
@@ -76,11 +76,11 @@ const ImportantMessageStyled = styled.section`
   }
 
   ${({ theme }) => theme.mediaDesktop} {
-    padding: ${({ theme }) => theme.pixelToVieWidth1920(7)} 0;
+    padding: ${({ theme }) => theme.vw1920(7)} 0;
 
     a {
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(26)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+      font-size: ${({ theme }) => theme.vw1920(26)};
+      line-height: ${({ theme }) => theme.vw1920(30)};
       text-align: center;
     }
 
@@ -88,7 +88,7 @@ const ImportantMessageStyled = styled.section`
       width: 2vw;
 
       svg {
-        width: ${({ theme }) => theme.pixelToVieWidth1920(40)};
+        width: ${({ theme }) => theme.vw1920(40)};
         height: auto;
       }
     }

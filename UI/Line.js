@@ -14,7 +14,7 @@ const Line = () => {
 };
 
 const LineStyled = styled.div`
-  height: ${({ theme }) => theme.pixelToVieWidth(1)};
+  height: ${({ theme }) => theme.vw(1)};
   width: 100%;
   background-color: ${({ theme }) => theme.colors.grey1};
 `;

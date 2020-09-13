@@ -18,26 +18,26 @@ const FooterCopyRight = () => {
 };
 
 const FooterCopyRightStyled = styled.div`
-  padding: ${({ theme }) => theme.pixelToVieWidth(7)} 0 0;
+  padding: ${({ theme }) => theme.vw(7)} 0 0;
 
   .row {
     display: flex;
     align-items: center;
     color: ${({ theme }) => theme.colors.white};
     text-transform: uppercase;
-    font-size: ${({ theme }) => theme.pixelToVieWidth(16)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(25)};
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(8)};
+    font-size: ${({ theme }) => theme.vw(16)};
+    line-height: ${({ theme }) => theme.vw(25)};
+    margin-bottom: ${({ theme }) => theme.vw(8)};
     font-weight: 400;
 
     svg {
-      margin-right: ${({ theme }) => theme.pixelToVieWidth(10)};
+      margin-right: ${({ theme }) => theme.vw(10)};
     }
   }
 
   .smallText {
-    font-size: ${({ theme }) => theme.pixelToVieWidth(10)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(10)};
+    font-size: ${({ theme }) => theme.vw(10)};
+    line-height: ${({ theme }) => theme.vw(10)};
     color: ${({ theme }) => theme.colors.grey2};
     font-weight: 400;
   }
@@ -48,24 +48,24 @@ const FooterCopyRightStyled = styled.div`
     padding: 0;
 
     .row {
-      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(16)};
+      margin-bottom: ${({ theme }) => theme.vw1920(16)};
 
       p {
-        font-size: ${({ theme }) => theme.pixelToVieWidth1920(20)};
-        line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+        font-size: ${({ theme }) => theme.vw1920(20)};
+        line-height: ${({ theme }) => theme.vw1920(30)};
         font-weight: 700;
       }
 
       svg {
-        width: ${({ theme }) => theme.pixelToVieWidth1920(40)};
+        width: ${({ theme }) => theme.vw1920(40)};
         height: auto;
-        margin-right: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+        margin-right: ${({ theme }) => theme.vw1920(10)};
       }
     }
 
     .smallText {
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(10)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(12)};
+      font-size: ${({ theme }) => theme.vw1920(10)};
+      line-height: ${({ theme }) => theme.vw1920(12)};
     }
   }
 `;

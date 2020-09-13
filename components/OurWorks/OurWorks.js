@@ -69,27 +69,27 @@ const OurWorks = ({ ourWorks }) => {
 
 const OurWorksStyled = styled.div`
   .slick-slide {
-    margin-left: ${({ theme }) => theme.pixelToVieWidth(30)};
+    margin-left: ${({ theme }) => theme.vw(30)};
   }
 
   .imgWrap {
-    width: ${({ theme }) => theme.pixelToVieWidth(250)};
-    height: ${({ theme }) => theme.pixelToVieWidth(250)};
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(30)};
+    width: ${({ theme }) => theme.vw(250)};
+    height: ${({ theme }) => theme.vw(250)};
+    margin-bottom: ${({ theme }) => theme.vw(30)};
     display: block !important;
     img {
       object-fit: cover;
-      width: ${({ theme }) => theme.pixelToVieWidth(250)};
-      height: ${({ theme }) => theme.pixelToVieWidth(250)};
+      width: ${({ theme }) => theme.vw(250)};
+      height: ${({ theme }) => theme.vw(250)};
     }
   }
 
   ${({ theme }) => theme.mediaDesktop} {
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(100)};
+    margin-bottom: ${({ theme }) => theme.vw1920(100)};
 
     .slick-slider {
       background: ${({ theme }) => theme.colors.black};
-      padding: ${({ theme }) => theme.pixelToVieWidth1920(25)} 0;
+      padding: ${({ theme }) => theme.vw1920(25)} 0;
     }
     .slick-slide {
       margin-left: 0;
@@ -100,11 +100,11 @@ const OurWorksStyled = styled.div`
       height: auto;
 
       img {
-        width: ${({ theme }) => theme.pixelToVieWidth1920(900)};
-        height: ${({ theme }) => theme.pixelToVieWidth1920(900)};
-        border-left: ${({ theme }) => theme.pixelToVieWidth1920(36)} solid
+        width: ${({ theme }) => theme.vw1920(900)};
+        height: ${({ theme }) => theme.vw1920(900)};
+        border-left: ${({ theme }) => theme.vw1920(36)} solid
           ${({ theme }) => theme.colors.black};
-        border-right: ${({ theme }) => theme.pixelToVieWidth1920(36)} solid
+        border-right: ${({ theme }) => theme.vw1920(36)} solid
           ${({ theme }) => theme.colors.black};
       }
     }

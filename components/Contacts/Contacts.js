@@ -5,8 +5,7 @@ import { RiMapPinLine } from 'react-icons/ri';
 import { FaPhoneSquareAlt } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
-
-const Contact = ({ iconsColor, textColor }) => {
+const Contacts = ({ iconsColor, textColor }) => {
   const data = [
     {
       title: 'Gostyńska 41, 01-151, Warszawa (Wola)',
@@ -26,10 +25,9 @@ const Contact = ({ iconsColor, textColor }) => {
     },
   ];
 
-
   return (
-    <ContactStyled className='Contact'>
-      <ul style={{ color: textColor }} >
+    <ContactsStyled className='Contact'>
+      <ul style={{ color: textColor }}>
         {data.map(({ title, href, icon }, index) => (
           <li key={index}>
             <a href={href}>
@@ -41,39 +39,39 @@ const Contact = ({ iconsColor, textColor }) => {
           </li>
         ))}
       </ul>
-    </ContactStyled>
+    </ContactsStyled>
   );
 };
 
-const ContactStyled = styled.section`
-  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(20)};
+const ContactsStyled = styled.section`
+  margin-bottom: ${({ theme }) => theme.vw(20)};
 
   a {
     display: flex;
     align-items: center;
-    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
+    font-size: ${({ theme }) => theme.vw(13)};
+    line-height: ${({ theme }) => theme.vw(20)};
     white-space: nowrap;
   }
 
   svg {
-    margin-right: ${({ theme }) => theme.pixelToVieWidth(8)};
+    margin-right: ${({ theme }) => theme.vw(8)};
     width: auto;
-    height: ${({ theme }) => theme.pixelToVieWidth(16)};
+    height: ${({ theme }) => theme.vw(16)};
   }
   /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
     margin-bottom: 0;
     a {
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(20)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(30)};
+      font-size: ${({ theme }) => theme.vw1920(20)};
+      line-height: ${({ theme }) => theme.vw1920(30)};
     }
 
     svg {
-      height: ${({ theme }) => theme.pixelToVieWidth1920(20)};
-      margin-right: ${({ theme }) => theme.pixelToVieWidth1920(5)};
+      height: ${({ theme }) => theme.vw1920(20)};
+      margin-right: ${({ theme }) => theme.vw1920(5)};
     }
   }
 `;
 
-export default Contact;
+export default Contacts;

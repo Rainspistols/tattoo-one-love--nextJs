@@ -18,21 +18,21 @@ const Logo = () => {
 
 const StyledLogo = styled.div`
   background: ${({ theme }) => theme.colors.white};
-  width: ${({ theme }) => theme.pixelToVieWidth(98)};
-  ${({ theme }) => theme.flexCenter};
+  width: ${({ theme }) => theme.vw(98)};
+  ${({ theme }) => theme.flex.center};
   clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
   height: 100%;
 
   img {
-    width: ${({ theme }) => theme.pixelToVieWidth(45)};
+    width: ${({ theme }) => theme.vw(45)};
   }
 
   ${({ theme }) => theme.mediaDesktop} {
-    width: ${({ theme }) => theme.pixelToVieWidth1920(174)};
+    width: ${({ theme }) => theme.vw1920(174)};
     height: 100%;
 
     img {
-      width: ${({ theme }) => theme.pixelToVieWidth1920(105)};
+      width: ${({ theme }) => theme.vw1920(105)};
     }
   }
 `;

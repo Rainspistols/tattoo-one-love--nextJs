@@ -87,7 +87,7 @@ const FooterSubscripion = () => {
   );
 };
 const FooterSubscripionStyled = styled.section`
-  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+  margin-bottom: ${({ theme }) => theme.vw(10)};
 
   ul {
     display: flex;
@@ -95,16 +95,16 @@ const FooterSubscripionStyled = styled.section`
   }
 
   a {
-    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
-    margin-right: ${({ theme }) => theme.pixelToVieWidth(30)};
+    font-size: ${({ theme }) => theme.vw(13)};
+    line-height: ${({ theme }) => theme.vw(20)};
+    margin-right: ${({ theme }) => theme.vw(30)};
     display: flex;
     color: ${({ theme }) => theme.colors.grey1};
     font-weight: 400;
   }
 
   img {
-    padding-right: ${({ theme }) => theme.pixelToVieWidth(10)};
+    padding-right: ${({ theme }) => theme.vw(10)};
   }
 
   /* MEDIA */
@@ -115,14 +115,14 @@ const FooterSubscripionStyled = styled.section`
     margin: 0;
 
     .FooterTitle {
-      margin: 0 ${({ theme }) => theme.pixelToVieWidth1920(26)} 0 0;
+      margin: 0 ${({ theme }) => theme.vw1920(26)} 0 0;
     }
 
     a {
-      width: ${({ theme }) => theme.pixelToVieWidth1920(35)};
-      height: ${({ theme }) => theme.pixelToVieWidth1920(35)};
-      margin-right: ${({ theme }) => theme.pixelToVieWidth1920(44)};
-      ${({ theme }) => theme.flexCenter}
+      width: ${({ theme }) => theme.vw1920(35)};
+      height: ${({ theme }) => theme.vw1920(35)};
+      margin-right: ${({ theme }) => theme.vw1920(44)};
+      ${({ theme }) => theme.flex.center}
 
       svg path {
         transition: all 0.3s ease-out;

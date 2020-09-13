@@ -1,11 +1,10 @@
-import Main from '../Layouts/Main/Main';
 import StrapiService from '@/components/StrapiService/StrapiService';
 
 const Test = () => {
   return (
-    <Main>
+    <main>
       <h2>lalal</h2>
-    </Main>
+    </main>
   );
 };
 

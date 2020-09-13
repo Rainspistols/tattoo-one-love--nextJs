@@ -2,23 +2,23 @@ import styled from '@emotion/styled';
 import Container from '@/Layouts/Container/Container';
 import Line from '@/UI/Line';
 
-import { instagram, vk, facebook } from './images/';
+
 
 const FollowUs = () => {
   const socialsData = [
     {
       link: 'https://www.facebook.com/Hannah.Evolve/',
       className: 'facebook',
-      icon: facebook,
+      icon: '/FollowUs/facebook.svg',
       id: 1,
     },
     {
       link: 'https://www.instagram.com/hannah.evolution/',
       className: 'instagram',
-      icon: instagram,
+      icon: '/FollowUs/instagram.svg',
       id: 2,
     },
-    { link: 'https://vk.com/hannah.evolve', className: 'vk', icon: vk, id: 3 },
+    { link: 'https://vk.com/hannah.evolve', className: 'vk', icon: '/FollowUs/vk.svg', id: 3 },
   ];
 
   return (
@@ -45,19 +45,19 @@ const FollowUs = () => {
 };
 
 const FollowUsStyled = styled.div`
-  margin-bottom: ${(props) => props.theme.pixelToVieWidth(47)};
+  margin-bottom: ${(props) => props.theme.vw(47)};
 
   section {
-    padding-top: ${(props) => props.theme.pixelToVieWidth(20)};
-    padding-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
+    padding-top: ${(props) => props.theme.vw(20)};
+    padding-bottom: ${(props) => props.theme.vw(20)};
   }
 
   h3 {
-    font-size: ${(props) => props.theme.pixelToVieWidth(18)};
-    line-height: ${(props) => props.theme.pixelToVieWidth(27)};
+    font-size: ${(props) => props.theme.vw(18)};
+    line-height: ${(props) => props.theme.vw(27)};
     font-weight: 400;
     color: ${(props) => props.theme.colors.grey4};
-    margin-bottom: ${(props) => props.theme.pixelToVieWidth(20)};
+    margin-bottom: ${(props) => props.theme.vw(20)};
     text-align: center;
   }
 
@@ -68,12 +68,12 @@ const FollowUsStyled = styled.div`
 
     li {
       &:not(:last-child) {
-        margin-right: ${(props) => props.theme.pixelToVieWidth(50)};
+        margin-right: ${(props) => props.theme.vw(50)};
       }
     }
 
     img {
-      width: ${(props) => props.theme.pixelToVieWidth(35)};
+      width: ${(props) => props.theme.vw(35)};
     }
   }
   /* MEDIA */
@@ -86,9 +86,9 @@ const FollowUsStyled = styled.div`
 
     h3 {
       color: ${(props) => props.theme.colors.pink};
-      font-size: ${(props) => props.theme.pixelToVieWidth1920(30)};
-      line-height: ${(props) => props.theme.pixelToVieWidth1920(30)};
-      margin-bottom: ${(props) => props.theme.pixelToVieWidth1920(42)};
+      font-size: ${(props) => props.theme.vw1920(30)};
+      line-height: ${(props) => props.theme.vw1920(30)};
+      margin-bottom: ${(props) => props.theme.vw1920(42)};
       text-transform: uppercase;
       font-weight: 500;
     }
@@ -98,12 +98,12 @@ const FollowUsStyled = styled.div`
 
       li {
         :not(:last-child) {
-          margin-right: ${(props) => props.theme.pixelToVieWidth1920(62)};
+          margin-right: ${(props) => props.theme.vw1920(62)};
         }
       }
 
       img {
-        width: ${(props) => props.theme.pixelToVieWidth1920(30)};
+        width: ${(props) => props.theme.vw1920(30)};
       }
     }
 

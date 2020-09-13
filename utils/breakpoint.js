@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
-const useBreakpoint = (queries) => {
-  const [queryMatch, setQueryMatch] = useState(null);
+const defaultValue = {};
+
+const BreakpointContext = createContext(defaultValue);
+
+const queries = {
+  mobile: '(max-width: 1279px)',
+  desktop: '(min-width: 1280px)',
+};
+
+const BreakpointProvider = ({ children }) => {
+  const [queryMatch, setQueryMatch] = useState({});
 
   useEffect(() => {
     const mediaQueryLists = {};
     const keys = Object.keys(queries);
-
-    // To check whether event listener is attached or not
     let isAttached = false;
 
     const handleQueryListener = () => {
@@ -17,8 +24,6 @@ const useBreakpoint = (queries) => {
         );
         return acc;
       }, {});
-      //Setting state to the updated matches
-      // when document either starts or stops matching a query
       setQueryMatch(updatedMatches);
     };
 
@@ -32,7 +37,6 @@ const useBreakpoint = (queries) => {
           matches[media] = false;
         }
       });
-      //Setting state to initial matching queries
       setQueryMatch(matches);
       isAttached = true;
       keys.forEach((media) => {
@@ -43,7 +47,6 @@ const useBreakpoint = (queries) => {
     }
 
     return () => {
-      //If event listener is attached then remove it when deps change
       if (isAttached) {
         keys.forEach((media) => {
           if (typeof queries[media] === 'string') {
@@ -54,7 +57,18 @@ const useBreakpoint = (queries) => {
     };
   }, [queries]);
 
-  return queryMatch;
+  return (
+    <BreakpointContext.Provider value={queryMatch}>
+      {children}
+    </BreakpointContext.Provider>
+  );
 };
 
-export default useBreakpoint;
+function useBreakpoint() {
+  const context = useContext(BreakpointContext);
+  if (context === defaultValue) {
+    throw new Error('useBreakpoint must be used within BreakpointProvider');
+  }
+  return context;
+}
+export { useBreakpoint, BreakpointProvider };

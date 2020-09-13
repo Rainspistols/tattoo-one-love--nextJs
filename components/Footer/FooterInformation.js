@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import FooterTitle from './FooterTitle';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import useWindowSize from '@/hooks/useWindowSize';
+import { useBreakpoint } from '../../utils/breakpoint';
 
 const FooterInformation = () => {
   const informationListData = [
@@ -11,14 +11,14 @@ const FooterInformation = () => {
     { title: 'Sitemap', href: '/sitemap', id: 3 },
   ];
 
-  const windowWidth = useWindowSize().width;
+  const breakpoint = useBreakpoint();
 
   const router = useRouter();
 
   return (
     <FooterInformationStyled>
       <FooterTitle text='Informacja' />
-      <ul id={windowWidth < 1280 ? 'contact' : ''}>
+      <ul id={breakpoint.mobile ? 'contact' : ''}>
         {informationListData.map(({ title, href, id }) => (
           <li key={id}>
             <Link href={href}>
@@ -34,7 +34,7 @@ const FooterInformation = () => {
 };
 
 const FooterInformationStyled = styled.section`
-  margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+  margin-bottom: ${({ theme }) => theme.vw(10)};
 
   ul {
     display: flex;
@@ -42,16 +42,16 @@ const FooterInformationStyled = styled.section`
   }
 
   a {
-    font-size: ${({ theme }) => theme.pixelToVieWidth(13)};
-    line-height: ${({ theme }) => theme.pixelToVieWidth(20)};
-    margin-right: ${({ theme }) => theme.pixelToVieWidth(30)};
+    font-size: ${({ theme }) => theme.vw(13)};
+    line-height: ${({ theme }) => theme.vw(20)};
+    margin-right: ${({ theme }) => theme.vw(30)};
     display: flex;
     color: ${({ theme }) => theme.colors.grey1};
     font-weight: 400;
   }
 
   img {
-    padding-right: ${({ theme }) => theme.pixelToVieWidth(10)};
+    padding-right: ${({ theme }) => theme.vw(10)};
   }
 
   ${({ theme }) => theme.mediaDesktop} {
@@ -60,14 +60,14 @@ const FooterInformationStyled = styled.section`
 
       li {
         :not(:last-child) {
-          margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+          margin-bottom: ${({ theme }) => theme.vw1920(10)};
         }
       }
     }
 
     a {
-      font-size: ${({ theme }) => theme.pixelToVieWidth1920(15)};
-      line-height: ${({ theme }) => theme.pixelToVieWidth1920(23)};
+      font-size: ${({ theme }) => theme.vw1920(15)};
+      line-height: ${({ theme }) => theme.vw1920(23)};
       margin-right: 0;
     }
   }

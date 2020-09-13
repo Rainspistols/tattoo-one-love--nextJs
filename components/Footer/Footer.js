@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Container from '@/Layouts/Container/Container';
 import Line from '@/UI/Line';
 import FooterCopyRight from './FooterCopyRight';
-import Contact from '../ContactsBlock/Contact';
+import Contacts from '../Contacts/Contacts';
 import FooterInformation from './FooterInformation';
 import FooterSubscripion from './FooterSubscripion';
 import FooterRules from './FooterRules';
@@ -30,7 +30,7 @@ const Footer = () => {
 
           <div className='contact_wrap'>
             <FooterTitle text='Kontakt' />
-            <Contact iconsColor='white' textColor='#E8ECF1' />
+            <Contacts iconsColor='white' textColor='#E8ECF1' />
           </div>
 
           {stateWidth < 1280 && <Line />}
@@ -44,14 +44,14 @@ const Footer = () => {
 
 const FooterStyled = styled.footer`
   background: ${({ theme }) => theme.colors.grey4};
-  padding: ${({ theme }) => theme.pixelToVieWidth(20)} 0;
+  padding: ${({ theme }) => theme.vw(20)} 0;
 
   .contact_wrap {
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(20)};
+    margin-bottom: ${({ theme }) => theme.vw(20)};
   }
 
   ${({ theme }) => theme.mediaDesktop} {
-    padding: ${({ theme }) => theme.pixelToVieWidth1920(50)} 0;
+    padding: ${({ theme }) => theme.vw1920(50)} 0;
 
     > .Container {
       display: flex;
@@ -60,19 +60,19 @@ const FooterStyled = styled.footer`
     }
 
     .contact_wrap {
-      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(40)};
+      margin-bottom: ${({ theme }) => theme.vw1920(40)};
 
       .Contact {
         li {
           :not(:last-child) {
-            margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(10)};
+            margin-bottom: ${({ theme }) => theme.vw1920(10)};
           }
         }
       }
 
       .Contact a {
-        font-size: ${({ theme }) => theme.pixelToVieWidth1920(15)};
-        line-height: ${({ theme }) => theme.pixelToVieWidth1920(23)};
+        font-size: ${({ theme }) => theme.vw1920(15)};
+        line-height: ${({ theme }) => theme.vw1920(23)};
       }
     }
 

@@ -14,27 +14,27 @@ const theme = {
     black: '#000000',
   },
 
-  pixelToVieWidth: (px) => {
+  vw: (px) => {
     return (px / 375) * 100 + 'vw';
   },
-  pixelToVieWidth1920: (px) => {
+  vw1920: (px) => {
     return (px / 1920) * 100 + 'vw';
   },
 
-  flexCenter: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  flexBetween: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  flex: {
+    center: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    between: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
   },
 
   mediaDesktop: '@media (min-width: 1280px)',
-  MEDIA_BEFORE_DESKTOP: '@media(max-width: 1279px)',
 };
 
 const EmotionTheme = ({ children }) => (

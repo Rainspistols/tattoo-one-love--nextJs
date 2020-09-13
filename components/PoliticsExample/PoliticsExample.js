@@ -1,50 +1,47 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import MarkdownView from 'react-showdown';
+import ReactMarkdown from 'react-markdown';
 import Container from '@/Layouts/Container/Container';
-import Main from '@/Layouts/Main/Main';
 
-const PoliticsExample = ({ data, headTitle }) => {
+const PoliticsExample = ({ data }) => {
   return (
     <PoliticsExampleStyled>
-      <Main headTitle={headTitle}>
-        <Container>
-          <div className='markdown__wrap'>
-            <MarkdownView markdown={data} />
-          </div>
-        </Container>
-      </Main>
+      <Container>
+        <div className='markdown__wrap'>
+          <ReactMarkdown source={data} />
+        </div>
+      </Container>
     </PoliticsExampleStyled>
   );
 };
 
-const PoliticsExampleStyled = styled.section`
+const PoliticsExampleStyled = styled.main`
   .markdown__wrap {
     color: ${({ theme }) => theme.colors.black};
-    padding: ${({ theme }) => `${theme.pixelToVieWidth(20)} 0`};
+    padding: ${({ theme }) => `${theme.vw(20)} 0`};
   }
 
   h1,
   h2 {
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(15)};
+    margin-bottom: ${({ theme }) => theme.vw(15)};
   }
 
   p {
-    margin-bottom: ${({ theme }) => theme.pixelToVieWidth(10)};
+    margin-bottom: ${({ theme }) => theme.vw(10)};
   }
 
   ${({ theme }) => theme.mediaDeskto} {
     .markdown__wrap {
-      padding: ${({ theme }) => `${theme.pixelToVieWidth1920(40)} 0`};
+      padding: ${({ theme }) => `${theme.vw1920(40)} 0`};
     }
 
     h1,
     h2 {
-      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(25)};
+      margin-bottom: ${({ theme }) => theme.vw1920(25)};
     }
 
     p {
-      margin-bottom: ${({ theme }) => theme.pixelToVieWidth1920(15)};
+      margin-bottom: ${({ theme }) => theme.vw1920(15)};
     }
   }
 `;
