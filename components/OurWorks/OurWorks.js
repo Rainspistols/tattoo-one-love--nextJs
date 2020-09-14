@@ -1,44 +1,37 @@
 import styled from '@emotion/styled';
+import { useBreakpoint } from '../../utils/breakpoint';
 // Components
 import Slider from 'react-slick';
 import SectionTitle from '@/UI/SectionTitle';
 import Container from '@/Layouts/Container/Container';
-import { useState, useEffect } from 'react';
 import imageSizeHelper from '../../utils/imageSizeHelper';
 
 const OurWorks = ({ ourWorks }) => {
-  const [stateWidth, setStateWidth] = useState();
+  const breakpoint = useBreakpoint();
 
-  if (process.browser) {
-    useEffect(() => {
-      setStateWidth(window.innerWidth);
-    }, [window.innerWidth]);
-  }
-
-  const sliderSetting =
-    stateWidth < 1280
-      ? {
-          dots: false,
-          arrows: false,
-          infinite: true,
-          slidesToScroll: 1,
-          slidesToShow: 1,
-          variableWidth: true,
-          infinite: true,
-          centerMode: false,
-          centerPadding: 100,
-        }
-      : {
-          dots: false,
-          arrows: false,
-          infinite: true,
-          slidesToScroll: 1,
-          slidesToShow: 1,
-          variableWidth: true,
-          centerPadding: 50,
-          infinite: true,
-          centerMode: true,
-        };
+  const sliderSetting = breakpoint.mobile
+    ? {
+        dots: false,
+        arrows: false,
+        infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        variableWidth: true,
+        infinite: true,
+        centerMode: false,
+        centerPadding: 100,
+      }
+    : {
+        dots: false,
+        arrows: false,
+        infinite: true,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        variableWidth: true,
+        centerPadding: 50,
+        infinite: true,
+        centerMode: true,
+      };
 
   return (
     <OurWorksStyled id='works'>

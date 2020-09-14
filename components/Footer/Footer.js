@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
+import { useBreakpoint } from '../../utils/breakpoint';
 // Components
 import Container from '@/Layouts/Container/Container';
 import Line from '@/UI/Line';
@@ -11,34 +11,25 @@ import FooterRules from './FooterRules';
 import FooterTitle from './FooterTitle';
 
 const Footer = () => {
-  const [stateWidth, setStateWidth] = useState(null);
-  const [isRendered, setRendered] = useState(false);
-  if (process.browser) {
-    useEffect(() => {
-      setStateWidth(window.innerWidth);
-      setRendered(true);
-    }, [window.innerWidth]);
-  }
+  const breakpoint = useBreakpoint();
 
   return (
-    isRendered && (
-      <FooterStyled>
-        <Container>
-          <FooterInformation />
-          <FooterSubscripion />
-          <FooterRules />
+    <FooterStyled>
+      <Container>
+        <FooterInformation />
+        <FooterSubscripion />
+        <FooterRules />
 
-          <div className='contact_wrap'>
-            <FooterTitle text='Kontakt' />
-            <Contacts iconsColor='white' textColor='#E8ECF1' />
-          </div>
+        <div className='contact_wrap'>
+          <FooterTitle text='Kontakt' />
+          <Contacts iconsColor='white' textColor='#E8ECF1' />
+        </div>
 
-          {stateWidth < 1280 && <Line />}
+        {breakpoint.mobile && <Line />}
 
-          <FooterCopyRight />
-        </Container>
-      </FooterStyled>
-    )
+        <FooterCopyRight />
+      </Container>
+    </FooterStyled>
   );
 };
 

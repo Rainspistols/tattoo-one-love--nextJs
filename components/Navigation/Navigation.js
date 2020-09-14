@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
 import { useBreakpoint } from '../../utils/breakpoint';
 
 import NavigationDesktop from './NavigationDesktop';

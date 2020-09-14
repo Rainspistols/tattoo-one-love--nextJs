@@ -34,6 +34,7 @@ export const getStaticProps = async () => {
   const ourWorks = await strapiService.getOurWorks();
 
   return {
+    revalidate: 1,
     props: {
       ourWorks,
     },

@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
 import Container from '@/Layouts/Container/Container';
-import { bgMobile, bgTablet, logo, bgDesktop } from './images';
 
 const Hero = () => {
   return (
     <StyledHero>
       <Container>
-        <img className='logo' src={logo} alt='one love tattoo logo' />
+        <img className='logo' src='/Hero/logo.svg' alt='one love tattoo logo' />
         <p className='text1'>Bodies are not born. Bodies are made.</p>
         <p className='text2'>
           Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.
@@ -17,7 +16,7 @@ const Hero = () => {
 };
 
 const StyledHero = styled.div`
-  background-image: url(${bgMobile});
+  background-image: url('/Hero/bg--mobile.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: ${({ theme }) => theme.colors.white};
@@ -56,11 +55,11 @@ const StyledHero = styled.div`
   }
   /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
-    background-image: url(${bgTablet});
+    background-image: url(${'/Hero/bg--tablet.jpg'});
     margin-bottom: ${({ theme }) => theme.vw1920(134)};
 
     ${({ theme }) => theme.mediaDesktop} {
-      background-image: url(${bgDesktop});
+      background-image: url(${'/Hero/bg--desktop.jpg'});
       padding: ${({ theme }) => theme.vw1920(150)} 0
         ${({ theme }) => theme.vw1920(150)};
 

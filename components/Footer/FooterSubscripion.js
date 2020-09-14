@@ -1,15 +1,9 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
+import { useBreakpoint } from '../../utils/breakpoint';
 import FooterTitle from './FooterTitle';
 
 const FooterSubscripion = () => {
-  const [stateWidth, setStateWidth] = useState(null);
-
-  if (process.browser) {
-    useEffect(() => {
-      setStateWidth(window.innerWidth);
-    }, [window.innerWidth]);
-  }
+  const breakpoint = useBreakpoint();
 
   const subscriptionListData = [
     {
@@ -78,7 +72,7 @@ const FooterSubscripion = () => {
         {subscriptionListData.map(({ title, href, icon, id }) => (
           <li key={id}>
             <a href={href} target='_blank' rel='nofollow noopener'>
-              {stateWidth < 1280 ? title : icon}
+              {breakpoint.mobile ? title : icon}
             </a>
           </li>
         ))}

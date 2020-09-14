@@ -1,4 +1,4 @@
-export default (img, desiredWidth, desiredHeight) => {
+const imageSizeHelper = (img, desiredWidth, desiredHeight) => {
   if (img.width < desiredWidth && img.height < desiredHeight) {
     return img.url;
   } else if (
@@ -23,3 +23,5 @@ export default (img, desiredWidth, desiredHeight) => {
     return img.formats.large.url;
   }
 };
+
+export default imageSizeHelper;
