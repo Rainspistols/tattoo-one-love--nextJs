@@ -6,7 +6,7 @@ import SectionTitle from '@/UI/SectionTitle';
 import Container from '@/Layouts/Container/Container';
 import imageSizeHelper from '../../utils/imageSizeHelper';
 
-const OurWorks = ({ ourWorks }) => {
+const OurWorks = ({ ourWorks, API_URL }) => {
   const breakpoint = useBreakpoint();
 
   const sliderSetting = breakpoint.mobile
@@ -40,7 +40,7 @@ const OurWorks = ({ ourWorks }) => {
       </Container>
 
       <Slider {...sliderSetting}>
-        {ourWorks.map((img) => (
+        {ourWorks.list.map((img) => (
           <div key={img.id} className='imgWrap'>
             <picture>
               <source
@@ -51,7 +51,7 @@ const OurWorks = ({ ourWorks }) => {
                 media='(max-width: 767px)'
                 srcSet={imageSizeHelper(img, 600, 600)}
               />
-              <img src={img.url} alt={img.name} />
+              <img src={API_URL + img.url} alt={img.name} />
             </picture>
           </div>
         ))}

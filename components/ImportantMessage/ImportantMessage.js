@@ -27,13 +27,18 @@ const ImportantMessage = ({ importantMessageJson }) => {
   };
 
   return (
-    imIsVisible && (
+    imIsVisible &&
+    text && (
       <ImportantMessageStyled>
         <h2 className='visually-hidden'>important message</h2>
         <Container>
-          <Link href={link}>
-            <a>{text}</a>
-          </Link>
+          {link ? (
+            <Link href={link}>
+              <a>{text}</a>
+            </Link>
+          ) : (
+            { text }
+          )}
           <button onClick={onClose}>
             <IoIosClose />
           </button>

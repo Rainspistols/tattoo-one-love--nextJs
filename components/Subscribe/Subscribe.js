@@ -11,7 +11,7 @@ const Subscribe = ({ API_URL }) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (re.test(inputValue)) {
-      const rawResponse = await fetch(`${API_URL}/newsletter-emails`, {
+      await fetch(`${API_URL}/newsletter-emails`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

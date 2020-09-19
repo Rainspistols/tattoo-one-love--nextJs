@@ -20,7 +20,7 @@ const Home = ({ ourWorks }) => {
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
       <Hero />
       <AboutUsSection />
-      <OurWorks ourWorks={ourWorks} />
+      <OurWorks ourWorks={ourWorks} API_URL={API_URL}/>
       {breakpoints.mobile && <FollowUs />}
       <ContactsSection />
       {breakpoints.mobile && <Subscribe API_URL={API_URL} />}
