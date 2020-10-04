@@ -13,6 +13,7 @@ export const getStaticProps = async () => {
   const PCdata = await strapiService.getPCData();
 
   return {
+    revalidate: 1,
     props: {
       PCdata: PCdata.content,
     },

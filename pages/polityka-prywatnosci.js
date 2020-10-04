@@ -16,6 +16,7 @@ export const getStaticProps = async () => {
   const PPdata = await strapiService.getPPData();
 
   return {
+    revalidate: 1,
     props: {
       PPdata: PPdata.content,
     },

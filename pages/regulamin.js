@@ -16,6 +16,7 @@ export const getStaticProps = async () => {
   const regulaminData = await strapiService.getRegulaminData();
 
   return {
+    revalidate: 1,
     props: {
       regulaminData: regulaminData.content,
     },
