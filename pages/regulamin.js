@@ -17,7 +17,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      regulaminData: regulaminData.regulamin_text,
+      regulaminData: regulaminData.content,
     },
   };
 };

@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import Container from '@/Layouts/Container/Container';
 
-const Subscribe = ({ API_URL }) => {
+const Subscribe = () => {
+  const { NEXT_PUBLIC_API_URL: API_URL } = process.env;
+
   const [inputValue, setInputValue] = useState('');
   const [isEmailEntered, setEmailEntered] = useState(false);
 
@@ -17,7 +19,7 @@ const Subscribe = ({ API_URL }) => {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title: inputValue }),
+        body: JSON.stringify({ email: inputValue }),
       });
       setEmailEntered(true);
     }

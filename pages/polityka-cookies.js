@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      PCdata: PCdata.text,
+      PCdata: PCdata.content,
     },
   };
 };

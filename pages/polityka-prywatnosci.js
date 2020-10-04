@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      PPdata: PPdata.text,
+      PPdata: PPdata.content,
     },
   };
 };

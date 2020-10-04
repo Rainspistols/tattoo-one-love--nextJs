@@ -21,6 +21,10 @@ const PoliticsExampleStyled = styled.main`
     padding: ${({ theme }) => `${theme.vw(20)} 0`};
   }
 
+  code {
+    white-space: normal;
+  }
+
   h1,
   h2 {
     margin-bottom: ${({ theme }) => theme.vw(15)};
