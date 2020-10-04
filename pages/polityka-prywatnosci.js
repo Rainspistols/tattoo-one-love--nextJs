@@ -4,7 +4,10 @@ import PoliticsExample from '@/components/PoliticsExample/PoliticsExample';
 
 const politykaPrywatnosci = ({ PPdata }) => {
   return (
-    <PoliticsExample data={PPdata} headTitle='Regulamin Tattoo One Love' />
+    <PoliticsExample
+      data={PPdata}
+      title='Polityka prywatności | Tattoo One Love'
+    />
   );
 };
 

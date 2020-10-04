@@ -4,7 +4,7 @@ import PoliticsExample from '@/components/PoliticsExample/PoliticsExample';
 
 const politykaCookies = ({ PCdata }) => {
   return (
-    <PoliticsExample data={PCdata} headTitle='Regulamin Tattoo One Love' />
+    <PoliticsExample data={PCdata} title='Polityka Cookie | Tattoo One Love' />
   );
 };
 

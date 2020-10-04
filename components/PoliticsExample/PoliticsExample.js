@@ -2,16 +2,20 @@ import React from 'react';
 import styled from '@emotion/styled';
 import ReactMarkdown from 'react-markdown';
 import Container from '@/Layouts/Container/Container';
+import { NextSeo } from 'next-seo';
 
-const PoliticsExample = ({ data }) => {
+const PoliticsExample = ({ data, title }) => {
   return (
-    <PoliticsExampleStyled>
-      <Container>
-        <div className='markdown__wrap'>
-          <ReactMarkdown source={data} />
-        </div>
-      </Container>
-    </PoliticsExampleStyled>
+    <>
+      <NextSeo title={title} />
+      <PoliticsExampleStyled>
+        <Container>
+          <div className='markdown__wrap'>
+            <ReactMarkdown source={data} />
+          </div>
+        </Container>
+      </PoliticsExampleStyled>
+    </>
   );
 };
 

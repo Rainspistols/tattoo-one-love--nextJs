@@ -127,7 +127,7 @@ const SubscribeStyled = styled.div`
   }
 
   .like {
-    height: ${({ theme }) => theme.vw(111)};
+    height: ${({ theme }) => theme.vw(100)};
     margin: 0 auto;
   }
 

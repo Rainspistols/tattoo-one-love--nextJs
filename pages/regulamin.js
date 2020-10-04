@@ -6,7 +6,7 @@ const regulamin = ({ regulaminData }) => {
   return (
     <PoliticsExample
       data={regulaminData}
-      headTitle='Regulamin Tattoo One Love'
+      title='Regulamin | Tattoo One Love'
     />
   );
 };
