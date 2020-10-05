@@ -1,10 +1,17 @@
 import React from 'react';
 import StrapiService from '@/components/StrapiService/StrapiService';
 import PoliticsExample from '@/components/PoliticsExample/PoliticsExample';
+import Header from '@/components/Header/Header';
 
 const politykaCookies = ({ PCdata }) => {
   return (
-    <PoliticsExample data={PCdata} title='Polityka Cookie | Tattoo One Love' />
+    <>
+      <Header />
+      <PoliticsExample
+        data={PCdata}
+        title='Polityka Cookie | Tattoo One Love'
+      />
+    </>
   );
 };
 

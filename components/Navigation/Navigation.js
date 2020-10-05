@@ -6,7 +6,7 @@ import NavigationMobile from './NavigationMobile';
 import Container from '@/Layouts/Container/Container';
 import Logo from '@/UI/Logo/Logo';
 
-const Navigation = () => {
+const Navigation = ({ setImFucn }) => {
   const breakpoint = useBreakpoint();
 
   return (
@@ -14,7 +14,6 @@ const Navigation = () => {
       <Container>
         <div className='wrap'>
           <Logo />
-
           {breakpoint.mobile ? <NavigationMobile /> : <NavigationDesktop />}
         </div>
       </Container>

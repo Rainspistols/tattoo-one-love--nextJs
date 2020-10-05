@@ -1,13 +1,17 @@
 import React from 'react';
 import StrapiService from '@/components/StrapiService/StrapiService';
 import PoliticsExample from '@/components/PoliticsExample/PoliticsExample';
+import Header from '@/components/Header/Header';
 
 const regulamin = ({ regulaminData }) => {
   return (
-    <PoliticsExample
-      data={regulaminData}
-      title='Regulamin | Tattoo One Love'
-    />
+    <>
+      <Header />
+      <PoliticsExample
+        data={regulaminData}
+        title='Regulamin | Tattoo One Love'
+      />
+    </>
   );
 };
 
@@ -16,10 +20,11 @@ export const getStaticProps = async () => {
   const regulaminData = await strapiService.getRegulaminData();
 
   return {
-    revalidate: 1,
     props: {
       regulaminData: regulaminData.content,
     },
+
+    revalidate: 1,
   };
 };
 

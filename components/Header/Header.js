@@ -4,12 +4,10 @@ import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import CookieAgreement from '../CookieAgreement/CookieAgreement';
 import Navigation from '../Navigation/Navigation';
 
-const Header = ({ importantMessageJson }) => {
+const Header = () => {
   return (
     <HeaderStyled>
       <CookieAgreement />
-      <ImportantMessage importantMessageJson={importantMessageJson} />
-
       <Navigation />
     </HeaderStyled>
   );
