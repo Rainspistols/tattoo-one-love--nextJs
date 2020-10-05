@@ -4,14 +4,20 @@ import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import CookieAgreement from '../CookieAgreement/CookieAgreement';
 import Navigation from '../Navigation/Navigation';
 
-const Header = () => {
-  return (
-    <HeaderStyled>
-      <CookieAgreement />
-      <Navigation />
-    </HeaderStyled>
-  );
-};
+const Header = () =>
+  // { importantMessageJson = { text: '12321', link: '123' } }
+  {
+    return (
+      <HeaderStyled>
+        <CookieAgreement />
+        <ImportantMessage
+        //  importantMessageJson={importantMessageJson} 
+
+         />
+        <Navigation />
+      </HeaderStyled>
+    );
+  };
 
 const HeaderStyled = styled.header`
   background: ${({ theme }) => theme.colors.pinkGradient};

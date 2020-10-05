@@ -6,7 +6,7 @@ import Header from '@/components/Header/Header';
 const politykaCookies = ({ PCdata }) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <PoliticsExample
         data={PCdata}
         title='Polityka Cookie | Tattoo One Love'

@@ -6,7 +6,7 @@ import Header from '@/components/Header/Header';
 const politykaPrywatnosci = ({ PPdata }) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <PoliticsExample
         data={PPdata}
         title='Polityka prywatności | Tattoo One Love'

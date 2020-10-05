@@ -10,15 +10,21 @@ import Head from 'next/head';
 // Seo
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
+import StrapiService from '@/components/StrapiService/StrapiService';
+import Header from '@/components/Header/Header';
+
 
 function MyApp({ Component, pageProps }) {
+
+
+
+
   return (
     <EmotionTheme>
       <BreakpointProvider>
         <GlobalStyles />
 
         <DefaultSeo {...SEO} />
-
         <Head>
           <meta httpEquiv='content-language' content='pl-PL' />
           <meta name='keywords' content='studio tatuażu warszawa' />
@@ -34,6 +40,7 @@ function MyApp({ Component, pageProps }) {
           />
           {/* Meta */}
         </Head>
+        <Header />
 
         <Component {...pageProps} />
 
@@ -42,5 +49,12 @@ function MyApp({ Component, pageProps }) {
     </EmotionTheme>
   );
 }
+
+// MyApp.getInitialProps = async () => {
+//   const strapiService = new StrapiService();
+//   const importantMessageJson = await strapiService.getImportantMessage();
+
+//   return { importantMessageJson };
+// };
 
 export default MyApp;

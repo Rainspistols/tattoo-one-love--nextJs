@@ -6,7 +6,7 @@ import Header from '@/components/Header/Header';
 const regulamin = ({ regulaminData }) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <PoliticsExample
         data={regulaminData}
         title='Regulamin | Tattoo One Love'

@@ -6,15 +6,44 @@ import Cookies from 'js-cookie';
 import Container from '@/Layouts/Container/Container';
 
 import { IoIosClose } from 'react-icons/io';
+import useSWR from 'swr';
 
-const ImportantMessage = ({ importantMessageJson }) => {
+import StrapiService from '../StrapiService/StrapiService';
+import { keyframes } from '@emotion/core';
+
+const bounce = keyframes`
+  from {
+    transform: translate3d(0,-100%,0)
+  }
+
+  60%, 85%, to {
+    transform: translate3d(0,0,0)
+  }
+
+  75% {
+    transform: translate3d(0,-20%,0)
+  }
+
+  95% {
+    transform: translate3d(0,-5%,0)
+  }
+`;
+
+const ImportantMessage = () => {
+  const strapiService = new StrapiService();
   const [imIsVisible, setImIsVisible] = useState(true);
-  const { text, link } = importantMessageJson;
+
+  const { data: importantMessageJson } = useSWR(
+    `/important-message`,
+    strapiService.getResource
+  );
 
   useEffect(() => {
-    Cookies.get('isImportantMessageDisabled') || text.length === 0
-      ? setImIsVisible(false)
-      : setImIsVisible(true);
+    if (importantMessageJson) {
+      Cookies.get('isImportantMessageDisabled') || text.length === 0
+        ? setImIsVisible(false)
+        : setImIsVisible(true);
+    }
   }, [importantMessageJson]);
 
   const onClose = () => {
@@ -25,6 +54,12 @@ const ImportantMessage = ({ importantMessageJson }) => {
   const countDateExpire = () => {
     return new Date(new Date().getTime() + 1000 * 60 * 60 * 24);
   };
+
+  if (!importantMessageJson) {
+    return null;
+  }
+
+  const { text, link } = importantMessageJson;
 
   return (
     imIsVisible &&
@@ -37,7 +72,7 @@ const ImportantMessage = ({ importantMessageJson }) => {
               <a>{text}</a>
             </Link>
           ) : (
-            { text }
+            text
           )}
           <button onClick={onClose}>
             <IoIosClose />
@@ -52,6 +87,7 @@ const ImportantMessageStyled = styled.section`
   background: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.vw(5)} 0;
+  animation: ${bounce} 0.5s linear forwards;
 
   .Container {
     width: 100%;

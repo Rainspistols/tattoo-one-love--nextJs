@@ -18,8 +18,8 @@ const Home = ({ ourWorks, importantMessageJson }) => {
   const breakpoints = useBreakpoint();
   return (
     <>
-      <ImportantMessage importantMessageJson={importantMessageJson} />
-      <Header />
+      {/* <ImportantMessage importantMessageJson={importantMessageJson} />
+      <Header /> */}
       <main>
         <h1 className='visually-hidden'>Tattoo one love official page</h1>
         <Hero />
@@ -43,7 +43,6 @@ export const getStaticProps = async () => {
     revalidate: 1,
     props: {
       ourWorks,
-      importantMessageJson,
     },
   };
 };

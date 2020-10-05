@@ -8,7 +8,7 @@ const CookieAgreement = () => {
         cookie='user-has-accepted-cookies'
         disableStyles={true}
         location='bottom'
-        acceptOnScrollPercentage={5}
+        acceptOnScrollPercentage={10}
         acceptOnScroll={true}
         buttonWrapperClasses='button-close__wrapper'
         buttonClasses='button-close'
@@ -23,7 +23,8 @@ const CookieAgreement = () => {
 
 const CookieAgreementStyled = styled.section`
   .CookieConsent {
-    position: absolute;
+    position: fixed;
+    bottom: 0;
     flex-wrap: wrap;
     z-index: 10000;
 

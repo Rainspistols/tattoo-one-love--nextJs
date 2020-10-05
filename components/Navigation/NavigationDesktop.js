@@ -31,8 +31,6 @@ const NavigationDesktop = () => {
   );
 };
 
-
-
 const NavigationDesktopStyled = styled.div`
   ${({ theme }) => theme.mediaDesktop} {
     ${({ theme }) => theme.flex.between};

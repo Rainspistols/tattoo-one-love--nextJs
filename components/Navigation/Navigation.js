@@ -6,7 +6,7 @@ import NavigationMobile from './NavigationMobile';
 import Container from '@/Layouts/Container/Container';
 import Logo from '@/UI/Logo/Logo';
 
-const Navigation = ({ setImFucn }) => {
+const Navigation = () => {
   const breakpoint = useBreakpoint();
 
   return (
