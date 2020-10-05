@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps, importantMessageJson }) {
   );
 }
 
-MyApp.getInitialProps = async (appContext) => {
+MyApp.getInitialProps = async () => {
   const strapiService = new StrapiService();
   const importantMessageJson = await strapiService.getImportantMessage();
 

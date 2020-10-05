@@ -9,7 +9,7 @@ const Logo = () => {
     <StyledLogo className='Logo'>
       <Link href='/'>
         <a className={router.pathname == '/' ? 'inactive' : ''}>
-          <img src={logo} alt='Tattoo one love logo' />
+          <img src={logo} alt='Tattoo one love logo' width='45' height='38' />
         </a>
       </Link>
     </StyledLogo>
