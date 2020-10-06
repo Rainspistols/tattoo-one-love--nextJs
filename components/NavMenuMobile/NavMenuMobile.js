@@ -5,7 +5,7 @@ import Container from '@/Layouts/Container/Container';
 import Logo from '@/UI/Logo/Logo';
 import Link from 'next/link';
 
-const NavMenu = ({ onCloseMenu, onMenuItem }) => {
+const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
   const menuLinksData = [
     { title: 'Główna', href: '/', id: 1 },
     { title: 'O nac', href: '/#about-us', id: 2 },
@@ -34,7 +34,7 @@ const NavMenu = ({ onCloseMenu, onMenuItem }) => {
   ];
 
   return (
-    <NavMenuStyled>
+    <NavMenuStyled isMenuVisible={isMenuVisible}>
       <Container>
         <div className='logoAndBtn'>
           <Logo />
@@ -91,7 +91,7 @@ const NavMenu = ({ onCloseMenu, onMenuItem }) => {
 const NavMenuStyled = styled.section`
   position: absolute;
 
-  /* display: ${(props) => (props.isMenuVisible ? 'block' : 'none')}; */
+  display: ${(props) => (props.isMenuVisible ? 'block' : 'none')};
   top: 0;
   left: 0;
   width: 100%;

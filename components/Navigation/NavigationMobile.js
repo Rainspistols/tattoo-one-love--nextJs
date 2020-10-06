@@ -21,8 +21,9 @@ const NavigationMobile = () => {
           />
         </button>
 
-        {breakpoint.mobile && isMenuVisible && (
+        {breakpoint.mobile && (
           <NavMenuMobile
+            isMenuVisible={isMenuVisible}
             onCloseMenu={setMenuVisible.bind(this, false)}
             onMenuItem={setMenuVisible.bind(this, false)}
           />
