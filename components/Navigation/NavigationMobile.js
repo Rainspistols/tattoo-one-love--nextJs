@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 import { useState, useRef } from 'react';
+import { useBreakpoint } from 'utils/breakpoint';
 
 import NavMenuMobile from '../NavMenuMobile/NavMenuMobile';
 
 const NavigationMobile = () => {
-  const [isMenuActive, setMenuActive] = useState(false);
+  const [isMenuVisible, setMenuVisible] = useState(false);
   const navigationBox = useRef(null);
+  const breakpoint = useBreakpoint();
 
   return (
     <NavigationMobileStyled>
@@ -15,14 +17,14 @@ const NavigationMobile = () => {
             className='menuIcon'
             src='/Header/navigationIcon.svg'
             alt='menu'
-            onClick={() => setMenuActive(true)}
+            onClick={setMenuVisible.bind(this, true)}
           />
         </button>
 
-        {isMenuActive && (
+        {breakpoint.mobile && isMenuVisible && (
           <NavMenuMobile
-            onCloseMenu={setMenuActive.bind(this, false)}
-            onMenuItem={setMenuActive.bind(this, false)}
+            onCloseMenu={setMenuVisible.bind(this, false)}
+            onMenuItem={setMenuVisible.bind(this, false)}
           />
         )}
       </div>

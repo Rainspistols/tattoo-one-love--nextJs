@@ -1,16 +1,10 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
+import { useBreakpoint } from 'utils/breakpoint';
 
 const Line = () => {
-  const [stateWidth, setStateWidth] = useState(null);
+  const breakpoint = useBreakpoint();
 
-  if (process.browser) {
-    useEffect(() => {
-      setStateWidth(window.innerWidth);
-    }, [window.innerWidth]);
-  }
-
-  return stateWidth < 1280 && <LineStyled className='Line' />;
+  return breakpoint.mobile && <LineStyled className='Line' />;
 };
 
 const LineStyled = styled.div`

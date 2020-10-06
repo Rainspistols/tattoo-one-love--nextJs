@@ -10,16 +10,15 @@ const Mission = () => {
         <p>
           Wpisując do wyszukiwarki „<strong>studio tatuażu Warszawa</strong>”
           ciężko od razu znaleźć miejsce, w którym ci zrobią twoją wymarzoną
-          dziarę. Ale nasz
-          <strong>salon tatuażu</strong> jest dokładnie tym miejscem, ponieważ
-          bardzo poważnie traktujemy wybór miejsca, wzoru, wielkości oraz{' '}
-          <strong>gojenie tatuażu</strong>. Co więcej, zawsze doradzamy{' '}
-          <strong>jak przygotować się do tatuażu</strong> i co zrobić, żeby
-          zmniejszyć ból podczas sesji. Mając <strong>świeży tatuaż</strong> od
-          Tattoo One Love dostaniesz instrukcje o tym{' '}
-          <strong>jak dbać o tatuaż</strong> od razu po sesji i po wygojeniu,
-          ale zawsze też możesz skontaktować z nami i otrzymać odpowiedzi na
-          wszystkie pytania. Nie mamy na stronie sekcji{' '}
+          dziarę. Ale nasz <strong>salon tatuażu</strong> jest dokładnie tym
+          miejscem, ponieważ bardzo poważnie traktujemy wybór miejsca, wzoru,
+          wielkości oraz <strong>gojenie tatuażu</strong>. Co więcej, zawsze
+          doradzamy <strong>jak przygotować się do tatuażu</strong> i co zrobić,
+          żeby zmniejszyć ból podczas sesji. Mając{' '}
+          <strong>świeży tatuaż</strong> od Tattoo One Love dostaniesz
+          instrukcje o tym <strong>jak dbać o tatuaż</strong> od razu po sesji i
+          po wygojeniu, ale zawsze też możesz skontaktować z nami i otrzymać
+          odpowiedzi na wszystkie pytania. Nie mamy na stronie sekcji{' '}
           <strong>tatuaż cennik</strong>, dlatego że podanie ceny bez niezbędnej
           informacji o kształcie wzoru, wielkości i miejsca jest niemożliwe. Ale
           wystarczy napisać do nas na Facebook, Instagram lub na mail
@@ -53,7 +52,7 @@ const MissionStyled = styled.section`
 
   p {
     font-size: ${(props) => props.theme.vw(16)};
-    line-height: ${(props) => props.theme.vw(27)};
+    line-height: ${(props) => props.theme.vw(25)};
     font-weight: 400;
     color: ${(props) => props.theme.colors.darkBlue};
     text-align: justify;

@@ -25,7 +25,12 @@ const NavMenu = ({ onCloseMenu, onMenuItem }) => {
       icon: '/NavMenuMobile/instagram.svg',
       id: 2,
     },
-    { title: 'Vkontakte', href: 'https://www.vk.com/', icon: '/NavMenuMobile/vk.svg', id: 3 },
+    {
+      title: 'Vkontakte',
+      href: 'https://www.vk.com/',
+      icon: '/NavMenuMobile/vk.svg',
+      id: 3,
+    },
   ];
 
   return (
@@ -85,6 +90,8 @@ const NavMenu = ({ onCloseMenu, onMenuItem }) => {
 
 const NavMenuStyled = styled.section`
   position: absolute;
+
+  /* display: ${(props) => (props.isMenuVisible ? 'block' : 'none')}; */
   top: 0;
   left: 0;
   width: 100%;

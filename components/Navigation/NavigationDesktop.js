@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useBreakpoint } from 'utils/breakpoint';
 
 import Contacts from '../Contacts/Contacts';
 
 const NavigationDesktop = () => {
   const router = useRouter();
+  const breakpoint = useBreakpoint();
 
   const menuLinksData = [
     { title: 'Główna', href: '/', id: 1 },
@@ -14,7 +16,7 @@ const NavigationDesktop = () => {
     { title: 'Prace', href: '/#works', id: 4 },
   ];
 
-  return (
+  return breakpoint.desktop ? (
     <NavigationDesktopStyled>
       <ul className='navigationList'>
         {menuLinksData.map(({ title, href, id }) => (
@@ -28,7 +30,7 @@ const NavigationDesktop = () => {
 
       <Contacts iconsColor='white' textColor='white' />
     </NavigationDesktopStyled>
-  );
+  ) : null;
 };
 
 const NavigationDesktopStyled = styled.div`

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
+import { useBreakpoint } from 'utils/breakpoint';
 // Components
 import FollowUs from '../FollowUs/FollowUs';
 import Subscribe from '../Subscribe/Subscribe';
@@ -7,29 +7,21 @@ import Contacts from '../Contacts/Contacts';
 import Container from '@/Layouts/Container/Container';
 
 const ContactsBlock = () => {
-  const [stateWidth, setStateWidth] = useState(null);
+  const breakpoint = useBreakpoint();
 
-  if (process.browser) {
-    useEffect(() => {
-      setStateWidth(window.innerWidth);
-    }, [window.innerWidth]);
-  }
+  return breakpoint.desktop ? (
+    <Container>
+      <ContactsBlockStyled>
+        <div className='Contact__wrap' id='contact'>
+          <h2>Kontakt</h2>
+          <Contacts iconsColor='#F11E9C' textColor='#6C737E' />
+        </div>
 
-  return (
-    stateWidth >= 1280 && (
-      <Container>
-        <ContactsBlockStyled>
-          <div className='Contact__wrap' id={'contact'}>
-            <h2>Kontakt</h2>
-            <Contacts iconsColor='#F11E9C' textColor='#6C737E' />
-          </div>
-
-          <FollowUs />
-          <Subscribe />
-        </ContactsBlockStyled>
-      </Container>
-    )
-  );
+        <FollowUs />
+        <Subscribe />
+      </ContactsBlockStyled>
+    </Container>
+  ) : null;
 };
 
 const ContactsBlockStyled = styled.section`
