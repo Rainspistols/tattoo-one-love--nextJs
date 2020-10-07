@@ -1,5 +1,6 @@
 import CookieConsent from 'react-cookie-consent';
 import styled from '@emotion/styled';
+import cookieBg from './cookie-background.svg';
 
 const CookieAgreement = () => {
   return (
@@ -13,9 +14,11 @@ const CookieAgreement = () => {
         buttonWrapperClasses='button-close__wrapper'
         buttonClasses='button-close'
         contentClasses='cookie-message'
-        buttonText='click or scroll down to agree'
+        buttonText='Kliknij lub przewiń w dół, aby wyrazić zgodę'
       >
-        This website uses cookies to enhance the user experience.{' '}
+        W ramach naszej witryny stosujemy pliki cookies, które są niezbędne do
+        poprawnego działania serwisu. Są one również wykorzystywane w celach
+        reklamowych oraz aby zapewnić najwyższy poziom usług.
       </CookieConsent>
     </CookieAgreementStyled>
   );
@@ -37,10 +40,25 @@ const CookieAgreementStyled = styled.section`
     font-weight: 400;
     color: ${({ theme }) => theme.colors.grey4};
 
-    background: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white};
+
     border: ${({ theme }) => `${theme.vw(2)} solid ${theme.colors.pink}`};
 
     box-sizing: border-box;
+
+    ::after {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url(${cookieBg});
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.1;
+      width: 100%;
+      height: 100%;
+    }
 
     .cookie-message {
       padding: ${({ theme }) => `${theme.vw(10)} ${theme.vw(20)}`};
@@ -61,7 +79,7 @@ const CookieAgreementStyled = styled.section`
       border-radius: 0;
       border: none;
       border-top: ${({ theme }) => `${theme.vw(2)} solid ${theme.colors.pink}`};
-      background-color: ${({ theme }) => theme.colors.white};
+      background-color: transparent;
     }
     .button-close__wrapper {
       width: 100%;

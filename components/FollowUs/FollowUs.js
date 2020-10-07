@@ -26,7 +26,7 @@ const FollowUs = () => {
       <Container>
         <Line />
         <section>
-          <h3>Dołącz do nas</h3>
+          <h2>Dołącz do nas</h2>
           <ul>
             {socialsData.map(({ link, className, icon, id }) => (
               <li key={id}>
@@ -52,7 +52,7 @@ const FollowUsStyled = styled.div`
     padding-bottom: ${(props) => props.theme.vw(20)};
   }
 
-  h3 {
+  h2 {
     font-size: ${(props) => props.theme.vw(18)};
     line-height: ${(props) => props.theme.vw(27)};
     font-weight: 400;
@@ -84,7 +84,7 @@ const FollowUsStyled = styled.div`
       padding: 0;
     }
 
-    h3 {
+    h2 {
       color: ${(props) => props.theme.colors.pink};
       font-size: ${(props) => props.theme.vw1920(30)};
       line-height: ${(props) => props.theme.vw1920(30)};

@@ -13,6 +13,10 @@ export default class StrapiService {
   getImportantMessage = async () => {
     return await this.getResource(`/important-message`);
   };
+  getOurMission = async () => {
+    const ourMission = await this.getResource(`/our-mission`);
+    return ourMission.text;
+  };
   // POSTS
   // getPostsCategories = async () => {
   //   return await this.getResource(`/post-categories?_sort=updated_at:DESC`);

@@ -28,9 +28,9 @@ const Subscribe = () => {
   const formElements = (
     <>
       <fieldset>
-        <label className='title' htmlFor='email'>
+        <h2 className='title' htmlFor='email'>
           Newsletter
-        </label>
+        </h2>
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
@@ -91,6 +91,7 @@ const SubscribeStyled = styled.div`
     text-align: center;
     display: block;
     width: 100%;
+    font-weight: 400;
   }
 
   .email {

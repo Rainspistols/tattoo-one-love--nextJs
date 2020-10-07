@@ -10,7 +10,7 @@ import StrapiService from '@/components/StrapiService/StrapiService';
 
 import { useBreakpoint } from '../utils/breakpoint.js';
 
-const Home = ({ ourWorks }) => {
+const Home = ({ ourWorks, ourMissionText }) => {
   const { NEXT_PUBLIC_API_URL: API_URL } = process.env;
 
   const breakpoints = useBreakpoint();
@@ -23,7 +23,7 @@ const Home = ({ ourWorks }) => {
       {breakpoints.mobile && <FollowUs />}
       <ContactsSection />
       {breakpoints.mobile && <Subscribe API_URL={API_URL} />}
-      <Mission />
+      <Mission ourMissionText={ourMissionText} />
     </main>
   );
 };
@@ -31,11 +31,13 @@ const Home = ({ ourWorks }) => {
 export const getStaticProps = async () => {
   const strapiService = new StrapiService();
   const ourWorks = await strapiService.getOurWorks();
+  const ourMissionText = await strapiService.getOurMission();
 
   return {
     revalidate: 1,
     props: {
       ourWorks,
+      ourMissionText,
     },
   };
 };
