@@ -8,7 +8,6 @@ const FooterInformation = () => {
   const informationListData = [
     { title: 'Głowna', href: '/', id: 1 },
     { title: 'Kontakt', href: '#contact', id: 2 },
-    { title: 'Sitemap', href: '/sitemap', id: 3 },
   ];
 
   const breakpoint = useBreakpoint();
