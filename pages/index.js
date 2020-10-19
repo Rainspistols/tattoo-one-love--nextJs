@@ -10,12 +10,12 @@ import StrapiService from '@/components/StrapiService/StrapiService';
 
 import { useBreakpoint } from '../utils/breakpoint.js';
 
-const Home = ({ ourWorks, ourMissionText }) => {
+const Home = ({ ourWorks, ourMissionText, IMHeight }) => {
   const { NEXT_PUBLIC_API_URL: API_URL } = process.env;
 
   const breakpoints = useBreakpoint();
   return (
-    <main>
+    <>
       <h1 className='visually-hidden'>Tattoo one love official page</h1>
       <Hero />
       <AboutUsSection />
@@ -24,7 +24,7 @@ const Home = ({ ourWorks, ourMissionText }) => {
       <ContactsSection />
       {breakpoints.mobile && <Subscribe API_URL={API_URL} />}
       <Mission ourMissionText={ourMissionText} />
-    </main>
+    </>
   );
 };
 

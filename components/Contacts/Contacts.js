@@ -14,13 +14,13 @@ const Contacts = ({ iconsColor, textColor }) => {
       icon: <RiMapPinLine />,
     },
     {
-      title: '+ 48 79 590 38 21 ',
-      href: 'tel:+48795903821',
+      title: '+ 48 888 947 502',
+      href: 'tel:+48888947502',
       icon: <FaPhoneSquareAlt />,
     },
     {
-      title: 'tattooonelove@gmail.com',
-      href: 'mailto:tattooonelove@gmail.com',
+      title: 'tattooonelovewwa@gmail.com',
+      href: 'mailto:tattooonelovewwa@gmail.com',
       icon: <MdMail />,
     },
   ];

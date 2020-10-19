@@ -19,7 +19,7 @@ const PoliticsExample = ({ data, title }) => {
   );
 };
 
-const PoliticsExampleStyled = styled.main`
+const PoliticsExampleStyled = styled.div`
   .markdown__wrap {
     color: ${({ theme }) => theme.colors.black};
     padding: ${({ theme }) => `${theme.vw(20)} 0`};

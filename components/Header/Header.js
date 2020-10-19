@@ -1,14 +1,20 @@
 import styled from '@emotion/styled';
+import { useEffect, useRef } from 'react';
 // Components
-import ImportantMessage from '../ImportantMessage/ImportantMessage';
 import CookieAgreement from '../CookieAgreement/CookieAgreement';
 import Navigation from '../Navigation/Navigation';
 
-const Header = () => {
+const Header = ({ setHeaderHeight }) => {
+  const headerRef = useRef();
+
+  useEffect(() => {
+    setHeaderHeight(headerRef.current.offsetHeight);
+  }, []);
+
   return (
-    <HeaderStyled>
+    <HeaderStyled ref={headerRef}>
       <CookieAgreement />
-      <ImportantMessage />
+
       <Navigation />
     </HeaderStyled>
   );
@@ -16,7 +22,19 @@ const Header = () => {
 
 const HeaderStyled = styled.header`
   background: ${({ theme }) => theme.colors.pinkGradient};
-  height: 100%;
+  z-index: 10;
+  box-shadow: ${({ theme }) => `${theme.colors.pink} 0px ${theme.vw(1)} ${theme.vw(2)} 0px`};
+
+  &.sticky {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    transition: box-shadow 1s ease;
+  }
+
+  ${({ theme }) => theme.mediaDesktop} {
+    box-shadow: ${({ theme }) => `${theme.colors.pink} 0px ${theme.vw1920(2)} ${theme.vw1920(4)} 0px`};
+  }
 `;
 
 export default Header;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
 // Components
 import Container from '@/Layouts/Container/Container';
@@ -29,42 +29,41 @@ const bounce = keyframes`
   }
 `;
 
-const ImportantMessage = () => {
+const ImportantMessage = ({ setImHeight, imIsVisible, setImIsVisible }) => {
   const strapiService = new StrapiService();
-  const [imIsVisible, setImIsVisible] = useState(true);
 
-  const { data: importantMessageJson } = useSWR(
-    `/important-message`,
-    strapiService.getResource
-  );
+  const { data: importantMessageJson } = useSWR(`/important-message`, strapiService.getResource);
 
   useEffect(() => {
     if (importantMessageJson) {
-      Cookies.get('isImportantMessageDisabled') || text.length === 0
-        ? setImIsVisible(false)
-        : setImIsVisible(true);
+      Cookies.get(updated_at) || text.length === 0 ? setImIsVisible(false) : setImIsVisible(true);
+      if (document.querySelector('#important-message')) {
+        setImHeight(document.querySelector('#important-message').offsetHeight);
+      }
     }
   }, [importantMessageJson]);
 
-  const onClose = () => {
-    setImIsVisible(false);
-    document.cookie = `isImportantMessageDisabled=true; expires=${countDateExpire()}`;
-  };
-
   const countDateExpire = () => {
     return new Date(new Date().getTime() + 1000 * 60 * 60 * 24);
+  };
+
+  const onClose = () => {
+    setImIsVisible(false);
+    setImHeight(0);
+
+    document.cookie = `${updated_at}=true; expires=${countDateExpire()};SameSite=Strict`;
   };
 
   if (!importantMessageJson) {
     return null;
   }
 
-  const { text, link } = importantMessageJson;
+  const { text, link, updated_at } = importantMessageJson;
 
   return (
     imIsVisible &&
     text && (
-      <ImportantMessageStyled>
+      <ImportantMessageStyled id='important-message'>
         <h2 className='visually-hidden'>important message</h2>
         <Container>
           {link ? (
@@ -87,12 +86,12 @@ const ImportantMessageStyled = styled.section`
   background: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.vw(5)} 0;
-  animation: ${bounce} 0.5s linear forwards;
 
   .Container {
     width: 100%;
     ${({ theme }) => theme.flex.between}
     box-sizing: border-box;
+    animation: ${bounce} 0.5s linear forwards;
   }
 
   a {
@@ -107,6 +106,7 @@ const ImportantMessageStyled = styled.section`
     border: none;
     background: transparent;
     width: ${({ theme }) => theme.vw(30)};
+    min-width: ${({ theme }) => theme.vw(30)};
 
     svg {
       width: 100%;

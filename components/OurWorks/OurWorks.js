@@ -5,6 +5,8 @@ import Slider from 'react-slick';
 import SectionTitle from '@/UI/SectionTitle';
 import Container from '@/Layouts/Container/Container';
 import imageSizeHelper from '../../utils/imageSizeHelper';
+import arrowIcon from './double-up-arrow.svg';
+import SlickArrow from '../SlickArrow';
 
 const OurWorks = ({ ourWorks, API_URL }) => {
   const breakpoint = useBreakpoint();
@@ -17,20 +19,20 @@ const OurWorks = ({ ourWorks, API_URL }) => {
         slidesToScroll: 1,
         slidesToShow: 1,
         variableWidth: true,
-        infinite: true,
         centerMode: false,
         centerPadding: 100,
       }
     : {
-        dots: false,
-        arrows: false,
+        arrows: true,
         infinite: true,
         slidesToScroll: 1,
         slidesToShow: 1,
         variableWidth: true,
         centerPadding: 50,
-        infinite: true,
         centerMode: true,
+        focusOnSelect: true,
+        nextArrow: <SlickArrow next />,
+        prevArrow: <SlickArrow />,
       };
 
   return (
@@ -43,14 +45,8 @@ const OurWorks = ({ ourWorks, API_URL }) => {
         {ourWorks.list.map((img) => (
           <div key={img.id} className='imgWrap'>
             <picture>
-              <source
-                media='(min-width: 768px) and (max-width: 1920px)'
-                srcSet={imageSizeHelper(img, 900, 900)}
-              />
-              <source
-                media='(max-width: 767px)'
-                srcSet={imageSizeHelper(img, 600, 600)}
-              />
+              <source media='(min-width: 768px) and (max-width: 1920px)' srcSet={imageSizeHelper(img, 900, 900)} />
+              <source media='(max-width: 767px)' srcSet={imageSizeHelper(img, 600, 600)} />
               <img src={API_URL + img.url} alt={img.name} />
             </picture>
           </div>
@@ -63,6 +59,26 @@ const OurWorks = ({ ourWorks, API_URL }) => {
 const OurWorksStyled = styled.div`
   .slick-slide {
     margin-left: ${({ theme }) => theme.vw(30)};
+    position: relative;
+
+    > div {
+      position: relative;
+      ::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: all 1s ease;
+      }
+    }
+  }
+
+  .slick-slide.slick-active>div {
+    ::before {
+      background-color: rgba(0, 0, 0, 0);
+      transition: all 1s ease;
+    }
   }
 
   .imgWrap {
@@ -95,10 +111,28 @@ const OurWorksStyled = styled.div`
       img {
         width: ${({ theme }) => theme.vw1920(900)};
         height: ${({ theme }) => theme.vw1920(900)};
-        border-left: ${({ theme }) => theme.vw1920(36)} solid
-          ${({ theme }) => theme.colors.black};
-        border-right: ${({ theme }) => theme.vw1920(36)} solid
-          ${({ theme }) => theme.colors.black};
+        border-left: ${({ theme }) => theme.vw1920(36)} solid ${({ theme }) => theme.colors.black};
+        border-right: ${({ theme }) => theme.vw1920(36)} solid ${({ theme }) => theme.colors.black};
+      }
+    }
+
+    .slick-arrow {
+      width: revert;
+      height: revert;
+      z-index: 3;
+    }
+
+    .slick-next {
+      right: ${({ theme }) => theme.vw1920(20)};
+      ::before {
+        content: '';
+      }
+    }
+
+    .slick-prev {
+      left: ${({ theme }) => theme.vw1920(20)};
+      ::before {
+        content: '';
       }
     }
   }
