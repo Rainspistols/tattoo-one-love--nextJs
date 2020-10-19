@@ -31,9 +31,7 @@ const Contacts = ({ iconsColor, textColor }) => {
         {data.map(({ title, href, icon }, index) => (
           <li key={index}>
             <a href={href}>
-              <IconContext.Provider value={{ color: iconsColor }}>
-                {icon}
-              </IconContext.Provider>
+              <IconContext.Provider value={{ color: iconsColor }}>{icon}</IconContext.Provider>
               {title}
             </a>
           </li>
@@ -52,6 +50,11 @@ const ContactsStyled = styled.section`
     font-size: ${({ theme }) => theme.vw(13)};
     line-height: ${({ theme }) => theme.vw(20)};
     white-space: nowrap;
+
+    :hover,
+    :focus {
+      text-decoration: underline;
+    }
   }
 
   svg {

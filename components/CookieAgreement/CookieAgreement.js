@@ -14,7 +14,7 @@ const CookieAgreement = () => {
         buttonWrapperClasses='button-close__wrapper'
         buttonClasses='button-close'
         contentClasses='cookie-message'
-        buttonText='Kliknij lub przewiń w dół, aby wyrazić zgodę'
+        buttonText='Przewiń w dół, aby wyrazić zgodę'
       >
         W ramach naszej witryny stosujemy pliki cookies, które są niezbędne do
         poprawnego działania serwisu. Są one również wykorzystywane w celach

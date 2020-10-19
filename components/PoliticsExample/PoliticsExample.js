@@ -128,6 +128,10 @@ const PoliticsExampleStyled = styled.div`
       font-size: ${({ theme }) => `${theme.vw1920(18)}`};
       line-height: ${({ theme }) => `${theme.vw1920(27)}`};
     }
+
+    p {
+      margin: revert;
+    }
   }
 `;
 

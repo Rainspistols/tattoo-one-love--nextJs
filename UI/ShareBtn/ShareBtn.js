@@ -23,7 +23,7 @@ const ShareBtn = ({ postHref }) => {
         <FacebookShareButton url={postHref}>
           <img
             src={facebookIcon}
-            alt='https://www.facebook.com/tattooonelovewwa'
+            alt='https://www.facebook.com/tattooonelovewwa/'
           />
         </FacebookShareButton>
       </li>
