@@ -1,41 +1,44 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-import SectionTitle from '@/UI/SectionTitle';
-import Container from '@/Layouts/Container/Container';
+import SectionTitle from "@/UI/SectionTitle";
+import Container from "@/Layouts/Container/Container";
+import Anchor from "@/UI/Anchor";
 
-const AboutUsSection = () => {
+const AboutUsSection = ({ headerHeight }) => {
   return (
-    <AboutUsSectionStyled id='about-us'>
+    <AboutUsSectionStyled>
+      <Anchor id="about-us" headerHeight={headerHeight} />
+
       <Container>
-        <SectionTitle text='O nas' />
-        <h3 className='title'>Wyjątkowe studio tatuażu na Woli</h3>
+        <SectionTitle text="O nas" />
+        <h3 className="title">Wyjątkowe studio tatuażu na Woli</h3>
         <picture>
           <source
-            media='(min-width: 1280px)'
-            srcSet='/AboutUsSection/postImg--desktop.jpg'
+            media="(min-width: 1280px)"
+            srcSet="/AboutUsSection/postImg--desktop.jpg"
           />
           <source
-            media='(min-width: 768px)'
-            srcSet='/AboutUsSection/postImg--tablet.jpg'
+            media="(min-width: 768px)"
+            srcSet="/AboutUsSection/postImg--tablet.jpg"
           />
           <img
-            src='/AboutUsSection/postImg.jpg'
-            alt='Tattoo one love interior'
+            src="/AboutUsSection/postImg.jpg"
+            alt="Tattoo one love interior"
           />
         </picture>
-        <p className='text'>
+        <p className="text">
           Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka
           kiedykolwiek nas spotkała. Dlatego, kiedy wybierasz nasze studio
           tatuażu, jesteśmy z tobą od etapu pomysłu do momentu pełnego wygojenia
           tatuażu. W Tattoo One Love przechodzimy przez cały proces razem, żeby
           stworzyć idealne warunki dla tatuażu twoich marzeń. Dlatego też
-          korzystamy z{' '}
+          korzystamy z{" "}
           <strong>najlepszego hipoalergicznego tuszu na rynku</strong> (World
-          Famous, Eternal Ink) i <strong>igieł najwyższej jakości</strong>{' '}
-          (Cheyenne, Kwadron). Co więcej,{' '}
+          Famous, Eternal Ink) i <strong>igieł najwyższej jakości</strong>{" "}
+          (Cheyenne, Kwadron). Co więcej,{" "}
           <strong>
             indywidualnie dobieramy sposób gojenia tatuażu pod każdego klienta
-          </strong>{' '}
+          </strong>{" "}
           (zależnie od typu skóry, warunków w pracy i w domu). Wysokie standardy
           higieny i sterylności są zawsze na pierwszym miejscu. Przyjdź do
           naszego studia i się o tym przekonaj.

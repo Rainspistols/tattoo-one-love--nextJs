@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import ReactMarkdown from 'react-markdown';
-import Container from '@/Layouts/Container/Container';
-import { NextSeo } from 'next-seo';
+import React from "react";
+import styled from "@emotion/styled";
+import ReactMarkdown from "react-markdown";
+import Container from "@/Layouts/Container/Container";
+import { NextSeo } from "next-seo";
 
 const PoliticsExample = ({ data, title }) => {
   return (
@@ -10,7 +10,7 @@ const PoliticsExample = ({ data, title }) => {
       <NextSeo title={title} />
       <PoliticsExampleStyled>
         <Container>
-          <div className='markdown__wrap'>
+          <div className="markdown__wrap">
             <ReactMarkdown source={data} />
           </div>
         </Container>
@@ -20,6 +20,11 @@ const PoliticsExample = ({ data, title }) => {
 };
 
 const PoliticsExampleStyled = styled.div`
+  * {
+    margin: revert;
+    padding: revert;
+  }
+
   .markdown__wrap {
     color: ${({ theme }) => theme.colors.black};
     padding: ${({ theme }) => `${theme.vw(20)} 0`};
@@ -29,9 +34,6 @@ const PoliticsExampleStyled = styled.div`
     white-space: normal;
   }
 
-  p {
-    text-align: justify;
-  }
 
   h1,
   h2,
@@ -40,8 +42,6 @@ const PoliticsExampleStyled = styled.div`
   h5,
   h6,
   ul {
-    margin: revert;
-    padding: revert;
     line-height: 1.2;
   }
 
@@ -50,6 +50,10 @@ const PoliticsExampleStyled = styled.div`
   li {
     list-style: revert;
     list-style-type: revert;
+  }
+  
+  ul,ol {
+    padding-left: 20px;
   }
 
   h1 {
@@ -91,6 +95,7 @@ const PoliticsExampleStyled = styled.div`
     line-height: ${({ theme }) => `${theme.vw(25)}`};
   }
 
+
   ${({ theme }) => theme.mediaDesktop} {
     .markdown__wrap {
       padding: ${({ theme }) => `${theme.vw1920(40)} 0`};
@@ -129,9 +134,6 @@ const PoliticsExampleStyled = styled.div`
       line-height: ${({ theme }) => `${theme.vw1920(27)}`};
     }
 
-    p {
-      margin: revert;
-    }
   }
 `;
 

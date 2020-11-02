@@ -1,14 +1,15 @@
-import styled from '@emotion/styled';
-import { useBreakpoint } from '../../utils/breakpoint';
+import styled from "@emotion/styled";
+import { useBreakpoint } from "../../utils/breakpoint";
 // Components
-import Slider from 'react-slick';
-import SectionTitle from '@/UI/SectionTitle';
-import Container from '@/Layouts/Container/Container';
-import imageSizeHelper from '../../utils/imageSizeHelper';
-import arrowIcon from './double-up-arrow.svg';
-import SlickArrow from '../SlickArrow';
+import Slider from "react-slick";
+import SectionTitle from "@/UI/SectionTitle";
+import Container from "@/Layouts/Container/Container";
+import imageSizeHelper from "../../utils/imageSizeHelper";
+import arrowIcon from "./double-up-arrow.svg";
+import SlickArrow from "../SlickArrow";
+import Anchor from "@/UI/Anchor";
 
-const OurWorks = ({ ourWorks, API_URL }) => {
+const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
   const breakpoint = useBreakpoint();
 
   const sliderSetting = breakpoint.mobile
@@ -36,17 +37,24 @@ const OurWorks = ({ ourWorks, API_URL }) => {
       };
 
   return (
-    <OurWorksStyled id='works'>
+    <OurWorksStyled>
+      <Anchor id="works" headerHeight={headerHeight} />
       <Container>
-        <SectionTitle text='Nasze pracy' />
+        <SectionTitle text="Nasze pracy" />
       </Container>
 
       <Slider {...sliderSetting}>
         {ourWorks.list.map((img) => (
-          <div key={img.id} className='imgWrap'>
+          <div key={img.id} className="imgWrap">
             <picture>
-              <source media='(min-width: 768px) and (max-width: 1920px)' srcSet={imageSizeHelper(img, 900, 900)} />
-              <source media='(max-width: 767px)' srcSet={imageSizeHelper(img, 600, 600)} />
+              <source
+                media="(min-width: 768px) and (max-width: 1920px)"
+                srcSet={imageSizeHelper(img, 900, 900)}
+              />
+              <source
+                media="(max-width: 767px)"
+                srcSet={imageSizeHelper(img, 600, 600)}
+              />
               <img src={API_URL + img.url} alt={img.name} />
             </picture>
           </div>
@@ -64,7 +72,7 @@ const OurWorksStyled = styled.div`
     > div {
       position: relative;
       ::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 100%;
         height: 100%;
@@ -74,7 +82,7 @@ const OurWorksStyled = styled.div`
     }
   }
 
-  .slick-slide.slick-active>div {
+  .slick-slide.slick-active > div {
     ::before {
       background-color: rgba(0, 0, 0, 0);
       transition: all 1s ease;
@@ -111,8 +119,10 @@ const OurWorksStyled = styled.div`
       img {
         width: ${({ theme }) => theme.vw1920(900)};
         height: ${({ theme }) => theme.vw1920(900)};
-        border-left: ${({ theme }) => theme.vw1920(36)} solid ${({ theme }) => theme.colors.black};
-        border-right: ${({ theme }) => theme.vw1920(36)} solid ${({ theme }) => theme.colors.black};
+        border-left: ${({ theme }) => theme.vw1920(36)} solid
+          ${({ theme }) => theme.colors.black};
+        border-right: ${({ theme }) => theme.vw1920(36)} solid
+          ${({ theme }) => theme.colors.black};
       }
     }
 
@@ -125,14 +135,14 @@ const OurWorksStyled = styled.div`
     .slick-next {
       right: ${({ theme }) => theme.vw1920(20)};
       ::before {
-        content: '';
+        content: "";
       }
     }
 
     .slick-prev {
       left: ${({ theme }) => theme.vw1920(20)};
       ::before {
-        content: '';
+        content: "";
       }
     }
   }
