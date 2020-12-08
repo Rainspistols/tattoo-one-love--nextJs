@@ -20,9 +20,9 @@ const Footer = () => {
         <FooterSubscripion />
         <FooterRules />
 
-        <div className='contact_wrap'>
-          <FooterTitle text='Kontakt' />
-          <Contacts iconsColor='white' textColor='#E8ECF1' />
+        <div className="contact_wrap">
+          <FooterTitle text="Kontakt" />
+          <Contacts iconsColor="white" textColor="#E8ECF1" />
         </div>
 
         {breakpoint.mobile && <Line />}
@@ -36,6 +36,7 @@ const Footer = () => {
 const FooterStyled = styled.footer`
   background: ${({ theme }) => theme.colors.grey4};
   padding: ${({ theme }) => theme.vw(20)} 0;
+  position: relative;
 
   .contact_wrap {
     margin-bottom: ${({ theme }) => theme.vw(20)};
