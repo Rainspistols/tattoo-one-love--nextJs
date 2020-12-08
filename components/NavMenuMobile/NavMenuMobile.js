@@ -89,7 +89,7 @@ const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
 };
 
 const NavMenuStyled = styled.section`
-  position: absolute;
+  position: fixed;
 
   display: ${(props) => (props.isMenuVisible ? 'block' : 'none')};
   top: 0;
