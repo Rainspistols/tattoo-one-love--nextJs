@@ -10,6 +10,8 @@ import Anchor from '@/UI/Anchor';
 
 const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
   const breakpoint = useBreakpoint();
+  console.log(ourWorks);
+  console.log(ourWorks.list.map((img) => imageSizeHelper(img, 2000, 2000)));
 
   const sliderSetting = breakpoint.mobile
     ? {
@@ -50,7 +52,7 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
                 media="(min-width: 768px) and (max-width: 1920px)"
                 srcSet={imageSizeHelper(img, 900, 900)}
               />
-              <source media="(max-width: 767px)" srcSet={imageSizeHelper(img, 600, 600)} />
+              <source media="(max-width: 767px)" srcSet={imageSizeHelper(img, 500, 500)} />
               <img src={API_URL + img.url} alt={img.name} />
             </picture>
           </div>
