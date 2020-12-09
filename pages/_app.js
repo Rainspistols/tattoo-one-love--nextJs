@@ -11,32 +11,12 @@ import Header from '@/components/Header/Header';
 // Seo
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ImportantMessage from '@/components/ImportantMessage/ImportantMessage';
 
 function MyApp({ Component, pageProps }) {
   const [headerHeight, setHeaderHeight] = useState(0);
-  const [imHeight, setImHeight] = useState(0);
   const [imIsVisible, setImIsVisible] = useState(true);
-
-  const onScrollPage = (footerHeight) => {
-    if (!imIsVisible || (imIsVisible && window.pageYOffset > imHeight)) {
-      document.querySelector('header').classList.add('sticky');
-      document.querySelector('main').style.paddingTop = headerHeight + 'px';
-      document.querySelector('footer').style.height = footerHeight + headerHeight + 'px';
-    } else {
-      document.querySelector('header').classList.remove('sticky');
-      document.querySelector('main').style.paddingTop = 0;
-    }
-  };
-
-  useEffect(() => {
-    const footerHeight = document.querySelector('footer').offsetHeight;
-
-    onScrollPage(footerHeight);
-    window.removeEventListener('scroll', () => onScrollPage(footerHeight));
-    window.addEventListener('scroll', () => onScrollPage(footerHeight));
-  }, [imHeight, imIsVisible]);
 
   return (
     <EmotionTheme>
@@ -61,14 +41,13 @@ function MyApp({ Component, pageProps }) {
         </Head>
 
         <ImportantMessage
-          setImHeight={setImHeight}
           setImIsVisible={setImIsVisible}
           imIsVisible={imIsVisible}
-          onScrollPage={onScrollPage}
+          headerHeight={headerHeight}
         />
         <Header setHeaderHeight={setHeaderHeight} />
 
-        <main>
+        <main style={!imIsVisible ? { marginTop: headerHeight } : null}>
           <Component {...pageProps} headerHeight={headerHeight} />
         </main>
 

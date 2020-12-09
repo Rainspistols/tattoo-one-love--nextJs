@@ -4,32 +4,12 @@ import { useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
 // Components
 import Container from '@/Layouts/Container/Container';
-
 import { IoIosClose } from 'react-icons/io';
 import useSWR from 'swr';
-
 import StrapiService from '../StrapiService/StrapiService';
 import { keyframes } from '@emotion/core';
 
-const bounce = keyframes`
-  from {
-    transform: translate3d(0,-100%,0)
-  }
-
-  60%, 85%, to {
-    transform: translate3d(0,0,0)
-  }
-
-  75% {
-    transform: translate3d(0,-20%,0)
-  }
-
-  95% {
-    transform: translate3d(0,-5%,0)
-  }
-`;
-
-const ImportantMessage = ({ setImHeight, imIsVisible, setImIsVisible }) => {
+const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
   const strapiService = new StrapiService();
 
   const { data: importantMessageJson } = useSWR(`/important-message`, strapiService.getResource);
@@ -37,9 +17,6 @@ const ImportantMessage = ({ setImHeight, imIsVisible, setImIsVisible }) => {
   useEffect(() => {
     if (importantMessageJson) {
       Cookies.get(updated_at) || text.length === 0 ? setImIsVisible(false) : setImIsVisible(true);
-      if (document.querySelector('#important-message')) {
-        setImHeight(document.querySelector('#important-message').offsetHeight);
-      }
     }
   }, [importantMessageJson]);
 
@@ -49,7 +26,6 @@ const ImportantMessage = ({ setImHeight, imIsVisible, setImIsVisible }) => {
 
   const onClose = () => {
     setImIsVisible(false);
-    setImHeight(0);
 
     document.cookie = `${updated_at}=true; expires=${countDateExpire()};SameSite=Strict`;
   };
@@ -63,8 +39,12 @@ const ImportantMessage = ({ setImHeight, imIsVisible, setImIsVisible }) => {
   return (
     imIsVisible &&
     text && (
-      <ImportantMessageStyled id='important-message'>
-        <h2 className='visually-hidden'>important message</h2>
+      <ImportantMessageStyled
+        id="important-message"
+        imIsVisible={imIsVisible}
+        headerHeight={headerHeight}
+      >
+        <h2 className="visually-hidden">important message</h2>
         <Container>
           {link ? (
             <Link href={link}>
@@ -86,12 +66,16 @@ const ImportantMessageStyled = styled.section`
   background: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.vw(5)} 0;
+  margin-top: ${(props) => (props.imIsVisible ? props.headerHeight + 'px' : null)};
 
   .Container {
     width: 100%;
     ${({ theme }) => theme.flex.between}
     box-sizing: border-box;
-    animation: ${bounce} 0.5s linear forwards;
+    /* Animation */
+
+    -webkit-animation: blink-1 0.6s both;
+    animation: blink-1 0.6s both;
   }
 
   a {
@@ -132,6 +116,31 @@ const ImportantMessageStyled = styled.section`
         width: ${({ theme }) => theme.vw1920(40)};
         height: auto;
       }
+    }
+  }
+
+  /* Animation */
+
+  @-webkit-keyframes blink-1 {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    25%,
+    75% {
+      opacity: 0;
+    }
+  }
+  @keyframes blink-1 {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    25%,
+    75% {
+      opacity: 0;
     }
   }
 `;
