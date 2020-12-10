@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useBreakpoint } from '../../utils/breakpoint';
+import Image from 'next/image';
 // Components
 import Slider from 'react-slick';
 import SectionTitle from '@/UI/SectionTitle';
@@ -53,6 +54,15 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
               <source media="(max-width: 767px)" srcSet={imageSizeHelper(img, 500, 500)} />
               <img src={API_URL + img.url} alt={img.name} />
             </picture>
+            {/* <Image
+              className="studio-image"
+              src={API_URL + img.url}
+              alt="tattooo one love photo"
+              layout="fill"
+              objectFit="contain"
+              quality={100}
+            /> */}
+            {/* <Image src={API_URL + img.url} alt="tattoo photo" width="900" height="900" /> */}
           </div>
         ))}
       </Slider>

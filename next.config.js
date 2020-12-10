@@ -17,3 +17,5 @@ module.exports = {
 // for correct SVG imports
 const withImages = require('next-images');
 module.exports = withImages();
+
+

@@ -8,25 +8,25 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
+    "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
     "emotion": "^10.0.27",
     "emotion-normalize": "^10.1.0",
     "emotion-server": "^10.0.27",
     "emotion-theming": "^10.0.27",
-    "next": "^9.5.3",
-    "next-images": "^1.4.1",
-    "next-seo": "^4.7.3",
+    "next": "^10.0.3",
+    "next-images": "^1.6.2",
+    "next-seo": "^4.17.0",
     "react": "16.13.1",
-    "react-cookie-consent": "^5.1.4",
+    "react-cookie-consent": "^5.2.0",
     "react-dom": "16.13.1",
     "react-icons": "^3.11.0",
     "react-markdown": "^4.3.1",
-    "react-share": "^4.2.1",
+    "react-share": "^4.3.1",
     "react-slick": "^0.26.1",
     "showdown": "^1.9.1",
     "slick-carousel": "^1.8.1",
-    "swr": "^0.3.5"
+    "swr": "^0.3.9"
   },
   "devDependencies": {}
 }

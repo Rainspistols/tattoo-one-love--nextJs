@@ -1,10 +1,15 @@
-import styled from "@emotion/styled";
-
-import SectionTitle from "@/UI/SectionTitle";
-import Container from "@/Layouts/Container/Container";
-import Anchor from "@/UI/Anchor";
+import styled from '@emotion/styled';
+import Image from 'next/image';
+//Components
+import SectionTitle from '@/UI/SectionTitle';
+import Container from '@/Layouts/Container/Container';
+import Anchor from '@/UI/Anchor';
+// hooks
+import { useBreakpoint } from '../../utils/breakpoint';
 
 const AboutUsSection = ({ headerHeight }) => {
+  const breakpoint = useBreakpoint();
+
   return (
     <AboutUsSectionStyled>
       <Anchor id="about-us" headerHeight={headerHeight} />
@@ -12,7 +17,7 @@ const AboutUsSection = ({ headerHeight }) => {
       <Container>
         <SectionTitle text="O nas" />
         <h3 className="title">Wyjątkowe studio tatuażu na Woli</h3>
-        <picture>
+        {/* <picture>
           <source
             media="(min-width: 1280px)"
             srcSet="/AboutUsSection/postImg--desktop.jpg"
@@ -25,23 +30,32 @@ const AboutUsSection = ({ headerHeight }) => {
             src="/AboutUsSection/postImg.jpg"
             alt="Tattoo one love interior"
           />
-        </picture>
+        </picture> */}
+        <div className="image-wrapper">
+          <Image
+            className="studio-image"
+            src={
+              breakpoint.desktop
+                ? '/AboutUsSection/postImg--desktop.jpg'
+                : '/AboutUsSection/postImg--tablet.jpg'
+            }
+            alt="Studio's photos"
+            layout="fill"
+            objectFit="contain"
+            quality={100}
+          />
+        </div>
         <p className="text">
-          Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka
-          kiedykolwiek nas spotkała. Dlatego, kiedy wybierasz nasze studio
-          tatuażu, jesteśmy z tobą od etapu pomysłu do momentu pełnego wygojenia
-          tatuażu. W Tattoo One Love przechodzimy przez cały proces razem, żeby
-          stworzyć idealne warunki dla tatuażu twoich marzeń. Dlatego też
-          korzystamy z{" "}
-          <strong>najlepszego hipoalergicznego tuszu na rynku</strong> (World
-          Famous, Eternal Ink) i <strong>igieł najwyższej jakości</strong>{" "}
-          (Cheyenne, Kwadron). Co więcej,{" "}
-          <strong>
-            indywidualnie dobieramy sposób gojenia tatuażu pod każdego klienta
-          </strong>{" "}
-          (zależnie od typu skóry, warunków w pracy i w domu). Wysokie standardy
-          higieny i sterylności są zawsze na pierwszym miejscu. Przyjdź do
-          naszego studia i się o tym przekonaj.
+          Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka kiedykolwiek nas spotkała.
+          Dlatego, kiedy wybierasz nasze studio tatuażu, jesteśmy z tobą od etapu pomysłu do momentu
+          pełnego wygojenia tatuażu. W Tattoo One Love przechodzimy przez cały proces razem, żeby
+          stworzyć idealne warunki dla tatuażu twoich marzeń. Dlatego też korzystamy z{' '}
+          <strong>najlepszego hipoalergicznego tuszu na rynku</strong> (World Famous, Eternal Ink) i{' '}
+          <strong>igieł najwyższej jakości</strong> (Cheyenne, Kwadron). Co więcej,{' '}
+          <strong>indywidualnie dobieramy sposób gojenia tatuażu pod każdego klienta</strong>{' '}
+          (zależnie od typu skóry, warunków w pracy i w domu). Wysokie standardy higieny i
+          sterylności są zawsze na pierwszym miejscu. Przyjdź do naszego studia i się o tym
+          przekonaj.
         </p>
       </Container>
     </AboutUsSectionStyled>
@@ -59,9 +73,11 @@ const AboutUsSectionStyled = styled.section`
     color: ${({ theme }) => theme.colors.darkBlue};
   }
 
-  img {
+  .image-wrapper {
+    position: relative;
     width: 100%;
     margin-bottom: ${({ theme }) => theme.vw(25)};
+    height: ${({ theme }) => theme.vw(200)};
   }
 
   .text {
@@ -92,15 +108,14 @@ const AboutUsSectionStyled = styled.section`
       padding-right: 0;
     }
 
-    img {
-      width: ${({ theme }) => theme.vw1920(515)};
-      margin-bottom: 0;
-    }
-
-    picture {
+    .image-wrapper {
       position: absolute;
       right: 0;
       bottom: 0;
+      width: 50%;
+      height: 100%;
+      max-height: 100%;
+      margin: 0;
     }
 
     .text {
