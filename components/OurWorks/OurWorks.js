@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Slider from 'react-slick';
 import SectionTitle from '@/UI/SectionTitle';
 import Container from '@/Layouts/Container/Container';
-import imageSizeHelper from '../../utils/imageSizeHelper';
 import SlickArrow from '../SlickArrow';
 import Anchor from '@/UI/Anchor';
 
@@ -29,8 +28,7 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
         slidesToScroll: 1,
         slidesToShow: 1,
         variableWidth: true,
-        centerPadding: 50,
-        centerMode: true,
+        centerMode: false,
         focusOnSelect: true,
         nextArrow: <SlickArrow next />,
         prevArrow: <SlickArrow />,
@@ -46,23 +44,13 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
       <Slider {...sliderSetting}>
         {ourWorks.list.map((img) => (
           <div key={img.id} className="imgWrap">
-            <picture>
-              <source
-                media="(min-width: 768px) and (max-width: 1920px)"
-                srcSet={imageSizeHelper(img, 900, 900)}
-              />
-              <source media="(max-width: 767px)" srcSet={imageSizeHelper(img, 500, 500)} />
-              <img src={API_URL + img.url} alt={img.name} />
-            </picture>
-            {/* <Image
-              className="studio-image"
+            <Image
               src={API_URL + img.url}
-              alt="tattooo one love photo"
+              alt="tattoo photo"
               layout="fill"
-              objectFit="contain"
-              quality={100}
-            /> */}
-            {/* <Image src={API_URL + img.url} alt="tattoo photo" width="900" height="900" /> */}
+              objectFit="cover"
+              quality={90}
+            />
           </div>
         ))}
       </Slider>
@@ -84,6 +72,7 @@ const OurWorksStyled = styled.div`
         height: 100%;
         background-color: rgba(0, 0, 0, 0.7);
         transition: all 1s ease;
+        z-index: 2;
       }
     }
   }
@@ -96,15 +85,10 @@ const OurWorksStyled = styled.div`
   }
 
   .imgWrap {
-    width: ${({ theme }) => theme.vw(250)};
-    height: ${({ theme }) => theme.vw(250)};
+    width: ${({ theme }) => theme.vw(250)} !important;
+    height: ${({ theme }) => theme.vw(250)} !important;
     margin-bottom: ${({ theme }) => theme.vw(30)};
     display: block !important;
-    img {
-      object-fit: cover;
-      width: ${({ theme }) => theme.vw(250)};
-      height: ${({ theme }) => theme.vw(250)};
-    }
   }
 
   ${({ theme }) => theme.mediaDesktop} {
@@ -115,19 +99,15 @@ const OurWorksStyled = styled.div`
       padding: ${({ theme }) => theme.vw1920(25)} 0;
     }
     .slick-slide {
-      margin-left: 0;
+      margin-left: ${({ theme }) => theme.vw1920(18)};
+      margin-right: ${({ theme }) => theme.vw1920(18)};
+      transform: translateX(25vw);
     }
 
     .imgWrap {
       margin: 0;
-      height: auto;
-
-      img {
-        width: ${({ theme }) => theme.vw1920(900)};
-        height: ${({ theme }) => theme.vw1920(900)};
-        border-left: ${({ theme }) => theme.vw1920(36)} solid ${({ theme }) => theme.colors.black};
-        border-right: ${({ theme }) => theme.vw1920(36)} solid ${({ theme }) => theme.colors.black};
-      }
+      width: ${({ theme }) => theme.vw1920(900)} !important;
+      height: ${({ theme }) => theme.vw1920(900)} !important;
     }
 
     .slick-arrow {

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import logo from './images/logo--black.svg';
+import LogoImg from './images/logo--black.svg';
 import { useRouter } from 'next/router';
 
 const Logo = () => {
@@ -9,8 +9,7 @@ const Logo = () => {
     <StyledLogo className='Logo'>
       <Link href='/'>
         <a className={router.pathname == '/' ? 'inactive' : ''}>
-          <img
-            src={logo}
+          <LogoImg
             aria-label='Tattoo one love logo'
             width='45'
             height='38'
@@ -29,15 +28,16 @@ const StyledLogo = styled.div`
   clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
   height: 100%;
 
-  img {
+  svg {
     width: ${({ theme }) => theme.vw(45)};
+    height: auto;
   }
 
   ${({ theme }) => theme.mediaDesktop} {
     width: ${({ theme }) => theme.vw1920(174)};
     height: 100%;
 
-    img {
+    svg {
       width: ${({ theme }) => theme.vw1920(105)};
     }
   }

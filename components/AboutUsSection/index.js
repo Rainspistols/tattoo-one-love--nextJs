@@ -17,20 +17,7 @@ const AboutUsSection = ({ headerHeight }) => {
       <Container>
         <SectionTitle text="O nas" />
         <h3 className="title">Wyjątkowe studio tatuażu na Woli</h3>
-        {/* <picture>
-          <source
-            media="(min-width: 1280px)"
-            srcSet="/AboutUsSection/postImg--desktop.jpg"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcSet="/AboutUsSection/postImg--tablet.jpg"
-          />
-          <img
-            src="/AboutUsSection/postImg.jpg"
-            alt="Tattoo one love interior"
-          />
-        </picture> */}
+
         <div className="image-wrapper">
           <Image
             className="studio-image"

@@ -1,24 +1,23 @@
 import CookieConsent from 'react-cookie-consent';
 import styled from '@emotion/styled';
-import cookieBg from './cookie-background.svg';
 
 const CookieAgreement = () => {
   return (
     <CookieAgreementStyled>
       <CookieConsent
-        cookie='user-has-accepted-cookies'
+        cookie="user-has-accepted-cookies"
         disableStyles={true}
-        location='bottom'
+        location="bottom"
         acceptOnScrollPercentage={10}
         acceptOnScroll={true}
-        buttonWrapperClasses='button-close__wrapper'
-        buttonClasses='button-close'
-        contentClasses='cookie-message'
-        buttonText='Przewiń w dół, aby wyrazić zgodę'
+        buttonWrapperClasses="button-close__wrapper"
+        buttonClasses="button-close"
+        contentClasses="cookie-message"
+        buttonText="Przewiń w dół, aby wyrazić zgodę"
       >
-        W ramach naszej witryny stosujemy pliki cookies, które są niezbędne do
-        poprawnego działania serwisu. Są one również wykorzystywane w celach
-        reklamowych oraz aby zapewnić najwyższy poziom usług.
+        W ramach naszej witryny stosujemy pliki cookies, które są niezbędne do poprawnego działania
+        serwisu. Są one również wykorzystywane w celach reklamowych oraz aby zapewnić najwyższy
+        poziom usług.
       </CookieConsent>
     </CookieAgreementStyled>
   );
@@ -52,7 +51,7 @@ const CookieAgreementStyled = styled.section`
       position: absolute;
       top: 0;
       left: 0;
-      background-image: url(${cookieBg});
+      background-image: url('./cookieBg.svg');
       background-size: cover;
       background-repeat: no-repeat;
       opacity: 0.1;
@@ -99,8 +98,7 @@ const CookieAgreementStyled = styled.section`
       .button-close {
         padding: ${({ theme }) => theme.vw1920(10)} 0;
 
-        border-top: ${({ theme }) =>
-          `${theme.vw1920(2)} solid ${theme.colors.pink}`};
+        border-top: ${({ theme }) => `${theme.vw1920(2)} solid ${theme.colors.pink}`};
       }
     }
   }
