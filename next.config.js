@@ -24,7 +24,7 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'admin.tattooonelove.com'],
     deviceSizes: [
       360,
       375,
