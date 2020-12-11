@@ -110,6 +110,7 @@ const ImportantMessageStyled = styled.section`
 
     button {
       width: 2vw;
+      min-width: auto;
 
       svg {
         width: ${({ theme }) => theme.vw1920(40)};
