@@ -1,16 +1,20 @@
 import styled from '@emotion/styled';
 import Container from '@/Layouts/Container/Container';
 import Image from 'next/image';
+import { useBreakpoint } from '../../utils/breakpoint';
 
 const Hero = () => {
+  const breakpoint = useBreakpoint();
+
   return (
     <StyledHero>
       <Image
-        src="/Hero/bg--desktop.jpg"
+        src={breakpoint.mobile ? '/Hero/bg--mobile.jpg' : '/Hero/bg--desktop.jpg'}
         alt="tattoo one love bg image"
         layout="fill"
         objectFit="cover"
         className="bgImage"
+        quality={100}
       />
       <Container>
         <img className="logo" src="/Hero/logo.svg" alt="one love tattoo logo" />
@@ -22,9 +26,6 @@ const Hero = () => {
 };
 
 const StyledHero = styled.div`
-  /* background-image: url('/Hero/bg--mobile.jpg'); */
-  background-repeat: no-repeat;
-  background-size: cover;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   font-weight: 500;
@@ -62,11 +63,9 @@ const StyledHero = styled.div`
   }
   /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
-    /* background-image: url(${'/Hero/bg--tablet.jpg'}); */
     margin-bottom: ${({ theme }) => theme.vw1920(134)};
 
     ${({ theme }) => theme.mediaDesktop} {
-      /* background-image: url(${'/Hero/bg--desktop.jpg'}); */
       padding: ${({ theme }) => theme.vw1920(150)} 0 ${({ theme }) => theme.vw1920(150)};
 
       .logo {
