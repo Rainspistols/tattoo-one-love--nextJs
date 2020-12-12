@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useBreakpoint } from '../../utils/breakpoint';
 import Image from 'next/image';
+import imageSizeHelper from '../../utils/imageSizeHelper';
 // Components
 import Slider from 'react-slick';
 import SectionTitle from '@/UI/SectionTitle';
@@ -46,8 +47,7 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
             <Image
               src={API_URL + img.url}
               alt="tattoo photo"
-              layout="fixed"
-              
+              layout="fill"
               objectFit="cover"
               quality={80}
               width={900}
