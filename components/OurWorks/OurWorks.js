@@ -47,7 +47,7 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
             <Image
               src={API_URL + img.url}
               alt="tattoo photo"
-              layout="responsive"
+              layout="intrinsic"
               objectFit="cover"
               quality={90}
               width={900}
