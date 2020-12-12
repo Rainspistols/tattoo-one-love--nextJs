@@ -44,14 +44,33 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
       <Slider {...sliderSetting}>
         {ourWorks.list.map((img) => (
           <div key={img.id} className="imgWrap">
-            <Image
+            {breakpoint.mobile ? (
+              <Image
+                src={imageSizeHelper(img, 500, 500)}
+                alt="tattoo photo"
+                layout="fill"
+                objectFit="cover"
+                quality={90}
+                loading="eager"
+              />
+            ) : (
+              <Image
+                src={imageSizeHelper(img, 900, 900)}
+                alt="tattoo photo"
+                layout="fill"
+                objectFit="cover"
+                quality={80}
+                loading="eager"
+              />
+            )}
+            {/* <Image
               src={imageSizeHelper(img, 900, 900)}
               alt="tattoo photo"
               layout="fill"
               objectFit="cover"
               quality={80}
               loading="eager"
-            />
+            /> */}
           </div>
         ))}
       </Slider>

@@ -13,7 +13,7 @@ const NavigationMobile = () => {
   return (
     <NavigationMobileStyled>
       <div className="navigationBox" ref={navigationBox}>
-        <button className="menuButton">
+        <button className="menuButton" aria-label='menu-button'>
           <Image
             src="/Header/navigationIcon.svg"
             layout="fill"
