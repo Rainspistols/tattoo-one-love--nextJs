@@ -50,6 +50,7 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
               layout="fill"
               objectFit="cover"
               quality={80}
+              loading="eager"
             />
           </div>
         ))}
