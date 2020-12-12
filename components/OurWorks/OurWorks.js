@@ -28,7 +28,6 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
         slidesToScroll: 1,
         slidesToShow: 1,
         variableWidth: true,
-        centerMode: false,
         focusOnSelect: true,
         nextArrow: <SlickArrow next />,
         prevArrow: <SlickArrow />,
@@ -47,11 +46,11 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
             <Image
               src={API_URL + img.url}
               alt="tattoo photo"
-              layout="responsiv"
-              objectFit="contain"
-              quality={90}
-              // width={300}
-              // height={300}
+              layout="fixed"
+              objectFit="cover"
+              quality={80}
+              width={900}
+              height={900}
             />
           </div>
         ))}
@@ -110,6 +109,7 @@ const OurWorksStyled = styled.div`
       margin: 0;
       width: ${({ theme }) => theme.vw1920(900)} !important;
       height: ${({ theme }) => theme.vw1920(900)} !important;
+      position: relative;
     }
 
     .slick-arrow {
