@@ -47,12 +47,11 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
             <Image
               src={API_URL + img.url}
               alt="tattoo photo"
-              // layout="fill"
-              objectFit="cover"
-              objectPosition="center"
+              layout="responsiv"
+              objectFit="contain"
               quality={90}
-              width={Math.round((900 / window?.innerWidth) * 100)}
-              height={Math.round((900 / window?.innerWidth) * 100)}
+              // width={300}
+              // height={300}
             />
           </div>
         ))}
