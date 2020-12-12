@@ -17,7 +17,13 @@ const Hero = () => {
         quality={100}
       />
       <Container>
-        <img className="logo" src="/Hero/logo.svg" alt="one love tattoo logo" />
+        <img
+          className="logo"
+          src="/Hero/logo.svg"
+          alt="one love tattoo logo"
+          width="200px"
+          height="200px"
+        />
         <p className="text1">Bodies are not born. Bodies are made.</p>
         <h2 className="text2">Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</h2>
       </Container>
@@ -42,6 +48,8 @@ const StyledHero = styled.div`
   .Container {
     padding-bottom: ${({ theme }) => theme.vw(57)};
     padding-top: ${({ theme }) => theme.vw(35)};
+    z-index: 1;
+    position: relative;
   }
 
   .text1 {
@@ -49,7 +57,7 @@ const StyledHero = styled.div`
     line-height: ${({ theme }) => theme.vw(50)};
     margin-bottom: ${({ theme }) => theme.vw(20)};
 
-    text-transform: uppercase; 
+    text-transform: uppercase;
     padding-left: ${({ theme }) => theme.vw(10)};
     padding-right: ${({ theme }) => theme.vw(10)};
   }
@@ -60,6 +68,12 @@ const StyledHero = styled.div`
     text-transform: uppercase;
     padding-left: ${({ theme }) => theme.vw(50)};
     padding-right: ${({ theme }) => theme.vw(50)};
+  }
+  .bgImage {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
   }
   /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
@@ -76,8 +90,6 @@ const StyledHero = styled.div`
 
       .Container {
         padding: 0;
-        position: relative;
-        z-index: 1;
       }
 
       .text1 {
@@ -89,12 +101,6 @@ const StyledHero = styled.div`
       .text2 {
         font-size: ${({ theme }) => theme.vw1920(24)};
         line-height: ${({ theme }) => theme.vw1920(34)};
-      }
-      .bgImage {
-        position: absolute;
-        z-index: 0;
-        left: 0;
-        right: 0;
       }
     }
   }

@@ -79,7 +79,7 @@ const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
             {socialsListData.map(({ title, href, icon, id }) => (
               <li key={id}>
                 <a href={href} target='_blank' rel='nofollow noopener'>
-                  <img src={icon} alt={title} />
+                  <img src={icon} alt={title} width='20px' height='20px'/>
                 </a>
               </li>
             ))}
