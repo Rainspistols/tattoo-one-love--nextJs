@@ -45,13 +45,11 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
         {ourWorks.list.map((img) => (
           <div key={img.id} className="imgWrap">
             <Image
-              src={API_URL + img.url}
+              src={imageSizeHelper(img, 900, 900)}
               alt="tattoo photo"
               layout="fill"
               objectFit="cover"
               quality={80}
-              width={900}
-              height={900}
             />
           </div>
         ))}
