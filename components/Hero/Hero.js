@@ -1,27 +1,34 @@
 import styled from '@emotion/styled';
 import Container from '@/Layouts/Container/Container';
+import Image from 'next/image';
 
 const Hero = () => {
   return (
     <StyledHero>
+      <Image
+        src="/Hero/bg--desktop.jpg"
+        alt="tattoo one love bg image"
+        layout="fill"
+        objectFit="cover"
+        className="bgImage"
+      />
       <Container>
-        <img className='logo' src='/Hero/logo.svg' alt='one love tattoo logo' />
-        <p className='text1'>Bodies are not born. Bodies are made.</p>
-        <h2 className='text2'>
-          Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.
-        </h2>
+        <img className="logo" src="/Hero/logo.svg" alt="one love tattoo logo" />
+        <p className="text1">Bodies are not born. Bodies are made.</p>
+        <h2 className="text2">Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</h2>
       </Container>
     </StyledHero>
   );
 };
 
 const StyledHero = styled.div`
-  background-image: url('/Hero/bg--mobile.jpg');
+  /* background-image: url('/Hero/bg--mobile.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   font-weight: 500;
+  position: relative;
 
   .logo {
     margin-bottom: ${({ theme }) => theme.vw(25)};
@@ -55,13 +62,12 @@ const StyledHero = styled.div`
   }
   /* MEDIA */
   ${({ theme }) => theme.mediaDesktop} {
-    background-image: url(${'/Hero/bg--tablet.jpg'});
+    /* background-image: url(${'/Hero/bg--tablet.jpg'}); */
     margin-bottom: ${({ theme }) => theme.vw1920(134)};
 
     ${({ theme }) => theme.mediaDesktop} {
-      background-image: url(${'/Hero/bg--desktop.jpg'});
-      padding: ${({ theme }) => theme.vw1920(150)} 0
-        ${({ theme }) => theme.vw1920(150)};
+      /* background-image: url(${'/Hero/bg--desktop.jpg'}); */
+      padding: ${({ theme }) => theme.vw1920(150)} 0 ${({ theme }) => theme.vw1920(150)};
 
       .logo {
         width: ${({ theme }) => theme.vw1920(350)};
@@ -71,6 +77,8 @@ const StyledHero = styled.div`
 
       .Container {
         padding: 0;
+        position: relative;
+        z-index: 1;
       }
 
       .text1 {
@@ -82,6 +90,12 @@ const StyledHero = styled.div`
       .text2 {
         font-size: ${({ theme }) => theme.vw1920(24)};
         line-height: ${({ theme }) => theme.vw1920(34)};
+      }
+      .bgImage {
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        right: 0;
       }
     }
   }
