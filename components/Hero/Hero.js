@@ -49,7 +49,7 @@ const StyledHero = styled.div`
     line-height: ${({ theme }) => theme.vw(50)};
     margin-bottom: ${({ theme }) => theme.vw(20)};
 
-    text-transform: uppercase;
+    text-transform: uppercase; 
     padding-left: ${({ theme }) => theme.vw(10)};
     padding-right: ${({ theme }) => theme.vw(10)};
   }
