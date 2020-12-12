@@ -42,6 +42,8 @@ const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
             <img
               className='closeIcon'
               src='/NavMenuMobile/closeIcon.svg'
+              width='30px'
+              height='30px'
               alt='close menu'
               onClick={onCloseMenu.bind(this)}
             />

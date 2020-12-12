@@ -11,12 +11,14 @@ const NavigationMobile = () => {
 
   return (
     <NavigationMobileStyled>
-      <div className='navigationBox' ref={navigationBox}>
-        <button className='menuButton'>
+      <div className="navigationBox" ref={navigationBox}>
+        <button className="menuButton">
           <img
-            className='menuIcon'
-            src='/Header/navigationIcon.svg'
-            alt='menu'
+            className="menuIcon"
+            src="/Header/navigationIcon.svg"
+            width="30px"
+            height="30px"
+            alt="menu"
             onClick={setMenuVisible.bind(this, true)}
           />
         </button>
