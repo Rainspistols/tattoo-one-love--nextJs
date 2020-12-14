@@ -28,34 +28,30 @@ const Subscribe = () => {
   const formElements = (
     <>
       <fieldset>
-        <h2 className='title' htmlFor='email'>
+        <h2 className="title" htmlFor="email">
           Newsletter
         </h2>
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className='email'
-          type='email'
-          placeholder='Email'
-          id='email'
+          className="email"
+          type="email"
+          placeholder="Email"
+          id="email"
           required
         />
       </fieldset>
 
-      <input type='submit' value='Zapisz się' className='submit' />
+      <input type="submit" value="Zapisz się" className="submit" />
     </>
   );
 
   const imgEmailEntered = (
     <fieldset>
-      <label className='title' htmlFor='email'>
+      <label className="title" htmlFor="email">
         Well done !
       </label>
-      <img
-        className='like'
-        src='/Subscribe/social-media.svg'
-        alt='email accepted'
-      />
+      <img className="like" src="/Subscribe/social-media.svg" alt="email accepted" />
     </fieldset>
   );
 
@@ -148,8 +144,7 @@ const SubscribeStyled = styled.div`
       width: ${({ theme }) => theme.vw1920(300)};
       height: ${({ theme }) => theme.vw1920(50)};
       border-radius: ${({ theme }) => theme.vw1920(5)};
-      border: ${({ theme }) =>
-        `${theme.vw1920(1)} solid ${theme.colors.grey2}`};
+      border: ${({ theme }) => `${theme.vw1920(1)} solid ${theme.colors.grey2}`};
       margin-bottom: ${({ theme }) => theme.vw1920(10)};
       padding: ${({ theme }) => `${theme.vw1920(20)} ${theme.vw1920(14)}`};
       font-size: ${({ theme }) => theme.vw1920(14)};
@@ -162,6 +157,7 @@ const SubscribeStyled = styled.div`
       font-size: ${({ theme }) => theme.vw1920(14)};
       line-height: ${({ theme }) => theme.vw1920(21)};
       border-radius: ${({ theme }) => theme.vw1920(5)};
+      transition: all 1s ease-in-out;
     }
 
     .like {

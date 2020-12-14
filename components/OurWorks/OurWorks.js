@@ -9,7 +9,7 @@ import Container from '@/Layouts/Container/Container';
 import SlickArrow from '../SlickArrow';
 import Anchor from '@/UI/Anchor';
 
-const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
+const OurWorks = ({ ourWorks, headerHeight }) => {
   const breakpoint = useBreakpoint();
 
   const sliderSetting = breakpoint.mobile
@@ -30,6 +30,7 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
         slidesToShow: 1,
         variableWidth: true,
         focusOnSelect: true,
+        centerMode: true,
         nextArrow: <SlickArrow next />,
         prevArrow: <SlickArrow />,
       };
@@ -44,33 +45,16 @@ const OurWorks = ({ ourWorks, API_URL, headerHeight }) => {
       <Slider {...sliderSetting}>
         {ourWorks.list.map((img) => (
           <div key={img.id} className="imgWrap">
-            {breakpoint.mobile ? (
-              <Image
-                src={imageSizeHelper(img, 500, 500)}
-                alt="tattoo photo"
-                layout="fill"
-                objectFit="cover"
-                quality={90}
-                loading="eager"
-              />
-            ) : (
-              <Image
-                src={imageSizeHelper(img, 900, 900)}
-                alt="tattoo photo"
-                layout="fill"
-                objectFit="cover"
-                quality={80}
-                loading="eager"
-              />
-            )}
-            {/* <Image
-              src={imageSizeHelper(img, 900, 900)}
+            <Image
+              src={
+                breakpoint.mobile ? imageSizeHelper(img, 500, 500) : imageSizeHelper(img, 900, 900)
+              }
               alt="tattoo photo"
               layout="fill"
               objectFit="cover"
-              quality={80}
+              quality={100}
               loading="eager"
-            /> */}
+            />
           </div>
         ))}
       </Slider>
@@ -116,19 +100,18 @@ const OurWorksStyled = styled.div`
 
     .slick-slider {
       background: ${({ theme }) => theme.colors.black};
-      padding: ${({ theme }) => theme.vw1920(25)} 0;
+      padding: ${({ theme }) => theme.vw1920(5)} 0;
     }
     .slick-slide {
-      margin-left: ${({ theme }) => theme.vw1920(18)};
-      margin-right: ${({ theme }) => theme.vw1920(18)};
-      transform: translateX(25vw);
+      margin-left: revert;
+      margin-right: revert;
+      border: ${({ theme }) => theme.vw1920(15)} solid black;
     }
 
     .imgWrap {
       margin: 0;
       width: ${({ theme }) => theme.vw1920(900)} !important;
       height: ${({ theme }) => theme.vw1920(900)} !important;
-      position: relative;
     }
 
     .slick-arrow {
@@ -138,14 +121,14 @@ const OurWorksStyled = styled.div`
     }
 
     .slick-next {
-      right: ${({ theme }) => theme.vw1920(40)};
+      right: ${({ theme }) => theme.vw1920(200)};
       ::before {
         content: '';
       }
     }
 
     .slick-prev {
-      left: ${({ theme }) => theme.vw1920(40)};
+      left: ${({ theme }) => theme.vw1920(200)};
       ::before {
         content: '';
       }

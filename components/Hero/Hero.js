@@ -15,6 +15,7 @@ const Hero = () => {
         objectFit="cover"
         className="bgImage"
         quality={100}
+        priority={true}
       />
       <Container>
         <img
