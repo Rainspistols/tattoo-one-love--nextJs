@@ -109,6 +109,7 @@ const AboutUsSection = ({ headerHeight }) => {
                 layout="fill"
                 objectFit="contain"
                 quality={100}
+                loading="eager"
               />
             </div>
           ))}
