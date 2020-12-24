@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }) {
     <EmotionTheme>
       <BreakpointProvider>
         <GlobalStyles />
-
         <DefaultSeo {...SEO} />
         <Head>
           <meta httpEquiv="content-language" content="pl-PL" />
@@ -37,7 +36,6 @@ function MyApp({ Component, pageProps }) {
             as="font"
             crossOrigin=""
           />
-          {/* Meta */}
         </Head>
 
         <ImportantMessage

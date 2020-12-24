@@ -20,7 +20,7 @@ const PoliticsExample = ({ data, title }) => {
 };
 
 const PoliticsExampleStyled = styled.div`
-  * {
+  *:not(.Container) {
     margin: revert;
     padding: revert;
   }
@@ -33,7 +33,6 @@ const PoliticsExampleStyled = styled.div`
   code {
     white-space: normal;
   }
-
 
   h1,
   h2,
