@@ -73,8 +73,8 @@ const ImportantMessageStyled = styled.section`
     box-sizing: border-box;
     /* Animation */
 
-    -webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-    animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    -webkit-animation: slide-in-blurred-tl 1s ease-out both;
+    animation: slide-in-blurred-tl 1s ease-out both;
   }
 
   a {
@@ -120,35 +120,62 @@ const ImportantMessageStyled = styled.section`
   }
 
   /* Animation */
-  @-webkit-keyframes swing-in-top-fwd {
+
+  @-webkit-keyframes tracking-in-contract-bck-top {
     0% {
-      -webkit-transform: rotateX(-100deg);
-      transform: rotateX(-100deg);
-      -webkit-transform-origin: top;
-      transform-origin: top;
+      letter-spacing: 1em;
+      -webkit-transform: translateZ(400px) translateY(-300px);
+      transform: translateZ(400px) translateY(-300px);
       opacity: 0;
     }
+    40% {
+      opacity: 0.6;
+    }
     100% {
-      -webkit-transform: rotateX(0deg);
-      transform: rotateX(0deg);
-      -webkit-transform-origin: top;
-      transform-origin: top;
+      -webkit-transform: translateZ(0) translateY(0);
+      transform: translateZ(0) translateY(0);
       opacity: 1;
     }
   }
-  @keyframes swing-in-top-fwd {
+
+  /* Animation */
+  @-webkit-keyframes slide-in-blurred-tl {
     0% {
-      -webkit-transform: rotateX(-100deg);
-      transform: rotateX(-100deg);
-      -webkit-transform-origin: top;
-      transform-origin: top;
+      -webkit-transform: translate(-1000px, -1000px) skew(80deg, 10deg);
+      transform: translate(-1000px, -1000px) skew(80deg, 10deg);
+      -webkit-transform-origin: 100% 0%;
+      transform-origin: 100% 0%;
+      -webkit-filter: blur(40px);
+      filter: blur(40px);
       opacity: 0;
     }
     100% {
-      -webkit-transform: rotateX(0deg);
-      transform: rotateX(0deg);
-      -webkit-transform-origin: top;
-      transform-origin: top;
+      -webkit-transform: translate(0, 0) skew(0deg, 0deg);
+      transform: translate(0, 0) skew(0deg, 0deg);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-blurred-tl {
+    0% {
+      -webkit-transform: translate(-1000px, -1000px) skew(80deg, 10deg);
+      transform: translate(-1000px, -1000px) skew(80deg, 10deg);
+      -webkit-transform-origin: 100% 0%;
+      transform-origin: 100% 0%;
+      -webkit-filter: blur(40px);
+      filter: blur(40px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translate(0, 0) skew(0deg, 0deg);
+      transform: translate(0, 0) skew(0deg, 0deg);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+      filter: blur(0);
       opacity: 1;
     }
   }
