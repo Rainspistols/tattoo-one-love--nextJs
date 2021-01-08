@@ -72,9 +72,8 @@ const ImportantMessageStyled = styled.section`
     ${({ theme }) => theme.flex.between}
     box-sizing: border-box;
     /* Animation */
-
-    -webkit-animation: slide-in-blurred-tl 1s ease-out both;
-    animation: slide-in-blurred-tl 1s ease-out both;
+    -webkit-animation: slide-in-blurred-tl 0.5s ease-out both;
+    animation: slide-in-blurred-tl 0.5s ease-out both;
   }
 
   a {
