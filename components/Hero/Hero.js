@@ -8,26 +8,30 @@ const Hero = () => {
 
   return (
     <StyledHero>
-      <Image
-        src={breakpoint.mobile ? '/Hero/bg--mobile.jpg' : '/Hero/bg--desktop.jpg'}
-        alt="tattoo one love bg image"
-        layout="fill"
-        objectFit="cover"
-        className="bgImage"
-        quality={100}
-        priority={true}
-      />
-      <Container>
-        <img
-          className="logo"
-          src="/Hero/logo.svg"
-          alt="one love tattoo logo"
-          width="200px"
-          height="200px"
+      <ImageWrap>
+        <Image
+          src={breakpoint.mobile ? '/Hero/bg--desktop.jpg' : '/Hero/bg--desktop.jpg'}
+          alt="background image"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          priority={true}
         />
-        <p className="text1">Bodies are not born. Bodies are made.</p>
-        <h2 className="text2">Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</h2>
-      </Container>
+      </ImageWrap>
+
+      <SloganContainer>
+        <Container>
+          <img
+            className="logo"
+            src="/Hero/logo.svg"
+            alt="tattooonelove logo"
+            width="200px"
+            height="200px"
+          />
+          <p className="text1">Bodies are not born. Bodies are made.</p>
+          <h2 className="text2">Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</h2>
+        </Container>
+      </SloganContainer>
     </StyledHero>
   );
 };
@@ -37,6 +41,7 @@ const StyledHero = styled.div`
   text-align: center;
   font-weight: 500;
   position: relative;
+  height: ${({ theme }) => theme.vw(433)};
 
   .logo {
     margin-bottom: ${({ theme }) => theme.vw(25)};
@@ -44,13 +49,6 @@ const StyledHero = styled.div`
     height: ${({ theme }) => theme.vw(100)};
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .Container {
-    padding-bottom: ${({ theme }) => theme.vw(57)};
-    padding-top: ${({ theme }) => theme.vw(35)};
-    z-index: 1;
-    position: relative;
   }
 
   .text1 {
@@ -70,41 +68,63 @@ const StyledHero = styled.div`
     padding-left: ${({ theme }) => theme.vw(50)};
     padding-right: ${({ theme }) => theme.vw(50)};
   }
-  .bgImage {
-    position: absolute;
-    z-index: 0;
-    left: 0;
-    right: 0;
-  }
-  /* MEDIA */
+
   ${({ theme }) => theme.mediaDesktop} {
     margin-bottom: ${({ theme }) => theme.vw1920(134)};
+    /* padding: ${({ theme }) => theme.vw1920(150)} 0 ${({ theme }) => theme.vw1920(150)}; */
 
-    ${({ theme }) => theme.mediaDesktop} {
-      padding: ${({ theme }) => theme.vw1920(150)} 0 ${({ theme }) => theme.vw1920(150)};
+    height: ${({ theme }) => theme.vw1920(760)};
 
-      .logo {
-        width: ${({ theme }) => theme.vw1920(350)};
-        height: ${({ theme }) => theme.vw1920(350)};
-        margin-bottom: ${({ theme }) => theme.vw1920(50)};
-      }
+    .logo {
+      width: ${({ theme }) => theme.vw1920(350)};
+      height: ${({ theme }) => theme.vw1920(350)};
+      margin-bottom: ${({ theme }) => theme.vw1920(50)};
+    }
 
-      .Container {
-        padding: 0;
-      }
+    /* .Container {
+      padding: 0;
+    } */
 
-      .text1 {
-        font-size: ${({ theme }) => theme.vw1920(40)};
-        line-height: ${({ theme }) => theme.vw1920(50)};
-        margin-bottom: ${({ theme }) => theme.vw1920(20)};
-      }
+    .text1 {
+      font-size: ${({ theme }) => theme.vw1920(40)};
+      line-height: ${({ theme }) => theme.vw1920(50)};
+      margin-bottom: ${({ theme }) => theme.vw1920(20)};
+    }
 
-      .text2 {
-        font-size: ${({ theme }) => theme.vw1920(24)};
-        line-height: ${({ theme }) => theme.vw1920(34)};
-      }
+    .text2 {
+      font-size: ${({ theme }) => theme.vw1920(24)};
+      line-height: ${({ theme }) => theme.vw1920(34)};
     }
   }
+`;
+
+const ImageWrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+`;
+
+const SloganContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default Hero;

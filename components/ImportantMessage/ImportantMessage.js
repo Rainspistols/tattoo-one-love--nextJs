@@ -66,6 +66,8 @@ const ImportantMessageStyled = styled.section`
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.vw(5)} 0;
   margin-top: ${(props) => (props.imIsVisible ? props.headerHeight + 'px' : null)};
+  z-index: 2;
+  position: relative;
 
   .Container {
     width: 100%;
