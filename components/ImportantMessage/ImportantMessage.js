@@ -17,6 +17,8 @@ const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
     if (importantMessageJson) {
       Cookies.get(updated_at) || text.length === 0 ? setImIsVisible(false) : setImIsVisible(true);
     }
+
+    return () => Cookies.get();
   }, [importantMessageJson]);
 
   const countDateExpire = () => {
@@ -69,6 +71,8 @@ const ImportantMessageStyled = styled.section`
   z-index: 2;
   position: relative;
   animation: scroll-down 2s linear;
+  /* for smooth animation */
+  overflow: hidden;
 
   .Container {
     width: 100%;
@@ -122,12 +126,10 @@ const ImportantMessageStyled = styled.section`
 
   @keyframes scroll-down {
     0% {
-      max-height: 0;
-      overflow: hidden;
+      max-height: 0px;
     }
     100% {
       max-height: 400px;
-      overflow: none;
     }
   }
 `;
