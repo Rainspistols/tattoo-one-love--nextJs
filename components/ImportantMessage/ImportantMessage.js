@@ -68,14 +68,12 @@ const ImportantMessageStyled = styled.section`
   margin-top: ${(props) => (props.imIsVisible ? props.headerHeight + 'px' : null)};
   z-index: 2;
   position: relative;
+  animation: scroll-down 2s linear;
 
   .Container {
     width: 100%;
     ${({ theme }) => theme.flex.between}
     box-sizing: border-box;
-    /* Animation */
-    -webkit-animation: slide-in-blurred-tl 0.5s ease-out both;
-    animation: slide-in-blurred-tl 0.5s ease-out both;
   }
 
   a {
@@ -122,62 +120,14 @@ const ImportantMessageStyled = styled.section`
 
   /* Animation */
 
-  @-webkit-keyframes tracking-in-contract-bck-top {
+  @keyframes scroll-down {
     0% {
-      letter-spacing: 1em;
-      -webkit-transform: translateZ(400px) translateY(-300px);
-      transform: translateZ(400px) translateY(-300px);
-      opacity: 0;
-    }
-    40% {
-      opacity: 0.6;
+      max-height: 0;
+      overflow: hidden;
     }
     100% {
-      -webkit-transform: translateZ(0) translateY(0);
-      transform: translateZ(0) translateY(0);
-      opacity: 1;
-    }
-  }
-
-  /* Animation */
-  @-webkit-keyframes slide-in-blurred-tl {
-    0% {
-      -webkit-transform: translate(-1000px, -1000px) skew(80deg, 10deg);
-      transform: translate(-1000px, -1000px) skew(80deg, 10deg);
-      -webkit-transform-origin: 100% 0%;
-      transform-origin: 100% 0%;
-      -webkit-filter: blur(40px);
-      filter: blur(40px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translate(0, 0) skew(0deg, 0deg);
-      transform: translate(0, 0) skew(0deg, 0deg);
-      -webkit-transform-origin: 50% 50%;
-      transform-origin: 50% 50%;
-      -webkit-filter: blur(0);
-      filter: blur(0);
-      opacity: 1;
-    }
-  }
-  @keyframes slide-in-blurred-tl {
-    0% {
-      -webkit-transform: translate(-1000px, -1000px) skew(80deg, 10deg);
-      transform: translate(-1000px, -1000px) skew(80deg, 10deg);
-      -webkit-transform-origin: 100% 0%;
-      transform-origin: 100% 0%;
-      -webkit-filter: blur(40px);
-      filter: blur(40px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translate(0, 0) skew(0deg, 0deg);
-      transform: translate(0, 0) skew(0deg, 0deg);
-      -webkit-transform-origin: 50% 50%;
-      transform-origin: 50% 50%;
-      -webkit-filter: blur(0);
-      filter: blur(0);
-      opacity: 1;
+      max-height: 400px;
+      overflow: none;
     }
   }
 `;
