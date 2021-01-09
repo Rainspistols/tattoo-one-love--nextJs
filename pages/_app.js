@@ -16,7 +16,7 @@ import ImportantMessage from '@/components/ImportantMessage/ImportantMessage';
 
 function MyApp({ Component, pageProps }) {
   const [headerHeight, setHeaderHeight] = useState(0);
-  const [imIsVisible, setImIsVisible] = useState(true);
+  const [imIsVisible, setImIsVisible] = useState(false);
 
   return (
     <EmotionTheme>

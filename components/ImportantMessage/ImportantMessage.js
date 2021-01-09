@@ -17,7 +17,6 @@ const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
     if (importantMessageJson) {
       Cookies.get(updated_at) || text.length === 0 ? setImIsVisible(false) : setImIsVisible(true);
     }
-
   }, [importantMessageJson]);
 
   const countDateExpire = () => {
@@ -69,7 +68,7 @@ const ImportantMessageStyled = styled.section`
   margin-top: ${(props) => (props.imIsVisible ? props.headerHeight + 'px' : null)};
   z-index: 2;
   position: relative;
-  animation: scroll-down 2s linear;
+  animation: scroll-down 1s linear;
   /* for smooth animation */
   overflow: hidden;
 
