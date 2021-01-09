@@ -8,7 +8,7 @@ const FooterSubscripion = () => {
   const subscriptionListData = [
     {
       title: 'Facebook',
-      href: 'https://www.facebook.com/',
+      href: 'https://www.facebook.com/tattooonelovewwa/',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="34.788" viewBox="0 0 35 34.788">
           <path
@@ -22,7 +22,7 @@ const FooterSubscripion = () => {
     },
     {
       title: 'Vkontakte',
-      href: 'https://www.vk.com/',
+      href: 'https://vk.com/tattoo.onelove',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="20.792" viewBox="0 0 35 20.792">
           <path
@@ -36,7 +36,7 @@ const FooterSubscripion = () => {
     },
     {
       title: 'Instagram',
-      href: 'https://www.instagram.com/',
+      href: 'https://www.instagram.com/tattoo.onelove/',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
           <path
