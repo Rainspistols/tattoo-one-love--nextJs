@@ -18,7 +18,6 @@ const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
       Cookies.get(updated_at) || text.length === 0 ? setImIsVisible(false) : setImIsVisible(true);
     }
 
-    return () => Cookies.get();
   }, [importantMessageJson]);
 
   const countDateExpire = () => {

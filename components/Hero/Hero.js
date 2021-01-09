@@ -10,12 +10,13 @@ const Hero = () => {
     <StyledHero>
       <ImageWrap>
         <Image
-          src={breakpoint.mobile ? '/Hero/bg--desktop.jpg' : '/Hero/bg--desktop.jpg'}
+          src={breakpoint.mobile ? '/Hero/bg--tablet.jpg' : '/Hero/bg--desktop.jpg'}
           alt="background image"
           layout="fill"
           objectFit="cover"
           quality={100}
           priority={true}
+          objectPosition="center 60%"
         />
       </ImageWrap>
 
