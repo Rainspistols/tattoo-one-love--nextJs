@@ -14,11 +14,12 @@ const NavigationDesktop = () => {
     { title: 'O nas', href: '/#about-us', id: 2 },
     { title: 'Kontakt', href: '/#contact', id: 3 },
     { title: 'Prace', href: '/#works', id: 4 },
+    { title: 'New page', href: '/newpage', id: 5 },
   ];
 
   return breakpoint.desktop ? (
     <NavigationDesktopStyled>
-      <ul className='navigationList'>
+      <ul className="navigationList">
         {menuLinksData.map(({ title, href, id }) => (
           <li className={router.pathname === href ? 'selected' : null} key={id}>
             <Link href={href}>
@@ -28,7 +29,7 @@ const NavigationDesktop = () => {
         ))}
       </ul>
 
-      <Contacts iconsColor='white' textColor='white' />
+      <Contacts iconsColor="white" textColor="white" />
     </NavigationDesktopStyled>
   ) : null;
 };
@@ -72,8 +73,7 @@ const NavigationDesktopStyled = styled.div`
           width: 100%;
           height: ${({ theme }) => theme.vw1920(3)};
           background: ${({ theme }) => theme.colors.whiteGradient};
-          border-radius: ${({ theme }) => theme.vw1920(10)}
-            ${({ theme }) => theme.vw1920(10)} 0 0;
+          border-radius: ${({ theme }) => theme.vw1920(10)} ${({ theme }) => theme.vw1920(10)} 0 0;
         }
       }
     }

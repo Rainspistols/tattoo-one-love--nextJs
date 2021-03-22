@@ -1,36 +1,30 @@
 import styled from '@emotion/styled';
 import Container from '@/Layouts/Container/Container';
 import Image from 'next/image';
-import { useBreakpoint } from '../../utils/breakpoint';
+import { useBreakpoint } from '../../../utils/breakpoint';
 
-const Hero = () => {
+const Hero = ({ children, bgImageData, title, subtitle }) => {
   const breakpoint = useBreakpoint();
 
   return (
     <StyledHero>
       <ImageWrap>
         <Image
-          src={breakpoint.mobile ? '/Hero/bg--tablet.jpg' : '/Hero/bg--desktop.jpg'}
-          alt="background image"
+          src={breakpoint.mobile ? bgImageData.src.mobile : bgImageData.src.desktop}
+          alt={bgImageData.alt}
           layout="fill"
           objectFit="cover"
           quality={100}
           priority={true}
-          objectPosition="center 60%"
+          objectPosition={bgImageData.objectPosition}
         />
       </ImageWrap>
 
       <SloganContainer>
         <Container>
-          <img
-            className="logo"
-            src="/Hero/logo.svg"
-            alt="tattooonelove logo"
-            width="200px"
-            height="200px"
-          />
-          <p className="text1">Bodies are not born. Bodies are made.</p>
-          <h2 className="text2">Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</h2>
+          {children}
+          <p className="text1">{title}</p>
+          <h2 className="text2">{subtitle}</h2>
         </Container>
       </SloganContainer>
     </StyledHero>
