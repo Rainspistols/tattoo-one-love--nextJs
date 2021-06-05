@@ -1,8 +1,4 @@
-import {
-  VKShareButton,
-  PocketShareButton,
-  FacebookShareButton,
-} from 'react-share';
+import { VKShareButton, PocketShareButton, FacebookShareButton } from 'react-share';
 import styled from '@emotion/styled';
 import { facebookIcon, vkIcon, pocketIcon, shareIcon } from './images';
 import { useState } from 'react';
@@ -11,30 +7,27 @@ const ShareBtn = ({ postHref }) => {
   const [isShareActive, setShareActive] = useState(false);
 
   const shareNotActive = (
-    <div className='shareNotActive'>
-      <img src={shareIcon} alt='share' />
+    <div className="shareNotActive">
+      <img src={shareIcon} alt="share" />
       <p>Share</p>
     </div>
   );
 
   const shareActive = (
-    <ul className='socialsList'>
+    <ul className="socialsList">
       <li>
         <FacebookShareButton url={postHref}>
-          <img
-            src={facebookIcon}
-            alt='https://www.facebook.com/tattooonelovewwa/'
-          />
+          <img src={facebookIcon} alt="https://www.facebook.com/tattooonelovewwa/" />
         </FacebookShareButton>
       </li>
       <li>
         <VKShareButton url={postHref}>
-          <img src={vkIcon} alt='https://vk.com/tattoo.onelove' />
+          <img src={vkIcon} alt="https://vk.com/tattoo.onelove" />
         </VKShareButton>
       </li>
       <li>
         <PocketShareButton url={postHref}>
-          <img src={pocketIcon} alt='' />
+          <img src={pocketIcon} alt="" />
         </PocketShareButton>
       </li>
     </ul>
@@ -45,7 +38,7 @@ const ShareBtn = ({ postHref }) => {
   };
 
   return (
-    <ShareBtnStyled onClick={() => onShareBtn()} className='ShareBtn'>
+    <ShareBtnStyled onClick={() => onShareBtn()} className="ShareBtn">
       {isShareActive ? shareActive : shareNotActive}
     </ShareBtnStyled>
   );
@@ -63,8 +56,7 @@ const ShareBtnStyled = styled.div`
 
   border-radius: ${({ theme }) => theme.vw(5)};
   background: transparent;
-  border: ${({ theme }) => theme.vw(1)} solid
-    ${({ theme }) => theme.colors.grey2};
+  border: ${({ theme }) => theme.vw(1)} solid ${({ theme }) => theme.colors.grey2};
 
   .shareNotActive {
     ${(props) => props.theme.flex.center};
@@ -117,8 +109,7 @@ const ShareBtnStyled = styled.div`
     margin: 0;
 
     border-radius: ${({ theme }) => theme.vw1920(5)};
-    border: ${({ theme }) => theme.vw1920(1)} solid
-      ${({ theme }) => theme.colors.grey2};
+    border: ${({ theme }) => theme.vw1920(1)} solid ${({ theme }) => theme.colors.grey2};
 
     cursor: pointer;
 

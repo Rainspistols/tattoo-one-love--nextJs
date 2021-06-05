@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const FooterTitle = ({ text }) => {
-  return <FooterTitleStyled className='FooterTitle'>{text}</FooterTitleStyled>;
+  return <FooterTitleStyled className="FooterTitle">{text}</FooterTitleStyled>;
 };
 
 const FooterTitleStyled = styled.h4`

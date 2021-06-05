@@ -12,7 +12,7 @@ const Navigation = () => {
   return (
     <NavigationStyled>
       <Container>
-        <div className='wrap'>
+        <div className="wrap">
           <Logo />
           {breakpoint.mobile ? <NavigationMobile /> : <NavigationDesktop />}
         </div>

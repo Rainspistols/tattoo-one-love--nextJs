@@ -1,4 +1,4 @@
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 
 const theme = {
   colors: {

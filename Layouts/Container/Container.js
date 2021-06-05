@@ -4,7 +4,7 @@ const Container = ({ children, disable }) => {
   return disable ? (
     <>{children}</>
   ) : (
-    <ContainerStyled className='Container'>{children}</ContainerStyled>
+    <ContainerStyled className="Container">{children}</ContainerStyled>
   );
 };
 

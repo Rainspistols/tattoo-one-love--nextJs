@@ -7,7 +7,7 @@ const Mission = ({ ourMissionText }) => {
   return (
     <MissionStyled>
       <Container>
-        <SectionTitle text='Nasza misja' />
+        <SectionTitle text="Nasza misja" />
         <ReactMarkdown source={ourMissionText} escapeHtml={false} />
       </Container>
     </MissionStyled>

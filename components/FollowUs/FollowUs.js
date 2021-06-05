@@ -143,7 +143,7 @@ const FollowUsStyled = styled.div`
         }
 
         a {
-      display: block;
+          display: block;
           width: 100%;
           height: 100%;
         }
@@ -153,8 +153,8 @@ const FollowUsStyled = styled.div`
         /* width: 100%;
         height: auto; */
         display: flex;
-          align-items: center;
-          justify-content: center;
+        align-items: center;
+        justify-content: center;
         width: ${({ theme }) => theme.vw1920(35)};
         height: ${({ theme }) => theme.vw1920(35)};
 

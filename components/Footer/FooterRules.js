@@ -11,7 +11,7 @@ const FooterRules = () => {
 
   return (
     <FooterRulesStyled>
-      <FooterTitle text='Polityki' />
+      <FooterTitle text="Polityki" />
       <ul>
         {rulesListData.map(({ title, href, id }) => (
           <li key={id}>

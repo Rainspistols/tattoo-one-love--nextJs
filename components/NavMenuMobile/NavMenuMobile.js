@@ -36,15 +36,15 @@ const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
   return (
     <NavMenuStyled isMenuVisible={isMenuVisible}>
       <Container>
-        <div className='logoAndBtn'>
+        <div className="logoAndBtn">
           <Logo />
           <button>
             <img
-              className='closeIcon'
-              src='/NavMenuMobile/closeIcon.svg'
-              width='30px'
-              height='30px'
-              alt='close menu'
+              className="closeIcon"
+              src="/NavMenuMobile/closeIcon.svg"
+              width="30px"
+              height="30px"
+              alt="close menu"
               onClick={onCloseMenu.bind(this)}
             />
           </button>
@@ -52,7 +52,7 @@ const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
       </Container>
 
       <nav>
-        <ul className='menuLinks'>
+        <ul className="menuLinks">
           {menuLinksData.map(({ title, href, className, id }) => (
             <li
               onClick={onMenuItem.bind(this)}
@@ -71,15 +71,15 @@ const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
       </nav>
 
       <Container>
-        <Contacts iconsColor='#7393A7' textColor='#7393A7' />
+        <Contacts iconsColor="#7393A7" textColor="#7393A7" />
 
-        <section className='socialsList'>
-          <h3 className='menu-title'>socials</h3>
+        <section className="socialsList">
+          <h3 className="menu-title">socials</h3>
           <ul>
             {socialsListData.map(({ title, href, icon, id }) => (
               <li key={id}>
-                <a href={href} target='_blank' rel='nofollow noopener'>
-                  <img src={icon} alt={title} width='20px' height='20px'/>
+                <a href={href} target="_blank" rel="nofollow noopener">
+                  <img src={icon} alt={title} width="20px" height="20px" />
                 </a>
               </li>
             ))}
@@ -100,8 +100,7 @@ const NavMenuStyled = styled.section`
   background: ${({ theme }) => theme.colors.white};
   background-clip: border-box;
   z-index: 10;
-  border-bottom: ${({ theme }) => theme.vw(10)} solid
-    ${({ theme }) => theme.colors.grey3};
+  border-bottom: ${({ theme }) => theme.vw(10)} solid ${({ theme }) => theme.colors.grey3};
 
   .logoAndBtn {
     ${({ theme }) => theme.flex.between};

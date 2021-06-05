@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 
 const SectionTitle = ({ text }) => {
-  return (
-    <SectionTitleStyled className='SectionTitle'>{text}</SectionTitleStyled>
-  );
+  return <SectionTitleStyled className="SectionTitle">{text}</SectionTitleStyled>;
 };
 
 const SectionTitleStyled = styled.h2`

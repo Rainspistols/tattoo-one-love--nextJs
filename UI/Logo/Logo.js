@@ -6,15 +6,10 @@ import { useRouter } from 'next/router';
 const Logo = () => {
   const router = useRouter();
   return (
-    <StyledLogo className='Logo'>
-      <Link href='/'>
+    <StyledLogo className="Logo">
+      <Link href="/">
         <a className={router.pathname == '/' ? 'inactive' : ''}>
-          <LogoImg
-            aria-label='Tattoo one love logo'
-            width='45'
-            height='38'
-            alt=''
-          />
+          <LogoImg aria-label="Tattoo one love logo" width="45" height="38" alt="" />
         </a>
       </Link>
     </StyledLogo>

@@ -4,14 +4,13 @@ import { FaCopyright } from 'react-icons/fa';
 const FooterCopyRight = () => {
   return (
     <FooterCopyRightStyled>
-      <div className='row'>
+      <div className="row">
         <FaCopyright />
         <p>Tattoo One Love All Rights Reserved</p>
       </div>
 
-      <p className='smallText'>
-        Kopiowanie jakiejkolwiek informacji, artykułów lub materiałów jest
-        zabronione.
+      <p className="smallText">
+        Kopiowanie jakiejkolwiek informacji, artykułów lub materiałów jest zabronione.
       </p>
     </FooterCopyRightStyled>
   );

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
-import ReactMarkdown from "react-markdown";
-import Container from "@/Layouts/Container/Container";
-import { NextSeo } from "next-seo";
+import React from 'react';
+import styled from '@emotion/styled';
+import ReactMarkdown from 'react-markdown';
+import Container from '@/Layouts/Container/Container';
+import { NextSeo } from 'next-seo';
 
 const PoliticsExample = ({ data, title }) => {
   return (
@@ -50,8 +50,9 @@ const PoliticsExampleStyled = styled.div`
     list-style: revert;
     list-style-type: revert;
   }
-  
-  ul,ol {
+
+  ul,
+  ol {
     padding-left: 20px;
   }
 
@@ -94,7 +95,6 @@ const PoliticsExampleStyled = styled.div`
     line-height: ${({ theme }) => `${theme.vw(25)}`};
   }
 
-
   ${({ theme }) => theme.mediaDesktop} {
     .markdown__wrap {
       padding: ${({ theme }) => `${theme.vw1920(40)} 0`};
@@ -132,7 +132,6 @@ const PoliticsExampleStyled = styled.div`
       font-size: ${({ theme }) => `${theme.vw1920(18)}`};
       line-height: ${({ theme }) => `${theme.vw1920(27)}`};
     }
-
   }
 `;
 

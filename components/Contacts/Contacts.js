@@ -9,8 +9,7 @@ const Contacts = ({ iconsColor, textColor }) => {
   const data = [
     {
       title: 'Gostyńska 41, 01-151, Warszawa (Wola)',
-      href:
-        'https://www.google.com/maps/place/Gosty%C5%84ska+41,+01-151+Warszawa/@52.243836,20.9636062,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecb77869776ab:0x9adb88cc791e3c4a!8m2!3d52.243836!4d20.9657949',
+      href: 'https://www.google.com/maps/place/Gosty%C5%84ska+41,+01-151+Warszawa/@52.243836,20.9636062,17z/data=!3m1!4b1!4m5!3m4!1s0x471ecb77869776ab:0x9adb88cc791e3c4a!8m2!3d52.243836!4d20.9657949',
       icon: <RiMapPinLine />,
     },
     {
@@ -26,7 +25,7 @@ const Contacts = ({ iconsColor, textColor }) => {
   ];
 
   return (
-    <ContactsStyled className='Contact'>
+    <ContactsStyled className="Contact">
       <ul style={{ color: textColor }}>
         {data.map(({ title, href, icon }, index) => (
           <li key={index}>

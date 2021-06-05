@@ -4,7 +4,7 @@ import { useBreakpoint } from 'utils/breakpoint';
 const Line = () => {
   const breakpoint = useBreakpoint();
 
-  return breakpoint.mobile && <LineStyled className='Line' />;
+  return breakpoint.mobile && <LineStyled className="Line" />;
 };
 
 const LineStyled = styled.div`

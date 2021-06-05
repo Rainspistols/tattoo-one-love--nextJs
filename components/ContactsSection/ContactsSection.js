@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
-import { useBreakpoint } from "utils/breakpoint";
+import styled from '@emotion/styled';
+import { useBreakpoint } from 'utils/breakpoint';
 // Components
-import FollowUs from "../FollowUs/FollowUs";
-import Subscribe from "../Subscribe/Subscribe";
-import Contacts from "../Contacts/Contacts";
-import Container from "@/Layouts/Container/Container";
-import Anchor from "@/UI/Anchor";
-import SectionTitle from "@/UI/SectionTitle";
+import FollowUs from '../FollowUs/FollowUs';
+import Subscribe from '../Subscribe/Subscribe';
+import Contacts from '../Contacts/Contacts';
+import Container from '@/Layouts/Container/Container';
+import Anchor from '@/UI/Anchor';
+import SectionTitle from '@/UI/SectionTitle';
 
 const ContactsBlock = ({ headerHeight }) => {
   const breakpoint = useBreakpoint();
@@ -16,7 +16,7 @@ const ContactsBlock = ({ headerHeight }) => {
       <Anchor id="contact" headerHeight={headerHeight} />
       <ContactsBlockStyled>
         <div className="Contact__wrap">
-          <SectionTitle text='Kontakt'/>
+          <SectionTitle text="Kontakt" />
           <Contacts iconsColor="#F11E9C" textColor="#6C737E" />
         </div>
 

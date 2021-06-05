@@ -1,15 +1,15 @@
-import styled from "@emotion/styled";
-import FooterTitle from "./FooterTitle";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useBreakpoint } from "../../utils/breakpoint";
+import styled from '@emotion/styled';
+import FooterTitle from './FooterTitle';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useBreakpoint } from '../../utils/breakpoint';
 
 const FooterInformation = () => {
-  const informationListDataMobile = [{ title: "Głowna", href: "/", id: 1 }];
+  const informationListDataMobile = [{ title: 'Głowna', href: '/', id: 1 }];
 
   const informationListDataDesktop = [
-    { title: "Głowna", href: "/", id: 1 },
-    { title: "Kontakt", href: "/#contact", id: 2 },
+    { title: 'Głowna', href: '/', id: 1 },
+    { title: 'Kontakt', href: '/#contact', id: 2 },
   ];
 
   const breakpoint = useBreakpoint();
@@ -24,18 +24,14 @@ const FooterInformation = () => {
           ? informationListDataMobile.map(({ title, href, id }) => (
               <li key={id}>
                 <Link href={href}>
-                  <a className={router.pathname == href ? "inactive" : ""}>
-                    {title}
-                  </a>
+                  <a className={router.pathname == href ? 'inactive' : ''}>{title}</a>
                 </Link>
               </li>
             ))
           : informationListDataDesktop.map(({ title, href, id }) => (
               <li key={id}>
                 <Link href={href}>
-                  <a className={router.pathname == href ? "inactive" : ""}>
-                    {title}
-                  </a>
+                  <a className={router.pathname == href ? 'inactive' : ''}>{title}</a>
                 </Link>
               </li>
             ))}
