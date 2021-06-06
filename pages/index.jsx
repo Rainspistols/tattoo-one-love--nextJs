@@ -16,7 +16,11 @@ const Home = ({ ourWorks, ourMissionText, headerHeight }) => {
   return (
     <>
       <h1 className="visually-hidden">Tattoo one love official page</h1>
-      <Hero />
+      <Hero
+        type="main"
+        text1="Bodies are not born. Bodies are made."
+        text2="Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie."
+      />
       <AboutUsSection headerHeight={headerHeight} />
       <OurWorks ourWorks={ourWorks} API_URL={API_URL} headerHeight={headerHeight} />
       {breakpoints.mobile && <FollowUs />}

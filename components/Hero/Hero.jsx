@@ -3,11 +3,11 @@ import Image from 'next/image';
 import Container from '~/Layouts/Container/Container';
 import { useBreakpoint } from '~/utils/breakpoint';
 
-const Hero = () => {
+const Hero = ({ type, text1, text2 }) => {
   const breakpoint = useBreakpoint();
 
   return (
-    <StyledHero>
+    <StyledHero type={type}>
       <ImageWrap>
         <Image
           src={breakpoint.mobile ? '/Hero/bg--tablet.jpg' : '/Hero/bg--desktop.jpg'}
@@ -22,15 +22,17 @@ const Hero = () => {
 
       <SloganContainer>
         <Container>
-          <img
-            className="logo"
-            src="/Hero/logo.svg"
-            alt="tattooonelove logo"
-            width="200px"
-            height="200px"
-          />
-          <p className="text1">Bodies are not born. Bodies are made.</p>
-          <h2 className="text2">Studio tatuażu, w którym znajdziesz sposób na wyrażenia siebie.</h2>
+          {type === 'main' && (
+            <img
+              className="logo"
+              src="/Hero/logo.svg"
+              alt="tattooonelove logo"
+              width="200px"
+              height="200px"
+            />
+          )}
+          <p className="text1">{text1}</p>
+          <h2 className="text2">{text2}</h2>
         </Container>
       </SloganContainer>
     </StyledHero>
@@ -71,7 +73,8 @@ const StyledHero = styled.div`
   }
 
   ${({ theme }) => theme.mediaDesktop} {
-    margin-bottom: ${({ theme }) => theme.vw1920(134)};
+    margin-bottom: ${(props) =>
+      props.type === 'main' ? props.theme.vw1920(134) : props.theme.vw1920(50)};
 
     height: ${({ theme }) => theme.vw1920(760)};
 
@@ -80,10 +83,6 @@ const StyledHero = styled.div`
       height: ${({ theme }) => theme.vw1920(350)};
       margin-bottom: ${({ theme }) => theme.vw1920(50)};
     }
-
-    /* .Container {
-      padding: 0;
-    } */
 
     .text1 {
       font-size: ${({ theme }) => theme.vw1920(40)};
