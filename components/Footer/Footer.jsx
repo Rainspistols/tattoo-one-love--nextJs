@@ -37,6 +37,8 @@ const FooterStyled = styled.footer`
   background: ${({ theme }) => theme.colors.grey4};
   padding: ${({ theme }) => theme.vw(20)} 0;
   position: relative;
+  height: ${({ theme }) => theme.footerHeight.mobile};
+  box-sizing: border-box;
 
   .contact_wrap {
     margin-bottom: ${({ theme }) => theme.vw(20)};
@@ -44,6 +46,7 @@ const FooterStyled = styled.footer`
 
   ${({ theme }) => theme.mediaDesktop} {
     padding: ${({ theme }) => theme.vw1920(50)} 0;
+    height: ${({ theme }) => theme.footerHeight.desktop};
 
     > .Container {
       display: flex;

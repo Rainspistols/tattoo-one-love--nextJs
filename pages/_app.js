@@ -13,9 +13,9 @@ import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 import { useState } from 'react';
 import ImportantMessage from '~/components/ImportantMessage/ImportantMessage';
+import styled from '@emotion/styled';
 
 function MyApp({ Component, pageProps }) {
-  const [headerHeight, setHeaderHeight] = useState(0);
   const [imIsVisible, setImIsVisible] = useState(false);
 
   return (
@@ -38,21 +38,30 @@ function MyApp({ Component, pageProps }) {
           />
         </Head>
 
-        <ImportantMessage
-          setImIsVisible={setImIsVisible}
-          imIsVisible={imIsVisible}
-          headerHeight={headerHeight}
-        />
-        <Header setHeaderHeight={setHeaderHeight} />
+        <ImportantMessage setImIsVisible={setImIsVisible} imIsVisible={imIsVisible} />
+        <Header />
 
-        <main style={!imIsVisible ? { marginTop: headerHeight } : null}>
-          <Component {...pageProps} headerHeight={headerHeight} />
-        </main>
+        <MainStyled>
+          <Component {...pageProps} />
+        </MainStyled>
 
         <Footer />
       </BreakpointProvider>
     </EmotionTheme>
   );
 }
+
+const MainStyled = styled.main`
+  position: relative;
+  margin-top: ${({ theme }) => theme.headerHeight.mobile};
+  min-height: ${({ theme }) =>
+    `calc(100vh - ${theme.headerHeight.mobile} - ${theme.footerHeight.mobile}) `};
+
+  ${({ theme }) => theme.mediaDesktop} {
+    margin-top: ${({ theme }) => theme.headerHeight.desktop};
+    min-height: ${({ theme }) =>
+      `calc(100vh - ${theme.headerHeight.desktop} - ${theme.footerHeight.desktop}) `};
+  }
+`;
 
 export default MyApp;

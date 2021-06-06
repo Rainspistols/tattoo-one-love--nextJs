@@ -28,13 +28,13 @@
       "alias": {
         "map": [["~", "./"]],
         "extensions": [".ts", ".js", ".jsx", ".json"]
-      },
+      }
     },
     "react": {
       "version": "detect"
     }
   },
-  "rules": { "react/react-in-jsx-scope": "off" },
+  "rules": { "react/react-in-jsx-scope": "off", "react/prop-types": 0 },
   "globals": { "React": "writable" },
   "plugins": []
 }

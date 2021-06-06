@@ -14,12 +14,8 @@ const theme = {
     black: '#000000',
   },
 
-  vw: (px) => {
-    return (px / 375) * 100 + 'vw';
-  },
-  vw1920: (px) => {
-    return (px / 1920) * 100 + 'vw';
-  },
+  vw: (px) => `${(px / 375) * 100}vw`,
+  vw1920: (px) => `${(px / 1920) * 100}vw`,
 
   flex: {
     center: {
@@ -35,10 +31,17 @@ const theme = {
   },
 
   mediaDesktop: '@media (min-width: 1280px)',
+
+  headerHeight: {
+    mobile: `${(45 / 375) * 100}vw`,
+    desktop: `${(94 / 1920) * 100}vw`,
+  },
+  footerHeight: {
+    mobile: `${(400 / 375) * 100}vw`,
+    desktop: `${(310 / 1920) * 100}vw`,
+  },
 };
 
-const EmotionTheme = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
+const EmotionTheme = ({ children }) => <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 
 export default EmotionTheme;

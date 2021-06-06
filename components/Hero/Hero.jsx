@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import Container from '~/Layouts/Container/Container';
 import Image from 'next/image';
+import Container from '~/Layouts/Container/Container';
 import { useBreakpoint } from '~/utils/breakpoint';
 
 const Hero = () => {
@@ -72,7 +72,6 @@ const StyledHero = styled.div`
 
   ${({ theme }) => theme.mediaDesktop} {
     margin-bottom: ${({ theme }) => theme.vw1920(134)};
-    /* padding: ${({ theme }) => theme.vw1920(150)} 0 ${({ theme }) => theme.vw1920(150)}; */
 
     height: ${({ theme }) => theme.vw1920(760)};
 
@@ -106,6 +105,7 @@ const ImageWrap = styled.div`
   right: 0;
   left: 0;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
 
   &::after {
     position: absolute;

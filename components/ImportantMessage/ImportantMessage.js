@@ -1,17 +1,17 @@
+import Cookies from 'js-cookie';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import Cookies from 'js-cookie';
+import useSWR from 'swr';
+import { IoIosClose } from 'react-icons/io';
 // Components
 import Container from '~/Layouts/Container/Container';
-import { IoIosClose } from 'react-icons/io';
-import useSWR from 'swr';
 import StrapiService from '../StrapiService/StrapiService';
 
 const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
   const strapiService = new StrapiService();
 
-  const { data: importantMessageJson } = useSWR(`/important-message`, strapiService.getResource);
+  const { data: importantMessageJson } = useSWR('/important-message', strapiService.getResource);
 
   useEffect(() => {
     if (importantMessageJson) {
@@ -19,9 +19,7 @@ const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
     }
   }, [importantMessageJson]);
 
-  const countDateExpire = () => {
-    return new Date(new Date().getTime() + 1000 * 60 * 60 * 24);
-  };
+  const countDateExpire = () => new Date(new Date().getTime() + 1000 * 60 * 60 * 24);
 
   const onClose = () => {
     setImIsVisible(false);
@@ -65,11 +63,11 @@ const ImportantMessageStyled = styled.section`
   background: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.vw(5)} 0;
-  margin-top: ${(props) => (props.imIsVisible ? props.headerHeight + 'px' : null)};
+  top: ${(props) => props.headerHeight + 'px'};
   z-index: 2;
-  position: relative;
-  animation: scroll-down 1s linear;
-  /* for smooth animation */
+  left: 0;
+  right: 0;
+  position: absolute;
   overflow: hidden;
 
   .Container {

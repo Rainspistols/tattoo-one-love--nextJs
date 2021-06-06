@@ -5,10 +5,9 @@ import FollowUs from '~/components/FollowUs/FollowUs';
 import Subscribe from '~/components/Subscribe/Subscribe';
 import Mission from '~/components/Mission/Mission';
 import ContactsSection from '~/components/ContactsSection/ContactsSection';
+import { useBreakpoint } from '~/utils/breakpoint';
 // Strapi
 import StrapiService from '~/components/StrapiService/StrapiService';
-
-import { useBreakpoint } from '../utils/breakpoint.js';
 
 const Home = ({ ourWorks, ourMissionText, headerHeight }) => {
   const { NEXT_PUBLIC_API_URL: API_URL } = process.env;
