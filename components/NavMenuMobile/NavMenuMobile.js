@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 // Components
 import Contacts from '../Contacts/Contacts';
-import Container from '@/Layouts/Container/Container';
-import Logo from '@/UI/Logo/Logo';
+import Container from '~/Layouts/Container/Container';
+import Logo from '~/UI/Logo/Logo';
 import Link from 'next/link';
 
 const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {

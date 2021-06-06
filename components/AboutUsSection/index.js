@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Slider from 'react-slick';
 //Components
-import SectionTitle from '@/UI/SectionTitle';
-import Container from '@/Layouts/Container/Container';
-import Anchor from '@/UI/Anchor';
+import SectionTitle from '~/UI/SectionTitle';
+import Container from '~/Layouts/Container/Container';
+import Anchor from '~/UI/Anchor';
 import SlickArrow from '../SlickArrow';
 // hooks
 import { useBreakpoint } from '../../utils/breakpoint';

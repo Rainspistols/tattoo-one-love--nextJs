@@ -1,12 +1,12 @@
-import OurWorks from '@/components/OurWorks/OurWorks';
-import Hero from '@/components/Hero/Hero';
-import AboutUsSection from '@/components/AboutUsSection';
-import FollowUs from '@/components/FollowUs/FollowUs';
-import Subscribe from '@/components/Subscribe/Subscribe';
-import Mission from '@/components/Mission/Mission';
-import ContactsSection from '@/components/ContactsSection/ContactsSection';
+import OurWorks from '~/components/OurWorks/OurWorks';
+import Hero from '~/components/Hero/Hero';
+import AboutUsSection from '~/components/AboutUsSection';
+import FollowUs from '~/components/FollowUs/FollowUs';
+import Subscribe from '~/components/Subscribe/Subscribe';
+import Mission from '~/components/Mission/Mission';
+import ContactsSection from '~/components/ContactsSection/ContactsSection';
 // Strapi
-import StrapiService from '@/components/StrapiService/StrapiService';
+import StrapiService from '~/components/StrapiService/StrapiService';
 
 import { useBreakpoint } from '../utils/breakpoint.js';
 

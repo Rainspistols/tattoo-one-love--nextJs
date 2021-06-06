@@ -4,10 +4,10 @@ import Image from 'next/image';
 import imageSizeHelper from '../../utils/imageSizeHelper';
 // Components
 import Slider from 'react-slick';
-import SectionTitle from '@/UI/SectionTitle';
-import Container from '@/Layouts/Container/Container';
+import SectionTitle from '~/UI/SectionTitle';
+import Container from '~/Layouts/Container/Container';
 import SlickArrow from '../SlickArrow';
-import Anchor from '@/UI/Anchor';
+import Anchor from '~/UI/Anchor';
 
 const OurWorks = ({ ourWorks, headerHeight }) => {
   const breakpoint = useBreakpoint();

@@ -3,8 +3,8 @@ import { useBreakpoint } from '../../utils/breakpoint';
 
 import NavigationDesktop from './NavigationDesktop';
 import NavigationMobile from './NavigationMobile';
-import Container from '@/Layouts/Container/Container';
-import Logo from '@/UI/Logo/Logo';
+import Container from '~/Layouts/Container/Container';
+import Logo from '~/UI/Logo/Logo';
 
 const Navigation = () => {
   const breakpoint = useBreakpoint();

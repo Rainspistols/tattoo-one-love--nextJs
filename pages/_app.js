@@ -6,13 +6,13 @@ import Head from 'next/head';
 
 import { BreakpointProvider } from '../utils/breakpoint';
 
-import Footer from '@/components/Footer/Footer';
-import Header from '@/components/Header/Header';
+import Footer from '~/components/Footer/Footer';
+import Header from '~/components/Header/Header';
 // Seo
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 import { useState } from 'react';
-import ImportantMessage from '@/components/ImportantMessage/ImportantMessage';
+import ImportantMessage from '~/components/ImportantMessage/ImportantMessage';
 
 function MyApp({ Component, pageProps }) {
   const [headerHeight, setHeaderHeight] = useState(0);

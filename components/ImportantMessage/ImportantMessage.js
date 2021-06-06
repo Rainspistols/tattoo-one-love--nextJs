@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 // Components
-import Container from '@/Layouts/Container/Container';
+import Container from '~/Layouts/Container/Container';
 import { IoIosClose } from 'react-icons/io';
 import useSWR from 'swr';
 import StrapiService from '../StrapiService/StrapiService';

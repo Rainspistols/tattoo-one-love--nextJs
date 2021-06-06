@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import ReactMarkdown from 'react-markdown';
-import Container from '@/Layouts/Container/Container';
+import Container from '~/Layouts/Container/Container';
 import { NextSeo } from 'next-seo';
 
 const PoliticsExample = ({ data, title }) => {

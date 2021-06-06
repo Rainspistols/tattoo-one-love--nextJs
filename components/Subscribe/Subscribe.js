@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import Container from '@/Layouts/Container/Container';
+import Container from '~/Layouts/Container/Container';
 
 const Subscribe = () => {
   const { NEXT_PUBLIC_API_URL: API_URL } = process.env;

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { useBreakpoint } from '../../utils/breakpoint';
 // Components
-import Container from '@/Layouts/Container/Container';
-import Line from '@/UI/Line';
+import Container from '~/Layouts/Container/Container';
+import Line from '~/UI/Line';
 import FooterCopyRight from './FooterCopyRight';
 import Contacts from '../Contacts/Contacts';
 import FooterInformation from './FooterInformation';

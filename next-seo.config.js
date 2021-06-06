@@ -6,6 +6,6 @@ export default {
     type: 'website',
     locale: 'pl_PL',
     url: 'https://tattooonelove.com',
-    site_name: 'Tattoo one love'
+    site_name: 'Tattoo one love',
   },
 };

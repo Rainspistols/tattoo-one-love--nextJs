@@ -4,9 +4,9 @@ import { useBreakpoint } from 'utils/breakpoint';
 import FollowUs from '../FollowUs/FollowUs';
 import Subscribe from '../Subscribe/Subscribe';
 import Contacts from '../Contacts/Contacts';
-import Container from '@/Layouts/Container/Container';
-import Anchor from '@/UI/Anchor';
-import SectionTitle from '@/UI/SectionTitle';
+import Container from '~/Layouts/Container/Container';
+import Anchor from '~/UI/Anchor';
+import SectionTitle from '~/UI/SectionTitle';
 
 const ContactsBlock = ({ headerHeight }) => {
   const breakpoint = useBreakpoint();

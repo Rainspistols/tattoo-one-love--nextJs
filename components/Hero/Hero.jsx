@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import Container from '@/Layouts/Container/Container';
+import Container from '~/Layouts/Container/Container';
 import Image from 'next/image';
-import { useBreakpoint } from '../../utils/breakpoint';
+import { useBreakpoint } from '~/utils/breakpoint';
 
 const Hero = () => {
   const breakpoint = useBreakpoint();
@@ -14,8 +14,8 @@ const Hero = () => {
           alt="background image"
           layout="fill"
           objectFit="cover"
-          quality={100}
-          priority={true}
+          quality={80}
+          priority="true"
           objectPosition="center 60%"
         />
       </ImageWrap>
@@ -102,9 +102,9 @@ const StyledHero = styled.div`
 const ImageWrap = styled.div`
   position: absolute;
   top: 0;
+  bottom: 0;
+  right: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
 
   &::after {
@@ -114,7 +114,7 @@ const ImageWrap = styled.div`
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
   }
 `;
 

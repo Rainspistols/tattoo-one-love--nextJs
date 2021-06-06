@@ -1,11 +1,9 @@
 import React from 'react';
-import StrapiService from '@/components/StrapiService/StrapiService';
-import PoliticsExample from '@/components/PoliticsExample/PoliticsExample';
+import StrapiService from '~/components/StrapiService/StrapiService';
+import PoliticsExample from '~/components/PoliticsExample/PoliticsExample';
 
 const politykaCookies = ({ PCdata }) => {
-  return (
-    <PoliticsExample data={PCdata} title='Polityka Cookie | Tattoo One Love' />
-  );
+  return <PoliticsExample data={PCdata} title="Polityka Cookie | Tattoo One Love" />;
 };
 
 export const getStaticProps = async () => {
