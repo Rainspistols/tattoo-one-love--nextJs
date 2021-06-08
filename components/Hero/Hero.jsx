@@ -6,11 +6,26 @@ import { useBreakpoint } from '~/utils/breakpoint';
 const Hero = ({ type, text1, text2 }) => {
   const breakpoint = useBreakpoint();
 
+  const setBackground = (type) => {
+    switch (type) { 
+      case "main":
+        return breakpoint.mobile
+          ? "/Hero/bg--tablet.jpg"
+          : "/Hero/bg--desktop.jpg";
+      case "coverups":
+        return breakpoint.mobile
+          ? "/Coverups/bg--tablet.jpeg"
+          : "/Coverups/bg--desktop.jpeg";
+      default:
+        return;
+    }
+  }
+
   return (
     <StyledHero type={type}>
       <ImageWrap>
         <Image
-          src={breakpoint.mobile ? '/Hero/bg--tablet.jpg' : '/Hero/bg--desktop.jpg'}
+          src={setBackground(type)}
           alt="background image"
           layout="fill"
           objectFit="cover"
