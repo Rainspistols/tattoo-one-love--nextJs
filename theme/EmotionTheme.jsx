@@ -3,6 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 const theme = {
   colors: {
     pink: '#F11E9C',
+    pink2: '#F41791',
     darkBlue: '#1D2B36',
     grey1: '#E8ECF1',
     grey2: '#B5CFD8',
@@ -12,7 +13,8 @@ const theme = {
     pinkGradient: 'linear-gradient(280deg,#FF0099, #561616)',
     whiteGradient: 'linear-gradient(280deg,#D9A7C7, #FFFCDC)',
     black: '#000000',
-    lightGrey: '#f4f4f4'
+    lightGrey: '#f4f4f4',
+    lightBlue: '#D8E2EB'
   },
 
   vw: (px) => `${(px / 375) * 100}vw`,

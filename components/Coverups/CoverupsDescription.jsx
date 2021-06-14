@@ -46,8 +46,8 @@ const DescriptionContainer = styled.article`
   }
 
   .description-content {
-    font-size: ${({ theme }) => theme.vw(29)};
-    line-height: ${({ theme }) => theme.vw(43)};
+    font-size: ${({ theme }) => theme.vw(20)};
+    line-height: ${({ theme }) => theme.vw(35)};
     padding: ${({ theme }) => theme.vw(32)} ${({ theme }) => theme.vw(16)};
     background-color: ${({ theme }) => theme.colors.lightGrey};
 
