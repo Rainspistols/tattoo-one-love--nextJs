@@ -6,8 +6,8 @@ const StatementsListItem = ({ step, title, children }) => (
 
 const StatementsListItemStyled = styled.li`
   padding-top: ${({ theme }) => theme.vw(46)};
-  font-size: ${({ theme }) => theme.vw(20)};
-  line-height: ${({ theme }) => theme.vw(30)};
+  font-size: ${({ theme }) => theme.vw(13)};
+  line-height: ${({ theme }) => theme.vw(20)};
   border-top: 2px solid ${({ theme }) => theme.colors.grey6};
   position: relative;
 

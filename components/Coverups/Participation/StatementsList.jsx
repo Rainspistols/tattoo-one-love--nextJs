@@ -15,7 +15,7 @@ const StatementsListStyled = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: ${({ theme }) => theme.vw(56)};
-  margin-top: ${({ theme }) => theme.vw(125)};
+  margin-top: ${({ theme }) => theme.vw(60)};
 
   ${({ theme }) => theme.mediaDesktop} {
     grid-template-columns: repeat(4, 1fr);
