@@ -4,6 +4,7 @@ import CoverupsFAQ from "~/components/Coverups/CoverupsFAQ";
 import CoverupsGoal from "~/components/Coverups/CoverupsGoal";
 import CoverupsParticipation from "~/components/Coverups/CoverupsParticipation";
 import Container from "~/Layouts/Container/Container";
+import CoverupsMemo from "~/components/Coverups/CoverupsMemo";
 
 const Coverups = () => {
   return (
@@ -14,6 +15,7 @@ const Coverups = () => {
         <CoverupsGoal />
         <CoverupsFAQ />
         <CoverupsParticipation />
+        <CoverupsMemo />
       </Container>
     </>
   );

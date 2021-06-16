@@ -50,7 +50,7 @@ const DescriptionContainer = styled.article`
   .description-content {
     font-size: ${({ theme }) => theme.vw(13)};
     line-height: ${({ theme }) => theme.vw(20)};
-    padding: ${({ theme }) => theme.vw(32)} ${({ theme }) => theme.vw(16)};
+    padding: ${({ theme }) => theme.vw(32)} ${({ theme }) => theme.vw(60)};
     background-color: ${({ theme }) => theme.colors.lightGrey};
     order: 1;
 
