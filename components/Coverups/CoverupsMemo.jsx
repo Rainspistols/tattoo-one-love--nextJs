@@ -34,11 +34,11 @@ const CoverupsMemo = () => {
 };
 
 const CoverupsMemoStyled = styled.section`
-  background-color: #e8ecf2;
-  box-sizing: border-box;
+  background-color: ${({ theme }) => theme.colors.grey1};
   max-width: ${({ theme }) => theme.vw(375)};
   padding: ${({ theme }) => theme.vw(25)};
   margin: ${({ theme }) => theme.vw(70)} auto;
+  box-sizing: border-box;
 
   ${({ theme }) => theme.mediaDesktop} {
     max-width: ${({ theme }) => theme.vw1920(1000)};
