@@ -43,6 +43,7 @@ const DescriptionContainer = styled.article`
       position: relative;
       width: ${({ theme }) => theme.vw1920(665)};
       height: ${({ theme }) => theme.vw1920(664)};
+      order: 1;
     }
   }
 
@@ -58,6 +59,7 @@ const DescriptionContainer = styled.article`
       line-height: ${({ theme }) => theme.vw1920(43)};
       padding: ${({ theme }) => theme.vw1920(117)}
         ${({ theme }) => theme.vw1920(64)};
+      order: 2;
     }
   }
 `;
