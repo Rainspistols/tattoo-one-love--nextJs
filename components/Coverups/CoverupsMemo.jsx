@@ -58,10 +58,14 @@ const CoverupsMemoStyled = styled.section`
 
   .memo-list {
     li {
+      font-size: ${({ theme }) => theme.vw(13)};
+      line-height: ${({ theme }) => theme.vw(20)};
       margin-bottom: ${({ theme }) => theme.vw(15)};
       position: relative;
 
       ${({ theme }) => theme.mediaDesktop} {
+        font-size: ${({ theme }) => theme.vw1920(20)};
+        line-height: ${({ theme }) => theme.vw1920(30)};
         margin-bottom: ${({ theme }) => theme.vw1920(15)};
       }
 
