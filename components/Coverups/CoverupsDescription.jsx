@@ -37,6 +37,7 @@ const DescriptionContainer = styled.article`
     position: relative;
     width: ${({ theme }) => theme.vw(375)};
     height: ${({ theme }) => theme.vw(375)};
+    order: 2;
 
     ${({ theme }) => theme.mediaDesktop} {
       position: relative;
@@ -46,10 +47,11 @@ const DescriptionContainer = styled.article`
   }
 
   .description-content {
-    font-size: ${({ theme }) => theme.vw(20)};
-    line-height: ${({ theme }) => theme.vw(35)};
+    font-size: ${({ theme }) => theme.vw(13)};
+    line-height: ${({ theme }) => theme.vw(20)};
     padding: ${({ theme }) => theme.vw(32)} ${({ theme }) => theme.vw(16)};
     background-color: ${({ theme }) => theme.colors.lightGrey};
+    order: 1;
 
     ${({ theme }) => theme.mediaDesktop} {
       font-size: ${({ theme }) => theme.vw1920(29)};
