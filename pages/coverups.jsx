@@ -1,8 +1,8 @@
 import CoverupsHeader from "~/components/Coverups/CoverupsHeader";
 import CoverupsDescription from "~/components/Coverups/CoverupsDescription";
-import CoverupsFAQ from "~/components/Coverups/CoverupsFAQ";
+import CoverupsFAQ from "~/components/Coverups/FAQ/CoverupsFAQ";
 import CoverupsGoal from "~/components/Coverups/CoverupsGoal";
-import CoverupsParticipation from "~/components/Coverups/CoverupsParticipation";
+import CoverupsParticipation from "~/components/Coverups/Participation/CoverupsParticipation";
 import Container from "~/Layouts/Container/Container";
 import CoverupsMemo from "~/components/Coverups/CoverupsMemo";
 

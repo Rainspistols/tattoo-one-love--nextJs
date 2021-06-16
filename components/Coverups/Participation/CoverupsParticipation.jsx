@@ -1,4 +1,4 @@
-import StatementsList from "./Participation/StatementsList";
+import StatementsList from "./StatementsList";
 import styled from "@emotion/styled";
 
 const CoverupsParticipation = () => {

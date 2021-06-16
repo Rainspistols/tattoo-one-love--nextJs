@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import FAQListItem from "./FAQ/FAQListItem";
+import FAQListItem from "./FAQListItem";
 
 const CoverupsFAQ = () => {
   const data = [
