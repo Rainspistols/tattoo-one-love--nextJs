@@ -24,7 +24,9 @@ const CoverupsMemo = () => {
       <h4 className="title">O czym warto pamiętać</h4>
       <ul className="memo-list">
         {data.map(({ id, textContent }) => (
-          <li key={id}>{textContent}</li>
+          <li className="memo-list__item" key={id}>
+            {textContent}
+          </li>
         ))}
       </ul>
     </CoverupsMemoStyled>
@@ -57,7 +59,7 @@ const CoverupsMemoStyled = styled.section`
   }
 
   .memo-list {
-    li {
+    &__item {
       font-size: ${({ theme }) => theme.vw(13)};
       line-height: ${({ theme }) => theme.vw(20)};
       margin-bottom: ${({ theme }) => theme.vw(15)};
