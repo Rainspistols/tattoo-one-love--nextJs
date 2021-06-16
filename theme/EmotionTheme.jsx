@@ -9,6 +9,8 @@ const theme = {
     grey2: '#B5CFD8',
     grey3: '#7393A7',
     grey4: '#6C737E',
+    grey5: '#707070',
+    grey6: '#DDDADA',
     white: '#ffffff',
     pinkGradient: 'linear-gradient(280deg,#FF0099, #561616)',
     whiteGradient: 'linear-gradient(280deg,#D9A7C7, #FFFCDC)',

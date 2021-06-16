@@ -41,8 +41,8 @@ const FAQListItemStyled = styled.li`
   }
 
   .title {
-    font-size: ${({ theme }) => theme.vw(29)};
-    line-height: ${({ theme }) => theme.vw(43)};
+    font-size: ${({ theme }) => theme.vw(24)};
+    line-height: ${({ theme }) => theme.vw(36)};
 
     ${({ theme }) => theme.mediaDesktop} {
       font-size: ${({ theme }) => theme.vw1920(48)};

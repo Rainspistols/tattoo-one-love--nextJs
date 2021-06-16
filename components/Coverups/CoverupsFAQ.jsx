@@ -73,7 +73,7 @@ const FAQSection = styled.div`
 `;
 
 const FAQListStyled = styled.ul`
-  padding: 0 ${({ theme }) => theme.vw(40)};
+  padding: 0 ${({ theme }) => theme.vw(20)};
 
   ${({ theme }) => theme.mediaDesktop} {
     padding: 0 ${({ theme }) => theme.vw1920(160)};;
