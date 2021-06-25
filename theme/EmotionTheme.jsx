@@ -3,6 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 const theme = {
   colors: {
     pink: '#F11E9C',
+    pink2: '#F41791',
     darkBlue: '#1D2B36',
     grey1: '#E8ECF1',
     grey2: '#B5CFD8',
