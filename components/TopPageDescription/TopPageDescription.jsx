@@ -14,7 +14,6 @@ const ContainerStyled = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  justify-content: center;
 
   ${({ theme }) => theme.mediaDesktop} {
     grid-template-columns: auto 1fr;
@@ -28,7 +27,6 @@ const ImageWrapperStyled = styled.div`
   order: 2;
 
   ${({ theme }) => theme.mediaDesktop} {
-    position: relative;
     width: ${({ theme }) => theme.vw1920(665)};
     height: ${({ theme }) => theme.vw1920(664)};
     order: 1;
