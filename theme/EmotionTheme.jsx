@@ -13,6 +13,7 @@ const theme = {
     whiteGradient: 'linear-gradient(280deg,#D9A7C7, #FFFCDC)',
     black: '#000000',
     lightGrey: '#f4f4f4',
+    lightBlue: '#D8E2EB',
   },
 
   vw: (px) => `${(px / 375) * 100}vw`,
