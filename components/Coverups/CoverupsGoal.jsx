@@ -36,12 +36,12 @@ const GoalSection = styled.section`
     font-weight: 400;
     font-size: ${({ theme }) => theme.vw(13)};
     line-height: ${({ theme }) => theme.vw(20)};
-    padding: ${({ theme }) => theme.vw(32)} ${({ theme }) => theme.vw(16)};
+    padding: ${({ theme }) => `${theme.vw(32)} ${theme.vw(16)}`};
 
     ${({ theme }) => theme.mediaDesktop} {
       font-size: ${({ theme }) => theme.vw1920(29)};
       line-height: ${({ theme }) => theme.vw1920(43)};
-      padding: ${({ theme }) => theme.vw1920(117)} ${({ theme }) => theme.vw1920(64)};
+      padding: ${({ theme }) => `${theme.vw1920(117)} ${theme.vw1920(64)}`};
     }
 
     border-top: 1px solid ${({ theme }) => theme.colors.lightBlue};
