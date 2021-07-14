@@ -22,7 +22,6 @@ const TopPageDescriptionStyled = styled.section`
 
 const ImageWrapperStyled = styled.div`
   position: relative;
-  width: ${({ theme }) => theme.vw(375)};
   height: ${({ theme }) => theme.vw(375)};
   order: 2;
 
