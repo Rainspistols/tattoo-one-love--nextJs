@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Hero, { heroTypes } from '~/components/Hero/Hero';
 import Container from '~/Layouts/Container/Container';
-import CoverupsTopDescription from '~/components/Coverups/CoverupsTopDescription';
+import TopPageDescription from '~/UI/TopPageDescription';
 
 const Coverups = () => (
   <>
@@ -13,7 +13,11 @@ const Coverups = () => (
       text2="Niechciany tatuaż nie musi Cię definiować."
     />
     <Container>
-      <CoverupsTopDescription />
+      <TopPageDescription
+        imageUrl='/Coverups/coverup-description.jpeg'
+        imageDescription='cover tatuaż'
+        textContent='Tatuaże powinni pomagać wyrażać siebie i dodawać wiary w siebie, a nie na odwrót. Ale niestety, czasem tak się zdarza, że wymarzony tatuaż, z różnych powodów, nie spełnia oczekiwań. Patrzenie na nieudany wzór, który szpeci ciało, jest krępujące, a niekiedy wręcz żenujące. Więc postanowiliśmy pomóc ludziom cieszyć się rysunkami na ich ciałach, ponieważ wszyscy na to zasługują.'
+      />
     </Container>
   </>
 );

@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-const TopPageDescription = ({ imageUrl, textContent }) => (
-  <ContainerStyled>
+const TopPageDescription = ({ imageUrl, imageDescription, textContent }) => (
+  <TopPageDescriptionStyled>
     <ImageWrapperStyled>
-      <Image src={imageUrl} layout='fill' objectFit='contain' />
+      <Image src={imageUrl} alt={imageDescription} layout='fill' objectFit='contain' />
     </ImageWrapperStyled>
     <TextContentStyled>{textContent}</TextContentStyled>
-  </ContainerStyled>
+  </TopPageDescriptionStyled>
 );
 
-const ContainerStyled = styled.section`
+const TopPageDescriptionStyled = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -36,14 +36,14 @@ const ImageWrapperStyled = styled.div`
 const TextContentStyled = styled.p`
   font-size: ${({ theme }) => theme.vw(13)};
   line-height: ${({ theme }) => theme.vw(20)};
-  padding: ${({ theme }) => theme.vw(32)} ${({ theme }) => theme.vw(60)};
+  padding: ${({ theme }) => `${theme.vw(32)} ${theme.vw(60)}`};
   background-color: ${({ theme }) => theme.colors.lightGrey};
   order: 1;
 
   ${({ theme }) => theme.mediaDesktop} {
     font-size: ${({ theme }) => theme.vw1920(29)};
     line-height: ${({ theme }) => theme.vw1920(43)};
-    padding: ${({ theme }) => theme.vw1920(117)} ${({ theme }) => theme.vw1920(64)};
+    padding: ${({ theme }) => `${theme.vw1920(117)} ${theme.vw1920(64)}`};
     order: 2;
   }
 `;
