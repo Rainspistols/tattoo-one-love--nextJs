@@ -10,6 +10,7 @@ const NavMenu = ({ onCloseMenu, onMenuItem, isMenuVisible }) => {
     { title: 'Główna', href: '/', id: 1 },
     { title: 'O nac', href: '/#about-us', id: 2 },
     { title: 'Prace', href: '/#works', id: 3 },
+    { title: 'Coverups', href: '/coverups', id: 4 },
   ];
 
   const socialsListData = [

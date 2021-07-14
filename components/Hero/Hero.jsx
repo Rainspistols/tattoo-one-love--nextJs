@@ -3,15 +3,46 @@ import Image from 'next/image';
 import Container from '~/Layouts/Container/Container';
 import { useBreakpoint } from '~/utils/breakpoint';
 
+export const heroTypes = {
+  coverups: "coverups",
+  main: "main"
+}
+
 const Hero = ({ type, text1, text2 }) => {
   const breakpoint = useBreakpoint();
+
+  const setBackground = (type) => {
+    switch (type) { 
+      case heroTypes.main:
+        return breakpoint.mobile
+          ? "/Hero/bg--tablet.jpg"
+          : "/Hero/bg--desktop.jpg";
+      case heroTypes.coverups:
+        return breakpoint.mobile
+          ? "/Coverups/bg--tablet.jpeg"
+          : "/Coverups/bg--desktop.jpeg";
+      default:
+        return;
+    }
+  }
+
+  const setImageDescription = (type) => {
+    switch(type) {
+      case heroTypes.main:
+        return 'studio tatuażu warszawa'
+      case heroTypes.coverups:
+        return 'cover tatuażu'
+      default:
+        return;
+    }
+  }
 
   return (
     <StyledHero type={type}>
       <ImageWrap>
         <Image
-          src={breakpoint.mobile ? '/Hero/bg--tablet.jpg' : '/Hero/bg--desktop.jpg'}
-          alt="background image"
+          src={setBackground(type)}
+          alt={setImageDescription(type)}
           layout="fill"
           objectFit="cover"
           quality={80}
