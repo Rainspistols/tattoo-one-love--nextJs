@@ -4,38 +4,38 @@ import Container from '~/Layouts/Container/Container';
 import { useBreakpoint } from '~/utils/breakpoint';
 
 export const heroTypes = {
-  coverups: "coverups",
-  main: "main"
-}
+  coverups: 'coverups',
+  main: 'main',
+};
 
 const Hero = ({ type, text1, text2 }) => {
   const breakpoint = useBreakpoint();
 
-  const setBackground = (type) => {
-    switch (type) { 
+  const setBackground = (heroType) => {
+    switch (heroType) {
       case heroTypes.main:
         return breakpoint.mobile
-          ? "/Hero/bg--tablet.jpg"
-          : "/Hero/bg--desktop.jpg";
+          ? '/Hero/bg--tablet.jpg'
+          : '/Hero/bg--desktop.jpg';
       case heroTypes.coverups:
         return breakpoint.mobile
-          ? "/Coverups/bg--tablet.jpeg"
-          : "/Coverups/bg--desktop.jpeg";
+          ? '/Coverups/bg--tablet.jpeg'
+          : '/Coverups/bg--desktop.jpeg';
       default:
-        return;
+        return '';
     }
-  }
+  };
 
-  const setImageDescription = (type) => {
-    switch(type) {
+  const setImageDescription = (heroType) => {
+    switch (heroType) {
       case heroTypes.main:
-        return 'studio tatuażu warszawa'
+        return 'studio tatuażu warszawa';
       case heroTypes.coverups:
-        return 'cover tatuażu'
+        return 'cover tatuażu';
       default:
-        return;
+        return '';
     }
-  }
+  };
 
   return (
     <StyledHero type={type}>
@@ -104,8 +104,7 @@ const StyledHero = styled.div`
   }
 
   ${({ theme }) => theme.mediaDesktop} {
-    margin-bottom: ${(props) =>
-      props.type === 'main' ? props.theme.vw1920(134) : props.theme.vw1920(50)};
+    margin-bottom: ${(props) => (props.type === 'main' ? props.theme.vw1920(134) : props.theme.vw1920(50))};
 
     height: ${({ theme }) => theme.vw1920(760)};
 
