@@ -3,15 +3,46 @@ import Image from 'next/image';
 import Container from '~/Layouts/Container/Container';
 import { useBreakpoint } from '~/utils/breakpoint';
 
+export const heroTypes = {
+  coverups: 'coverups',
+  main: 'main',
+};
+
 const Hero = ({ type, text1, text2 }) => {
   const breakpoint = useBreakpoint();
+
+  const setBackground = (heroType) => {
+    switch (heroType) {
+      case heroTypes.main:
+        return breakpoint.mobile
+          ? '/Hero/bg--tablet.jpg'
+          : '/Hero/bg--desktop.jpg';
+      case heroTypes.coverups:
+        return breakpoint.mobile
+          ? '/Coverups/bg--tablet.jpeg'
+          : '/Coverups/bg--desktop.jpeg';
+      default:
+        return '';
+    }
+  };
+
+  const setImageDescription = (heroType) => {
+    switch (heroType) {
+      case heroTypes.main:
+        return 'studio tatuażu warszawa';
+      case heroTypes.coverups:
+        return 'cover tatuażu';
+      default:
+        return '';
+    }
+  };
 
   return (
     <StyledHero type={type}>
       <ImageWrap>
         <Image
-          src={breakpoint.mobile ? '/Hero/bg--tablet.jpg' : '/Hero/bg--desktop.jpg'}
-          alt="background image"
+          src={setBackground(type)}
+          alt={setImageDescription(type)}
           layout="fill"
           objectFit="cover"
           quality={80}
@@ -73,8 +104,7 @@ const StyledHero = styled.div`
   }
 
   ${({ theme }) => theme.mediaDesktop} {
-    margin-bottom: ${(props) =>
-      props.type === 'main' ? props.theme.vw1920(134) : props.theme.vw1920(50)};
+    margin-bottom: ${(props) => (props.type === 'main' ? props.theme.vw1920(134) : props.theme.vw1920(50))};
 
     height: ${({ theme }) => theme.vw1920(760)};
 

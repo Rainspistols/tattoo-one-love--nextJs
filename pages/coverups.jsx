@@ -1,10 +1,15 @@
-import Hero from '~/components/Hero/Hero';
+import { NextSeo } from 'next-seo';
+import Hero, { heroTypes } from '~/components/Hero/Hero';
 
 const NewPage = () => (
   <>
-    <h1 className="visually-hidden">Free COVER UPS - OUR social responsibility</h1>
-    <Hero text1="Free COVER UPS - OUR social responsibility" text2="yada yada yada" />
-    <h2>Big Title h2</h2>
+    <NextSeo title="Coverups | Tattoo One Love" />
+    <h1 className="visually-hidden">cover tatuażu</h1>
+    <Hero
+      type={heroTypes.coverups}
+      text1="projekt socjalny: cover to recover"
+      text2="Niechciany tatuaż nie musi Cię definiować."
+    />
   </>
 );
 
