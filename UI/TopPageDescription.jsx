@@ -4,7 +4,7 @@ import Image from 'next/image';
 const TopPageDescription = ({ imageUrl, imageDescription, textContent }) => (
   <TopPageDescriptionStyled>
     <ImageWrapperStyled>
-      <Image src={imageUrl} alt={imageDescription} layout='fill' objectFit='contain' />
+      <Image src={imageUrl} alt={imageDescription} layout="fill" objectFit="contain" />
     </ImageWrapperStyled>
     <TextContentStyled>{textContent}</TextContentStyled>
   </TopPageDescriptionStyled>
@@ -22,7 +22,6 @@ const TopPageDescriptionStyled = styled.section`
 
 const ImageWrapperStyled = styled.div`
   position: relative;
-  width: ${({ theme }) => theme.vw(375)};
   height: ${({ theme }) => theme.vw(375)};
   order: 2;
 
