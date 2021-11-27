@@ -1,5 +1,5 @@
-export default {
-  title: 'Tattoo one love',
+const SEO = {
+  title: ' Wyjątkowe Studio Tatuażu Warszawa Wola | Tattoo One Love',
   description:
     'Studio tatuażu (Warszawa), które dziara, edukuje i pomaga w wyrażaniu siebie. Kliknij i dowiedz się, jak i gdzie zrobić sobie tatuaż, który zmieni twoje życie.',
   openGraph: {
@@ -9,3 +9,5 @@ export default {
     site_name: 'Tattoo one love',
   },
 };
+
+export default SEO;

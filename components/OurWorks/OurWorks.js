@@ -9,7 +9,7 @@ import Container from '~/Layouts/Container/Container';
 import SlickArrow from '../SlickArrow';
 import Anchor from '~/UI/Anchor';
 
-const OurWorks = ({ ourWorks, headerHeight }) => {
+const OurWorks = ({ ourWorks }) => {
   const breakpoint = useBreakpoint();
 
   const sliderSetting = breakpoint.mobile
@@ -37,18 +37,16 @@ const OurWorks = ({ ourWorks, headerHeight }) => {
 
   return (
     <OurWorksStyled>
-      <Anchor id="works" headerHeight={headerHeight} />
+      <Anchor id="works" />
       <Container>
-        <SectionTitle text="Nasze pracy" />
+        <SectionTitle text="Nasze prace" />
       </Container>
 
       <Slider {...sliderSetting}>
         {ourWorks.list.map((img) => (
           <div key={img.id} className="imgWrap">
             <Image
-              src={
-                breakpoint.mobile ? imageSizeHelper(img, 500, 500) : imageSizeHelper(img, 900, 900)
-              }
+              src={breakpoint.mobile ? imageSizeHelper(img, 500, 500) : imageSizeHelper(img, 900, 900)}
               alt="tattoo photo"
               layout="fill"
               objectFit="cover"

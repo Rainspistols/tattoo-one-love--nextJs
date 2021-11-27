@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 
 const defaultValue = {};
 
@@ -19,9 +19,7 @@ const BreakpointProvider = ({ children }) => {
 
     const handleQueryListener = () => {
       const updatedMatches = keys.reduce((acc, media) => {
-        acc[media] = !!(
-          mediaQueryLists[media] && mediaQueryLists[media].matches
-        );
+        acc[media] = !!(mediaQueryLists[media] && mediaQueryLists[media].matches);
         return acc;
       }, {});
       setQueryMatch(updatedMatches);
@@ -55,13 +53,9 @@ const BreakpointProvider = ({ children }) => {
         });
       }
     };
-  }, [queries]);
+  }, []);
 
-  return (
-    <BreakpointContext.Provider value={queryMatch}>
-      {children}
-    </BreakpointContext.Provider>
-  );
+  return <BreakpointContext.Provider value={queryMatch}>{children}</BreakpointContext.Provider>;
 };
 
 function useBreakpoint() {
