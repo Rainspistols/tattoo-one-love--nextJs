@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useState, useRef } from 'react';
-import { useBreakpoint } from 'utils/breakpoint';
+import { useBreakpoint } from '~/utils/breakpoint';
 import Image from 'next/image';
 
 import NavMenuMobile from '../NavMenuMobile/NavMenuMobile';
@@ -13,13 +13,13 @@ const NavigationMobile = () => {
   return (
     <NavigationMobileStyled>
       <div className="navigationBox" ref={navigationBox}>
-        <button className="menuButton" aria-label="menu-button">
+        <button className="menuButton" aria-label="menu-button" type="button">
           <Image
             src="/Header/navigationIcon.svg"
             layout="fill"
             objectFit="cover"
             alt="menu"
-            onClick={setMenuVisible.bind(this, true)}
+            onClick={() => setMenuVisible(true)}
           />
         </button>
 

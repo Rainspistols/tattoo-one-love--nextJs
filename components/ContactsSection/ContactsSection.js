@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useBreakpoint } from 'utils/breakpoint';
+import { useBreakpoint } from '~/utils/breakpoint';
 // Components
 import FollowUs from '../FollowUs/FollowUs';
 import Subscribe from '../Subscribe/Subscribe';
@@ -8,12 +8,12 @@ import Container from '~/Layouts/Container/Container';
 import Anchor from '~/UI/Anchor';
 import SectionTitle from '~/UI/SectionTitle';
 
-const ContactsBlock = ({ headerHeight }) => {
+const ContactsBlock = () => {
   const breakpoint = useBreakpoint();
 
   return breakpoint.desktop ? (
     <Container>
-      <Anchor id="contact" headerHeight={headerHeight} />
+      <Anchor id="contact" />
       <ContactsBlockStyled>
         <div className="Contact__wrap">
           <SectionTitle text="Kontakt" />

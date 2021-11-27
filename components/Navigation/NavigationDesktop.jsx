@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useBreakpoint } from 'utils/breakpoint';
+import { useBreakpoint } from '~/utils/breakpoint';
 
 import Contacts from '../Contacts/Contacts';
 
@@ -14,7 +14,7 @@ const NavigationDesktop = () => {
     { title: 'O nas', href: '/#about-us', id: 2 },
     { title: 'Kontakt', href: '/#contact', id: 3 },
     { title: 'Prace', href: '/#works', id: 4 },
-    { title: 'coverups', href: '/coverups', id: 5 },
+    // { title: 'coverups', href: '/coverups', id: 5 },
   ];
 
   return breakpoint.desktop ? (

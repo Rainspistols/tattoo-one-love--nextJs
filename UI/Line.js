@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useBreakpoint } from 'utils/breakpoint';
+import { useBreakpoint } from '~/utils/breakpoint';
 
 const Line = () => {
   const breakpoint = useBreakpoint();

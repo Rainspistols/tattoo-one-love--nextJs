@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Slider from 'react-slick';
-//Components
 import SectionTitle from '~/UI/SectionTitle';
 import Container from '~/Layouts/Container/Container';
 import Anchor from '~/UI/Anchor';
 import SlickArrow from '../SlickArrow';
-// hooks
 import { useBreakpoint } from '../../utils/breakpoint';
-import { useEffect, useRef, useState } from 'react';
-// icons
+import { useEffect, useState } from 'react';
 import CloseIcon from './close.svg';
 
-const AboutUsSection = ({ headerHeight }) => {
+const AboutUsSection = () => {
   const breakpoint = useBreakpoint();
   const [isActive, setActive] = useState(false);
   const [slideIndex, setSlideIndex] = useState(1);
@@ -93,7 +90,7 @@ const AboutUsSection = ({ headerHeight }) => {
 
   return (
     <AboutUsSectionStyled>
-      <Anchor id="about-us" headerHeight={headerHeight} />
+      <Anchor id="about-us" />
 
       <Container>
         <SectionTitle text="O nas" />
@@ -137,16 +134,14 @@ const AboutUsSection = ({ headerHeight }) => {
           </>
         )}
         <p className="text">
-          Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka kiedykolwiek nas spotkała.
-          Dlatego, kiedy wybierasz nasze studio tatuażu, jesteśmy z tobą od etapu pomysłu do momentu
-          pełnego wygojenia tatuażu. W Tattoo One Love przechodzimy przez cały proces razem, żeby
-          stworzyć idealne warunki dla tatuażu twoich marzeń. Dlatego też korzystamy z{' '}
-          <strong>najlepszego hipoalergicznego tuszu na rynku</strong> (World Famous, Eternal Ink) i{' '}
-          <strong>igieł najwyższej jakości</strong> (Cheyenne, Kwadron). Co więcej,{' '}
-          <strong>indywidualnie dobieramy sposób gojenia tatuażu pod każdego klienta</strong>{' '}
-          (zależnie od typu skóry, warunków w pracy i w domu). Wysokie standardy higieny i
-          sterylności są zawsze na pierwszym miejscu. Przyjdź do naszego studia i się o tym
-          przekonaj.
+          Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka kiedykolwiek nas spotkała. Dlatego, kiedy
+          wybierasz nasze studio tatuażu, jesteśmy z tobą od etapu pomysłu do momentu pełnego wygojenia tatuażu. W
+          Tattoo One Love przechodzimy przez cały proces razem, żeby stworzyć idealne warunki dla tatuażu twoich marzeń.
+          Dlatego też korzystamy z <strong>najlepszego hipoalergicznego tuszu na rynku</strong> (World Famous, Eternal
+          Ink) i <strong>igieł najwyższej jakości</strong> (Cheyenne, Kwadron). Co więcej,{' '}
+          <strong>indywidualnie dobieramy sposób gojenia tatuażu pod każdego klienta</strong> (zależnie od typu skóry,
+          warunków w pracy i w domu). Wysokie standardy higieny i sterylności są zawsze na pierwszym miejscu. Przyjdź do
+          naszego studia i się o tym przekonaj.
         </p>
       </Container>
     </AboutUsSectionStyled>
