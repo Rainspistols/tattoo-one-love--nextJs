@@ -90,7 +90,7 @@ const AboutUsSection = () => {
 
   return (
     <AboutUsSectionStyled>
-      <Anchor id='about-us' headerHeight={headerHeight} />
+      <Anchor id='about-us' />
 
       <Container>
         <SectionTitle text='O nas' />
