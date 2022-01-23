@@ -90,23 +90,23 @@ const AboutUsSection = () => {
 
   return (
     <AboutUsSectionStyled>
-      <Anchor id="about-us" />
+      <Anchor id='about-us' headerHeight={headerHeight} />
 
       <Container>
-        <SectionTitle text="O nas" />
-        <h3 className="title">Wyjątkowe studio tatuażu na Woli</h3>
+        <SectionTitle text='O nas' />
+        <h3 className='title'>Wyjątkowe studio tatuażu na Woli</h3>
 
         {/* Default Slider */}
-        <Slider {...defaultSlider} className="default-slider">
+        <Slider {...defaultSlider} className='default-slider'>
           {data.map((item, index) => (
-            <div className="image-wrapper" key={index} onClick={onImageClick}>
+            <div className='image-wrapper' key={index} onClick={onImageClick}>
               <Image
                 src={item.srcDesktop}
-                alt="tattoo one love studio tattoo example"
-                layout="fill"
-                objectFit="contain"
+                alt='tattoo one love studio tattoo example'
+                layout='fill'
+                objectFit='contain'
                 quality={100}
-                loading="eager"
+                loading='eager'
               />
             </div>
           ))}
@@ -115,25 +115,25 @@ const AboutUsSection = () => {
         {/* Desktop slider. Active after click on default slider */}
         {breakpoint.desktop && isActive && (
           <>
-            <Slider {...fixedSlider} className="fixed-slider">
+            <Slider {...fixedSlider} className='fixed-slider'>
               {data.map((item, index) => (
-                <div className="image-wrapper" key={index}>
+                <div className='image-wrapper' key={index}>
                   <Image
                     src={item.srcDesktop}
-                    alt="tattoo one love studio tattoo example"
-                    layout="fill"
-                    objectFit="contain"
+                    alt='tattoo one love studio tattoo example'
+                    layout='fill'
+                    objectFit='contain'
                     quality={100}
                   />
                 </div>
               ))}
             </Slider>
             <CloseBtn onClick={() => setActive(false)}>
-              <CloseIcon width="20" height="20" />
+              <CloseIcon width='20' height='20' />
             </CloseBtn>
           </>
         )}
-        <p className="text">
+        <p className='text'>
           Mocno wierzymy, że tatuaż jest jedną z najlepszych rzeczy, jaka kiedykolwiek nas spotkała. Dlatego, kiedy
           wybierasz nasze studio tatuażu, jesteśmy z tobą od etapu pomysłu do momentu pełnego wygojenia tatuażu. W
           Tattoo One Love przechodzimy przez cały proces razem, żeby stworzyć idealne warunki dla tatuażu twoich marzeń.

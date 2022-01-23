@@ -14,7 +14,6 @@ const Hero = ({ type, text1, text2 }) => {
           alt="background image"
           layout="fill"
           objectFit="cover"
-          quality={80}
           priority="true"
           objectPosition="center 60%"
         />
