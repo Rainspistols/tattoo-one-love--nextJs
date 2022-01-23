@@ -6,7 +6,11 @@ const Anchor = ({ id, headerHeight }) => {
 
 const AnchorStyled = styled.a`
   position: relative;
-  top: ${(props) => '-' + props.headerHeight + 'px'};
+  top: ${({ theme: { headerHeight } }) => '-' + headerHeight.mobile};
+
+  ${({ theme: { mediaDesktop } }) => mediaDesktop} {
+    top: ${({ theme: { headerHeight } }) => '-' + headerHeight.desktop};
+  }
 `;
 
 export default Anchor;
