@@ -8,7 +8,7 @@ import { IoIosClose } from 'react-icons/io';
 import Container from '~/Layouts/Container/Container';
 import StrapiService from '../StrapiService/StrapiService';
 
-const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
+const ImportantMessage = ({ imIsVisible, setImIsVisible }) => {
   const strapiService = new StrapiService();
 
   const { data: importantMessageJson } = useSWR('/important-message', strapiService.getResource);
@@ -36,12 +36,8 @@ const ImportantMessage = ({ imIsVisible, setImIsVisible, headerHeight }) => {
   return (
     imIsVisible &&
     text && (
-      <ImportantMessageStyled
-        id="important-message"
-        imIsVisible={imIsVisible}
-        headerHeight={headerHeight}
-      >
-        <h2 className="visually-hidden">important message</h2>
+      <ImportantMessageStyled id='important-message' imIsVisible={imIsVisible}>
+        <h2 className='visually-hidden'>important message</h2>
         <Container>
           {link ? (
             <Link href={link}>
@@ -63,7 +59,7 @@ const ImportantMessageStyled = styled.section`
   background: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.vw(5)} 0;
-  top: ${(props) => props.headerHeight + 'px'};
+  top: ${({ theme: { headerHeight } }) => headerHeight.mobile};
   z-index: 2;
   left: 0;
   right: 0;
@@ -100,6 +96,7 @@ const ImportantMessageStyled = styled.section`
 
   ${({ theme }) => theme.mediaDesktop} {
     padding: ${({ theme }) => theme.vw1920(7)} 0;
+    top: ${({ theme: { headerHeight } }) => headerHeight.desktop};
 
     a {
       font-size: ${({ theme }) => theme.vw1920(26)};
